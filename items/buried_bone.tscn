@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://dp0v6v7lwsgdt"]
+
+[ext_resource type="Texture2D" uid="uid://0uhkknyg0xw3" path="res://assets/art/items/buried_bone.png" id="1_e2e1f"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oo60v"]
+radius = 8.0
+
+[sub_resource type="Animation" id="Animation_x3v8u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_jwbkc"]
+resource_name = "sparkle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jfw5w"]
+_data = {
+"RESET": SubResource("Animation_x3v8u"),
+"sparkle": SubResource("Animation_jwbkc")
+}
+
+[node name="buried_bone" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_oo60v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(0, -8)
+texture = ExtResource("1_e2e1f")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jfw5w")
+}
+autoplay = "sparkle"

@@ -1,0 +1,214 @@
+[gd_scene load_steps=12 format=3 uid="uid://bn0833ujao2xi"]
+
+[ext_resource type="PackedScene" uid="uid://dehumamikbwdi" path="res://menus/volume_menu.tscn" id="1_y0603"]
+[ext_resource type="Theme" uid="uid://bwnv8b362a2w7" path="res://menus/menu_theme.tres" id="1_yg6uh"]
+[ext_resource type="Script" path="res://menus/settings_menu.gd" id="2_6gith"]
+[ext_resource type="PackedScene" uid="uid://1bygd30c6mvr" path="res://menus/menu_background.tscn" id="3_4c52g"]
+[ext_resource type="PackedScene" uid="uid://caauqm4nwd564" path="res://menus/keybinding_menu.tscn" id="4_18dik"]
+[ext_resource type="PackedScene" uid="uid://cgn5lp08830p8" path="res://ui/transition.tscn" id="4_x41oo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pg6u1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5k40a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j7erv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h744q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_448r3"]
+
+[node name="settings_menu" type="Control"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_yg6uh")
+script = ExtResource("2_6gith")
+
+[node name="menu_background" parent="." instance=ExtResource("3_4c52g")]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="sounds_button" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(550, 100)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../back_button")
+focus_neighbor_top = NodePath("../../../back_button")
+focus_neighbor_right = NodePath("../keybindings_button")
+focus_neighbor_bottom = NodePath("../keybindings_button")
+focus_next = NodePath("../keybindings_button")
+focus_previous = NodePath("../../../back_button")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
+theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pg6u1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_5k40a")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_j7erv")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_h744q")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_448r3")
+text = "Sounds
+"
+
+[node name="keybindings_button" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(550, 100)
+layout_mode = 2
+focus_neighbor_left = NodePath("../sounds_button")
+focus_neighbor_top = NodePath("../sounds_button")
+focus_neighbor_right = NodePath("../tutorial_button")
+focus_neighbor_bottom = NodePath("../tutorial_button")
+focus_next = NodePath("../tutorial_button")
+focus_previous = NodePath("../sounds_button")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
+theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pg6u1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_5k40a")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_j7erv")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_h744q")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_448r3")
+text = "Controls
+"
+
+[node name="tutorial_button" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(550, 100)
+layout_mode = 2
+focus_neighbor_left = NodePath("../keybindings_button")
+focus_neighbor_top = NodePath("../keybindings_button")
+focus_neighbor_right = NodePath("../credits_button")
+focus_neighbor_bottom = NodePath("../credits_button")
+focus_next = NodePath("../credits_button")
+focus_previous = NodePath("../keybindings_button")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
+theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pg6u1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_5k40a")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_j7erv")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_h744q")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_448r3")
+text = "Tutorial"
+
+[node name="credits_button" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(550, 100)
+layout_mode = 2
+focus_neighbor_left = NodePath("../tutorial_button")
+focus_neighbor_top = NodePath("../tutorial_button")
+focus_neighbor_right = NodePath("../../../back_button")
+focus_neighbor_bottom = NodePath("../../../back_button")
+focus_next = NodePath("../../../back_button")
+focus_previous = NodePath("../tutorial_button")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
+theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pg6u1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_5k40a")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_j7erv")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_h744q")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_448r3")
+text = "Credits"
+
+[node name="back_button" type="Button" parent="."]
+layout_mode = 1
+offset_left = 224.0
+offset_top = 32.0
+offset_right = 454.0
+offset_bottom = 113.0
+focus_neighbor_left = NodePath("../CenterContainer/VBoxContainer/credits_button")
+focus_neighbor_top = NodePath("../CenterContainer/VBoxContainer/credits_button")
+focus_neighbor_right = NodePath("../CenterContainer/VBoxContainer/sounds_button")
+focus_neighbor_bottom = NodePath("../CenterContainer/VBoxContainer/sounds_button")
+focus_next = NodePath("../CenterContainer/VBoxContainer/sounds_button")
+focus_previous = NodePath("../CenterContainer/VBoxContainer/credits_button")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
+theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pg6u1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_5k40a")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_j7erv")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_h744q")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_448r3")
+text = "← Back
+"
+
+[node name="volume_menu" parent="." instance=ExtResource("1_y0603")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="keybinding_menu" parent="." instance=ExtResource("4_18dik")]
+visible = false
+layout_mode = 1
+
+[node name="transition" parent="." instance=ExtResource("4_x41oo")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/sounds_button" to="." method="_on_sounds_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/keybindings_button" to="." method="_on_keybindings_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/tutorial_button" to="." method="_on_tutorial_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/credits_button" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]
+[connection signal="hide_menu" from="volume_menu" to="." method="_on_hide_menu"]
+[connection signal="hide_menu" from="keybinding_menu" to="." method="_on_hide_menu"]

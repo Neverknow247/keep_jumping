@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=3 uid="uid://dab4gygvcm0f0"]
+
+[ext_resource type="Script" path="res://levels/levels_1/backgrounds/parallax_background.gd" id="1_j34ay"]
+
+[node name="parallax_background" type="ParallaxBackground"]
+offset = Vector2(0, -4500)
+transform = Transform2D(1, 0, 0, 1, 0, -4500)
+script = ExtResource("1_j34ay")
+
+[node name="background" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(640, 0)
+
+[node name="background" type="ColorRect" parent="background"]
+offset_right = 640.0
+offset_bottom = 1440.0
+
+[node name="furthest" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.6, 1)
+motion_mirroring = Vector2(640, 0)
+
+[node name="furthest_sprite" type="Sprite2D" parent="furthest"]
+centered = false
+
+[node name="far" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.7, 1)
+motion_mirroring = Vector2(640, 0)
+
+[node name="far_sprite" type="Sprite2D" parent="far"]
+centered = false
+
+[node name="close" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.8, 1)
+motion_mirroring = Vector2(640, 0)
+
+[node name="close_sprite" type="Sprite2D" parent="close"]
+centered = false
+
+[node name="closest" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.9, 1)
+motion_mirroring = Vector2(640, 0)
+
+[node name="closest_sprite" type="Sprite2D" parent="closest"]
+centered = false

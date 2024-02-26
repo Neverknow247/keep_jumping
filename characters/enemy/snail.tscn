@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=3 uid="uid://b6eal38smspdb"]
+
+[ext_resource type="Script" path="res://characters/enemy/snail.gd" id="1_l2va5"]
+[ext_resource type="Script" path="res://characters/hurt_box.gd" id="2_e8n67"]
+[ext_resource type="Texture2D" uid="uid://s7cxy8t5t5dl" path="res://assets/art/characters/Snail.png" id="2_iqp4d"]
+[ext_resource type="Script" path="res://characters/hit_box.gd" id="3_kkbp5"]
+[ext_resource type="PackedScene" uid="uid://gim318xi2mi4" path="res://characters/enemy/enemy_stats.tscn" id="4_mxjnx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p67gg"]
+size = Vector2(4, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mqodb"]
+size = Vector2(12, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wbkvi"]
+size = Vector2(10, 6)
+
+[node name="snail" type="CharacterBody2D"]
+collision_layer = 16
+script = ExtResource("1_l2va5")
+walking_direction = -1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("2_iqp4d")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_p67gg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="hurt_box" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("2_e8n67")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurt_box"]
+modulate = Color(0.898039, 0.847059, 0, 1)
+position = Vector2(0, -8.5)
+shape = SubResource("RectangleShape2D_mqodb")
+
+[node name="hit_box" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("3_kkbp5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hit_box"]
+modulate = Color(0.972549, 0, 0.27451, 1)
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_wbkvi")
+
+[node name="enemy_stats" parent="." instance=ExtResource("4_mxjnx")]
+
+[node name="floor_left" type="RayCast2D" parent="."]
+position = Vector2(-5, -1)
+target_position = Vector2(0, 7)
+collision_mask = 17
+
+[node name="floor_right" type="RayCast2D" parent="."]
+position = Vector2(5, -1)
+target_position = Vector2(0, 7)
+collision_mask = 17
+
+[node name="wall_left" type="RayCast2D" parent="."]
+position = Vector2(0, -9)
+target_position = Vector2(-6, 0)
+collision_mask = 17
+
+[node name="wall_right" type="RayCast2D" parent="."]
+position = Vector2(0, -9)
+target_position = Vector2(6, 0)
+collision_mask = 17
+
+[connection signal="hit" from="hurt_box" to="." method="_on_hurt_box_hit"]
+[connection signal="area_entered" from="hit_box" to="hit_box" method="_on_area_entered"]
+[connection signal="enemy_died" from="enemy_stats" to="." method="_on_enemy_stats_enemy_died"]

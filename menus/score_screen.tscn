@@ -1,0 +1,69 @@
+[gd_scene load_steps=3 format=3 uid="uid://ca5a51r8wflva"]
+
+[ext_resource type="Theme" uid="uid://bwnv8b362a2w7" path="res://menus/menu_theme.tres" id="1_k05y6"]
+[ext_resource type="Script" path="res://menus/score_screen.gd" id="2_3yw5a"]
+
+[node name="score_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_k05y6")
+script = ExtResource("2_3yw5a")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -56.5
+offset_top = 10.0
+offset_right = 56.5
+offset_bottom = 36.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 24
+text = "High Scores"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_k05y6")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(120, 90)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/ScrollContainer"]
+layout_mode = 2
+
+[node name="label" type="Label" parent="CenterContainer/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+
+[node name="times" type="Label" parent="CenterContainer/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -22.5
+offset_top = -41.0
+offset_right = 22.5
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

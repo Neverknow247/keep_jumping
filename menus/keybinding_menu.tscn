@@ -1,0 +1,467 @@
+[gd_scene load_steps=9 format=3 uid="uid://caauqm4nwd564"]
+
+[ext_resource type="Theme" uid="uid://bwnv8b362a2w7" path="res://menus/menu_theme.tres" id="1_yb45g"]
+[ext_resource type="Script" path="res://menus/keybinding_menu.gd" id="2_52ono"]
+[ext_resource type="PackedScene" uid="uid://1bygd30c6mvr" path="res://menus/menu_background.tscn" id="3_8exvp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c31u1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x1gvo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k6sok"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wtmju"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a3f3t"]
+
+[node name="keybinding_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_yb45g")
+script = ExtResource("2_52ono")
+
+[node name="menu_background" parent="." instance=ExtResource("3_8exvp")]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -536.5
+offset_top = 162.0
+offset_right = 536.5
+offset_bottom = 235.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="PanelContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+text = "Press any Key or Mouse Button"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(720, 0)
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+text = "-Keyboard-"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="left" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer3" groups=["keyboard"]]
+custom_minimum_size = Vector2(310, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../VBoxContainer2/HBoxContainer3/controller_left")
+focus_neighbor_top = NodePath("../../../../../back_button")
+focus_neighbor_right = NodePath("../../../VBoxContainer2/HBoxContainer3/controller_left")
+focus_neighbor_bottom = NodePath("../../HBoxContainer4/right")
+focus_next = NodePath("../../HBoxContainer4/right")
+focus_previous = NodePath("../../../../../back_button")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
+theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_c31u1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_x1gvo")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_k6sok")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wtmju")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a3f3t")
+text = "Left"
+
+[node name="left_label" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(406, 0)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text_overrun_behavior = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="right" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer4" groups=["keyboard"]]
+custom_minimum_size = Vector2(310, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../VBoxContainer2/HBoxContainer4/controller_right")
+focus_neighbor_top = NodePath("../../HBoxContainer3/left")
+focus_neighbor_right = NodePath("../../../VBoxContainer2/HBoxContainer4/controller_right")
+focus_neighbor_bottom = NodePath("../../HBoxContainer/down")
+focus_next = NodePath("../../HBoxContainer/down")
+focus_previous = NodePath("../../HBoxContainer3/left")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
+theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_c31u1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_x1gvo")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_k6sok")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wtmju")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a3f3t")
+text = "Right"
+
+[node name="right_label" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(406, 0)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text_overrun_behavior = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="down" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer" groups=["keyboard"]]
+custom_minimum_size = Vector2(310, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../VBoxContainer2/HBoxContainer/controller_down")
+focus_neighbor_top = NodePath("../../HBoxContainer4/right")
+focus_neighbor_right = NodePath("../../../VBoxContainer2/HBoxContainer/controller_down")
+focus_neighbor_bottom = NodePath("../../HBoxContainer2/jump")
+focus_next = NodePath("../../HBoxContainer2/jump")
+focus_previous = NodePath("../../HBoxContainer4/right")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
+theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_c31u1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_x1gvo")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_k6sok")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wtmju")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a3f3t")
+text = "Down"
+
+[node name="down_label" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(406, 0)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text_overrun_behavior = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="jump" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer2" groups=["keyboard"]]
+custom_minimum_size = Vector2(310, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../VBoxContainer2/HBoxContainer2/controller_jump")
+focus_neighbor_top = NodePath("../../HBoxContainer/down")
+focus_neighbor_right = NodePath("../../../VBoxContainer2/HBoxContainer2/controller_jump")
+focus_neighbor_bottom = NodePath("../../HBoxContainer5/action")
+focus_next = NodePath("../../HBoxContainer5/action")
+focus_previous = NodePath("../../HBoxContainer/down")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
+theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_c31u1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_x1gvo")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_k6sok")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wtmju")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a3f3t")
+text = "Jump"
+
+[node name="jump_label" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(406, 0)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text_overrun_behavior = 2
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="action" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer5" groups=["keyboard"]]
+custom_minimum_size = Vector2(310, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../VBoxContainer2/HBoxContainer5/controller_action")
+focus_neighbor_top = NodePath("../../HBoxContainer2/jump")
+focus_neighbor_right = NodePath("../../../VBoxContainer2/HBoxContainer5/controller_action")
+focus_neighbor_bottom = NodePath("../../../../../back_button")
+focus_next = NodePath("../../../VBoxContainer2/HBoxContainer3/controller_left")
+focus_previous = NodePath("../../HBoxContainer2/jump")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
+theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_c31u1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_x1gvo")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_k6sok")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wtmju")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a3f3t")
+text = "Action"
+
+[node name="action_label" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(406, 0)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text_overrun_behavior = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(720, 0)
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+text = "-Controller-"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="controller_left" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer2/HBoxContainer3" groups=["controller"]]
+custom_minimum_size = Vector2(310, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../VBoxContainer/HBoxContainer3/left")
+focus_neighbor_top = NodePath("../../../../../back_button")
+focus_neighbor_right = NodePath("../../../VBoxContainer/HBoxContainer3/left")
+focus_neighbor_bottom = NodePath("../../HBoxContainer4/controller_right")
+focus_next = NodePath("../../HBoxContainer4/controller_right")
+focus_previous = NodePath("../../../VBoxContainer/HBoxContainer5/action")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
+theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_c31u1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_x1gvo")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_k6sok")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wtmju")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a3f3t")
+text = "Left"
+
+[node name="left_label" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer2/HBoxContainer3"]
+custom_minimum_size = Vector2(406, 0)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text_overrun_behavior = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="controller_right" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer2/HBoxContainer4" groups=["controller"]]
+custom_minimum_size = Vector2(310, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../VBoxContainer/HBoxContainer4/right")
+focus_neighbor_top = NodePath("../../HBoxContainer3/controller_left")
+focus_neighbor_right = NodePath("../../../VBoxContainer/HBoxContainer4/right")
+focus_neighbor_bottom = NodePath("../../HBoxContainer/controller_down")
+focus_next = NodePath("../../HBoxContainer/controller_down")
+focus_previous = NodePath("../../HBoxContainer3/controller_left")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
+theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_c31u1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_x1gvo")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_k6sok")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wtmju")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a3f3t")
+text = "Right"
+
+[node name="right_label" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer2/HBoxContainer4"]
+custom_minimum_size = Vector2(406, 0)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text_overrun_behavior = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="controller_down" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer2/HBoxContainer" groups=["controller"]]
+custom_minimum_size = Vector2(310, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../VBoxContainer/HBoxContainer/down")
+focus_neighbor_top = NodePath("../../HBoxContainer4/controller_right")
+focus_neighbor_right = NodePath("../../../VBoxContainer/HBoxContainer/down")
+focus_neighbor_bottom = NodePath("../../HBoxContainer2/controller_jump")
+focus_next = NodePath("../../HBoxContainer2/controller_jump")
+focus_previous = NodePath("../../HBoxContainer4/controller_right")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
+theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_c31u1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_x1gvo")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_k6sok")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wtmju")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a3f3t")
+text = "Down"
+
+[node name="down_label" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(406, 0)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text_overrun_behavior = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="controller_jump" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer2/HBoxContainer2" groups=["controller"]]
+custom_minimum_size = Vector2(310, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../VBoxContainer/HBoxContainer2/jump")
+focus_neighbor_top = NodePath("../../HBoxContainer/controller_down")
+focus_neighbor_right = NodePath("../../../VBoxContainer/HBoxContainer2/jump")
+focus_neighbor_bottom = NodePath("../../HBoxContainer5/controller_action")
+focus_next = NodePath("../../HBoxContainer5/controller_action")
+focus_previous = NodePath("../../HBoxContainer/controller_down")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
+theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_c31u1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_x1gvo")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_k6sok")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wtmju")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a3f3t")
+text = "Jump"
+
+[node name="jump_label" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer2/HBoxContainer2"]
+custom_minimum_size = Vector2(406, 0)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text_overrun_behavior = 2
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="controller_action" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer2/HBoxContainer5" groups=["controller"]]
+custom_minimum_size = Vector2(310, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../VBoxContainer/HBoxContainer5/action")
+focus_neighbor_top = NodePath("../../HBoxContainer2/controller_jump")
+focus_neighbor_right = NodePath("../../../VBoxContainer/HBoxContainer5/action")
+focus_neighbor_bottom = NodePath("../../../../../back_button")
+focus_next = NodePath("../../../../../back_button")
+focus_previous = NodePath("../../HBoxContainer2/controller_jump")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
+theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_c31u1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_x1gvo")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_k6sok")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wtmju")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a3f3t")
+text = "Action"
+
+[node name="action_label" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer2/HBoxContainer5"]
+custom_minimum_size = Vector2(406, 0)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 32
+text_overrun_behavior = 2
+
+[node name="back_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 32.0
+offset_right = 454.0
+offset_bottom = 113.0
+focus_neighbor_left = NodePath("../CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer3/left")
+focus_neighbor_top = NodePath("../CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer5/action")
+focus_neighbor_right = NodePath("../CenterContainer/HBoxContainer/VBoxContainer2/HBoxContainer3/controller_left")
+focus_neighbor_bottom = NodePath("../CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer3/left")
+focus_next = NodePath("../CenterContainer/HBoxContainer/VBoxContainer/HBoxContainer3/left")
+focus_previous = NodePath("../CenterContainer/HBoxContainer/VBoxContainer2/HBoxContainer5/controller_action")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
+theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_c31u1")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_x1gvo")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_k6sok")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_wtmju")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a3f3t")
+text = "← Back"
+
+[connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]

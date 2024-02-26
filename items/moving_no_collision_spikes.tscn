@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4qp6bct4oaf6"]
+
+[ext_resource type="Script" path="res://items/moving_platform.gd" id="1_106nm"]
+[ext_resource type="Texture2D" uid="uid://doox3h7sgdd1j" path="res://assets/art/items/moving_no_collision.png" id="2_uf13b"]
+[ext_resource type="PackedScene" uid="uid://nfjwcl3nv5kx" path="res://items/spikes.tscn" id="4_xnxex"]
+
+[node name="moving_no_collision_spikes" type="AnimatableBody2D"]
+collision_mask = 0
+script = ExtResource("1_106nm")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(0, -9)
+texture = ExtResource("2_uf13b")
+
+[node name="spikes" parent="." instance=ExtResource("4_xnxex")]
+position = Vector2(0, -14)
+
+[node name="spikes2" parent="." instance=ExtResource("4_xnxex")]
+position = Vector2(0, -4)
+rotation = 3.14159

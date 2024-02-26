@@ -1,0 +1,139 @@
+[gd_scene load_steps=12 format=3 uid="uid://d2p71a2bebw30"]
+
+[ext_resource type="Script" path="res://menus/main_menu.gd" id="1_q3vf8"]
+[ext_resource type="Theme" uid="uid://bwnv8b362a2w7" path="res://menus/menu_theme.tres" id="1_r16yf"]
+[ext_resource type="FontFile" uid="uid://cl61ge0niuwqj" path="res://assets/fonts/GOODDP__.TTF" id="3_k66gp"]
+[ext_resource type="PackedScene" uid="uid://1bygd30c6mvr" path="res://menus/menu_background.tscn" id="3_wp14p"]
+[ext_resource type="PackedScene" uid="uid://bn0833ujao2xi" path="res://menus/settings_menu.tscn" id="5_v12i2"]
+[ext_resource type="PackedScene" uid="uid://cgn5lp08830p8" path="res://ui/transition.tscn" id="5_vx758"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vw7ox"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fgoik"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pkkbt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gy7jk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uhqvu"]
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_r16yf")
+script = ExtResource("1_q3vf8")
+
+[node name="menu_background" parent="." instance=ExtResource("3_wp14p")]
+
+[node name="game_name_label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -31.5
+offset_top = 10.0
+offset_right = 31.5
+offset_bottom = 38.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 24
+theme_override_fonts/font = ExtResource("3_k66gp")
+theme_override_font_sizes/font_size = 240
+text = "Doggo"
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -625.0
+offset_top = -258.0
+offset_right = 625.0
+offset_bottom = 258.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 150
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="start_button" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(550, 100)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
+theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vw7ox")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_fgoik")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_pkkbt")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_gy7jk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uhqvu")
+text = "Start"
+
+[node name="settings_button" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(550, 100)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
+theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vw7ox")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_fgoik")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_pkkbt")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_gy7jk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uhqvu")
+text = "Settings"
+
+[node name="quit_button" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(550, 100)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
+theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vw7ox")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_fgoik")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_pkkbt")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_gy7jk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uhqvu")
+text = "Quit"
+
+[node name="settings_menu" parent="." instance=ExtResource("5_v12i2")]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="transition" parent="." instance=ExtResource("5_vx758")]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer/start_button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer/settings_button" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer/quit_button" to="." method="_on_quit_button_pressed"]
+[connection signal="hide_menu" from="settings_menu" to="." method="_on_hide_menu"]

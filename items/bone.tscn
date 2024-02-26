@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhal5w4t8v30t"]
+
+[ext_resource type="Texture2D" uid="uid://bvioillsggmop" path="res://assets/art/items/bone.png" id="1_qf54u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_87vxm"]
+radius = 8.0
+
+[sub_resource type="Animation" id="Animation_7inof"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -8)]
+}
+
+[sub_resource type="Animation" id="Animation_2g5ec"]
+resource_name = "bounce"
+length = 2.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -8), Vector2(0, -6), Vector2(0, -8), Vector2(0, -10)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0rqb8"]
+_data = {
+"RESET": SubResource("Animation_7inof"),
+"bounce": SubResource("Animation_2g5ec")
+}
+
+[node name="bone" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_87vxm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("1_qf54u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0rqb8")
+}
+autoplay = "bounce"
