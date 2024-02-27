@@ -25,6 +25,7 @@ var sfx = {
 	}
 
 var music = {
+	"doggo2" : load(music_path+"doggo2.wav"),
 	"music_original" : load(music_path+"music_original.wav"),
 	"music_original_reverse" : load(music_path+"music_original_reverse.wav"),
 	"forest_stroll" : load(music_path+"forest_stroll.ogg"),

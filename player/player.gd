@@ -53,7 +53,8 @@ var double_jump = true:
 		if double_jump == true:
 			sprite.self_modulate = Color.WHITE
 		else:
-			sprite.self_modulate = Color("#4682b4")
+			sprite.self_modulate = Color("#e6004d")
+			#sprite.self_modulate = Color("#4682b4")
 
 var invincible = false
 
@@ -157,6 +158,7 @@ func update_animations(input_vector):
 	if facing !=0:
 		sprite.scale.x = facing
 		jump_collision.scale.x = facing
+		$hurt_box/collision2.scale.x = facing
 	if not is_on_floor():
 		animation_player.stop()
 		jump_collision.disabled = false
@@ -257,9 +259,12 @@ func change_scene(new_scene = null):
 
 @warning_ignore("unused_parameter")
 func _on_hit_box_area_entered(area):
-	double_jump = true
-	velocity = calculate_stomp_velocity(velocity, stomp_impulse)
-	max_velocity += stomp_bonus
+	if velocity.y>0:
+		double_jump = true
+		var bounce = area.bounce * (((area.max_health-area.health)*.25)+1)
+		velocity = calculate_stomp_velocity(velocity, bounce)
+		max_velocity += stomp_bonus
+		area.hit(1)
 
 func calculate_stomp_velocity(linear_velocity: Vector2, impulse):
 	var out: = linear_velocity
