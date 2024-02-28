@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://nfjwcl3nv5kx"]
 
 [ext_resource type="Script" path="res://items/spikes.gd" id="1_clueq"]
-[ext_resource type="Texture2D" uid="uid://cw4ajkwr4xqwa" path="res://assets/art/items/Spikes.png" id="1_q04bg"]
+[ext_resource type="Texture2D" uid="uid://eufam8nj0cw4" path="res://assets/art/items/forest_spikes.png" id="2_s43xj"]
 [ext_resource type="Script" path="res://characters/hit_box.gd" id="3_upxrc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cqnif"]
@@ -13,8 +13,8 @@ collision_mask = 0
 script = ExtResource("1_clueq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -8)
-texture = ExtResource("1_q04bg")
+position = Vector2(0, -6)
+texture = ExtResource("2_s43xj")
 
 [node name="hit_box" type="Area2D" parent="."]
 collision_layer = 0
