@@ -31,7 +31,7 @@ var resetting = false
 
 func _ready():
 	camera_2d.drag_horizontal_enabled = true
-	camera_2d.drag_vertical_enabled = true
+	#camera_2d.drag_vertical_enabled = true
 	camera_2d.drag_left_margin = .1
 	camera_2d.drag_top_margin = .1
 	camera_2d.drag_right_margin = .1
