@@ -1,9 +1,22 @@
-[gd_scene load_steps=13 format=3 uid="uid://1bygd30c6mvr"]
+[gd_scene load_steps=6 format=3 uid="uid://1bygd30c6mvr"]
 
 [ext_resource type="Script" path="res://menus/menu_background.gd" id="1_8n50u"]
 [ext_resource type="Texture2D" uid="uid://chco4on42vfvb" path="res://assets/art/backgrounds/menu_1.png" id="1_qja48"]
-[ext_resource type="Texture2D" uid="uid://dfi1i0kigwtvs" path="res://assets/art/characters/akamaru_template.png" id="3_uvts2"]
-[ext_resource type="Texture2D" uid="uid://hdagfiys51ik" path="res://assets/art/characters/akamaru_ear.png" id="4_vk5ur"]
+
+[sub_resource type="Animation" id="Animation_jvy64"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("background:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_nr1fx"]
 resource_name = "animate"
@@ -22,112 +35,10 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(0, -960)]
 }
 
-[sub_resource type="Animation" id="Animation_jvy64"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("background:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nptnb"]
 _data = {
 "RESET": SubResource("Animation_jvy64"),
 "animate": SubResource("Animation_nr1fx")
-}
-
-[sub_resource type="Animation" id="Animation_432k5"]
-resource_name = "animate"
-length = 10.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:dog_y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 10),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-96.0, 1176.0]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(10),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"change_skin"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_m4pjx"]
-_data = {
-"animate": SubResource("Animation_432k5")
-}
-
-[sub_resource type="Animation" id="Animation_twyu7"]
-resource_name = "animate"
-length = 8.0
-loop_mode = 1
-step = 1.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:dog_x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [288.0, 1632.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("dog:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Vector2(6, 6), Vector2(-6, 6)]
-}
-
-[sub_resource type="Animation" id="Animation_e5qdv"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("dog:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(6, 6)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_s560e"]
-_data = {
-"RESET": SubResource("Animation_e5qdv"),
-"animate": SubResource("Animation_twyu7")
 }
 
 [node name="menu_background" type="Control"]
@@ -136,26 +47,12 @@ anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 script = ExtResource("1_8n50u")
-dog_y = 1176.0
 
 [node name="background" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 2112.0
 texture = ExtResource("1_qja48")
-
-[node name="dog" type="Sprite2D" parent="."]
-position = Vector2(1632, -96)
-scale = Vector2(6, 6)
-texture = ExtResource("3_uvts2")
-hframes = 8
-vframes = 5
-frame = 16
-
-[node name="ear" type="Sprite2D" parent="dog"]
-texture = ExtResource("4_vk5ur")
-hframes = 2
-frame = 1
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -169,17 +66,5 @@ color = Color(0, 0, 0, 0.219608)
 [node name="scroll_animator" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_nptnb")
-}
-autoplay = "animate"
-
-[node name="dog_vertical_animator" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_m4pjx")
-}
-autoplay = "animate"
-
-[node name="dog_horizontal_animator" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_s560e")
 }
 autoplay = "animate"

@@ -23,7 +23,7 @@ var pausable= true
 @onready var camera_2d = $Camera2D
 @onready var ui = $ui
 @onready var pause_menu = $ui/pause_menu
-@onready var level_finish_menu = $ui/level_finish_menu
+#@onready var level_finish_menu = $ui/level_finish_menu
 
 var reset_unlocked = true
 var run_start = false
@@ -39,7 +39,7 @@ func _ready():
 	stats.ground_color = color
 	get_tree().paused = false 
 	randomize()
-	pause_menu.connect("resetting",disable_go)
+	#pause_menu.connect("resetting",disable_go)
 	SaveAndLoad.update_save_data()
 	sounds.play_music(level_music)
 	$parallax_background/background/background.color = background_color
@@ -51,8 +51,9 @@ func _input(event):
 			pause_menu.pause()
 		pausable = !pausable
 	if event.is_action_pressed("reset_level") && reset_unlocked:
+		return
 		disable_go()
-		ui.exit_transition()
+		#ui.exit_transition()
 		get_tree().paused = true
 		await get_tree().create_timer(stats.transition_time).timeout
 		get_tree().reload_current_scene()
@@ -75,7 +76,7 @@ func change_scene(new_scene):
 	get_tree().change_scene_to_file(new_scene)
 
 func _on_player_respawn():
-	ui.exit_transition()
+	#ui.exit_transition()
 	get_tree().paused = true
 	await get_tree().create_timer(stats.transition_time).timeout
 	player.velocity = Vector2.ZERO
@@ -85,7 +86,7 @@ func _on_player_respawn():
 	camera_2d.position = spawn_point
 	get_tree().paused = false
 	await get_tree().create_timer(.1).timeout
-	ui.enter_transition()
+	#ui.enter_transition()
 	camera_2d.position_smoothing_enabled = true
 
 func _on_checkpoint_activate_checkpoint(respawn_position):

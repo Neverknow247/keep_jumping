@@ -8,7 +8,8 @@ var utils = Utils
 @onready var easter_egg_button = $easter_egg_button
 
 var easter_egg_audio = "angel_1_1"
-var menu_board = "res://menus/main_menu.tscn"
+var menu_board = "res://levels/level_1.tscn"
+#var menu_board = "res://menus/main_menu.tscn"
 
 
 func _ready():

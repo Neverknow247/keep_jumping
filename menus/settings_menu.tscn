@@ -108,6 +108,7 @@ text = "Controls
 "
 
 [node name="tutorial_button" type="Button" parent="CenterContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(550, 100)
 layout_mode = 2
 focus_neighbor_left = NodePath("../keybindings_button")
@@ -131,6 +132,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_448r3")
 text = "Tutorial"
 
 [node name="credits_button" type="Button" parent="CenterContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(550, 100)
 layout_mode = 2
 focus_neighbor_left = NodePath("../tutorial_button")

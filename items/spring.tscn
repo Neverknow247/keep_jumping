@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cfa8jqwnnh0g7" path="res://assets/art/items/spring2.png" id="2_neiy0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5hb7g"]
-size = Vector2(14, 2)
+size = Vector2(16, 2)
 
 [node name="spring" type="Area2D"]
 collision_layer = 16
@@ -12,7 +12,7 @@ collision_mask = 0
 script = ExtResource("1_m6upt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -9)
+position = Vector2(2.6226e-06, -9)
 rotation = -3.14159
 shape = SubResource("RectangleShape2D_5hb7g")
 

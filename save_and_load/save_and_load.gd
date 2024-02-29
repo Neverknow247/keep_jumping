@@ -13,12 +13,13 @@ var default_save_data = stats.return_new_save_data()
 
 func _ready():
 	var logged_settings_path
-	var dir = DirAccess.open("user://")
-	if !dir.dir_exists("%s"%[GlobalSteam.logged_in_user]):
-		dir.make_dir("%s"%[GlobalSteam.logged_in_user])
+	if dev_mode == false:
+		var dir = DirAccess.open("user://")
+		if !dir.dir_exists("%s"%[GlobalSteam.logged_in_user]):
+			dir.make_dir("%s"%[GlobalSteam.logged_in_user])
 	if dev_mode == true:
 		logged_settings_path = "res://save_data/settings.cfg"
-		default_save_path = "res://save_data/%s/save_data.dat"%[GlobalSteam.logged_in_user]
+		default_save_path = "res://save_data/save_data.dat"
 	else:
 		logged_settings_path = "user://settings.cfg"
 		default_save_path = "user://%s/save_data.dat"%[GlobalSteam.logged_in_user]
