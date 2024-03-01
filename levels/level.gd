@@ -21,6 +21,7 @@ var pausable= true
 @onready var tile_map = $TileMap
 @onready var player = $player
 @onready var camera_2d = $Camera2D
+@onready var camera_limits = $camera_limits
 @onready var ui = $ui
 @onready var pause_menu = $ui/pause_menu
 #@onready var level_finish_menu = $ui/level_finish_menu
@@ -28,8 +29,23 @@ var pausable= true
 var reset_unlocked = true
 var run_start = false
 var resetting = false
+var end_scene = "res://menus/level_finish.tscn"
+
+func _physics_process(delta):
+	pass
+	#var clicked_cell = tile_map.local_to_map(tile_map.get_local_mouse_position())
+	#var clicked_cell = tile_map.local_to_map(player.global_position+Vector2(0,2))
+	#var data = tile_map.get_cell_tile_data(0, clicked_cell)
+	#if data:
+		#print(data)
+		##return data.get_custom_data("power")
+	#else:
+		#print("null")
+	#print(tile_map.get_cell_tile_data(0,player.global_position+Vector2(0,2)))
 
 func _ready():
+	player.tile_map = tile_map
+	set_camera_limits()
 	camera_2d.drag_horizontal_enabled = true
 	#camera_2d.drag_vertical_enabled = true
 	camera_2d.drag_left_margin = .1
@@ -44,6 +60,8 @@ func _ready():
 	sounds.play_music(level_music)
 	$parallax_background/background/background.color = background_color
 	ui.enter_transition()
+	global_timer.time = 0
+	global_timer.timer_on = true
 
 func _input(event):
 	if event.is_action_pressed("pause"):
@@ -57,6 +75,12 @@ func _input(event):
 		get_tree().paused = true
 		await get_tree().create_timer(stats.transition_time).timeout
 		get_tree().reload_current_scene()
+
+func set_camera_limits():
+	camera_2d.limit_left = camera_limits.global_position.x
+	camera_2d.limit_right = camera_limits.global_position.x+camera_limits.size.x
+	camera_2d.limit_top = camera_limits.global_position.y
+	camera_2d.limit_bottom = camera_limits.global_position.y+camera_limits.size.y
 
 func disable_go():
 	resetting  = true
@@ -91,3 +115,8 @@ func _on_player_respawn():
 
 func _on_checkpoint_activate_checkpoint(respawn_position):
 	spawn_point = respawn_position
+
+func _on_finish_body_entered(body):
+	sounds.play_sfx("bark_twice")
+	global_timer.timer_on = false
+	get_tree().call_deferred("change_scene_to_file",end_scene)

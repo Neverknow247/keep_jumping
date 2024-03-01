@@ -33,6 +33,8 @@ var current_velocity = 0.0
 @export var wall_slide_speed = 150
 @export var wall_slide_bonus = .1
 @export var max_wall_slide_speed = 150
+@export var slope_speed = 150
+@export var slope_gravity = 300
 @export var stomp_impulse = 75.0
 @export var stomp_bonus = .1
 
@@ -57,6 +59,29 @@ var double_jump = true:
 			#sprite.self_modulate = Color("#4682b4")
 
 var invincible = false
+var tile_map = null
+var slope_tiles = [
+	Vector2i(11,0),
+	Vector2i(11,1),
+	Vector2i(12,0),
+	Vector2i(12,1),
+	Vector2i(11,5),
+	Vector2i(11,6),
+	Vector2i(12,5),
+	Vector2i(12,6),
+	Vector2i(11,7),
+	Vector2i(11,8),
+	Vector2i(12,7),
+	Vector2i(12,8),
+	Vector2i(11,9),
+	Vector2i(11,10),
+	Vector2i(12,9),
+	Vector2i(12,10),
+	Vector2i(11,11),
+	Vector2i(11,12),
+	Vector2i(12,11),
+	Vector2i(12,12),
+]
 
 func _physics_process(delta):
 	current_velocity = abs(velocity.x)
@@ -85,19 +110,22 @@ func move_state(delta):
 	var was_on_wall = is_on_wall()
 	fall_bonus_check()
 	update_animations(input_axis)
+	var wall = wall_check()
 	move_and_slide()
 	var just_left_edge = was_on_floor and not is_on_floor() and velocity.y >= 0
 	if just_left_edge:
 		coyote_jump_timer.start()
-	wall_check()
+	print(wall)
+	slope_check()
 	var just_left_wall = was_on_wall and not is_on_wall()
-	if just_left_wall:
+	if just_left_wall and wall != false:
 		coyote_wall_timer.start()
 	reset_velocity_check()
 
 func apply_gravity(delta):
-	if not is_on_floor():
-		velocity.y = move_toward(velocity.y, max_fall_velocity, gravity * delta)
+	velocity.y = move_toward(velocity.y, max_fall_velocity, gravity * delta)
+	#if not is_on_floor():
+		#velocity.y = move_toward(velocity.y, max_fall_velocity, gravity * delta)
 
 func get_input_axis():
 	var input_axis = 0
@@ -124,8 +152,6 @@ func jump_check():
 		double_jump = true
 	if coyote_wall_timer.time_left > 0.0:
 		if Input.is_action_just_pressed("jump") || Input.is_action_just_pressed("controller_jump"):
-			print(get_wall_normal())
-			#velocity.x = wall_axis*default_max_velocity
 			jump(jump_force*0.75)
 	elif is_on_floor() or coyote_jump_timer.time_left > 0.0:
 		if Input.is_action_just_pressed("jump") || Input.is_action_just_pressed("controller_jump"):
@@ -178,9 +204,25 @@ func update_animations(input_vector):
 
 func wall_check():
 	if not is_on_floor() and is_on_wall():
-		state = wall_slide_state
-		double_jump = true
-		max_velocity = max(max_velocity-wall_friction,default_max_velocity)
+		var tile_id = ""
+		for i in get_slide_collision_count():
+			var collision = get_slide_collision(i)
+			if collision.get_collider() is TileMap:
+				var tilemap = collision.get_collider()
+				var contact_point = collision.get_position()
+				var cell_pos = tilemap.local_to_map(contact_point)
+				if sign(get_wall_normal().x) == 1:
+					cell_pos = Vector2i(int(cell_pos.x)-1,int(cell_pos.y))
+				else:
+					cell_pos = Vector2i(int(cell_pos.x),int(cell_pos.y))
+				tile_id = tilemap.get_cell_atlas_coords(0,cell_pos)
+		if tile_id == Vector2i(12,15):
+			return false
+			#print("stop",tile_id)
+		else:
+			state = wall_slide_state
+			max_velocity = max(max_velocity-wall_friction,default_max_velocity)
+			double_jump = true
 
 func reset_velocity_check():
 	if is_on_floor():
@@ -204,6 +246,7 @@ func wall_slide_state(delta):
 
 func wall_jump_check(wall_axis):
 	if Input.is_action_just_pressed("jump")||Input.is_action_just_pressed("controller_jump"):
+		#print(wall_axis)
 		velocity.x = wall_axis*default_max_velocity
 		state = move_state
 		jump(jump_force*partial_jump_multiplier)
@@ -227,6 +270,29 @@ func wall_detach(delta):
 	if not is_on_wall() and not is_on_ceiling() or is_on_floor():
 		state = move_state
 
+func slope_check():
+	if get_floor_angle() < .9 and get_floor_angle() > .7:
+		#print("on slope",get_floor_angle())
+		state = slope_state
+		velocity = Vector2.ZERO
+		#max_velocity = max(max_velocity-wall_friction,default_max_velocity)
+		double_jump = false
+
+func slope_state(delta):
+	#velocity.y = clampf(velocity.y, -max_fall_velocity, max_fall_velocity)
+	#velocity.y = move_toward(velocity.y, slope_speed, slope_gravity * delta)
+	velocity.y = slope_speed
+	move_and_slide()
+	slope_exit()
+
+func slope_exit():
+	if get_floor_angle() < .9 and get_floor_angle() > .7:
+		pass
+		#print("nooooo")
+	else:
+		if get_floor_angle() == 0:
+			state = move_state
+
 func _on_hurt_box_hit(damage):
 	if not invincible:
 		invincible = true
@@ -242,14 +308,6 @@ func check_death():
 		call_deferred("change_scene")
 	else:
 		respawn.emit()
-	#if stats.player_health <= 0:
-		#if stats.mode == "iron_dog" || stats.mode == "iron_ninja":
-			#stats.heal()
-			#global_timer.timer_on = false
-			#global_timer.time = 0
-			#call_deferred("change_scene","res://levels/levels_1/level_1_1.tscn")
-		#else:
-			#call_deferred("change_scene")
 
 func change_scene(new_scene = null):
 	if new_scene:

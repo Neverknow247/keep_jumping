@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ln55eh7qdy8e"]
+
+[ext_resource type="Texture2D" uid="uid://b5fp5c1fwkkns" path="res://assets/art/eggs/finish.png" id="1_3pyi3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y6akt"]
+size = Vector2(16, 16)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_y6akt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3pyi3")

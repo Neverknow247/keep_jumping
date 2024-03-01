@@ -2,7 +2,8 @@ extends Area2D
 
 const sprites = [
 	preload("res://assets/art/items/spring2.png"),
-	preload("res://assets/art/items/gold_spring.png")
+	preload("res://assets/art/items/gold_spring.png"),
+	preload("res://assets/art/items/purple_spring.png")
 ]
 
 @export var max_health = 1

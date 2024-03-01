@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpfwnfksj63q5"]
+
+[ext_resource type="Script" path="res://ui/camera_limits.gd" id="1_wil0e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jmrhv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.639216, 0, 0.027451, 1)
+
+[node name="camera_limits" type="Panel"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jmrhv")
+script = ExtResource("1_wil0e")
