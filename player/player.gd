@@ -41,6 +41,7 @@ var current_velocity = 0.0
 @onready var sprite = $sprite
 @onready var coyote_jump_timer = $coyote_jump_timer
 @onready var coyote_wall_timer = $coyote_wall_timer
+@onready var jump_timer = $jump_timer
 @onready var collision = $collision
 @onready var jump_collision = $jump_collision
 @onready var animation_player = $AnimationPlayer
@@ -86,7 +87,7 @@ var slope_tiles = [
 func _physics_process(delta):
 	current_velocity = abs(velocity.x)
 	state.call(delta)
-	just_jumped = false
+	#just_jumped = false
 
 func create_walk_sound():
 	@warning_ignore("narrowing_conversion")
@@ -152,7 +153,7 @@ func jump_check():
 		double_jump = true
 	if coyote_wall_timer.time_left > 0.0:
 		if Input.is_action_just_pressed("jump") || Input.is_action_just_pressed("controller_jump"):
-			jump(jump_force*0.75)
+			jump(jump_force)
 	elif is_on_floor() or coyote_jump_timer.time_left > 0.0:
 		if Input.is_action_just_pressed("jump") || Input.is_action_just_pressed("controller_jump"):
 			max_velocity = max(default_max_velocity,current_velocity)
@@ -161,13 +162,15 @@ func jump_check():
 			coyote_jump_timer.stop()
 			jump(jump_force)
 	elif not is_on_floor():
-		if (Input.is_action_just_released("jump")|| Input.is_action_just_released("controller_jump")) and velocity.y < -jump_force / 2:
+		if just_jumped and (Input.is_action_just_released("jump")|| Input.is_action_just_released("controller_jump")) and velocity.y < -jump_force / 2:
 			velocity.y = -jump_force / 2
 		if (Input.is_action_just_pressed("jump")||Input.is_action_just_pressed("controller_jump")) and double_jump:
 			jump(jump_force * partial_jump_multiplier)
 			double_jump = false
 
 func jump(force):
+	just_jumped = true
+	jump_timer.start()
 	velocity.y = -force
 	@warning_ignore("narrowing_conversion")
 	sounds.play_sfx("player_jump", randf_range(0.6,1.4), -10)
@@ -328,3 +331,7 @@ func calculate_stomp_velocity(linear_velocity: Vector2, impulse):
 	var out: = linear_velocity
 	out.y = -impulse
 	return out
+
+
+func _on_jump_timer_timeout():
+	just_jumped = false

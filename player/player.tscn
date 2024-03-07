@@ -158,6 +158,10 @@ one_shot = true
 wait_time = 0.2
 one_shot = true
 
+[node name="jump_timer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_uhsh5")
@@ -167,3 +171,4 @@ autoplay = "idle"
 [connection signal="area_entered" from="hit_box" to="." method="_on_hit_box_area_entered"]
 [connection signal="area_entered" from="hit_box" to="hit_box" method="_on_area_entered"]
 [connection signal="hit" from="hurt_box" to="." method="_on_hurt_box_hit"]
+[connection signal="timeout" from="jump_timer" to="." method="_on_jump_timer_timeout"]
