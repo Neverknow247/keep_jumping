@@ -113,7 +113,11 @@ func _on_player_respawn():
 	#ui.enter_transition()
 	camera_2d.position_smoothing_enabled = true
 
-func _on_checkpoint_activate_checkpoint(respawn_position):
+func _on_checkpoint_activate_checkpoint(respawn_position,checkpoint):
+	for point in $checkpoints.get_children():
+		point.active = false
+		point.animation_player.play("RESET")
+	checkpoint.active = true
 	spawn_point = respawn_position
 
 func _on_finish_body_entered(body):

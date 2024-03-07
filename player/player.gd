@@ -115,7 +115,7 @@ func move_state(delta):
 	var just_left_edge = was_on_floor and not is_on_floor() and velocity.y >= 0
 	if just_left_edge:
 		coyote_jump_timer.start()
-	print(wall)
+	#print(wall)
 	slope_check()
 	var just_left_wall = was_on_wall and not is_on_wall()
 	if just_left_wall and wall != false:
