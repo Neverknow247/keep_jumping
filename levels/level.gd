@@ -63,6 +63,7 @@ func _ready():
 	$parallax_background/background/background.color = background_color
 	ui.enter_transition()
 	global_timer.time = 0
+	SaveAndLoad.update_save_data()
 
 func _input(event):
 	if event.is_action_pressed("pause"):
@@ -98,6 +99,15 @@ func _on_start_zone_start_timer():
 	@warning_ignore("narrowing_conversion")
 	sounds.play_sfx("bark_once",randf_range(0.9,1.2), -25)
 	start_timer()
+	stats["save_data"]["stats"]["Towers Attempted"] += 1
+	SaveAndLoad.update_save_data()
+	check_modes()
+
+func check_modes():
+	if stats["game_mode"] == "hard":
+		$checkpoints.queue_free()
+	if stats["blind_mode"]:
+		print("low vision")
 
 func change_scene(new_scene):
 	get_tree().change_scene_to_file(new_scene)

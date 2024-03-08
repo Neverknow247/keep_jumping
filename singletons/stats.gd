@@ -4,6 +4,7 @@ signal pop_up(type,text)
 
 var dev_mode = false
 var game_mode = "normal"
+var blind_mode = false
 
 var cheat_code = null
 var cheats = {
@@ -28,15 +29,36 @@ var medal_times = {
 
 var new_save_data = {
 	"version" : ProjectSettings.get_setting("application/config/version"),
-	"power_on_count" : 0,
 	"tutorial_complete" : false,
-	"level_data":{
+	"equiped_hat" : "",
+	"equiped_armor" : "",
+	"stats" : {
+		"Power On Count" : 0,
+		"Towers Attempted" : 0,
+		"Reunions" : 0,
+		"Hard Mode Reunions" : 0,
+		"Blind Mode Reunions" : 0,
+		"Blind Hard Mode Reunions" : 0,
+		"Steps Taken" : 0,
+		"Jumped" : 0,
+		"Spring Bounced" : 0,
+		"Spiked" : 0,
+		"Slope Slides" : 0,
 	},
+	"eggs" : {
+		"santa" : false,
+		"crown" : false,
+		"ball_cap" : false,
+	},
+	"level_data":{},
 }
 
 var new_level_data = {
 	"unlocked" : false,
 	"time" : 3600.0000,
+	"finished" : false,
+	"hard_finished" : false,
+	"blind_finished" : false,
 }
 
 var save_data = return_new_save_data()

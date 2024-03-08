@@ -92,12 +92,8 @@ func _physics_process(delta):
 func create_walk_sound():
 	@warning_ignore("narrowing_conversion")
 	sounds.play_sfx("step", randf_range(0.6,1.2), -15)
+	stats["save_data"]["stats"]["Steps Taken"] += 1
 	add_particle()
-
-func create_dig_sound():
-	@warning_ignore("narrowing_conversion")
-	sounds.play_sfx("dig", 0.9, -15)
-	pass
 
 func move_state(delta):
 	apply_gravity(delta)
@@ -174,6 +170,7 @@ func jump(force):
 	velocity.y = -force
 	@warning_ignore("narrowing_conversion")
 	sounds.play_sfx("player_jump", randf_range(0.6,1.4), -10)
+	stats["save_data"]["stats"]["Jumped"] += 1
 
 func fall_bonus_check():
 	if is_on_floor():
@@ -278,15 +275,13 @@ func wall_detach(delta):
 
 func slope_check():
 	if get_floor_angle() < .9 and get_floor_angle() > .7:
-		#print("on slope",get_floor_angle())
 		state = slope_state
 		velocity = Vector2.ZERO
-		#max_velocity = max(max_velocity-wall_friction,default_max_velocity)
 		double_jump = false
+		stats["save_data"]["stats"]["Slope Slides"] += 1
+		SaveAndLoad.update_save_data()
 
 func slope_state(delta):
-	#velocity.y = clampf(velocity.y, -max_fall_velocity, max_fall_velocity)
-	#velocity.y = move_toward(velocity.y, slope_speed, slope_gravity * delta)
 	velocity.y = slope_speed
 	move_and_slide()
 	slope_exit()
@@ -294,7 +289,6 @@ func slope_state(delta):
 func slope_exit():
 	if get_floor_angle() < .9 and get_floor_angle() > .7:
 		pass
-		#print("nooooo")
 	else:
 		if get_floor_angle() == 0:
 			state = move_state
@@ -310,7 +304,9 @@ func set_invincible(_bool):
 	invincible = _bool
 
 func check_death():
-	if stats.game_mode == "no_hit":
+	stats["save_data"]["stats"]["Spiked"] += 1
+	SaveAndLoad.update_save_data()
+	if stats.game_mode == "hard":
 		call_deferred("change_scene")
 	else:
 		respawn.emit()
@@ -329,6 +325,7 @@ func _on_hit_box_area_entered(area):
 		velocity = calculate_stomp_velocity(velocity, bounce)
 		max_velocity += stomp_bonus
 		area.hit(1)
+		stats["save_data"]["stats"]["Spring Bounced"] += 1
 
 func calculate_stomp_velocity(linear_velocity: Vector2, impulse):
 	var out: = linear_velocity

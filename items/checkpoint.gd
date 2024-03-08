@@ -8,7 +8,6 @@ signal activate_checkpoint(respawn_position,checkpoint)
 
 func _ready():
 	if active:
-		#activate_checkpoint.emit(global_position,self)
 		animation_player.play("animate")
 
 func _on_body_entered(body):
@@ -16,3 +15,4 @@ func _on_body_entered(body):
 		active = true
 		activate_checkpoint.emit(global_position,self)
 		animation_player.play("animate")
+		SaveAndLoad.update_save_data()

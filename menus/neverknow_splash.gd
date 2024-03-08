@@ -23,7 +23,7 @@ func start():
 	if await SaveAndLoad.load_data():
 		utils.set_volume()
 		utils.set_keybindings()
-		stats.save_data["power_on_count"] += 1
+		stats["save_data"]["stats"]["Power On Count"] += 1
 		await SaveAndLoad.save_all()
 		transition.fade_out()
 		await get_tree().create_timer(stats.transition_time).timeout
