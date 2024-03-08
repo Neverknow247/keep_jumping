@@ -3,8 +3,7 @@ extends Control
 
 var stats = Stats
 
-const ScoreItem = preload("res://addons/silent_wolf/Scores/ScoreItem.tscn")
-const SWLogger = preload("res://addons/silent_wolf/utils/SWLogger.gd")
+const ScoreItem = preload("res://menus/scores/ScoreItem.tscn")
 
 @onready var mode_label = $Board/TitleContainer/mode_label
 @onready var score_item_container = $Board/HighScores/ScrollContainer/ScoreItemContainer
@@ -71,21 +70,22 @@ func _on_received_results(result):
 	#set_tabs_disable()
 
 func render_board(scores: Array, local_scores: Array) -> void:
-	var all_scores = scores
-	if ld_name in SilentWolf.Scores.ldboard_config and is_default_leaderboard(SilentWolf.Scores.ldboard_config[ld_name]):
-		all_scores = merge_scores_with_local_scores(scores, local_scores)
-		if scores.is_empty() and local_scores.is_empty():
-			add_no_scores_message()
-	else:
-		if scores.is_empty():
-			add_no_scores_message()
-	if all_scores.is_empty():
-		for score in scores:
-			add_item(score.player_name, str((score.score)*-1))
-			add_item(score.player_name, ("%02d:%02d:%02d:%03d" % [fmod(fmod(score.score*-1, 3600*60)/3600,24),fmod(score.score*-1, 60*60)/60, fmod(score.score*-1,60), fmod(score.score*-1, 1)*1000]))
-	else:
-		for score in all_scores:
-			add_item(score.player_name, ("%02d:%02d:%02d:%03d" % [fmod(fmod(score.score*-1, 3600*60)/3600,24),fmod(score.score*-1, 60*60)/60, fmod(score.score*-1,60), fmod(score.score*-1, 1)*1000]))
+	pass
+	#var all_scores = scores
+	#if ld_name in SilentWolf.Scores.ldboard_config and is_default_leaderboard(SilentWolf.Scores.ldboard_config[ld_name]):
+		#all_scores = merge_scores_with_local_scores(scores, local_scores)
+		#if scores.is_empty() and local_scores.is_empty():
+			#add_no_scores_message()
+	#else:
+		#if scores.is_empty():
+			#add_no_scores_message()
+	#if all_scores.is_empty():
+		#for score in scores:
+			#add_item(score.player_name, str((score.score)*-1))
+			#add_item(score.player_name, ("%02d:%02d:%02d:%03d" % [fmod(fmod(score.score*-1, 3600*60)/3600,24),fmod(score.score*-1, 60*60)/60, fmod(score.score*-1,60), fmod(score.score*-1, 1)*1000]))
+	#else:
+		#for score in all_scores:
+			#add_item(score.player_name, ("%02d:%02d:%02d:%03d" % [fmod(fmod(score.score*-1, 3600*60)/3600,24),fmod(score.score*-1, 60*60)/60, fmod(score.score*-1,60), fmod(score.score*-1, 1)*1000]))
 #			add_item(score.player_name, str((score.score)*-1))
 
 
@@ -131,8 +131,6 @@ func add_item(player_name: String, score_value: String) -> void:
 	item.get_node("PlayerName").text = str(list_index) + str(". ") + player_name
 	item.get_node("Score").text = score_value
 	item.offset_top = list_index * 100
-	if player_name == SilentWolf.Auth.logged_in_player:
-		item.get_node("PlayerName").add_theme_color_override("font_color",Color("#66cdaa"))
 	score_item_container.add_child(item)
 
 func add_no_scores_message() -> void:

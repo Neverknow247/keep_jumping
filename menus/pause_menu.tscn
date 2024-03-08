@@ -1,13 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://dwrgxipppsvqh"]
+[gd_scene load_steps=13 format=3 uid="uid://dwrgxipppsvqh"]
 
 [ext_resource type="Theme" uid="uid://bwnv8b362a2w7" path="res://menus/menu_theme.tres" id="1_1ujy8"]
 [ext_resource type="Script" path="res://menus/pause_menu.gd" id="2_pidyc"]
 [ext_resource type="Texture2D" uid="uid://f31wo0r2o6kq" path="res://assets/art/ui/no_badge.png" id="3_eqqe3"]
 [ext_resource type="PackedScene" uid="uid://bm7ghcdrm434f" path="res://ui/pause_background.tscn" id="3_ftsg2"]
-[ext_resource type="Texture2D" uid="uid://cshqwmawwinc5" path="res://assets/art/ui/diamond_badge.png" id="4_l6nom"]
-[ext_resource type="Texture2D" uid="uid://brfv4g4w5svro" path="res://assets/art/ui/gold_badge.png" id="5_vn1p4"]
-[ext_resource type="Texture2D" uid="uid://ccdjyobfcp1hd" path="res://assets/art/ui/silver_badge.png" id="6_tnwcd"]
-[ext_resource type="Texture2D" uid="uid://bnsk6s4ppubnw" path="res://assets/art/ui/bronze_badge.png" id="7_ls5rh"]
 [ext_resource type="PackedScene" uid="uid://joajaspr73lg" path="res://menus/scores/ScoreItem.tscn" id="8_0vvwh"]
 [ext_resource type="PackedScene" uid="uid://bn0833ujao2xi" path="res://menus/settings_menu.tscn" id="11_fn1u2"]
 [ext_resource type="PackedScene" uid="uid://cgn5lp08830p8" path="res://ui/transition.tscn" id="11_um3xt"]
@@ -66,7 +62,6 @@ text = "Level 1-1"
 horizontal_alignment = 1
 
 [node name="main" type="CenterContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -76,6 +71,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="main_content" type="HBoxContainer" parent="main"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 48
 alignment = 1
@@ -127,7 +123,6 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="main/main_content/scores_and_xp/pawprints/diamond"]
 layout_mode = 2
-texture = ExtResource("4_l6nom")
 expand_mode = 3
 
 [node name="diamond_time_label" type="Label" parent="main/main_content/scores_and_xp/pawprints/diamond"]
@@ -145,7 +140,6 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="main/main_content/scores_and_xp/pawprints/gold"]
 layout_mode = 2
-texture = ExtResource("5_vn1p4")
 expand_mode = 3
 
 [node name="gold_time_label" type="Label" parent="main/main_content/scores_and_xp/pawprints/gold"]
@@ -163,7 +157,6 @@ alignment = 1
 
 [node name="silver_texture" type="TextureRect" parent="main/main_content/scores_and_xp/pawprints/silver"]
 layout_mode = 2
-texture = ExtResource("6_tnwcd")
 expand_mode = 3
 
 [node name="silver_time_label" type="Label" parent="main/main_content/scores_and_xp/pawprints/silver"]
@@ -181,7 +174,6 @@ alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="main/main_content/scores_and_xp/pawprints/bronze"]
 layout_mode = 2
-texture = ExtResource("7_ls5rh")
 expand_mode = 3
 
 [node name="bronze_time_label" type="Label" parent="main/main_content/scores_and_xp/pawprints/bronze"]

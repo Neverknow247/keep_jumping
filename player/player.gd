@@ -54,10 +54,10 @@ var double_jump = true:
 	set(value):
 		double_jump = value
 		if double_jump == true:
-			sprite.self_modulate = Color.WHITE
+			sprite.modulate = Color.WHITE
 		else:
-			sprite.self_modulate = Color("#e6004d")
-			#sprite.self_modulate = Color("#4682b4")
+			sprite.modulate = Color("#e6004d")
+			#sprite.self_modulate = Color("#4682b4")m
 
 var invincible = false
 var tile_map = null
@@ -192,6 +192,7 @@ func update_animations(input_vector):
 		animation_player.stop()
 		jump_collision.disabled = false
 		collision.disabled = true
+		$sprite/hat.position = Vector2(0,0)
 		if velocity.y <= 0:
 			sprite.frame = 18
 		else:
@@ -266,9 +267,11 @@ func apply_wall_slide_gravity(delta):
 func wall_detach(delta):
 	if Input.is_action_just_pressed("right") || Input.is_action_just_pressed("controller_right"):
 		velocity.x = acceleration * delta
+		coyote_wall_timer.start()
 		state = move_state
 	if Input.is_action_just_pressed("left") || Input.is_action_just_pressed("controller_left"):
 		velocity.x = -acceleration * delta
+		coyote_wall_timer.start()
 		state = move_state
 	if not is_on_wall() and not is_on_ceiling() or is_on_floor():
 		state = move_state

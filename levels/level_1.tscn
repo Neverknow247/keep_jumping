@@ -18,6 +18,21 @@
 [ext_resource type="Theme" uid="uid://bdauou0gynqyt" path="res://ui/small_text_theme.tres" id="10_54hkb"]
 [ext_resource type="PackedScene" uid="uid://dab4gygvcm0f0" path="res://levels/levels_1/backgrounds/parallax_background.tscn" id="15_x06qf"]
 
+[sub_resource type="Animation" id="Animation_jk1kq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-928, -1248)]
+}
+
 [sub_resource type="Animation" id="Animation_8gcrj"]
 resource_name = "animate"
 length = 200.0
@@ -33,21 +48,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-928, -2336), Vector2(-4671, -2336)]
-}
-
-[sub_resource type="Animation" id="Animation_jk1kq"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-928, -1248)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ndx8a"]
@@ -112,7 +112,10 @@ layer_2/tile_data = PackedInt32Array(7208954, 65537, 1, 7274490, 65537, 1, 73400
 position = Vector2(40, -4784)
 
 [node name="start_zone" parent="." instance=ExtResource("5_rl741")]
-position = Vector2(144, 1888)
+position = Vector2(88, 1792)
+
+[node name="CollisionShape2D" parent="start_zone" index="0"]
+position = Vector2(0, -48)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(232, 1784)
@@ -10331,6 +10334,7 @@ offset = Vector2(0, 2500)
 transform = Transform2D(1, 0, 0, 1, 0, 2500)
 
 [connection signal="body_entered" from="finish" to="." method="_on_finish_body_entered"]
+[connection signal="start_timer" from="start_zone" to="." method="_on_start_zone_start_timer"]
 [connection signal="respawn" from="player" to="." method="_on_player_respawn"]
 [connection signal="activate_checkpoint" from="checkpoints/checkpoint21" to="." method="_on_checkpoint_activate_checkpoint"]
 [connection signal="activate_checkpoint" from="checkpoints/checkpoint0" to="." method="_on_checkpoint_activate_checkpoint"]
@@ -10355,4 +10359,5 @@ transform = Transform2D(1, 0, 0, 1, 0, 2500)
 [connection signal="activate_checkpoint" from="checkpoints/checkpoint20" to="." method="_on_checkpoint_activate_checkpoint"]
 [connection signal="activate_checkpoint" from="checkpoints/checkpoint18" to="." method="_on_checkpoint_activate_checkpoint"]
 
+[editable path="start_zone"]
 [editable path="player"]

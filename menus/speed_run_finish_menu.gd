@@ -3,13 +3,9 @@ extends ColorRect
 var stats = Stats
 var global_timer = GlobalTimer
 
-const ScoreItem = preload("res://addons/silent_wolf/Scores/ScoreItem.tscn")
+const ScoreItem = preload("res://menus/scores/ScoreItem.tscn")
 
 var no_badge_art = preload("res://assets/art/ui/no_badge.png")
-var bronze_badge_art = preload("res://assets/art/ui/bronze_badge.png")
-var silver_badge_art = preload("res://assets/art/ui/silver_badge.png")
-var gold_badge_art = preload("res://assets/art/ui/gold_badge.png")
-var diamond_badge_art = preload("res://assets/art/ui/diamond_badge.png")
 
 @onready var mode_label = $VBoxContainer/mode_label
 
@@ -130,23 +126,24 @@ func update_badge_times():
 	diamond_time_label.text = "%02d:%02d:%02d:%03d" % [fmod(fmod(stats["medal_times"][level_id]["diamond"], 3600*60)/3600,24),fmod(stats["medal_times"][level_id]["diamond"], 60*60)/60, fmod(stats["medal_times"][level_id]["diamond"],60), fmod(stats["medal_times"][level_id]["diamond"], 1)*1000]
 
 func update_badge_icons():
-	if time <= stats["medal_times"][level_id]["diamond"]:
-		badge.texture = diamond_badge_art
-	elif time <= stats["medal_times"][level_id]["gold"]:
-		badge.texture = gold_badge_art
-	elif time <= stats["medal_times"][level_id]["silver"]:
-		badge.texture = silver_badge_art
-	elif time <= stats["medal_times"][level_id]["bronze"]:
-		badge.texture = bronze_badge_art
-	
-	if record_time <= stats["medal_times"][level_id]["diamond"]:
-		best_time_badge.texture = diamond_badge_art
-	elif record_time <= stats["medal_times"][level_id]["gold"]:
-		best_time_badge.texture = gold_badge_art
-	elif record_time <= stats["medal_times"][level_id]["silver"]:
-		best_time_badge.texture = silver_badge_art
-	elif record_time <= stats["medal_times"][level_id]["bronze"]:
-		best_time_badge.texture = bronze_badge_art
+	pass
+	#if time <= stats["medal_times"][level_id]["diamond"]:
+		#badge.texture = diamond_badge_art
+	#elif time <= stats["medal_times"][level_id]["gold"]:
+		#badge.texture = gold_badge_art
+	#elif time <= stats["medal_times"][level_id]["silver"]:
+		#badge.texture = silver_badge_art
+	#elif time <= stats["medal_times"][level_id]["bronze"]:
+		#badge.texture = bronze_badge_art
+	#
+	#if record_time <= stats["medal_times"][level_id]["diamond"]:
+		#best_time_badge.texture = diamond_badge_art
+	#elif record_time <= stats["medal_times"][level_id]["gold"]:
+		#best_time_badge.texture = gold_badge_art
+	#elif record_time <= stats["medal_times"][level_id]["silver"]:
+		#best_time_badge.texture = silver_badge_art
+	#elif record_time <= stats["medal_times"][level_id]["bronze"]:
+		#best_time_badge.texture = bronze_badge_art
 
 func _on_received_results(result):
 	for i in result:
@@ -158,10 +155,7 @@ func _on_received_results(result):
 		print(i.score)
 
 func load_scores():
-	var sw_result = await SilentWolf.Scores.get_scores(0, level_id).sw_get_scores_complete
-	var scores = sw_result.scores
-	print(scores)
-	render_board(scores)
+	pass
 
 func render_board(scores):
 	for score in scores:
@@ -175,8 +169,6 @@ func add_item(player_name: String, score_value: String):
 	item.get_node("PlayerName").text = str(list_index) + str(". ") + player_name
 	item.get_node("Score").text = score_value
 	item.offset_top = list_index * 100
-	if player_name == SilentWolf.Auth.logged_in_player:
-		item.get_node("PlayerName").add_theme_color_override("font_color",Color("#66cdaa"))
 	score_container.add_child(item)
 
 func _on_restart_run_button_pressed():
