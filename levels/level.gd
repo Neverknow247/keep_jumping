@@ -63,6 +63,7 @@ func _ready():
 	$parallax_background/background/background.color = background_color
 	ui.enter_transition()
 	global_timer.time = 0
+	global_timer.timer_on = false
 	SaveAndLoad.update_save_data()
 
 func _input(event):

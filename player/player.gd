@@ -205,7 +205,7 @@ func update_animations(input_vector):
 
 func wall_check():
 	if not is_on_floor() and is_on_wall():
-		var tile_id = ""
+		var tile_id = Vector2i(12,15)
 		for i in get_slide_collision_count():
 			var collision = get_slide_collision(i)
 			if collision.get_collider() is TileMap:

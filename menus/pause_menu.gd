@@ -96,3 +96,6 @@ func _on_hide_menu(scene):
 	scene.hide()
 	resume_button.grab_focus()
 	transition.fade_in()
+
+func _on_quit_button_pressed():
+	get_tree().quit()

@@ -123,6 +123,7 @@ offset_bottom = 40.0
 texture = ExtResource("2_q64kn")
 
 [node name="blind_obscure" type="TextureRect" parent="."]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("3_1igpa")

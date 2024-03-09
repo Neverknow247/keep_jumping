@@ -9,6 +9,7 @@ var utils = Utils
 
 var easter_egg_audio = "angel_1_1"
 var menu_board = "res://levels/level_1.tscn"
+var demo_board = "res://levels/level_1_demo.tscn"
 #var menu_board = "res://menus/main_menu.tscn"
 
 
@@ -27,7 +28,10 @@ func start():
 		await SaveAndLoad.save_all()
 		transition.fade_out()
 		await get_tree().create_timer(stats.transition_time).timeout
-		get_tree().change_scene_to_file(menu_board)
+		if stats["demo"]:
+			get_tree().change_scene_to_file(demo_board)
+		else:
+			get_tree().change_scene_to_file(menu_board)
 
 func _on_easter_egg_button_pressed():
 	easter_egg_button.disabled = true

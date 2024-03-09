@@ -3,6 +3,8 @@ extends Node
 signal pop_up(type,text)
 
 var dev_mode = false
+var demo = false
+
 var game_mode = "normal"
 var blind_mode = false
 
@@ -30,6 +32,7 @@ var medal_times = {
 var new_save_data = {
 	"version" : ProjectSettings.get_setting("application/config/version"),
 	"tutorial_complete" : false,
+	"demo_complete" : false,
 	"equiped_hat" : "",
 	"equiped_armor" : "",
 	"stats" : {
@@ -46,6 +49,7 @@ var new_save_data = {
 		"Slope Slides" : 0,
 	},
 	"eggs" : {
+		"demo" : false,
 		"santa" : false,
 		"crown" : false,
 		"ball_cap" : false,
@@ -65,6 +69,7 @@ var save_data = return_new_save_data()
 
 func return_new_save_data():
 	var new_data = new_save_data.duplicate(true)
+	new_data["level_data"]["level_1_demo"] = new_level_data.duplicate(true)
 	for level in level_num:
 		var level_name = "level_%s" % [str(level+1)]
 		new_data["level_data"][level_name] = new_level_data.duplicate(true)
