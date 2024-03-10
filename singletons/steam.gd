@@ -31,7 +31,6 @@ func _ready():
 	var name = Steam.getFriendPersonaName(id)
 	print("Username: ", str(name))
 	logged_in_user = str(name)
-	#Steam.findLeaderboard("level_1_1")
 
 func _process(delta):
 	Steam.run_callbacks()

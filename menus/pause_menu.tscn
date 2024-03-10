@@ -319,6 +319,15 @@ offset_bottom = 1080.0
 [node name="transition" parent="." instance=ExtResource("11_um3xt")]
 layout_mode = 1
 
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 936.0
+offset_top = 552.0
+offset_right = 976.0
+offset_bottom = 625.0
+text = "NA"
+
 [connection signal="pressed" from="buttons/resume_button" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="buttons/restart_button" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="buttons/settings_button" to="." method="_on_settings_button_pressed"]

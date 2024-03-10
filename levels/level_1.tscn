@@ -9996,7 +9996,7 @@ position = Vector2(88, -576)
 position = Vector2(16, -656)
 
 [node name="spring14" parent="springs" instance=ExtResource("9_4oa3m")]
-position = Vector2(-112, -736)
+position = Vector2(-112, -728)
 
 [node name="spring15" parent="springs" instance=ExtResource("9_4oa3m")]
 position = Vector2(232, -872)
@@ -10262,14 +10262,12 @@ position = Vector2(-8, -2464)
 
 [node name="checkpoint21" parent="checkpoints" instance=ExtResource("9_11xhe")]
 position = Vector2(264, 1792)
-active = true
 
 [node name="checkpoint0" parent="checkpoints" instance=ExtResource("9_11xhe")]
 position = Vector2(-56, 1792)
 
 [node name="checkpoint9" parent="checkpoints" instance=ExtResource("9_11xhe")]
 position = Vector2(-200, 1440)
-active = true
 
 [node name="checkpoint1" parent="checkpoints" instance=ExtResource("9_11xhe")]
 position = Vector2(56, 1264)
