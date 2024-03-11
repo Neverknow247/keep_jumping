@@ -13788,7 +13788,7 @@ position = Vector2(88, -576)
 position = Vector2(16, -656)
 
 [node name="spring14" parent="springs" instance=ExtResource("15_bxrpd")]
-position = Vector2(-112, -736)
+position = Vector2(-112, -728)
 
 [node name="spring15" parent="springs" instance=ExtResource("15_bxrpd")]
 position = Vector2(232, -872)
