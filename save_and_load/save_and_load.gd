@@ -40,6 +40,9 @@ func load_data_from_file():
 		return default_save_data
 	var file = FileAccess.open(SAVE_DATA_PATH, FileAccess.READ)
 	var save_data = file.get_var()
+	if !save_data:
+		push_error("corrupted")
+		return default_save_data
 	if str(save_data.version) <= str(default_save_data.version):
 		save_data = check_old_data(save_data)
 		return save_data

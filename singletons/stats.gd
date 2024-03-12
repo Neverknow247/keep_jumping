@@ -3,10 +3,10 @@ extends Node
 signal pop_up(type,text)
 
 var dev_mode = false
-var demo = false
+var demo = true
 
 var game_mode = "normal"
-var blind_mode = false
+var blind_mode = true
 
 var cheat_code = null
 var cheats = {
@@ -38,10 +38,11 @@ var new_save_data = {
 	"stats" : {
 		"Power On Count" : 0,
 		"Towers Attempted" : 0,
-		"Reunions" : 0,
+		"Normal Mode Reunions" : 0,
 		"Hard Mode Reunions" : 0,
-		"Blind Mode Reunions" : 0,
-		"Blind Hard Mode Reunions" : 0,
+		"Normal Mode Blind Reunions" : 0,
+		"Hard Mode Blind Reunions" : 0,
+		"Demo Reunions" : 0,
 		"Steps Taken" : 0,
 		"Jumped" : 0,
 		"Spring Bounced" : 0,
@@ -59,10 +60,14 @@ var new_save_data = {
 
 var new_level_data = {
 	"unlocked" : false,
-	"time" : 3600.0000,
-	"finished" : false,
-	"hard_finished" : false,
-	"blind_finished" : false,
+	"_normal_time" : 604800.0000,
+	"_normal_blind_time" : 604800.0000,
+	"_hard_time" : 604800.0000,
+	"_hard_blind_time" : 604800.0000,
+	"_normal_finished" : false,
+	"_normal_blind_finished" : false,
+	"_hard_finished" : false,
+	"_hard_blind_finished" : false,
 }
 
 var save_data = return_new_save_data()

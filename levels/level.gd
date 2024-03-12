@@ -14,10 +14,11 @@ var global_timer = GlobalTimer
 @export var unlocked_level = "level_0_0"
 @export var spawn_point = Vector2(0,1792)
 
-var level_id_board
 
 var record_time
 var pausable= true
+var level_id_board
+var mode_string = ""
 
 @onready var tile_map = $TileMap
 @onready var player = $player
@@ -45,6 +46,7 @@ func _physics_process(delta):
 	#print(tile_map.get_cell_tile_data(0,player.global_position+Vector2(0,2)))
 
 func _ready():
+	set_up_mode()
 	set_up_steam()
 	player.tile_map = tile_map
 	set_camera_limits()
@@ -57,7 +59,6 @@ func _ready():
 	stats.ground_color = color
 	get_tree().paused = false 
 	randomize()
-	#pause_menu.connect("resetting",disable_go)
 	SaveAndLoad.update_save_data()
 	sounds.play_music(level_music)
 	$parallax_background/background/background.color = background_color
@@ -79,9 +80,24 @@ func _input(event):
 		await get_tree().create_timer(stats.transition_time).timeout
 		get_tree().reload_current_scene()
 
+func set_up_mode():
+	level_id_board = level_id
+	if stats["game_mode"]=="hard":
+		mode_string+="_hard"
+		$checkpoints.hide()
+	else:
+		mode_string+="_normal"
+		$checkpoints.show()
+	if stats["blind_mode"]:
+		mode_string+="_blind"
+		$ui/blind_obscure.show()
+	else:
+		$ui/blind_obscure.hide()
+	level_id_board+=mode_string
+
 func set_up_steam():
-	steam.level_id_board = level_id
-	Steam.findLeaderboard(level_id)
+	steam.level_id_board = level_id_board
+	Steam.findLeaderboard(level_id_board)
 
 func set_camera_limits():
 	camera_2d.limit_left = camera_limits.global_position.x
@@ -128,27 +144,44 @@ func _on_player_respawn():
 	camera_2d.position_smoothing_enabled = true
 
 func _on_checkpoint_activate_checkpoint(respawn_position,checkpoint):
-	for point in $checkpoints.get_children():
-		point.active = false
-		point.animation_player.play("RESET")
-	checkpoint.active = true
-	spawn_point = respawn_position
+	if stats["game_mode"] != "hard":
+		for point in $checkpoints.get_children():
+			point.active = false
+			point.animation_player.play("RESET")
+		checkpoint.active = true
+		spawn_point = respawn_position
 
 func _on_finish_body_entered(body):
 	#sounds.play_sfx("")
 	global_timer.timer_on = false
+	update_stats()
 	print("cut scene")
 	var new_best = await update_score()
+	await get_tree().create_timer(2).timeout
 	get_tree().call_deferred("change_scene_to_file",end_scene)
+
+func update_stats():
+	stats["save_data"]["level_data"][level_id][mode_string+"_finished"] = true
+	if stats["demo"]:
+		stats["save_data"]["demo_complete"] = true
+		stats["save_data"]["stats"]["Demo Reunions"] += 1
+	elif stats["game_mode"] == "hard" && stats["blind_mode"]:
+		stats["save_data"]["stats"]["Blind Hard Mode Reunions"] += 1
+	elif stats["game_mode"] == "hard":
+		stats["save_data"]["stats"]["Hard Mode Reunions"] += 1
+	elif stats["blind_mode"]:
+		stats["save_data"]["stats"]["Blind Mode Reunions"] += 1
+	else:
+		stats["save_data"]["stats"]["Reunions"] += 1
 
 func update_score():
 	var new_best = false
-	if global_timer.time < stats["save_data"]["level_data"][level_id]["time"]:
-		stats["save_data"]["level_data"][level_id]["time"] = global_timer.time
+	if global_timer.time < stats["save_data"]["level_data"][level_id][mode_string+"_time"]:
+		stats["save_data"]["level_data"][level_id][mode_string+"_time"] = global_timer.time
 		new_best = true
-	SaveAndLoad.update_save_data()
 	var modified_time = global_timer.time*1000
 	Steam.uploadLeaderboardScore(modified_time)
+	SaveAndLoad.update_save_data()
 	return new_best
 
 

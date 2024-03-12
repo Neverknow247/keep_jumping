@@ -3,7 +3,7 @@ class_name Steam_Client
 
 signal received_results(result)
 
-var AppID = "2880990"
+var AppID = "2882330"
 var logged_in_user
 var leaderboard_handle
 var level_id_board

@@ -17,6 +17,7 @@ func _on_exit_button_pressed():
 		get_tree().quit()
 
 func over_ride_version_control():
+	return
 	stats.save_data.version = "0.0.0"
 	SaveAndLoad.update_save_data()
 
