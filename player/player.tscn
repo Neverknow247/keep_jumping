@@ -1,13 +1,57 @@
-[gd_scene load_steps=13 format=3 uid="uid://kib21yto7yik"]
+[gd_scene load_steps=18 format=3 uid="uid://kib21yto7yik"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_es81c"]
 [ext_resource type="Texture2D" uid="uid://r7wqniih52i7" path="res://assets/art/characters/player.png" id="2_cnqbd"]
 [ext_resource type="Texture2D" uid="uid://bvhspqwqd3egf" path="res://assets/art/hats/no_hat.png" id="3_32cti"]
 [ext_resource type="Script" path="res://characters/hit_box.gd" id="3_lkrl1"]
 [ext_resource type="Script" path="res://characters/hurt_box.gd" id="4_f2q0e"]
+[ext_resource type="Texture2D" uid="uid://grhjyrqdkxvk" path="res://assets/art/characters/interact_icon.png" id="4_snnva"]
+
+[sub_resource type="Animation" id="Animation_sud7h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_r8c13"]
+resource_name = "animate"
+length = 1.6
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aev7v"]
+_data = {
+"RESET": SubResource("Animation_sud7h"),
+"animate": SubResource("Animation_r8c13")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qmdhs"]
 size = Vector2(4, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ssent"]
+radius = 8.0
+height = 16.0
 
 [sub_resource type="Animation" id="Animation_wxi8o"]
 length = 0.001
@@ -197,6 +241,18 @@ frame = 6
 position = Vector2(0, -1)
 texture = ExtResource("3_32cti")
 
+[node name="interact_icon" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -24)
+texture = ExtResource("4_snnva")
+hframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="interact_icon"]
+libraries = {
+"": SubResource("AnimationLibrary_aev7v")
+}
+autoplay = "animate"
+
 [node name="collision" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, -6)
 polygon = PackedVector2Array(3, 6, 3, 3, 3, -6, -3, -6, -3, 3, -3, 6)
@@ -229,6 +285,14 @@ modulate = Color(0.898039, 0.847059, 0, 1)
 position = Vector2(0, -6)
 polygon = PackedVector2Array(1, 5, 3, 2, 3, -4, -3, -3, -3, 2, -1, 5)
 
+[node name="interaction_detection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interaction_detection"]
+position = Vector2(0, -8)
+shape = SubResource("CapsuleShape2D_ssent")
+
 [node name="camera_follow" type="RemoteTransform2D" parent="."]
 position = Vector2(0, -8)
 
@@ -253,4 +317,6 @@ autoplay = "idle"
 [connection signal="area_entered" from="hit_box" to="." method="_on_hit_box_area_entered"]
 [connection signal="area_entered" from="hit_box" to="hit_box" method="_on_area_entered"]
 [connection signal="hit" from="hurt_box" to="." method="_on_hurt_box_hit"]
+[connection signal="area_entered" from="interaction_detection" to="." method="_on_interaction_detection_area_entered"]
+[connection signal="area_exited" from="interaction_detection" to="." method="_on_interaction_detection_area_exited"]
 [connection signal="timeout" from="jump_timer" to="." method="_on_jump_timer_timeout"]

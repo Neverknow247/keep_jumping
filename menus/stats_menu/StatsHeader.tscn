@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://homl3th1hlgb"]
+
+[ext_resource type="Theme" uid="uid://bwnv8b362a2w7" path="res://menus/menu_theme.tres" id="1_hvfmy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qvslk"]
+
+[node name="StatsHeader" type="Panel"]
+custom_minimum_size = Vector2(1050, 75)
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("1_hvfmy")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_qvslk")
+
+[node name="Header" type="Label" parent="."]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 0
+offset_left = 26.0
+offset_right = 538.0
+offset_bottom = 75.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+text = "Demo Castle"
+vertical_alignment = 1

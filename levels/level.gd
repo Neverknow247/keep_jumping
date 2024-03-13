@@ -157,33 +157,44 @@ func _on_finish_body_entered(body):
 	update_stats()
 	print("cut scene")
 	var new_best = await update_score()
-	await get_tree().create_timer(2).timeout
+	player.paused()
+	await get_tree().create_timer(1).timeout
 	get_tree().call_deferred("change_scene_to_file",end_scene)
 
 func update_stats():
 	stats["save_data"]["level_data"][level_id][mode_string+"_finished"] = true
-	if stats["demo"]:
-		stats["save_data"]["demo_complete"] = true
-		stats["save_data"]["stats"]["Demo Reunions"] += 1
-	elif stats["game_mode"] == "hard" && stats["blind_mode"]:
-		stats["save_data"]["stats"]["Blind Hard Mode Reunions"] += 1
-	elif stats["game_mode"] == "hard":
-		stats["save_data"]["stats"]["Hard Mode Reunions"] += 1
-	elif stats["blind_mode"]:
-		stats["save_data"]["stats"]["Blind Mode Reunions"] += 1
-	else:
-		stats["save_data"]["stats"]["Reunions"] += 1
+	stats["save_data"]["level_data"][level_id][mode_string+"_reunions"] += 1
+	#if stats["demo"]:
+		#stats["save_data"]["demo_complete"] = true
+		#stats["save_data"]["stats"]["Demo Reunions"] += 1
+	#elif stats["game_mode"] == "hard" && stats["blind_mode"]:
+		#stats["save_data"]["stats"]["Blind Hard Mode Reunions"] += 1
+	#elif stats["game_mode"] == "hard":
+		#stats["save_data"]["stats"]["Hard Mode Reunions"] += 1
+	#elif stats["blind_mode"]:
+		#stats["save_data"]["stats"]["Blind Mode Reunions"] += 1
+	#else:
+		#stats["save_data"]["stats"]["Reunions"] += 1
 
 func update_score():
-	var new_best = false
-	if global_timer.time < stats["save_data"]["level_data"][level_id][mode_string+"_time"]:
-		stats["save_data"]["level_data"][level_id][mode_string+"_time"] = global_timer.time
-		new_best = true
-	var modified_time = global_timer.time*1000
-	Steam.uploadLeaderboardScore(modified_time)
-	SaveAndLoad.update_save_data()
-	return new_best
+	if global_timer.time < 10:
+		return false
+	else:
+		var new_best = false
+		if global_timer.time < stats["save_data"]["level_data"][level_id][mode_string+"_time"]:
+			stats["save_data"]["level_data"][level_id][mode_string+"_time"] = global_timer.time
+			new_best = true
+		var modified_time = global_timer.time*1000
+		Steam.uploadLeaderboardScore(modified_time)
+		SaveAndLoad.update_save_data()
+		return new_best
 
+func _on_player_close_interactables():
+	$ui/leaderboard.hide()
+	$ui/stats.hide()
 
+func _on_player_leaderboard():
+	$ui/leaderboard.show()
 
-
+func _on_player_campfire():
+	$ui/stats.show()

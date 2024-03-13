@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlj3xtq0pl4l8"]
+
+[ext_resource type="Script" path="res://items/interactable_leaderboard.gd" id="1_84qt4"]
+[ext_resource type="Texture2D" uid="uid://cjqii0qiw7b61" path="res://assets/art/items/leaderboard.png" id="1_qbv6m"]
+[ext_resource type="Theme" uid="uid://bdauou0gynqyt" path="res://ui/small_text_theme.tres" id="3_wgl04"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a57hv"]
+size = Vector2(32, 24)
+
+[node name="leaderboard" type="Area2D"]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("1_84qt4")
+type = "leaderboard"
+unlocked = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("1_qbv6m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_a57hv")
+
+[node name="board_label" type="Label" parent="."]
+offset_left = -16.0
+offset_top = -22.0
+offset_right = 304.0
+offset_bottom = 128.0
+scale = Vector2(0.1, 0.1)
+theme = ExtResource("3_wgl04")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Coming
+Soon"
+horizontal_alignment = 1
+vertical_alignment = 1

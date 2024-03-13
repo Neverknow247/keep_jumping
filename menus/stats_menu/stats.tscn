@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://drx6mqaavj1g8"]
+
+[ext_resource type="Theme" uid="uid://bwnv8b362a2w7" path="res://menus/menu_theme.tres" id="1_mbs26"]
+[ext_resource type="Script" path="res://menus/stats_menu/stats.gd" id="2_2mb82"]
+[ext_resource type="PackedScene" uid="uid://cwx7ifhgq5cvx" path="res://menus/stats_menu/StatsItem.tscn" id="2_jlnnp"]
+[ext_resource type="PackedScene" uid="uid://homl3th1hlgb" path="res://menus/stats_menu/StatsHeader.tscn" id="3_k78y8"]
+
+[node name="stats" type="ColorRect"]
+custom_minimum_size = Vector2(1200, 827)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -720.0
+offset_bottom = -253.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_mbs26")
+color = Color(0, 0, 0, 0.847059)
+script = ExtResource("2_2mb82")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="stats_label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Stats"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1050, 600)
+layout_mode = 2
+
+[node name="stats_container" type="VBoxContainer" parent="CenterContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+
+[node name="StatsHeader" parent="CenterContainer/VBoxContainer/ScrollContainer/stats_container" instance=ExtResource("3_k78y8")]
+layout_mode = 2
+
+[node name="StatsItem" parent="CenterContainer/VBoxContainer/ScrollContainer/stats_container" instance=ExtResource("2_jlnnp")]
+layout_mode = 2

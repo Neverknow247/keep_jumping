@@ -51,7 +51,8 @@ layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 24
 theme_override_font_sizes/font_size = 96
-text = "You Have Rescued Your Dog"
+text = "You Have Reunited
+With Your Dog!"
 horizontal_alignment = 1
 
 [node name="demo_text" type="Label" parent="VBoxContainer"]
@@ -60,8 +61,8 @@ layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 24
 theme_override_font_sizes/font_size = 96
-text = "Thank You!
-You Have Finished The Demo"
+text = "Reunited With Your Dog
+Thank You For Playing!"
 horizontal_alignment = 1
 
 [node name="time_box" type="HBoxContainer" parent="VBoxContainer"]
@@ -108,6 +109,7 @@ theme_override_constants/separation = 48
 alignment = 1
 
 [node name="scores_and_xp" type="HBoxContainer" parent="main/main_content"]
+visible = false
 custom_minimum_size = Vector2(600, 700)
 layout_mode = 2
 theme_override_constants/separation = 32

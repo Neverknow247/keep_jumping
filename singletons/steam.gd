@@ -1,6 +1,7 @@
 extends Node
 class_name Steam_Client
 
+signal leaderboard_found(result)
 signal received_results(result)
 
 var AppID = "2882330"
@@ -50,8 +51,10 @@ func _on_leaderboard_find_result(handle: int, found: int) -> void:
 	if found == 1:
 		leaderboard_handle = handle
 		print("Leaderboard handle found: %s" % leaderboard_handle)
+		leaderboard_found.emit(true)
 	else:
 		print("No handle was found")
+		leaderboard_found.emit(false)
 
 func _on_leaderboard_score_uploaded(success: int, this_handle: int, this_score: Dictionary) -> void:
 	if success == 1:

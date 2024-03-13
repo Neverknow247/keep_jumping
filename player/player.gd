@@ -39,6 +39,7 @@ var current_velocity = 0.0
 @export var stomp_bonus = .1
 
 @onready var sprite = $sprite
+@onready var interact_icon = $interact_icon
 @onready var coyote_jump_timer = $coyote_jump_timer
 @onready var coyote_wall_timer = $coyote_wall_timer
 @onready var jump_timer = $jump_timer
@@ -56,8 +57,9 @@ var double_jump = true:
 		if double_jump == true:
 			sprite.modulate = Color.WHITE
 		else:
-			sprite.modulate = Color("#e6004d")
-			#sprite.self_modulate = Color("#4682b4")m
+			sprite.modulate = Color("#ff4568")
+			#sprite.modulate = Color("#e6004d")
+			#sprite.self_modulate = Color("#4682b4")
 
 var invincible = false
 var tile_map = null
@@ -332,6 +334,50 @@ func calculate_stomp_velocity(linear_velocity: Vector2, impulse):
 	out.y = -impulse
 	return out
 
-
 func _on_jump_timer_timeout():
 	just_jumped = false
+
+func paused():
+	state = pause_state
+
+func pause_state(delta):
+	pass
+
+var interactable = null
+var interacting = false
+var interacting_type = ""
+
+func _on_interaction_detection_area_entered(area):
+	if area.unlocked:
+		interactable = area
+		interact_icon.show()
+
+func _on_interaction_detection_area_exited(area):
+	interactable = null
+	interacting = false
+	interacting_type = ""
+	interact_icon.hide()
+	close_interactable()
+
+func _input(event):
+	if event.is_action_pressed("action") && interactable != null && interactable.type != "" && !interacting:
+		interacting = true
+		interacting_type = interactable.type
+		print(interactable.type)
+		self.call("open_"+interactable.type)
+	elif event.is_action_pressed("action") && interactable != null && interactable.type == interacting_type && interacting:
+		interacting = false
+		interacting_type = ""
+		close_interactable()
+
+signal close_interactables
+func close_interactable():
+	close_interactables.emit()
+
+signal campfire
+func open_campfire():
+	campfire.emit()
+
+signal leaderboard
+func open_leaderboard():
+	leaderboard.emit()
