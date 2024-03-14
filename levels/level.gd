@@ -72,10 +72,12 @@ func _input(event):
 		if pausable:
 			pause_menu.pause()
 		pausable = !pausable
-	if event.is_action_pressed("reset_level") && reset_unlocked:
-		return
-		disable_go()
-		#ui.exit_transition()
+	if event is InputEventMouseMotion:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+func _process(delta):
+	if Input.is_action_pressed("reset_level") and Input.is_action_pressed("reset_control"):
+		ui.exit_transition()
 		get_tree().paused = true
 		await get_tree().create_timer(stats.transition_time).timeout
 		get_tree().reload_current_scene()
@@ -164,20 +166,9 @@ func _on_finish_body_entered(body):
 func update_stats():
 	stats["save_data"]["level_data"][level_id][mode_string+"_finished"] = true
 	stats["save_data"]["level_data"][level_id][mode_string+"_reunions"] += 1
-	#if stats["demo"]:
-		#stats["save_data"]["demo_complete"] = true
-		#stats["save_data"]["stats"]["Demo Reunions"] += 1
-	#elif stats["game_mode"] == "hard" && stats["blind_mode"]:
-		#stats["save_data"]["stats"]["Blind Hard Mode Reunions"] += 1
-	#elif stats["game_mode"] == "hard":
-		#stats["save_data"]["stats"]["Hard Mode Reunions"] += 1
-	#elif stats["blind_mode"]:
-		#stats["save_data"]["stats"]["Blind Mode Reunions"] += 1
-	#else:
-		#stats["save_data"]["stats"]["Reunions"] += 1
 
 func update_score():
-	if global_timer.time < 10:
+	if run_start != true || GlobalTimer.time<20:
 		return false
 	else:
 		var new_best = false

@@ -15,14 +15,14 @@ func _ready():
 	var logged_settings_path
 	if dev_mode == false:
 		var dir = DirAccess.open("user://")
-		if !dir.dir_exists("%s"%[GlobalSteam.logged_in_user]):
-			dir.make_dir("%s"%[GlobalSteam.logged_in_user])
+		if !dir.dir_exists("%s"%[str(GlobalSteam.logged_in_id)]):
+			dir.make_dir("%s"%[str(GlobalSteam.logged_in_id)])
 	if dev_mode == true:
 		logged_settings_path = "res://save_data/settings.cfg"
 		default_save_path = "res://save_data/save_data.dat"
 	else:
 		logged_settings_path = "user://settings.cfg"
-		default_save_path = "user://%s/save_data.dat"%[GlobalSteam.logged_in_user]
+		default_save_path = "user://%s/save_data.dat"%[str(GlobalSteam.logged_in_id)]
 	SAVE_SETTINGS_PATH = logged_settings_path
 	SAVE_DATA_PATH = default_save_path
 

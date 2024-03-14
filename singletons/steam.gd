@@ -5,6 +5,7 @@ signal leaderboard_found(result)
 signal received_results(result)
 
 var AppID = "2882330"
+var logged_in_id
 var logged_in_user
 var leaderboard_handle
 var level_id_board
@@ -29,6 +30,7 @@ func _ready():
 
 	print("Steam is Running")
 	var id = Steam.getSteamID()
+	logged_in_id = id
 	var name = Steam.getFriendPersonaName(id)
 	print("Username: ", str(name))
 	logged_in_user = str(name)

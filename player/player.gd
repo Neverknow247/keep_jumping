@@ -101,6 +101,7 @@ func move_state(delta):
 	apply_gravity(delta)
 	var input_axis = get_input_axis()
 	if is_moving(input_axis):
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		apply_acceleration(delta,input_axis)
 	else:
 		apply_friction(delta)

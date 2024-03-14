@@ -11,9 +11,10 @@ const ScoreItem = preload("res://menus/scores/ScoreItem.tscn")
 @onready var score_container = $main/main_content/leaderboard/ScrollContainer/score_container
 
 var list_index = 0
-var max_scores = 100
+var max_scores = 10000
 
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	clear_leaderboard()
 	GlobalSteam.connect("received_results",_on_recieved_results)
 	GlobalSteam.download_leaderboard()
@@ -44,7 +45,7 @@ func _on_recieved_results(result):
 		if list_index >= max_scores:
 			return
 		var unmodified_score = float(i.score)/1000
-		print(unmodified_score)
+		#print(unmodified_score)
 		list_index+=1
 		add_score_item(Steam.getFriendPersonaName(i.steam_id),("%02d:%02d:%02d:%03d" % [fmod(fmod(unmodified_score, 3600*60)/3600,24),fmod(unmodified_score, 60*60)/60, fmod(unmodified_score,60), fmod(unmodified_score, 1)*1000]))
 		#add_score_item(Steam.getFriendPersonaName(i.steam_id),("%02d:%02d:%03d" % [fmod(unmodified_score, 60*60)/60, fmod(unmodified_score,60), fmod(unmodified_score, 1)*1000]))
