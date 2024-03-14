@@ -25,6 +25,7 @@ func set_stats():
 	add_stats_header("General Stats")
 	add_stats_item("Power On Count",stats["save_data"]["stats"]["Power On Count"])
 	add_stats_item("Number Of Attempts",stats["save_data"]["stats"]["Towers Attempted"])
+	add_stats_item("Total Reunions",stats["save_data"]["stats"]["Total Reunions"])
 	add_stats_item("Steps Taken",stats["save_data"]["stats"]["Steps Taken"])
 	add_stats_item("Times Jumped",stats["save_data"]["stats"]["Jumped"])
 	add_stats_item("Times Spring Bounced",stats["save_data"]["stats"]["Spring Bounced"])

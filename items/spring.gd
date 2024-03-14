@@ -10,7 +10,7 @@ const sprites = [
 @onready var health = max_health
 @export var bounce = 200
 
-var timer_time = 5
+var timer_time = 3
 
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var sprite_2d = $Sprite2D

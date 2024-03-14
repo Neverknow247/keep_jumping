@@ -15,14 +15,14 @@ var demo_board = "res://levels/level_1_demo.tscn"
 
 func _ready():
 	RenderingServer.set_default_clear_color(Color.BLACK)
-	sounds.play_sfx("smell_this_bread",1,-10)
+	sounds.play_sfx("smell_this_bread",1,-15)
 	await get_tree().create_timer(3).timeout
 	start()
 
 func start():
 	await SaveAndLoad.load_settings()
+	utils.set_volume()
 	if await SaveAndLoad.load_data():
-		utils.set_volume()
 		utils.set_keybindings()
 		stats["save_data"]["stats"]["Power On Count"] += 1
 		await SaveAndLoad.save_all()
@@ -35,4 +35,4 @@ func start():
 
 func _on_easter_egg_button_pressed():
 	easter_egg_button.disabled = true
-	sounds.play_voice(easter_egg_audio,1,-5)
+	sounds.play_voice(easter_egg_audio,1,-10)

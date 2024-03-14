@@ -37,7 +37,7 @@ func pop_up(type,text):
 		pop_up_label.text = "* %s Discovered *" %[text]
 	elif type == "message":
 		pop_up_label.text = "! %s !" %[text]
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(3).timeout
 	pop_up_label.text = ""
 
 func _on_pause_menu_fade_out():
