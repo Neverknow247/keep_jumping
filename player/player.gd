@@ -29,6 +29,8 @@ var current_velocity = 0.0
 @export var default_max_fall_velocity:float = 128.0
 @export var fall_bonus = .05
 @export var max_fall_velocity = 150
+@export var default_gravity = 300
+@export var space_gravity = 150
 @export var gravity = 300
 @export var wall_slide_speed = 150
 @export var wall_slide_bonus = .1
@@ -84,6 +86,10 @@ var slope_tiles = [
 	Vector2i(11,12),
 	Vector2i(12,11),
 	Vector2i(12,12),
+	Vector2i(11,17),
+	Vector2i(11,18),
+	Vector2i(12,17),
+	Vector2i(12,18),
 ]
 
 func _physics_process(delta):

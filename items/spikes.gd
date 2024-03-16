@@ -6,7 +6,8 @@ extends StaticBody2D
 
 const sprites = [
 	preload("res://assets/art/items/forest_spikes.png"),
-	preload("res://assets/art/items/Spikes.png")
+	preload("res://assets/art/items/Spikes.png"),
+	preload("res://assets/art/items/space_spikes.png"),
 ]
 
 var damage = 1
