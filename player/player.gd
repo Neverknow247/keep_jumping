@@ -26,12 +26,14 @@ var current_velocity = 0.0
 @export var jump_force = 150
 @export var partial_jump_multiplier = .9
 @export var air_friction = 90
-@export var default_max_fall_velocity:float = 128.0
 @export var fall_bonus = .05
+@export var default_max_fall_velocity:float = 128.0
 @export var max_fall_velocity = 150
 @export var default_gravity = 300
 @export var space_gravity = 150
 @export var gravity = 300
+@export var default_wall_slide_speed = 150
+@export var space_wall_slide_speed = 75
 @export var wall_slide_speed = 150
 @export var wall_slide_bonus = .1
 @export var max_wall_slide_speed = 150
@@ -90,6 +92,9 @@ var slope_tiles = [
 	Vector2i(11,18),
 	Vector2i(12,17),
 	Vector2i(12,18),
+	Vector2i(10,19),
+	Vector2i(11,19),
+	Vector2i(12,19),
 ]
 
 func _physics_process(delta):
@@ -132,6 +137,14 @@ func apply_gravity(delta):
 	velocity.y = move_toward(velocity.y, max_fall_velocity, gravity * delta)
 	#if not is_on_floor():
 		#velocity.y = move_toward(velocity.y, max_fall_velocity, gravity * delta)
+
+func apply_space(enter):
+	if enter:
+		gravity = space_gravity
+		wall_slide_speed = space_wall_slide_speed
+	else:
+		gravity = default_gravity
+		wall_slide_speed = default_wall_slide_speed
 
 func get_input_axis():
 	var input_axis = 0
@@ -367,12 +380,12 @@ func _on_interaction_detection_area_exited(area):
 	close_interactable()
 
 func _input(event):
-	if event.is_action_pressed("action") && interactable != null && interactable.type != "" && !interacting:
+	if (event.is_action_pressed("action") or event.is_action_pressed("controller_action")) && interactable != null && interactable.type != "" && !interacting:
 		interacting = true
 		interacting_type = interactable.type
 		print(interactable.type)
 		self.call("open_"+interactable.type)
-	elif event.is_action_pressed("action") && interactable != null && interactable.type == interacting_type && interacting:
+	elif (event.is_action_pressed("action") or event.is_action_pressed("controller_action")) && interactable != null && interactable.type == interacting_type && interacting:
 		interacting = false
 		interacting_type = ""
 		close_interactable()
@@ -384,6 +397,10 @@ func close_interactable():
 signal campfire
 func open_campfire():
 	campfire.emit()
+
+signal dog_house
+func open_dog_house():
+	dog_house.emit()
 
 signal leaderboard
 func open_leaderboard():

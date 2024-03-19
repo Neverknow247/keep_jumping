@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://b51ibh5twos3s"]
+
+[ext_resource type="Script" path="res://items/dog_house.gd" id="1_ylvn1"]
+[ext_resource type="Texture2D" uid="uid://mwya52hy8n85" path="res://assets/art/items/DogHouse.png" id="2_pdhai"]
+[ext_resource type="Texture2D" uid="uid://bhoagu53vvjce" path="res://assets/art/items/akamaru_dog_house.png" id="3_i66xt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t74hq"]
+radius = 16.0
+
+[node name="dog_house" type="Area2D"]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("1_ylvn1")
+type = "dog_house"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("2_pdhai")
+
+[node name="dog_sprite" type="Sprite2D" parent="Sprite2D"]
+z_index = 1
+position = Vector2(2, 8)
+texture = ExtResource("3_i66xt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+shape = SubResource("CircleShape2D_t74hq")
