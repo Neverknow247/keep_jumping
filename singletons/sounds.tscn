@@ -43,3 +43,18 @@ bus = &"SFX"
 
 [node name="sfx10" type="AudioStreamPlayer" parent="sfx"]
 bus = &"SFX"
+
+[node name="sfx11" type="AudioStreamPlayer" parent="sfx"]
+bus = &"SFX"
+
+[node name="sfx12" type="AudioStreamPlayer" parent="sfx"]
+bus = &"SFX"
+
+[node name="sfx13" type="AudioStreamPlayer" parent="sfx"]
+bus = &"SFX"
+
+[node name="sfx14" type="AudioStreamPlayer" parent="sfx"]
+bus = &"SFX"
+
+[node name="sfx15" type="AudioStreamPlayer" parent="sfx"]
+bus = &"SFX"

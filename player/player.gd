@@ -3,8 +3,10 @@ extends CharacterBody2D
 var sounds = Sounds
 var stats = Stats
 var global_timer = GlobalTimer
+var rng = RandomNumberGenerator.new()
 
 signal respawn
+signal change_scene(new_scene)
 
 const step_particles = preload("res://particles/step_particles.tscn")
 
@@ -65,6 +67,7 @@ var double_jump = true:
 			#sprite.modulate = Color("#e6004d")
 			#sprite.self_modulate = Color("#4682b4")
 
+var checkpoint = false
 var invincible = false
 var tile_map = null
 var slope_tiles = [
@@ -97,6 +100,9 @@ var slope_tiles = [
 	Vector2i(12,19),
 ]
 
+func _ready():
+	rng.randomize()
+
 func _physics_process(delta):
 	current_velocity = abs(velocity.x)
 	state.call(delta)
@@ -104,7 +110,11 @@ func _physics_process(delta):
 
 func create_walk_sound():
 	@warning_ignore("narrowing_conversion")
-	sounds.play_sfx("step", randf_range(0.6,1.2), -15)
+	sounds.play_sfx("step", randf_range(0.7,1.2), -30)
+	@warning_ignore("narrowing_conversion")
+	sounds.play_sfx("chain_step_1", randf_range(0.8,0.9), -25)
+	@warning_ignore("narrowing_conversion")
+	sounds.play_sfx("chain_step_2", randf_range(0.8,0.9), -25)
 	stats["save_data"]["stats"]["Steps Taken"] += 1
 	add_particle()
 
@@ -123,6 +133,11 @@ func move_state(delta):
 	update_animations(input_axis)
 	var wall = wall_check()
 	move_and_slide()
+	if !was_on_floor and is_on_floor():
+		@warning_ignore("narrowing_conversion")
+		sounds.play_sfx("step", randf_range(0.7,1), -28)
+		@warning_ignore("narrowing_conversion")
+		sounds.play_sfx("chain_step_2", randf_range(0.8,0.9), -25)
 	var just_left_edge = was_on_floor and not is_on_floor() and velocity.y >= 0
 	if just_left_edge:
 		coyote_jump_timer.start()
@@ -191,7 +206,10 @@ func jump(force):
 	jump_timer.start()
 	velocity.y = -force
 	@warning_ignore("narrowing_conversion")
-	sounds.play_sfx("player_jump", randf_range(0.6,1.4), -10)
+	#sounds.play_sfx("player_jump", randf_range(0.6,1.4), -10)
+	sounds.play_sfx("chain_step_1", randf_range(0.9,1), -30)
+	@warning_ignore("narrowing_conversion")
+	sounds.play_sfx("chain_damage_2", randf_range(0.9,1), -30)
 	stats["save_data"]["stats"]["Jumped"] += 1
 
 func fall_bonus_check():
@@ -229,6 +247,7 @@ func wall_check():
 	if not is_on_floor() and is_on_wall():
 		var tile_id = Vector2i(12,15)
 		for i in get_slide_collision_count():
+			@warning_ignore("shadowed_variable")
 			var collision = get_slide_collision(i)
 			if collision.get_collider() is TileMap:
 				var tilemap = collision.get_collider()
@@ -243,6 +262,10 @@ func wall_check():
 			return false
 			#print("stop",tile_id)
 		else:
+			@warning_ignore("narrowing_conversion")
+			sounds.play_sfx("step", randf_range(0.7,1), -25)
+			@warning_ignore("narrowing_conversion")
+			sounds.play_sfx("chain_step_2", randf_range(0.8,0.9), -20)
 			state = wall_slide_state
 			max_velocity = max(max_velocity-wall_friction,default_max_velocity)
 			double_jump = true
@@ -303,6 +326,7 @@ func slope_check():
 		stats["save_data"]["stats"]["Slope Slides"] += 1
 		SaveAndLoad.update_save_data()
 
+@warning_ignore("unused_parameter")
 func slope_state(delta):
 	velocity.y = slope_speed
 	move_and_slide()
@@ -315,9 +339,17 @@ func slope_exit():
 		if get_floor_angle() == 0:
 			state = move_state
 
+@warning_ignore("unused_parameter")
 func _on_hurt_box_hit(damage):
 	if not invincible:
 		invincible = true
+		var rand = rng.randi_range(1,18)
+		@warning_ignore("narrowing_conversion")
+		sounds.play_sfx("hurt_%s"%[str(rand)],randf_range(0.9,1),-5)
+		@warning_ignore("narrowing_conversion")
+		sounds.play_sfx("chain_damage_1",randf_range(0.8,1),-5)
+		@warning_ignore("narrowing_conversion")
+		sounds.play_sfx("chain_damage_2",randf_range(0.9,1.1),-5)
 		check_death()
 	else:
 		pass
@@ -328,16 +360,10 @@ func set_invincible(_bool):
 func check_death():
 	stats["save_data"]["stats"]["Spiked"] += 1
 	SaveAndLoad.update_save_data()
-	if stats.game_mode == "hard":
-		call_deferred("change_scene")
+	if stats.game_mode == "hard" or !checkpoint:
+		change_scene.emit()
 	else:
 		respawn.emit()
-
-func change_scene(new_scene = null):
-	if new_scene:
-		get_tree().change_scene_to_file(new_scene)
-	else:
-		get_tree().reload_current_scene()
 
 @warning_ignore("unused_parameter")
 func _on_hit_box_area_entered(area):
@@ -360,6 +386,7 @@ func _on_jump_timer_timeout():
 func paused():
 	state = pause_state
 
+@warning_ignore("unused_parameter")
 func pause_state(delta):
 	pass
 
@@ -372,6 +399,7 @@ func _on_interaction_detection_area_entered(area):
 		interactable = area
 		interact_icon.show()
 
+@warning_ignore("unused_parameter")
 func _on_interaction_detection_area_exited(area):
 	interactable = null
 	interacting = false
