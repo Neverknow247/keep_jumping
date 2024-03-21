@@ -70,35 +70,35 @@ var double_jump = true:
 var checkpoint = false
 var invincible = false
 var tile_map = null
-var slope_tiles = [
-	Vector2i(11,0),
-	Vector2i(11,1),
-	Vector2i(12,0),
-	Vector2i(12,1),
-	Vector2i(11,5),
-	Vector2i(11,6),
-	Vector2i(12,5),
-	Vector2i(12,6),
-	Vector2i(11,7),
-	Vector2i(11,8),
-	Vector2i(12,7),
-	Vector2i(12,8),
-	Vector2i(11,9),
-	Vector2i(11,10),
-	Vector2i(12,9),
-	Vector2i(12,10),
-	Vector2i(11,11),
-	Vector2i(11,12),
-	Vector2i(12,11),
-	Vector2i(12,12),
-	Vector2i(11,17),
-	Vector2i(11,18),
-	Vector2i(12,17),
-	Vector2i(12,18),
-	Vector2i(10,19),
-	Vector2i(11,19),
-	Vector2i(12,19),
-]
+#var slope_tiles = [
+	#Vector2i(11,0),
+	#Vector2i(11,1),
+	#Vector2i(12,0),
+	#Vector2i(12,1),
+	#Vector2i(11,5),
+	#Vector2i(11,6),
+	#Vector2i(12,5),
+	#Vector2i(12,6),
+	#Vector2i(11,7),
+	#Vector2i(11,8),
+	#Vector2i(12,7),
+	#Vector2i(12,8),
+	#Vector2i(11,9),
+	#Vector2i(11,10),
+	#Vector2i(12,9),
+	#Vector2i(12,10),
+	#Vector2i(11,11),
+	#Vector2i(11,12),
+	#Vector2i(12,11),
+	#Vector2i(12,12),
+	#Vector2i(11,17),
+	#Vector2i(11,18),
+	#Vector2i(12,17),
+	#Vector2i(12,18),
+	#Vector2i(10,19),
+	#Vector2i(11,19),
+	#Vector2i(12,19),
+#]
 
 func _ready():
 	rng.randomize()
@@ -132,6 +132,7 @@ func move_state(delta):
 	fall_bonus_check()
 	update_animations(input_axis)
 	var wall = wall_check()
+	var on_slope = slope_check()
 	move_and_slide()
 	if !was_on_floor and is_on_floor():
 		@warning_ignore("narrowing_conversion")
@@ -142,7 +143,7 @@ func move_state(delta):
 	if just_left_edge:
 		coyote_jump_timer.start()
 	#print(wall)
-	slope_check()
+	if on_slope and slope_check(): change_to_slope()
 	var just_left_wall = was_on_wall and not is_on_wall()
 	if just_left_wall and wall != false:
 		coyote_wall_timer.start()
@@ -245,7 +246,7 @@ func update_animations(input_vector):
 
 func wall_check():
 	if not is_on_floor() and is_on_wall():
-		var tile_id = Vector2i(12,15)
+		var tile_id
 		for i in get_slide_collision_count():
 			@warning_ignore("shadowed_variable")
 			var collision = get_slide_collision(i)
@@ -320,11 +321,15 @@ func wall_detach(delta):
 
 func slope_check():
 	if get_floor_angle() < .9 and get_floor_angle() > .7:
+		return true
+
+func change_to_slope():
 		state = slope_state
 		velocity = Vector2.ZERO
 		double_jump = false
 		stats["save_data"]["stats"]["Slope Slides"] += 1
 		SaveAndLoad.update_save_data()
+	
 
 @warning_ignore("unused_parameter")
 func slope_state(delta):
