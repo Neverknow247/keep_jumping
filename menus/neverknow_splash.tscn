@@ -47,5 +47,6 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_s827e")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_pcbwd")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_4xsst")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_1xcua")
+disabled = true
 
 [connection signal="pressed" from="easter_egg_button" to="." method="_on_easter_egg_button_pressed"]

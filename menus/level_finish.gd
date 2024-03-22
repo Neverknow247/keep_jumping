@@ -25,9 +25,6 @@ func _ready():
 
 
 func _on_restart_button_pressed():
-	if stats["demo"]:
-		get_tree().change_scene_to_file("res://levels/level_1_demo.tscn")
-	else:
 		get_tree().change_scene_to_file("res://levels/level_1.tscn")
 
 func _on_quit_button_pressed():

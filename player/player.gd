@@ -67,6 +67,7 @@ var double_jump = true:
 			#sprite.modulate = Color("#e6004d")
 			#sprite.self_modulate = Color("#4682b4")
 
+var spike_count = 0
 var checkpoint = false
 var invincible = false
 var tile_map = null
@@ -363,6 +364,7 @@ func set_invincible(_bool):
 	invincible = _bool
 
 func check_death():
+	spike_count += 1
 	stats["save_data"]["stats"]["Spiked"] += 1
 	SaveAndLoad.update_save_data()
 	if stats.game_mode == "hard" or !checkpoint:

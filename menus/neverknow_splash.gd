@@ -8,16 +8,28 @@ var utils = Utils
 @onready var easter_egg_button = $easter_egg_button
 
 var easter_egg_audio = "angel_1_1"
-var menu_board = "res://levels/level_1.tscn"
-var demo_board = "res://levels/level_1_demo.tscn"
-#var menu_board = "res://menus/main_menu.tscn"
+var game_board = "res://levels/level_1.tscn"
 
 
 func _ready():
 	RenderingServer.set_default_clear_color(Color.BLACK)
 	sounds.play_sfx("smell_this_bread",1,-15)
-	await get_tree().create_timer(3).timeout
+	check_achievements()
+	await get_tree().create_timer(1.2).timeout
+	easter_egg_button.disabled = false
+	await get_tree().create_timer(1).timeout
+	easter_egg_button.disabled = true
+	await get_tree().create_timer(.3).timeout
 	start()
+
+func check_achievements():
+	if stats["save_data"]["stats"]["Total Reunions"]:
+		GlobalSteam.setAchievement("ACH_FINISH")
+	if stats["demo"]:
+		if stats["save_data"]["level_data"]["level_1_demo"]["_normal_time"] <= 1800.0000:
+			GlobalSteam.setAchievement("ACH_30_MIN")
+		if stats["save_data"]["level_data"]["level_1_demo"]["_normal_time"] <= 69.0000:
+			GlobalSteam.setAchievement("ACH_69")
 
 func start():
 	await SaveAndLoad.load_settings()
@@ -28,10 +40,7 @@ func start():
 		await SaveAndLoad.save_all()
 		transition.fade_out()
 		await get_tree().create_timer(stats.transition_time).timeout
-		if stats["demo"]:
-			get_tree().change_scene_to_file(demo_board)
-		else:
-			get_tree().change_scene_to_file(menu_board)
+		get_tree().change_scene_to_file(game_board)
 
 func _on_easter_egg_button_pressed():
 	easter_egg_button.disabled = true
