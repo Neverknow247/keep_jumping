@@ -235,6 +235,7 @@ text = "Resume
 "
 
 [node name="restart_button" type="Button" parent="buttons"]
+visible = false
 custom_minimum_size = Vector2(288, 60)
 layout_mode = 2
 focus_neighbor_left = NodePath(".")

@@ -36,6 +36,8 @@ var paused = false:
 var reset_unlocked = true
 
 func _ready():
+	if stats["save_data"]["stats"]["Total Reunions"] > 0:
+		restart_button.show()
 	visible = false
 
 func _input(event):
@@ -44,11 +46,13 @@ func _input(event):
 	if event.is_action_pressed("reset_level") && reset_unlocked:
 		if paused:
 			_on_restart_button_pressed()
+	if event is InputEventMouseMotion:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func change_pause():
 	self.paused = !paused
 	if paused:
-		restart_button.grab_focus()
+		resume_button.grab_focus()
 	else:
 		release_focus()
 

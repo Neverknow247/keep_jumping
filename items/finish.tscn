@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://boxa5agjwf37c"]
 
-[ext_resource type="Texture2D" uid="uid://n4rbrj6ckvuc" path="res://assets/art/items/finish.png" id="1_h5u22"]
+[ext_resource type="Texture2D" uid="uid://bgunnguwmph08" path="res://assets/art/characters/akamaru.png" id="1_4vldq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2j6jt"]
 size = Vector2(16, 16)
@@ -54,8 +54,9 @@ shape = SubResource("RectangleShape2D_2j6jt")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
 scale = Vector2(-1, 1)
-texture = ExtResource("1_h5u22")
+texture = ExtResource("1_4vldq")
 hframes = 4
+vframes = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
