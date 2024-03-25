@@ -111,11 +111,11 @@ func _physics_process(delta):
 
 func create_walk_sound():
 	@warning_ignore("narrowing_conversion")
-	sounds.play_sfx("step", randf_range(0.7,1.2), -30)
+	sounds.play_sfx("step", randf_range(0.7,1.2), -25)
 	@warning_ignore("narrowing_conversion")
-	sounds.play_sfx("chain_step_1", randf_range(0.8,0.9), -25)
+	sounds.play_sfx("chain_step_1", randf_range(0.8,0.9), -20)
 	@warning_ignore("narrowing_conversion")
-	sounds.play_sfx("chain_step_2", randf_range(0.8,0.9), -25)
+	sounds.play_sfx("chain_step_2", randf_range(0.8,0.9), -20)
 	stats["save_data"]["stats"]["Steps Taken"] += 1
 	add_particle()
 
@@ -137,9 +137,9 @@ func move_state(delta):
 	move_and_slide()
 	if !was_on_floor and is_on_floor():
 		@warning_ignore("narrowing_conversion")
-		sounds.play_sfx("step", randf_range(0.7,1), -28)
+		sounds.play_sfx("step", randf_range(0.7,1), -23)
 		@warning_ignore("narrowing_conversion")
-		sounds.play_sfx("chain_step_2", randf_range(0.8,0.9), -25)
+		sounds.play_sfx("chain_step_2", randf_range(0.8,0.9), -20)
 	var just_left_edge = was_on_floor and not is_on_floor() and velocity.y >= 0
 	if just_left_edge:
 		coyote_jump_timer.start()
@@ -209,9 +209,9 @@ func jump(force):
 	velocity.y = -force
 	@warning_ignore("narrowing_conversion")
 	#sounds.play_sfx("player_jump", randf_range(0.6,1.4), -10)
-	sounds.play_sfx("chain_step_1", randf_range(0.9,1), -30)
+	sounds.play_sfx("chain_step_1", randf_range(0.9,1), -25)
 	@warning_ignore("narrowing_conversion")
-	sounds.play_sfx("chain_damage_2", randf_range(0.9,1), -30)
+	sounds.play_sfx("chain_damage_2", randf_range(0.9,1), -25)
 	stats["save_data"]["stats"]["Jumped"] += 1
 
 func fall_bonus_check():
@@ -265,9 +265,9 @@ func wall_check():
 			#print("stop",tile_id)
 		else:
 			@warning_ignore("narrowing_conversion")
-			sounds.play_sfx("step", randf_range(0.7,1), -25)
+			sounds.play_sfx("step", randf_range(0.7,1), -20)
 			@warning_ignore("narrowing_conversion")
-			sounds.play_sfx("chain_step_2", randf_range(0.8,0.9), -20)
+			sounds.play_sfx("chain_step_2", randf_range(0.8,0.9), -15)
 			state = wall_slide_state
 			max_velocity = max(max_velocity-wall_friction,default_max_velocity)
 			double_jump = true
@@ -351,11 +351,11 @@ func _on_hurt_box_hit(damage):
 		invincible = true
 		var rand = rng.randi_range(1,18)
 		@warning_ignore("narrowing_conversion")
-		sounds.play_sfx("hurt_%s"%[str(rand)],randf_range(0.9,1),-5)
+		sounds.play_sfx("hurt_%s"%[str(rand)],randf_range(0.9,1),0)
 		@warning_ignore("narrowing_conversion")
-		sounds.play_sfx("chain_damage_1",randf_range(0.8,1),-5)
+		sounds.play_sfx("chain_damage_1",randf_range(0.8,1),0)
 		@warning_ignore("narrowing_conversion")
-		sounds.play_sfx("chain_damage_2",randf_range(0.9,1.1),-5)
+		sounds.play_sfx("chain_damage_2",randf_range(0.9,1.1),0)
 		check_death()
 	else:
 		pass
@@ -379,6 +379,7 @@ func _on_hit_box_area_entered(area):
 		var bounce = area.bounce * (((area.max_health-area.health)*.25)+1)
 		velocity = calculate_stomp_velocity(velocity, bounce)
 		max_velocity += stomp_bonus
+		sounds.play_sfx("player_jump",randf_range(0.8,1.4),-5)
 		area.hit(1)
 		stats["save_data"]["stats"]["Spring Bounced"] += 1
 

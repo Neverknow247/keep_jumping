@@ -2,8 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bgunnguwmph08" path="res://assets/art/characters/akamaru.png" id="1_4vldq"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2j6jt"]
-size = Vector2(16, 16)
+[sub_resource type="CircleShape2D" id="CircleShape2D_ye1qi"]
 
 [sub_resource type="Animation" id="Animation_ufrjr"]
 length = 0.001
@@ -48,8 +47,8 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -8)
-shape = SubResource("RectangleShape2D_2j6jt")
+position = Vector2(0, -10)
+shape = SubResource("CircleShape2D_ye1qi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
