@@ -25,6 +25,14 @@ func set_volume():
 	AudioServer.set_bus_volume_db(sfx_bus, linear_to_db(volume_settings["sfx_volume"]))
 	AudioServer.set_bus_volume_db(voice_bus, linear_to_db(volume_settings["voice_volume"]))
 
+signal change_color_blind_textures
+var color_blind_mode = false:
+	get:
+		return color_blind_mode
+	set(value):
+		color_blind_mode = value
+		change_color_blind_textures.emit()
+
 var input_types = {
 	"key":InputEventKey,
 	"mouse":InputEventMouseButton,

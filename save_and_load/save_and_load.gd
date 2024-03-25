@@ -92,11 +92,11 @@ func update_data(save_data,default_data):
 			update_data(save_data[data],default_data[data])
 	return save_data
 
-
 func update_settings():
 	var settings = ConfigFile.new()
 	settings.set_value("volume_settings","setting",utils.volume_settings)
 	settings.set_value("bindings","setting",utils.bindings)
+	settings.set_value("color_blind_mode","setting",utils.color_blind_mode)
 	settings.save(SAVE_SETTINGS_PATH)
 	load_settings()
 

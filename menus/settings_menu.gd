@@ -6,6 +6,7 @@ var stats = Stats
 @onready var keybindings_button = $CenterContainer/VBoxContainer/keybindings_button
 @onready var tutorial_button = $CenterContainer/VBoxContainer/tutorial_button
 @onready var credits_button = $CenterContainer/VBoxContainer/credits_button
+@onready var general_menu = $general_menu
 @onready var volume_menu = $volume_menu
 @onready var keybinding_menu = $keybinding_menu
 @onready var transition = $transition
@@ -26,6 +27,16 @@ func _on_hide_menu(scene):
 	await get_tree().create_timer(stats.transition_time).timeout
 	scene.hide()
 	sounds_button.grab_focus()
+	transition.fade_in()
+
+func _on_general_button_pressed():
+	@warning_ignore("narrowing_conversion")
+	Sounds.play_sfx("click",randf_range(.8,1.2),-10)
+	transition.fade_out()
+	await get_tree().create_timer(stats.transition_time).timeout
+	general_menu.show()
+	general_menu.active = true
+	$general_menu/CenterContainer/VBoxContainer/colorblind_mode/colorblind_mode_check.grab_focus()
 	transition.fade_in()
 
 func _on_sounds_button_pressed():
