@@ -68,6 +68,7 @@ func _on_resume_button_pressed():
 func _on_restart_button_pressed():
 	@warning_ignore("narrowing_conversion")
 	Sounds.play_sfx("click",randf_range(.8,1.2),-10)
+	stats.reset_run()
 	emit_signal("resetting")
 	emit_signal("fade_out")
 	await get_tree().create_timer(stats.transition_time).timeout

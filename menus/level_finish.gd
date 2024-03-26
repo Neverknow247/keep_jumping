@@ -14,6 +14,8 @@ var list_index = 0
 var max_scores = 10000
 
 func _ready():
+	stats.reset_run()
+	SaveAndLoad.update_save_data()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	clear_leaderboard()
 	GlobalSteam.connect("received_results",_on_recieved_results)

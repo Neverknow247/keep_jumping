@@ -53,7 +53,7 @@ var current_velocity = 0.0
 @onready var jump_collision = $jump_collision
 @onready var animation_player = $AnimationPlayer
 
-var state = move_state
+var state = "move_state"
 var just_jumped = false
 var double_jump_color = Color.WHITE
 var double_jump = true:
@@ -84,7 +84,8 @@ func set_color_blind_colors():
 
 func _physics_process(delta):
 	current_velocity = abs(velocity.x)
-	state.call(delta)
+	var callable = Callable(self,state)
+	callable.call(delta)
 
 func create_walk_sound():
 	@warning_ignore("narrowing_conversion")
@@ -246,7 +247,7 @@ func wall_check():
 			sounds.play_sfx("step", randf_range(0.7,1), -20)
 			@warning_ignore("narrowing_conversion")
 			sounds.play_sfx("chain_step_2", randf_range(0.8,0.9), -15)
-			state = wall_slide_state
+			state = "wall_slide_state"
 			max_velocity = max(max_velocity-wall_friction,default_max_velocity)
 			double_jump = true
 
@@ -283,7 +284,7 @@ func wall_jump_check(wall_axis):
 	if Input.is_action_just_pressed("jump")||Input.is_action_just_pressed("controller_jump"):
 		#print(wall_axis)
 		velocity.x = wall_axis*default_max_velocity
-		state = move_state
+		state = "move_state"
 		#print("wall jump")
 		jump(jump_force*partial_jump_multiplier)
 
@@ -300,20 +301,20 @@ func wall_detach(delta):
 	if Input.is_action_just_pressed("right") || Input.is_action_just_pressed("controller_right"):
 		velocity.x = acceleration * delta
 		coyote_wall_timer.start()
-		state = move_state
+		state = "move_state"
 	if Input.is_action_just_pressed("left") || Input.is_action_just_pressed("controller_left"):
 		velocity.x = -acceleration * delta
 		coyote_wall_timer.start()
-		state = move_state
+		state = "move_state"
 	if not is_on_wall() and not is_on_ceiling() or is_on_floor():
-		state = move_state
+		state = "move_state"
 
 func slope_check():
 	if get_floor_angle() < .9 and get_floor_angle() > .7:
 		return true
 
 func change_to_slope():
-		state = slope_state
+		state = "slope_state"
 		velocity = Vector2.ZERO
 		double_jump = false
 		stats["save_data"]["stats"]["Slope Slides"] += 1
@@ -331,7 +332,7 @@ func slope_exit():
 		pass
 	else:
 		if get_floor_angle() == 0:
-			state = move_state
+			state = "move_state"
 
 @warning_ignore("unused_parameter")
 func _on_hurt_box_hit(damage):
@@ -355,7 +356,7 @@ func check_death():
 	spike_count += 1
 	stats["save_data"]["stats"]["Spiked"] += 1
 	SaveAndLoad.update_save_data()
-	if stats.game_mode == "hard" or !checkpoint:
+	if stats.game_mode == "hard":
 		change_scene.emit()
 	else:
 		respawn.emit()
@@ -381,7 +382,7 @@ func _on_jump_timer_timeout():
 	just_jumped = false
 
 func paused():
-	state = pause_state
+	state = "pause_state"
 
 @warning_ignore("unused_parameter")
 func pause_state(delta):
