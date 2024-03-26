@@ -15,11 +15,11 @@ func _ready():
 
 func set_mode():
 	mode_string = ""
-	if stats["game_mode"]=="hard":
+	if stats["save_data"]["hard_mode"]:
 		mode_string+="_hard"
 	else:
 		mode_string+="_normal"
-	if stats["blind_mode"]:
+	if stats["save_data"]["blind_mode"]:
 		mode_string+="_blind"
 	mode_string+="_reunions"
 

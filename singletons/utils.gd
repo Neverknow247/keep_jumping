@@ -44,6 +44,8 @@ var window_mode = 3:
 		window_mode = value
 		DisplayServer.window_set_mode(value)
 
+var wall_frame_buffer = true
+
 var input_types = {
 	"key":InputEventKey,
 	"mouse":InputEventMouseButton,

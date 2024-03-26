@@ -110,12 +110,16 @@ func move_state(delta):
 	var was_on_wall = is_on_wall()
 	fall_bonus_check()
 	update_animations(input_axis)
-	var wall = false
-	#var wall = wall_check()
+	var wall
+	if Utils.wall_frame_buffer:
+		wall = false
+	else:
+		wall = wall_check()
 	var on_slope = slope_check()
 	move_and_slide()
-	if was_on_wall and is_on_wall():
-		wall = wall_check()
+	if Utils.wall_frame_buffer:
+		if was_on_wall and is_on_wall():
+			wall = wall_check()
 	if !was_on_floor and is_on_floor():
 		@warning_ignore("narrowing_conversion")
 		sounds.play_sfx("step", randf_range(0.7,1), -23)
@@ -124,7 +128,6 @@ func move_state(delta):
 	var just_left_edge = was_on_floor and not is_on_floor() and velocity.y >= 0
 	if just_left_edge:
 		coyote_jump_timer.start()
-	#print(wall)
 	if on_slope and slope_check(): change_to_slope()
 	var just_left_wall = was_on_wall and not is_on_wall()
 	if just_left_wall and wall != false:
@@ -356,7 +359,8 @@ func check_death():
 	spike_count += 1
 	stats["save_data"]["stats"]["Spiked"] += 1
 	SaveAndLoad.update_save_data()
-	if stats.game_mode == "hard":
+	if stats["save_data"]["hard_mode"]:
+		stats.reset_run()
 		change_scene.emit()
 	else:
 		respawn.emit()

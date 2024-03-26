@@ -9,11 +9,15 @@ const ScoreItem = preload("res://menus/scores/ScoreItem.tscn")
 @onready var demo_text = $VBoxContainer/demo_text
 @onready var new_time = $VBoxContainer/time_box/new_time
 @onready var score_container = $main/main_content/leaderboard/ScrollContainer/score_container
+@onready var restart_button = $buttons/restart_button
+@onready var settings_menu = $settings_menu
+@onready var transition = $transition
 
 var list_index = 0
 var max_scores = 10000
 
 func _ready():
+	restart_button.grab_focus()
 	stats.reset_run()
 	SaveAndLoad.update_save_data()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -25,9 +29,25 @@ func _ready():
 		demo_text.show()
 		level_name.hide()
 
+func _on_hide_menu(scene):
+	transition.fade_out()
+	await get_tree().create_timer(stats.transition_time).timeout
+	scene.hide()
+	restart_button.grab_focus()
+	transition.fade_in()
 
 func _on_restart_button_pressed():
 		get_tree().change_scene_to_file("res://levels/level_1.tscn")
+
+func _on_settings_button_pressed():
+	@warning_ignore("narrowing_conversion")
+	Sounds.play_sfx("click",randf_range(.8,1.2),-10)
+	transition.fade_out()
+	await get_tree().create_timer(stats.transition_time).timeout
+	settings_menu.show()
+	settings_menu.active = true
+	$settings_menu/CenterContainer/VBoxContainer/general_button.grab_focus()
+	transition.fade_in()
 
 func _on_quit_button_pressed():
 	get_tree().quit()
@@ -66,3 +86,5 @@ func add_score_item(player_name:String, score_value:String):
 	if player_name == GlobalSteam.logged_in_user:
 		item.get_node("PlayerName").add_theme_color_override("font_color",Color("#66cdaa"))
 	score_container.add_child(item)
+
+

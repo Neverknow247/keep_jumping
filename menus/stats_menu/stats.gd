@@ -5,10 +5,22 @@ var stats = Stats
 const StatsHeader = preload("res://menus/stats_menu/StatsHeader.tscn")
 const StatsItem = preload("res://menus/stats_menu/StatsItem.tscn")
 
+@onready var scroll_container = $CenterContainer/VBoxContainer/ScrollContainer
 @onready var stats_container = $CenterContainer/VBoxContainer/ScrollContainer/stats_container
 
 func _ready():
 	refresh_stats()
+
+var scroll = 0
+var scroll_item_size = 54
+var scroll_step = scroll_item_size * 6
+func _input(event):
+	if visible and event.is_action_pressed("controller_down"):
+		scroll=min(scroll+scroll_step,(scroll_container.get_child_count()*54))
+		scroll_container.set_deferred("scroll_vertical",scroll)
+	if visible and event.is_action_pressed("controller_up"):
+		scroll=max(scroll-scroll_step,0)
+		scroll_container.set_deferred("scroll_vertical",scroll)
 
 func refresh_stats():
 	clear_stats()

@@ -4,6 +4,7 @@ var stats = Stats
 
 const ScoreItem = preload("res://menus/scores/ScoreItem.tscn")
 
+@onready var scroll_container = $CenterContainer/VBoxContainer/ScrollContainer
 @onready var score_container = $CenterContainer/VBoxContainer/ScrollContainer/score_container
 
 var list_index = 0
@@ -12,6 +13,18 @@ var max_scores = 10000
 func _ready():
 	GlobalSteam.connect("leaderboard_found",set_up_leaderboard)
 	GlobalSteam.connect("received_results",_on_recieved_results)
+
+var scroll = 0
+var scroll_item_size = 54
+var scroll_step = scroll_item_size * 6
+func _input(event):
+	if visible and event.is_action_pressed("controller_down"):
+		scroll=min(scroll+scroll_step,(score_container.get_child_count()*54)-540)
+		scroll_container.set_deferred("scroll_vertical",scroll)
+	if visible and event.is_action_pressed("controller_up"):
+		scroll=max(scroll-scroll_step,0)
+		scroll_container.set_deferred("scroll_vertical",scroll)
+
 
 func set_up_leaderboard(result):
 	if result == true:
