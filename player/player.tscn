@@ -254,18 +254,22 @@ libraries = {
 autoplay = "animate"
 
 [node name="collision" type="CollisionPolygon2D" parent="."]
+visible = false
 position = Vector2(0, -6)
 polygon = PackedVector2Array(3, 6, 3, 3, 3, -6, -3, -6, -3, 3, -3, 6)
 
 [node name="jump_collision" type="CollisionPolygon2D" parent="."]
+visible = false
 position = Vector2(0, -6)
 polygon = PackedVector2Array(3, 6, 3, 3, 3, -5, -3, -3, -3, 3, -3, 6)
 
 [node name="start_collision" type="CollisionPolygon2D" parent="."]
+visible = false
 position = Vector2(0, -6)
 polygon = PackedVector2Array(1, 6, 1, 5, -1, 5, -1, 6)
 
 [node name="hit_box" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("3_lkrl1")
@@ -276,6 +280,7 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_qmdhs")
 
 [node name="hurt_box" type="Area2D" parent="." groups=["player_hurt_box"]]
+visible = false
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("4_f2q0e")
@@ -286,6 +291,7 @@ position = Vector2(0, -6)
 polygon = PackedVector2Array(1, 5, 3, 2, 3, -4, -3, -3, -3, 2, -1, 5)
 
 [node name="interaction_detection" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 32
 

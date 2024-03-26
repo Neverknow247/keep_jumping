@@ -90,7 +90,7 @@ func _on_settings_button_pressed():
 	await get_tree().create_timer(stats.transition_time).timeout
 	settings_menu.show()
 	settings_menu.active = true
-	$settings_menu/CenterContainer/VBoxContainer/sounds_button.grab_focus()
+	$settings_menu/CenterContainer/VBoxContainer/general_button.grab_focus()
 	transition.fade_in()
 
 func _on_hide_menu(scene):

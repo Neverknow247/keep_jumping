@@ -19,6 +19,10 @@ const voice_bus_name = "Voice"
 @onready var sfx_bus = AudioServer.get_bus_index(sfx_bus_name)
 @onready var voice_bus = AudioServer.get_bus_index(voice_bus_name)
 
+func _ready():
+	if DisplayServer.window_get_mode() != window_mode:
+		DisplayServer.window_set_mode(window_mode)
+
 func set_volume():
 	AudioServer.set_bus_volume_db(master_bus, linear_to_db(volume_settings["master_volume"]))
 	AudioServer.set_bus_volume_db(music_bus, linear_to_db(volume_settings["music_volume"]))
@@ -32,6 +36,13 @@ var color_blind_mode = false:
 	set(value):
 		color_blind_mode = value
 		change_color_blind_textures.emit()
+
+var window_mode = 3:
+	get:
+		return window_mode
+	set(value):
+		window_mode = value
+		DisplayServer.window_set_mode(value)
 
 var input_types = {
 	"key":InputEventKey,

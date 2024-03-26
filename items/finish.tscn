@@ -1,32 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://boxa5agjwf37c"]
+[gd_scene load_steps=11 format=3 uid="uid://boxa5agjwf37c"]
 
 [ext_resource type="Texture2D" uid="uid://bgunnguwmph08" path="res://assets/art/characters/akamaru.png" id="1_4vldq"]
+[ext_resource type="Script" path="res://items/finish.gd" id="1_q470o"]
+[ext_resource type="Texture2D" uid="uid://dvl7mbq3mh5n0" path="res://assets/art/items/finish_flag.png" id="2_g6hg4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ye1qi"]
 
-[sub_resource type="Animation" id="Animation_ufrjr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_ssryh"]
+[sub_resource type="Animation" id="Animation_lokap"]
 resource_name = "animate"
 length = 0.4
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -36,29 +23,96 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6umte"]
+[sub_resource type="Animation" id="Animation_70bae"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qu47i"]
 _data = {
-"RESET": SubResource("Animation_ufrjr"),
-"animate": SubResource("Animation_ssryh")
+"RESET": SubResource("Animation_70bae"),
+"animate": SubResource("Animation_lokap")
+}
+
+[sub_resource type="Animation" id="Animation_fu110"]
+resource_name = "animate"
+length = 1.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+}
+
+[sub_resource type="Animation" id="Animation_qvw8w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3480c"]
+_data = {
+"RESET": SubResource("Animation_qvw8w"),
+"animate": SubResource("Animation_fu110")
 }
 
 [node name="finish" type="Area2D"]
 collision_layer = 0
 collision_mask = 2
+script = ExtResource("1_q470o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -10)
 shape = SubResource("CircleShape2D_ye1qi")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="akamaru_sprite" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
 scale = Vector2(-1, 1)
 texture = ExtResource("1_4vldq")
 hframes = 4
 vframes = 8
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="akamaru_sprite"]
 libraries = {
-"": SubResource("AnimationLibrary_6umte")
+"": SubResource("AnimationLibrary_qu47i")
+}
+autoplay = "animate"
+
+[node name="flag_sprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -8)
+texture = ExtResource("2_g6hg4")
+hframes = 15
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="flag_sprite"]
+libraries = {
+"": SubResource("AnimationLibrary_3480c")
 }
 autoplay = "animate"

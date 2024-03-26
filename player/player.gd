@@ -55,6 +55,7 @@ var current_velocity = 0.0
 
 var state = move_state
 var just_jumped = false
+var double_jump_color = Color.WHITE
 var double_jump = true:
 	get:
 		return double_jump
@@ -63,51 +64,27 @@ var double_jump = true:
 		if double_jump == true:
 			sprite.modulate = Color.WHITE
 		else:
-			sprite.modulate = Color("#ff4568")
-			#sprite.modulate = Color("#e6004d")
-			#sprite.self_modulate = Color("#4682b4")
+			sprite.modulate = double_jump_color
 
 var spike_count = 0
 var checkpoint = false
 var invincible = false
 var tile_map = null
-#var slope_tiles = [
-	#Vector2i(11,0),
-	#Vector2i(11,1),
-	#Vector2i(12,0),
-	#Vector2i(12,1),
-	#Vector2i(11,5),
-	#Vector2i(11,6),
-	#Vector2i(12,5),
-	#Vector2i(12,6),
-	#Vector2i(11,7),
-	#Vector2i(11,8),
-	#Vector2i(12,7),
-	#Vector2i(12,8),
-	#Vector2i(11,9),
-	#Vector2i(11,10),
-	#Vector2i(12,9),
-	#Vector2i(12,10),
-	#Vector2i(11,11),
-	#Vector2i(11,12),
-	#Vector2i(12,11),
-	#Vector2i(12,12),
-	#Vector2i(11,17),
-	#Vector2i(11,18),
-	#Vector2i(12,17),
-	#Vector2i(12,18),
-	#Vector2i(10,19),
-	#Vector2i(11,19),
-	#Vector2i(12,19),
-#]
 
 func _ready():
+	Utils.change_color_blind_textures.connect(set_color_blind_colors)
+	set_color_blind_colors()
 	rng.randomize()
+
+func set_color_blind_colors():
+	if Utils.color_blind_mode:
+		double_jump_color = Color("#5aae00")
+	else:
+		double_jump_color = Color("#ff4568")
 
 func _physics_process(delta):
 	current_velocity = abs(velocity.x)
 	state.call(delta)
-	#just_jumped = false
 
 func create_walk_sound():
 	@warning_ignore("narrowing_conversion")
@@ -132,9 +109,12 @@ func move_state(delta):
 	var was_on_wall = is_on_wall()
 	fall_bonus_check()
 	update_animations(input_axis)
-	var wall = wall_check()
+	var wall = false
+	#var wall = wall_check()
 	var on_slope = slope_check()
 	move_and_slide()
+	if was_on_wall and is_on_wall():
+		wall = wall_check()
 	if !was_on_floor and is_on_floor():
 		@warning_ignore("narrowing_conversion")
 		sounds.play_sfx("step", randf_range(0.7,1), -23)
@@ -152,8 +132,6 @@ func move_state(delta):
 
 func apply_gravity(delta):
 	velocity.y = move_toward(velocity.y, max_fall_velocity, gravity * delta)
-	#if not is_on_floor():
-		#velocity.y = move_toward(velocity.y, max_fall_velocity, gravity * delta)
 
 func apply_space(enter):
 	if enter:
@@ -200,6 +178,7 @@ func jump_check():
 		if just_jumped and (Input.is_action_just_released("jump")|| Input.is_action_just_released("controller_jump")) and velocity.y < -jump_force / 2:
 			velocity.y = -jump_force / 2
 		if (Input.is_action_just_pressed("jump")||Input.is_action_just_pressed("controller_jump")) and double_jump:
+			#print("jump air")
 			jump(jump_force * partial_jump_multiplier)
 			double_jump = false
 
@@ -208,7 +187,6 @@ func jump(force):
 	jump_timer.start()
 	velocity.y = -force
 	@warning_ignore("narrowing_conversion")
-	#sounds.play_sfx("player_jump", randf_range(0.6,1.4), -10)
 	sounds.play_sfx("chain_step_1", randf_range(0.9,1), -25)
 	@warning_ignore("narrowing_conversion")
 	sounds.play_sfx("chain_damage_2", randf_range(0.9,1), -25)
@@ -272,6 +250,15 @@ func wall_check():
 			max_velocity = max(max_velocity-wall_friction,default_max_velocity)
 			double_jump = true
 
+#func change_wall_slide_state():
+	#@warning_ignore("narrowing_conversion")
+	#sounds.play_sfx("step", randf_range(0.7,1), -20)
+	#@warning_ignore("narrowing_conversion")
+	#sounds.play_sfx("chain_step_2", randf_range(0.8,0.9), -15)
+	#state = wall_slide_state
+	#max_velocity = max(max_velocity-wall_friction,default_max_velocity)
+	#double_jump = true
+
 func reset_velocity_check():
 	if is_on_floor():
 		max_velocity = max(max_velocity-ground_friction,default_max_velocity)
@@ -297,6 +284,7 @@ func wall_jump_check(wall_axis):
 		#print(wall_axis)
 		velocity.x = wall_axis*default_max_velocity
 		state = move_state
+		#print("wall jump")
 		jump(jump_force*partial_jump_multiplier)
 
 func apply_wall_slide_gravity(delta):
@@ -379,6 +367,7 @@ func _on_hit_box_area_entered(area):
 		var bounce = area.bounce * (((area.max_health-area.health)*.25)+1)
 		velocity = calculate_stomp_velocity(velocity, bounce)
 		max_velocity += stomp_bonus
+		@warning_ignore("narrowing_conversion")
 		sounds.play_sfx("player_jump",randf_range(0.8,1.4),-5)
 		area.hit(1)
 		stats["save_data"]["stats"]["Spring Bounced"] += 1

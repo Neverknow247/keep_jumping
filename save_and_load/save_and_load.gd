@@ -97,6 +97,7 @@ func update_settings():
 	settings.set_value("volume_settings","setting",utils.volume_settings)
 	settings.set_value("bindings","setting",utils.bindings)
 	settings.set_value("color_blind_mode","setting",utils.color_blind_mode)
+	settings.set_value("window_mode","setting",utils.window_mode)
 	settings.save(SAVE_SETTINGS_PATH)
 	load_settings()
 

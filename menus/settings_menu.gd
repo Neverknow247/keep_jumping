@@ -2,6 +2,7 @@ extends Control
 
 var stats = Stats
 
+@onready var general_button = $CenterContainer/VBoxContainer/general_button
 @onready var sounds_button = $CenterContainer/VBoxContainer/sounds_button
 @onready var keybindings_button = $CenterContainer/VBoxContainer/keybindings_button
 @onready var tutorial_button = $CenterContainer/VBoxContainer/tutorial_button
@@ -26,7 +27,7 @@ func _on_hide_menu(scene):
 	transition.fade_out()
 	await get_tree().create_timer(stats.transition_time).timeout
 	scene.hide()
-	sounds_button.grab_focus()
+	general_button.grab_focus()
 	transition.fade_in()
 
 func _on_general_button_pressed():
@@ -36,7 +37,7 @@ func _on_general_button_pressed():
 	await get_tree().create_timer(stats.transition_time).timeout
 	general_menu.show()
 	general_menu.active = true
-	$general_menu/CenterContainer/VBoxContainer/colorblind_mode/colorblind_mode_check.grab_focus()
+	$general_menu/CenterContainer/VBoxContainer/window_mode/window_option_button.grab_focus()
 	transition.fade_in()
 
 func _on_sounds_button_pressed():

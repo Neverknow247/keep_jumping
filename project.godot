@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Sir Fallen"
-config/version="0.0.96"
+config/version="0.0.97"
 run/main_scene="res://menus/neverknow_splash.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="SirFallen"
@@ -35,10 +35,10 @@ shapes/collision/shape_color=Color(1, 1, 1, 0.419608)
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/mode=3
+window/size/mode=4
 window/size/window_width_override=1280
 window/size/window_height_override=720
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 
 [editor_plugins]
 
