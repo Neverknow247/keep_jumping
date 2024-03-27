@@ -16,17 +16,9 @@ func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel"):
 		_on_exit_button_pressed()
 
-func mode_select():
-	transition.fade_out_credits()
-	await get_tree().create_timer(1).timeout
-	if first_time:
-		get_tree().change_scene_to_file("res://menus/mode_select.tscn")
-	else:
-		get_tree().change_scene_to_file("res://menus/main_menu.tscn")
-
 func _on_exit_button_pressed():
 	@warning_ignore("narrowing_conversion")
 	Sounds.play_sfx("click",randf_range(.8,1.2),-10)
 	transition.fade_out()
 	await get_tree().create_timer(stats.transition_time).timeout
-	get_tree().change_scene_to_file("res://menus/main_menu.tscn")
+	get_tree().change_scene_to_file("res://levels/level_1.tscn")

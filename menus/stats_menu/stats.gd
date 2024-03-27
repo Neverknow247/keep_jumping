@@ -34,17 +34,18 @@ func clear_stats():
 			c.queue_free()
 
 func set_stats():
+	var total_reunions = stats.calc_total_reunions()
 	add_stats_header("General Stats")
 	add_stats_item("Power On Count",stats["save_data"]["stats"]["Power On Count"])
 	add_stats_item("Number Of Attempts",stats["save_data"]["stats"]["Towers Attempted"])
-	add_stats_item("Total Reunions",stats["save_data"]["stats"]["Total Reunions"])
+	add_stats_item("Total Reunions",total_reunions)
 	add_stats_item("Steps Taken",stats["save_data"]["stats"]["Steps Taken"])
 	add_stats_item("Times Jumped",stats["save_data"]["stats"]["Jumped"])
 	add_stats_item("Times Spring Bounced",stats["save_data"]["stats"]["Spring Bounced"])
 	add_stats_item("Times Died To Spikes",stats["save_data"]["stats"]["Spiked"])
 	add_stats_item("Times On Slopes",stats["save_data"]["stats"]["Slope Slides"])
-	add_stats_header("Demo Castle")
-	add_stats_item("Normal Reunions",stats["save_data"]["level_data"]["level_1_demo"]["_normal_reunions"])
+	#add_stats_header("Demo Castle")
+	#add_stats_item("Normal Reunions",stats["save_data"]["level_data"]["level_1_demo"]["_normal_reunions"])
 
 func add_stats_header(header:String):
 	var item = StatsHeader.instantiate()

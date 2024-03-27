@@ -36,7 +36,7 @@ var paused = false:
 var reset_unlocked = true
 
 func _ready():
-	if stats["save_data"]["stats"]["Total Reunions"] > 0:
+	if stats.calc_total_reunions() > 0:
 		restart_button.show()
 	visible = false
 
@@ -44,7 +44,7 @@ func _input(event):
 	if event.is_action_pressed("pause") && paused and !settings_menu.visible:
 		change_pause()
 	if event.is_action_pressed("reset_level") && reset_unlocked:
-		if paused:
+		if paused and stats.calc_total_reunions() > 0:
 			_on_restart_button_pressed()
 	if event is InputEventMouseMotion:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
