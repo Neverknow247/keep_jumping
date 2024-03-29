@@ -259,7 +259,6 @@ position = Vector2(0, -6)
 polygon = PackedVector2Array(3, 6, 3, 3, 3, -6, -3, -6, -3, 3, -3, 6)
 
 [node name="jump_collision" type="CollisionPolygon2D" parent="."]
-visible = false
 position = Vector2(0, -6)
 polygon = PackedVector2Array(3, 6, 3, 3, 3, -5, -3, -3, -3, 3, -3, 6)
 

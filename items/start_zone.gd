@@ -8,3 +8,9 @@ func _on_body_exited(body):
 		started = true
 		start_timer.emit()
 
+
+
+func _on_body_entered(body):
+	if body.is_in_group("player") and !started:
+		started = true
+		start_timer.emit()

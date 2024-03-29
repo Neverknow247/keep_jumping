@@ -1,7 +1,12 @@
 extends Node
 
 @onready var sfx_players = $sfx.get_children()
-@onready var music_player =$music
+@onready var music_players = $music.get_children()
+#@onready var music_players = {
+	#"music_main":$music_main,
+	#"music_beat":$music_beat,
+	#"music_lead":$music_lead
+#}
 @onready var voice_player = $voice
 
 var sfx_path = "res://assets/sfx/"
@@ -56,7 +61,11 @@ var music = {
 	"shell_hop_reverse" : load(music_path+"shell_hop_reverse.wav"),
 	"dog_house" : load(music_path+"dog_house.ogg"),
 	"dog_house_reverse" : load(music_path+"dog_house_reverse.wav"),
-	"dog_days" : load(music_path+"dog_days.ogg"),
+	"main" : load(music_path+"sir_main.wav"),
+	"slow_beat" : load(music_path+"sir_slow_beat.wav"),
+	"slow_lead" : load(music_path+"sir_slow_lead.wav"),
+	"fast_beat" : load(music_path+"sir_fast_beat.wav"),
+	"fast_lead" : load(music_path+"sir_temp_lead.wav"),
 #	"" : load(music_path+".wav"),
 }
 
@@ -80,13 +89,67 @@ func play_sfx(sfx_string, pitch_scale = 1, volume_db = 0):
 			return
 	print("Too many sounds playing")
 
-func play_music(music_string, pitch_scale = 1, volume_db = 0):
-	if music_playing != music_string:
+#func play_music(music_string, pitch_scale = 1, volume_db = 0, player = "music_main"):
+	#if music_playing != music_string:
+		#music_players[player].pitch_scale = pitch_scale
+		#music_players[player].volume_db = volume_db
+		#music_players[player].stream = music[music_string]
+		#music_players[player].play()
+		#music_playing = music_string
+
+func load_starting_music(music_list, pitch_scale, volume_db):
+	stop_music()
+	for i in music_list.size():
+		music_players[i].pitch_scale = pitch_scale
+		music_players[i].volume_db = volume_db
+		music_players[i].stream = music[music_list[i]]
+		music_players[i].play()
+
+func play_music(music_string, music_player, pitch_scale = 1, volume_db = 0):
+	if !music_player.is_playing():
 		music_player.pitch_scale = pitch_scale
 		music_player.volume_db = volume_db
 		music_player.stream = music[music_string]
 		music_player.play()
-		music_playing = music_string
+
+func stop_music():
+	for music_player in music_players:
+		music_player.stop()
+
+func fade_in_music(music_string, pitch_scale = 1, volume_db = 0):
+	var available_player = null
+	for music_player in music_players:
+		if music_player.stream == music[music_string]:
+			available_player = music_player
+			break
+		elif !music_player.playing:
+			available_player = music_player
+	if available_player:
+		play_music(music_string,available_player,pitch_scale,-80)
+		if !available_player.volume_db == volume_db:
+			var tween = get_tree().create_tween()
+			tween.tween_property(available_player,"volume_db",volume_db,10)
+			print("not loud enough yet")
+		else:
+			print("already loud enough")
+	else:
+		print("Too many songs playing")
+
+func fade_out_music(music_string, pitch_scale = 1, volume_db = -80):
+	var available_player = null
+	for music_player in music_players:
+		if music_player.stream == music[music_string]:
+			available_player = music_player
+			break
+	if available_player:
+		if !available_player.volume_db == volume_db:
+			var tween = get_tree().create_tween()
+			tween.tween_property(available_player,"volume_db",volume_db,10)
+			print("not quiet enough yet")
+		else:
+			print("already quiet enough")
+	else:
+		print("not playing")
 
 func play_voice(voice_string, pitch_scale = 1, volume_db = 0):
 	if voice_player.playing:

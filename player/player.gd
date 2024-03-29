@@ -66,6 +66,7 @@ var double_jump = true:
 		else:
 			sprite.modulate = double_jump_color
 
+var in_space = false
 var spike_count = 0
 var checkpoint = false
 var invincible = false
@@ -139,9 +140,11 @@ func apply_gravity(delta):
 
 func apply_space(enter):
 	if enter:
+		in_space = true
 		gravity = space_gravity
 		wall_slide_speed = space_wall_slide_speed
 	else:
+		in_space = false
 		gravity = default_gravity
 		wall_slide_speed = default_wall_slide_speed
 
@@ -356,6 +359,7 @@ func set_invincible(_bool):
 	invincible = _bool
 
 func check_death():
+	apply_space(false)
 	spike_count += 1
 	stats["save_data"]["stats"]["Spiked"] += 1
 	SaveAndLoad.update_save_data()

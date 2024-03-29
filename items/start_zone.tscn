@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://items/start_zone.gd" id="1_k46na"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l31r0"]
-size = Vector2(8, 128)
+size = Vector2(260, 256)
 
 [node name="start_zone" type="Area2D"]
 collision_layer = 0
@@ -13,4 +13,4 @@ script = ExtResource("1_k46na")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_l31r0")
 
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
