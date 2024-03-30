@@ -11,6 +11,7 @@ script = ExtResource("1_j34ay")
 motion_mirroring = Vector2(640, 0)
 
 [node name="background" type="ColorRect" parent="background"]
+visible = false
 offset_right = 640.0
 offset_bottom = 1440.0
 

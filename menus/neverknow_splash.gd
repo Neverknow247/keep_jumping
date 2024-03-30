@@ -9,6 +9,7 @@ var utils = Utils
 
 var easter_egg_audio = "angel_1_1"
 var game_board = "res://levels/level_1.tscn"
+var opening_board = "res://levels/opening_scene.tscn"
 
 
 func _ready():
@@ -70,7 +71,8 @@ func start():
 		await check_achievements()
 		transition.fade_out()
 		await get_tree().create_timer(stats.transition_time).timeout
-		get_tree().change_scene_to_file(game_board)
+		#get_tree().change_scene_to_file(game_board)
+		get_tree().change_scene_to_file(opening_board)
 
 func _on_easter_egg_button_pressed():
 	easter_egg_button.disabled = true

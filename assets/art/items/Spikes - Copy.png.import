@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qr0xqfuf8cat"
-path="res://.godot/imported/green_ninja_ear.png-2a26501a332b00c27724debac08afb2c.ctex"
+uid="uid://di3q4sfpoief8"
+path="res://.godot/imported/Spikes - Copy.png-f26320f115fd8c433d62f77b27fd37a8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/characters/green_ninja_ear.png"
-dest_files=["res://.godot/imported/green_ninja_ear.png-2a26501a332b00c27724debac08afb2c.ctex"]
+source_file="res://assets/art/items/Spikes - Copy.png"
+dest_files=["res://.godot/imported/Spikes - Copy.png-f26320f115fd8c433d62f77b27fd37a8.ctex"]
 
 [params]
 

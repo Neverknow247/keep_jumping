@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1xtpxwhawwld"
-path="res://.godot/imported/skeleton_dog.png-495264b88def53306ba7979101e5ddb2.ctex"
+uid="uid://b4sxc6tth3tln"
+path="res://.godot/imported/ground.png-288d1437d1dc5e07dcc585d14a2d16b5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/characters/skeleton_dog.png"
-dest_files=["res://.godot/imported/skeleton_dog.png-495264b88def53306ba7979101e5ddb2.ctex"]
+source_file="res://assets/art/tilesets/ground.png"
+dest_files=["res://.godot/imported/ground.png-288d1437d1dc5e07dcc585d14a2d16b5.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6gyia7njb68d"
-path="res://.godot/imported/doggo_brown_ear.png-2ca25e489414766e8cec5c9a98715e97.ctex"
+uid="uid://coiamfwolmh7x"
+path="res://.godot/imported/opening_vinette.png-5446e856fd08b907a8e1b6e31595479d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/characters/doggo_brown_ear.png"
-dest_files=["res://.godot/imported/doggo_brown_ear.png-2ca25e489414766e8cec5c9a98715e97.ctex"]
+source_file="res://assets/art/ui/opening_vinette.png"
+dest_files=["res://.godot/imported/opening_vinette.png-5446e856fd08b907a8e1b6e31595479d.ctex"]
 
 [params]
 
