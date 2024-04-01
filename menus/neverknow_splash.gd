@@ -23,25 +23,18 @@ func _ready():
 	start()
 
 func check_achievements():
-	#if stats["save_data"]["stats"]["Total Reunions"]:
-		#GlobalSteam.setAchievement("ACH_FINISH")
 	await check_demo()
 	return true
-	#if stats["demo"]:
-		#if stats["save_data"]["level_data"]["level_1_demo"]["_normal_time"] <= 1800.0000:
-			#GlobalSteam.setAchievement("ACH_30_MIN")
-		#if stats["save_data"]["level_data"]["level_1_demo"]["_normal_time"] <= 69.0000:
-			#GlobalSteam.setAchievement("ACH_69")
 
 func check_demo():
 	if !stats["save_data"]["demo_complete"]:
 		var demo_data = await load_data_from_file()
-		#print("demo data: ",demo_data)
 		if !demo_data:
 			return true
 		else:
 			if demo_data["level_data"]["level_1_demo"]["_normal_reunions"] > 0:
 				stats["save_data"]["demo_complete"] = true
+				GlobalSteam.setAchievement("ACH_DEMO")
 			return true
 	else:
 		return true

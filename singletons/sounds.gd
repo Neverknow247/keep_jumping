@@ -55,19 +55,11 @@ var sfx = {
 var music = {
 	"doggo2" : load(music_path+"doggo2.wav"),
 	"music_original" : load(music_path+"music_original.wav"),
-	"music_original_reverse" : load(music_path+"music_original_reverse.wav"),
-	"forest_stroll" : load(music_path+"forest_stroll.ogg"),
-	"forest_stroll_reverse" : load(music_path+"forest_stroll_reverse.wav"),
-	"shell_hop" : load(music_path+"shell_hop.ogg"),
-	"shell_hop_reverse" : load(music_path+"shell_hop_reverse.wav"),
-	"dog_house" : load(music_path+"dog_house.ogg"),
-	"dog_house_reverse" : load(music_path+"dog_house_reverse.wav"),
-	"main" : load(music_path+"sir_main.wav"),
-	"slow_beat" : load(music_path+"sir_slow_beat.wav"),
-	"slow_lead" : load(music_path+"sir_slow_lead.wav"),
-	"fast_beat" : load(music_path+"sir_fast_beat.wav"),
-	#"fast_lead" : load(music_path+"sirfallen_lead_fixed.wav"),
-	"fast_lead" : load(music_path+"sir_temp_lead.wav"),
+	"main" : load(music_path+"main_rhythm.wav"),
+	"slow_beat" : load(music_path+"slow_beat.wav"),
+	"slow_lead" : load(music_path+"slow_lead.wav"),
+	"fast_beat" : load(music_path+"fast_beat.wav"),
+	"fast_lead" : load(music_path+"fast_lead.wav"),
 	"space" : load(music_path+"fallenspace.wav"),
 	"credits" : load(music_path+"credits.wav"),
 #	"" : load(music_path+".wav"),
@@ -75,9 +67,6 @@ var music = {
 
 var voice = {
 	"angel_1_1" : load(voice_path+"angel_1_1.wav"),
-	"deneporood" : load(voice_path+"deneporood.wav"),
-	"talking" : load(voice_path+"crowd_talking.mp3"),
-	"talking_reversed" : load(voice_path+"crowd_talking_reversed.wav"),
 #	"" : load(voice_path+".wav"),
 }
 
