@@ -1,6 +1,7 @@
 extends Area2D
 
 var stats = Stats
+var sounds = Sounds
 
 @export var level_name:String = "level_1"
 
@@ -30,3 +31,15 @@ func set_sprite():
 	else:
 		akamaru_sprite.show()
 		flag_sprite.hide()
+
+func play_ending():
+	@warning_ignore("narrowing_conversion")
+	sounds.play_sfx("bark_twice", randf_range(0.7,1.2), -25)
+	if stats["save_data"]["level_data"][level_name][mode_string] > 0:
+		pass
+	else:
+		$akamaru_sprite/AnimationPlayer.play("pet")
+
+func _on_body_entered(body):
+	call_deferred("set_monitoring",false)
+	play_ending()

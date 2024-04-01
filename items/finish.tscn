@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://boxa5agjwf37c"]
+[gd_scene load_steps=12 format=3 uid="uid://boxa5agjwf37c"]
 
 [ext_resource type="Texture2D" uid="uid://bgunnguwmph08" path="res://assets/art/characters/akamaru.png" id="1_4vldq"]
 [ext_resource type="Script" path="res://items/finish.gd" id="1_q470o"]
@@ -38,10 +38,27 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3]
 }
 
+[sub_resource type="Animation" id="Animation_h04wm"]
+resource_name = "pet"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.8, 1.3, 1.9, 2.6, 3.4, 4.3, 5.3, 6.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qu47i"]
 _data = {
 "RESET": SubResource("Animation_70bae"),
-"animate": SubResource("Animation_lokap")
+"animate": SubResource("Animation_lokap"),
+"pet": SubResource("Animation_h04wm")
 }
 
 [sub_resource type="Animation" id="Animation_qvw8w"]
@@ -116,3 +133,5 @@ libraries = {
 "": SubResource("AnimationLibrary_3480c")
 }
 autoplay = "animate"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

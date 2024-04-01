@@ -15,7 +15,6 @@ bus = &"Music"
 bus = &"Music"
 
 [node name="music3" type="AudioStreamPlayer" parent="music"]
-autoplay = true
 bus = &"Music"
 
 [node name="music4" type="AudioStreamPlayer" parent="music"]

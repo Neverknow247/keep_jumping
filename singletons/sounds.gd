@@ -48,6 +48,7 @@ var sfx = {
 	"chain_step_2" : load(sfx_path+"chain_step_2.wav"),
 	"chain_damage_1" : load(sfx_path+"chain_damage_1.wav"),
 	"chain_damage_2" : load(sfx_path+"chain_damage_2.wav"),
+	"intro_sound" : load(sfx_path+"intro_sound.wav"),
 #	"" : load(sfx_path+".wav"),
 	}
 
@@ -65,7 +66,10 @@ var music = {
 	"slow_beat" : load(music_path+"sir_slow_beat.wav"),
 	"slow_lead" : load(music_path+"sir_slow_lead.wav"),
 	"fast_beat" : load(music_path+"sir_fast_beat.wav"),
+	#"fast_lead" : load(music_path+"sirfallen_lead_fixed.wav"),
 	"fast_lead" : load(music_path+"sir_temp_lead.wav"),
+	"space" : load(music_path+"fallenspace.wav"),
+	"credits" : load(music_path+"credits.wav"),
 #	"" : load(music_path+".wav"),
 }
 
@@ -116,7 +120,7 @@ func stop_music():
 	for music_player in music_players:
 		music_player.stop()
 
-func fade_in_music(music_string, pitch_scale = 1, volume_db = 0):
+func fade_in_music(music_string, pitch_scale = 1, volume_db = 0,fade_time = 10):
 	var available_player = null
 	for music_player in music_players:
 		if music_player.stream == music[music_string]:
@@ -128,7 +132,7 @@ func fade_in_music(music_string, pitch_scale = 1, volume_db = 0):
 		play_music(music_string,available_player,pitch_scale,-80)
 		if !available_player.volume_db == volume_db:
 			var tween = get_tree().create_tween()
-			tween.tween_property(available_player,"volume_db",volume_db,10)
+			tween.tween_property(available_player,"volume_db",volume_db,fade_time)
 			print("not loud enough yet")
 		else:
 			print("already loud enough")

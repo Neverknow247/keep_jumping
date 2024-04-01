@@ -51,6 +51,10 @@ var current_velocity = 0.0
 @onready var jump_timer = $jump_timer
 @onready var collision = $collision
 @onready var jump_collision = $jump_collision
+@onready var start_collision = $start_collision
+@onready var hit_box = $hit_box
+@onready var hurt_box = $hurt_box
+@onready var interaction_detection = $interaction_detection
 @onready var animation_player = $AnimationPlayer
 
 var state = "move_state"
@@ -89,6 +93,16 @@ func _physics_process(delta):
 	callable.call(delta)
 
 func create_walk_sound():
+	@warning_ignore("narrowing_conversion")
+	sounds.play_sfx("step", randf_range(0.7,1.2), -25)
+	@warning_ignore("narrowing_conversion")
+	sounds.play_sfx("chain_step_1", randf_range(0.8,0.9), -20)
+	@warning_ignore("narrowing_conversion")
+	sounds.play_sfx("chain_step_2", randf_range(0.8,0.9), -20)
+	stats["save_data"]["stats"]["Steps Taken"] += 1
+	add_particle()
+
+func create_get_up_sound():
 	@warning_ignore("narrowing_conversion")
 	sounds.play_sfx("step", randf_range(0.7,1.2), -25)
 	@warning_ignore("narrowing_conversion")
@@ -392,9 +406,29 @@ func _on_jump_timer_timeout():
 func paused():
 	state = "pause_state"
 
+func credits_roll():
+	collision.call_deferred("set_disabled",true)
+	jump_collision.call_deferred("set_disabled",true)
+	start_collision.call_deferred("set_disabled",true)
+	hit_box.call_deferred("set_monitorable",false)
+	hit_box.call_deferred("set_monitoring",false)
+	hurt_box.call_deferred("set_monitorable",false)
+	hurt_box.call_deferred("set_monitoring",false)
+	interaction_detection.call_deferred("set_monitorable",false)
+	interaction_detection.call_deferred("set_monitoring",false)
+
 @warning_ignore("unused_parameter")
 func pause_state(delta):
 	pass
+
+var opening_state = false
+func open_state(delta):
+	if opening_state:
+		opening_state = false
+		animation_player.play("get_up")
+
+func change_to_move_state():
+	state = "move_state"
 
 var interactable = null
 var interacting = false
