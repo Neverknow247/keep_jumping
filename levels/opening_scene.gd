@@ -29,6 +29,7 @@ func _input(event):
 		await get_tree().create_timer(.4).timeout
 		finish_scene()
 
+@warning_ignore("unused_parameter")
 func _physics_process(delta):
 	if started:
 		if frame<=akamaru_frames.size()-1:

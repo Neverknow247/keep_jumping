@@ -30,14 +30,9 @@ func _ready():
 func _on_level_finish_menu_next_level():
 	get_tree().change_scene_to_file(next_level)
 
-func pop_up(type,text):
-	if type == "egg":
-		pop_up_label.text = "* New %s Unlocked *" %[text]
-	elif type == "bone":
-		pop_up_label.text = "* %s Discovered *" %[text]
-	elif type == "message":
-		pop_up_label.text = "! %s !" %[text]
-	await get_tree().create_timer(3).timeout
+func pop_up(text):
+	pop_up_label.text = text
+	await get_tree().create_timer(5).timeout
 	pop_up_label.text = ""
 
 func _on_pause_menu_fade_out():

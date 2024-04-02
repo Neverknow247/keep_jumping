@@ -100,6 +100,15 @@ func create_walk_sound():
 	@warning_ignore("narrowing_conversion")
 	sounds.play_sfx("chain_step_2", randf_range(0.8,0.9), -20)
 	stats["save_data"]["stats"]["Steps Taken"] += 1
+	if stats["save_data"]["stats"]["Steps Taken"] >= 2200 and !stats["save_data"]["achievements"]["step_1"]:
+		GlobalSteam.setAchievement("ACH_MILE")
+		stats["save_data"]["achievements"]["step_1"] = true
+	if stats["save_data"]["stats"]["Steps Taken"] >= 25214 and !stats["save_data"]["achievements"]["step_2"]:
+		GlobalSteam.setAchievement("ACH_HALF_MARATHON")
+		stats["save_data"]["achievements"]["step_2"] = true
+	if stats["save_data"]["stats"]["Steps Taken"] >= 52427 and !stats["save_data"]["achievements"]["step_3"]:
+		GlobalSteam.setAchievement("ACH_MARATHON")
+		stats["save_data"]["achievements"]["step_3"] = true
 	add_particle()
 
 func create_get_up_sound():
@@ -212,6 +221,15 @@ func jump(force):
 	@warning_ignore("narrowing_conversion")
 	sounds.play_sfx("chain_damage_2", randf_range(0.9,1), -25)
 	stats["save_data"]["stats"]["Jumped"] += 1
+	if stats["save_data"]["stats"]["Jumped"] >= 1000 and !stats["save_data"]["achievements"]["jump_1"]:
+		GlobalSteam.setAchievement("ACH_JUMP")
+		stats["save_data"]["achievements"]["jump_1"] = true
+	if stats["save_data"]["stats"]["Jumped"] >= 25000 and !stats["save_data"]["achievements"]["jump_2"]:
+		GlobalSteam.setAchievement("ACH_JUMP_2")
+		stats["save_data"]["achievements"]["jump_2"] = true
+	if stats["save_data"]["stats"]["Jumped"] >= 100000 and !stats["save_data"]["achievements"]["jump_3"]:
+		GlobalSteam.setAchievement("ACH_JUMP_3")
+		stats["save_data"]["achievements"]["jump_3"] = true
 
 func fall_bonus_check():
 	if is_on_floor():
@@ -338,6 +356,15 @@ func change_to_slope():
 		velocity = Vector2.ZERO
 		double_jump = false
 		stats["save_data"]["stats"]["Slope Slides"] += 1
+		if stats["save_data"]["stats"]["Slope Slides"] >= 100 and !stats["save_data"]["achievements"]["slope_1"]:
+			GlobalSteam.setAchievement("ACH_SLOPE")
+			stats["save_data"]["achievements"]["slope_1"] = true
+		if stats["save_data"]["stats"]["Slope Slides"] >= 500 and !stats["save_data"]["achievements"]["slope_2"]:
+			GlobalSteam.setAchievement("ACH_SLOPE_2")
+			stats["save_data"]["achievements"]["slope_2"] = true
+		if stats["save_data"]["stats"]["Slope Slides"] >= 5000 and !stats["save_data"]["achievements"]["slope_3"]:
+			GlobalSteam.setAchievement("ACH_SLOPE_3")
+			stats["save_data"]["achievements"]["slope_3"] = true
 		SaveAndLoad.update_save_data()
 	
 
@@ -376,6 +403,15 @@ func check_death():
 	apply_space(false)
 	spike_count += 1
 	stats["save_data"]["stats"]["Spiked"] += 1
+	if stats["save_data"]["stats"]["Spiked"] >= 100 and !stats["save_data"]["achievements"]["spike_1"]:
+		GlobalSteam.setAchievement("ACH_SPIKE")
+		stats["save_data"]["achievements"]["spike_1"] = true
+	if stats["save_data"]["stats"]["Spiked"] >= 500 and !stats["save_data"]["achievements"]["spike_2"]:
+		GlobalSteam.setAchievement("ACH_SPIKE_2")
+		stats["save_data"]["achievements"]["spike_2"] = true
+	if stats["save_data"]["stats"]["Spiked"] >= 5000 and !stats["save_data"]["achievements"]["spike_3"]:
+		GlobalSteam.setAchievement("ACH_SPIKE_3")
+		stats["save_data"]["achievements"]["spike_3"] = true
 	SaveAndLoad.update_save_data()
 	if stats["save_data"]["hard_mode"]:
 		stats.reset_run()
@@ -473,3 +509,7 @@ func open_dog_house():
 signal leaderboard
 func open_leaderboard():
 	leaderboard.emit()
+
+signal picnic
+func open_picnic():
+	picnic.emit()

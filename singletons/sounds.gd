@@ -128,6 +128,7 @@ func fade_in_music(music_string, pitch_scale = 1, volume_db = 0,fade_time = 10):
 	else:
 		print("Too many songs playing")
 
+@warning_ignore("unused_parameter")
 func fade_out_music(music_string, pitch_scale = 1, volume_db = -80):
 	var available_player = null
 	for music_player in music_players:
