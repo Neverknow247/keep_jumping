@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://kib21yto7yik"]
+[gd_scene load_steps=20 format=3 uid="uid://kib21yto7yik"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_es81c"]
 [ext_resource type="Texture2D" uid="uid://r7wqniih52i7" path="res://assets/art/characters/player.png" id="2_cnqbd"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://characters/hit_box.gd" id="3_lkrl1"]
 [ext_resource type="Script" path="res://characters/hurt_box.gd" id="4_f2q0e"]
 [ext_resource type="Texture2D" uid="uid://grhjyrqdkxvk" path="res://assets/art/characters/interact_icon.png" id="4_snnva"]
+[ext_resource type="Texture2D" uid="uid://fru5a7c7rjed" path="res://assets/art/characters/blind_mode.png" id="5_wet6a"]
 
 [sub_resource type="Animation" id="Animation_sud7h"]
 length = 0.001
@@ -279,7 +280,7 @@ collision_layer = 2
 collision_mask = 33
 floor_stop_on_slope = false
 floor_snap_length = 2.0
-safe_margin = 0.1
+safe_margin = 0.2
 script = ExtResource("1_es81c")
 
 [node name="sprite" type="Sprite2D" parent="."]
@@ -304,6 +305,12 @@ libraries = {
 "": SubResource("AnimationLibrary_aev7v")
 }
 autoplay = "animate"
+
+[node name="blind_obscure" type="Sprite2D" parent="."]
+visible = false
+z_index = 1000
+position = Vector2(0, -8)
+texture = ExtResource("5_wet6a")
 
 [node name="collision" type="CollisionPolygon2D" parent="."]
 visible = false

@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://bwnv8b362a2w7" path="res://menus/menu_theme.tres" id="1_kh1bs"]
 
 [node name="ScoreItem" type="Panel"]
-custom_minimum_size = Vector2(1050, 50)
+custom_minimum_size = Vector2(1150, 50)
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("1_kh1bs")
@@ -17,17 +17,17 @@ offset_bottom = 50.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 42
-text = "1. Akamaru"
+text = "1. Akamaru8911234567892123456789312"
 vertical_alignment = 1
 
 [node name="Score" type="Label" parent="."]
 layout_mode = 0
-offset_left = 710.0
-offset_right = 1035.0
+offset_left = 812.0
+offset_right = 1142.0
 offset_bottom = 50.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 42
-text = "00:00:00:000"
+text = "00:00:00:00:000"
 horizontal_alignment = 2
 vertical_alignment = 1

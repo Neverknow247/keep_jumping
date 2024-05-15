@@ -10,7 +10,7 @@ var first_time = false
 
 func _ready():
 	get_tree().paused = false
-	sounds.play_music("dog_days")
+	#sounds.play_music("dog_days")
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel"):

@@ -15,3 +15,9 @@ offset_right = 40.0
 offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_jmrhv")
 script = ExtResource("1_wil0e")
+
+[node name="player_sensor" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[connection signal="body_entered" from="player_sensor" to="." method="_on_player_sensor_body_entered"]

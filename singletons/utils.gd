@@ -37,7 +37,7 @@ var color_blind_mode = false:
 		color_blind_mode = value
 		change_color_blind_textures.emit()
 
-var window_mode = 3:
+var window_mode = 4:
 	get:
 		return window_mode
 	set(value):

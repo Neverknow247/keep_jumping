@@ -25,6 +25,8 @@ func _physics_process(delta):
 	var secs = fmod(time,60)
 	var mins = fmod(time, 60*60)/60
 	var hours = fmod(fmod(time, 3600*60)/3600,24)
+	var days = fmod(time,12960000)/86400
 	
-	time_passed = "%02d:%02d:%02d:%03d" % [hours,mins,secs,mils]
+	time_passed = "%02d:%02d:%02d:%02d:%03d" % [days,hours,mins,secs,mils]
 #	label.text = time_passed
+

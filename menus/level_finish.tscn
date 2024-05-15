@@ -39,10 +39,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -253.0
-offset_top = 48.0
-offset_right = 253.0
-offset_bottom = 268.0
+offset_left = -425.0
+offset_top = 43.0
+offset_right = 425.0
+offset_bottom = 325.0
 grow_horizontal = 2
 theme_override_constants/separation = 12
 
@@ -80,7 +80,7 @@ layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 72
-text = "00:00:000"
+text = "000:00:00:000"
 horizontal_alignment = 1
 
 [node name="new_best_time" type="Label" parent="VBoxContainer/time_box"]
@@ -230,7 +230,7 @@ text = "Leaderboards"
 horizontal_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="main/main_content/leaderboard"]
-custom_minimum_size = Vector2(1050, 600)
+custom_minimum_size = Vector2(1170, 600)
 layout_mode = 2
 
 [node name="score_container" type="VBoxContainer" parent="main/main_content/leaderboard/ScrollContainer"]

@@ -47,7 +47,8 @@ func _on_recieved_results(result):
 		var unmodified_score = float(i.score)/1000
 		#print(unmodified_score)
 		list_index+=1
-		add_score_item(Steam.getFriendPersonaName(i.steam_id),("%02d:%02d:%02d:%03d" % [fmod(fmod(unmodified_score, 3600*60)/3600,24),fmod(unmodified_score, 60*60)/60, fmod(unmodified_score,60), fmod(unmodified_score, 1)*1000]))
+		#add_score_item(Steam.getFriendPersonaName(i.steam_id),("%02d:%02d:%02d:%03d" % [fmod(fmod(unmodified_score, 3600*60)/3600,24),fmod(unmodified_score, 60*60)/60, fmod(unmodified_score,60), fmod(unmodified_score, 1)*1000]))
+		add_score_item(Steam.getFriendPersonaName(i.steam_id),("%02d:%02d:%02d:%02d:%03d" % [fmod(unmodified_score,12960000)/86400,fmod(fmod(unmodified_score, 3600*60)/3600,24),fmod(unmodified_score, 60*60)/60, fmod(unmodified_score,60), fmod(unmodified_score, 1)*1000]))
 
 func add_score_item(player_name:String, score_value:String):
 	var item = ScoreItem.instantiate()

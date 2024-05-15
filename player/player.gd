@@ -19,6 +19,7 @@ func add_particle():
 var current_velocity = 0.0
 @export var acceleration = 512
 @export var default_max_velocity = 65
+@export var sand_max_velocity = 30
 @export var max_velocity :float = 65.0
 @export var ledge_bonus = 3.5
 @export var b_hop_bonus_multiplier = 20
@@ -34,6 +35,7 @@ var current_velocity = 0.0
 @export var default_gravity = 300
 @export var space_gravity = 150
 @export var gravity = 300
+@export var sand_gravity = 75
 @export var default_wall_slide_speed = 150
 @export var space_wall_slide_speed = 75
 @export var wall_slide_speed = 150
@@ -58,6 +60,7 @@ var current_velocity = 0.0
 @onready var animation_player = $AnimationPlayer
 
 var state = "move_state"
+var in_sand = false
 var just_jumped = false
 var double_jump_color = Color.WHITE
 var double_jump = true:
@@ -121,7 +124,15 @@ func create_get_up_sound():
 	stats["save_data"]["stats"]["Steps Taken"] += 1
 	add_particle()
 
+func set_physics():
+	match state:
+		"move_state":
+			gravity = default_gravity
+		"sand_state":
+			gravity = sand_gravity
+
 func move_state(delta):
+	set_physics()
 	apply_gravity(delta)
 	var input_axis = get_input_axis()
 	if is_moving(input_axis):
@@ -158,6 +169,26 @@ func move_state(delta):
 		coyote_wall_timer.start()
 	reset_velocity_check()
 
+func sand_state_enter(delta):
+	if velocity.y <0:
+		velocity.y = max(velocity.y,sign(velocity.y)*10)
+	else:
+		velocity.y = min(velocity.y,sign(velocity.y)*10)
+	state = "sand_state"
+
+func sand_state(delta):
+	#double_jump = true
+	set_physics()
+	apply_gravity(delta)
+	#var input_axis = get_input_axis()
+	#if is_moving(input_axis):
+		#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+		#apply_acceleration(delta,input_axis)
+	#else:
+	apply_friction(delta)
+	jump_check()
+	move_and_slide()
+
 func apply_gravity(delta):
 	velocity.y = move_toward(velocity.y, max_fall_velocity, gravity * delta)
 
@@ -186,7 +217,7 @@ func apply_acceleration(delta, input_axis):
 	velocity.x = move_toward(velocity.x, input_axis * max_velocity, acceleration * delta)
 
 func apply_friction(delta):
-	if is_on_floor():
+	if is_on_floor() || state == "sand_state":
 		velocity.x = move_toward(velocity.x, 0, friction * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0, air_friction * delta)
@@ -197,7 +228,7 @@ func jump_check():
 	if coyote_wall_timer.time_left > 0.0:
 		if Input.is_action_just_pressed("jump") || Input.is_action_just_pressed("controller_jump"):
 			jump(jump_force)
-	elif is_on_floor() or coyote_jump_timer.time_left > 0.0:
+	elif is_on_floor() or coyote_jump_timer.time_left > 0.0 or in_sand:
 		if Input.is_action_just_pressed("jump") || Input.is_action_just_pressed("controller_jump"):
 			max_velocity = max(default_max_velocity,current_velocity)
 			if coyote_jump_timer.time_left > 0.0:
@@ -402,6 +433,7 @@ func set_invincible(_bool):
 func check_death():
 	apply_space(false)
 	spike_count += 1
+	stats["save_data"]["current_run_data"]["spike_count"] += 1
 	stats["save_data"]["stats"]["Spiked"] += 1
 	if stats["save_data"]["stats"]["Spiked"] >= 100 and !stats["save_data"]["achievements"]["spike_1"]:
 		GlobalSteam.setAchievement("ACH_SPIKE")
