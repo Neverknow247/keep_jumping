@@ -26,7 +26,7 @@ var frame = 0
 func _input(event):
 	if event.is_action_pressed("pause") and stats["save_data"]["opening_complete"]:
 		fade.modulate = Color.WHITE
-		await get_tree().create_timer(.4).timeout
+		#await get_tree().create_timer(.4).timeout
 		finish_scene()
 
 @warning_ignore("unused_parameter")
