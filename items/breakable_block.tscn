@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dv8rus1vsthi2"]
 
 [ext_resource type="Script" path="res://items/breakable_block.gd" id="1_ifko2"]
-[ext_resource type="Texture2D" uid="uid://b5fp5c1fwkkns" path="res://assets/art/eggs/finish.png" id="1_kkhh7"]
+[ext_resource type="Texture2D" uid="uid://bn32npnmknrcr" path="res://assets/art/items/breakable_block.png" id="2_6xjym"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kmfxs"]
 size = Vector2(16, 16)
@@ -88,7 +88,9 @@ collision_mask = 0
 script = ExtResource("1_ifko2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_kkhh7")
+texture = ExtResource("2_6xjym")
+hframes = 2
+vframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_kmfxs")

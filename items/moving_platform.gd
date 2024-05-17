@@ -9,6 +9,7 @@ extends AnimatableBody2D
 var textures = [
 	preload("res://assets/art/items/moving_platform.png"),
 	preload("res://assets/art/items/space_moving_platform.png"),
+	preload("res://assets/art/items/black_moving_platform.png"),
 ]
 
 @onready var sprite = $sprite
