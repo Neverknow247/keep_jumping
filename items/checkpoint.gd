@@ -5,6 +5,7 @@ signal activate_checkpoint(respawn_position,checkpoint)
 @onready var animation_player = $AnimationPlayer
 
 @export var active = false
+@export var slopeless = false
 
 func _ready():
 	if active:

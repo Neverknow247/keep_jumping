@@ -1,0 +1,201 @@
+[gd_scene load_steps=2 format=3 uid="uid://7tequ6t37p3f"]
+
+[ext_resource type="Theme" uid="uid://bwnv8b362a2w7" path="res://menus/menu_theme.tres" id="1_bnx0p"]
+
+[node name="monument" type="ColorRect"]
+custom_minimum_size = Vector2(1200, 827)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -720.0
+offset_bottom = -253.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_bnx0p")
+color = Color(0, 0, 0, 0.847059)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="monument_label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Knights of Titan Tower"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 48
+
+[node name="score_container" type="VBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(425, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/score_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.960784, 0.164706, 1)
+theme_override_font_sizes/font_size = 36
+text = "Sir Wes
+"
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/score_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.607843, 0.678431, 0.717647, 1)
+theme_override_font_sizes/font_size = 36
+text = "Sir Frogorian"
+
+[node name="Label3" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/score_container"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.87451, 0.443137, 0.14902, 1)
+theme_override_font_sizes/font_size = 36
+text = "Sir Bartschey"
+
+[node name="Label4" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/score_container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Sir Bishflop"
+
+[node name="Label5" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/score_container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Sir TeeY."
+
+[node name="Label6" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/score_container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Sir JessBunny"
+
+[node name="Label7" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/score_container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Sir PokeTSL"
+
+[node name="Label8" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/score_container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Sir LEGO Yoda"
+
+[node name="Label9" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/score_container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Sir AndyWhsvr"
+
+[node name="Label10" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/score_container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Sir exskelitorr"
+
+[node name="Label11" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/score_container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Sir YasuGhostsu"
+
+[node name="Label12" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/score_container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Sir Howdy buck"
+
+[node name="Label13" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/score_container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Sir Prestoboy10"
+
+[node name="Label14" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/score_container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Sir Killer Bean"
+
+[node name="Label15" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/score_container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Sir datboi34352"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(425, 0)
+layout_mode = 2
+
+[node name="Label16" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Sir yanuxu"
+
+[node name="Label17" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Sir Baller Alert"
+
+[node name="Label18" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Sir CupcakeLoverBoy"
+
+[node name="Label19" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Sir Firehazard159"
+
+[node name="Label20" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Sir pound422"
+
+[node name="Label21" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Sir Rambo"
+
+[node name="Label22" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Sir Mistalunchbox"
+
+[node name="Label23" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Sir Fluxxy"
+
+[node name="Label24" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Sir KristophersonPlays"
+
+[node name="Label25" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Sir EpicGamer12"
+
+[node name="Label26" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Sir Acadera"
+
+[node name="Label27" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Sir Spulk"
+
+[node name="Label28" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Sir drug"
+
+[node name="Label29" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Sir Dmonkeyd"
+
+[node name="Label30" type="Label" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Sir Chikkenn"

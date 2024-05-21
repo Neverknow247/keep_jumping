@@ -7,6 +7,7 @@ var rng = RandomNumberGenerator.new()
 
 signal respawn
 signal change_scene(new_scene)
+signal unlock_campfire
 
 const step_particles = preload("res://particles/step_particles.tscn")
 
@@ -32,6 +33,7 @@ var current_velocity = 0.0
 @export var fall_bonus = .05
 @export var default_max_fall_velocity:float = 128.0
 @export var max_fall_velocity = 150
+@export var max_sand_fall_velocity = 75
 @export var default_gravity = 300
 @export var space_gravity = 150
 @export var gravity = 300
@@ -124,15 +126,7 @@ func create_get_up_sound():
 	stats["save_data"]["stats"]["Steps Taken"] += 1
 	add_particle()
 
-func set_physics():
-	match state:
-		"move_state":
-			gravity = default_gravity
-		"sand_state":
-			gravity = sand_gravity
-
 func move_state(delta):
-	set_physics()
 	apply_gravity(delta)
 	var input_axis = get_input_axis()
 	if is_moving(input_axis):
@@ -177,9 +171,7 @@ func sand_state_enter(delta):
 	state = "sand_state"
 
 func sand_state(delta):
-	#double_jump = true
-	set_physics()
-	apply_gravity(delta)
+	apply_sand_gravity(delta)
 	#var input_axis = get_input_axis()
 	#if is_moving(input_axis):
 		#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -191,6 +183,9 @@ func sand_state(delta):
 
 func apply_gravity(delta):
 	velocity.y = move_toward(velocity.y, max_fall_velocity, gravity * delta)
+
+func apply_sand_gravity(delta):
+	velocity.y = move_toward(velocity.y, max_sand_fall_velocity, sand_gravity * delta)
 
 func apply_space(enter):
 	if enter:
@@ -383,10 +378,26 @@ func slope_check():
 		return true
 
 func change_to_slope():
+	if stats["save_data"]["slopeless"]:
+		var rand = rng.randi_range(1,18)
+		@warning_ignore("narrowing_conversion")
+		sounds.play_sfx("hurt_%s"%[str(rand)],randf_range(0.9,1),0)
+		@warning_ignore("narrowing_conversion")
+		sounds.play_sfx("chain_damage_1",randf_range(0.8,1),0)
+		@warning_ignore("narrowing_conversion")
+		sounds.play_sfx("chain_damage_2",randf_range(0.9,1.1),0)
+		if stats["save_data"]["hard_mode"]:
+			stats.reset_run()
+			change_scene.emit()
+		else:
+			respawn.emit()
+	else:
 		state = "slope_state"
 		velocity = Vector2.ZERO
 		double_jump = false
 		stats["save_data"]["stats"]["Slope Slides"] += 1
+		if stats["save_data"]["stats"]["Slope Slides"] >= 50 and !stats["save_data"]["slopeless_unlocked"]:
+			unlock_campfire.emit()
 		if stats["save_data"]["stats"]["Slope Slides"] >= 100 and !stats["save_data"]["achievements"]["slope_1"]:
 			GlobalSteam.setAchievement("ACH_SLOPE")
 			stats["save_data"]["achievements"]["slope_1"] = true
@@ -545,3 +556,11 @@ func open_leaderboard():
 signal picnic
 func open_picnic():
 	picnic.emit()
+
+func open_teleporter():
+	sounds.play_sfx("tellyin")
+	change_scene.emit(interactable.location)
+
+signal knights_monument
+func open_knights_monument():
+	knights_monument.emit()

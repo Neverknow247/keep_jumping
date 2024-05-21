@@ -1,11 +1,57 @@
-[gd_scene load_steps=12 format=3 uid="uid://d2p71a2bebw30"]
+[gd_scene load_steps=12 format=3 uid="uid://dw8x1w55ywsd8"]
 
-[ext_resource type="Script" path="res://menus/main_menu.gd" id="1_q3vf8"]
 [ext_resource type="Theme" uid="uid://bwnv8b362a2w7" path="res://menus/menu_theme.tres" id="1_r16yf"]
 [ext_resource type="FontFile" uid="uid://cl61ge0niuwqj" path="res://assets/fonts/GOODDP__.TTF" id="3_k66gp"]
 [ext_resource type="PackedScene" uid="uid://1bygd30c6mvr" path="res://menus/menu_background.tscn" id="3_wp14p"]
 [ext_resource type="PackedScene" uid="uid://bn0833ujao2xi" path="res://menus/settings_menu.tscn" id="5_v12i2"]
 [ext_resource type="PackedScene" uid="uid://cgn5lp08830p8" path="res://ui/transition.tscn" id="5_vx758"]
+
+[sub_resource type="GDScript" id="GDScript_g5pl5"]
+script/source = "extends Control
+
+var stats = Stats
+var sounds = Sounds
+
+@onready var settings_menu = $settings_menu
+@onready var start_button = $CenterContainer/HBoxContainer/VBoxContainer/start_button
+@onready var transition = $transition
+
+
+func _ready():
+	#sounds.play_music(\"dog_house\")
+	start_button.grab_focus()
+
+func _on_start_button_pressed():
+	@warning_ignore(\"narrowing_conversion\")
+	Sounds.play_sfx(\"click\",randf_range(.8,1.2),-10)
+	transition.fade_out()
+	await get_tree().create_timer(stats.transition_time).timeout
+	get_tree().change_scene_to_file(\"res://levels/level_1.tscn\")
+
+func _on_settings_button_pressed():
+	@warning_ignore(\"narrowing_conversion\")
+	Sounds.play_sfx(\"click\",randf_range(.8,1.2),-10)
+	transition.fade_out()
+	await get_tree().create_timer(stats.transition_time).timeout
+	settings_menu.show()
+	settings_menu.active = true
+	$settings_menu/CenterContainer/VBoxContainer/sounds_button.grab_focus()
+	transition.fade_in()
+
+func _on_quit_button_pressed():
+	@warning_ignore(\"narrowing_conversion\")
+	Sounds.play_sfx(\"click\",randf_range(.8,1.2),-10)
+	transition.fade_out()
+	await get_tree().create_timer(stats.transition_time).timeout
+	get_tree().quit()
+
+func _on_hide_menu(scene):
+	transition.fade_out()
+	await get_tree().create_timer(stats.transition_time).timeout
+	scene.hide()
+	start_button.grab_focus()
+	transition.fade_in()
+"
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vw7ox"]
 
@@ -25,7 +71,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_r16yf")
-script = ExtResource("1_q3vf8")
+script = SubResource("GDScript_g5pl5")
 
 [node name="menu_background" parent="." instance=ExtResource("3_wp14p")]
 

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cr7ww0bdrrryx"]
+
+[ext_resource type="Script" path="res://items/knights_monument.gd" id="1_depx8"]
+[ext_resource type="Texture2D" uid="uid://ciqwdpaikw8g7" path="res://assets/art/items/knights_monument.png" id="2_5525i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bfbv2"]
+size = Vector2(20, 32)
+
+[node name="knights_monument" type="Area2D"]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("1_depx8")
+type = "knights_monument"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_bfbv2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("2_5525i")
+hframes = 2
+frame = 1

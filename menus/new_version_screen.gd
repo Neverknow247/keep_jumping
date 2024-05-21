@@ -7,7 +7,6 @@ var text = ""
 @onready var exit_button = $CenterContainer/VBoxContainer/exit_button
 
 func _ready():
-	sounds.play_music("dog_house")
 	exit_button.grab_focus()
 
 func _on_exit_button_pressed():

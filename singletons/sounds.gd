@@ -49,6 +49,8 @@ var sfx = {
 	"chain_damage_1" : load(sfx_path+"chain_damage_1.wav"),
 	"chain_damage_2" : load(sfx_path+"chain_damage_2.wav"),
 	"intro_sound" : load(sfx_path+"intro_sound.wav"),
+	"tellyin" : load(sfx_path+"teleporterin.wav"),
+	"tellyout" : load(sfx_path+"teleporterout.wav"),
 #	"" : load(sfx_path+".wav"),
 	}
 
@@ -62,6 +64,7 @@ var music = {
 	"fast_lead" : load(music_path+"fast_lead.wav"),
 	"space" : load(music_path+"fallenspace.wav"),
 	"credits" : load(music_path+"credits.wav"),
+	"challenge" : load(music_path+"sirtunnel.wav")
 #	"" : load(music_path+".wav"),
 }
 
