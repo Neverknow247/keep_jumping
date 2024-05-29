@@ -8,9 +8,11 @@ var global_timer = GlobalTimer
 @export var level_id = "challenge_1"
 @export var spawn_point = Vector2(-176,0)
 @export var main_music = "challenge"
+@export var player_blind = false
 
 @onready var player = $player
 @onready var camera_2d = $Camera2D
+@onready var camera_limits = $camera_limits
 @onready var ui = $ui
 @onready var pause_menu = $ui/pause_menu
 
@@ -29,13 +31,14 @@ func _input(event):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _ready():
-	$player/blind_obscure.visible = true
+	$player/blind_obscure.visible = player_blind
 	sounds.load_starting_music([main_music],1,-80)
 	sounds.fade_in_music(main_music,1,-10)
 	set_up_mode()
 	set_up_steam()
 	set_up_timer()
 	set_up_run()
+	set_camera_limits()
 	get_tree().paused = false 
 	ui.enter_transition()
 	SaveAndLoad.update_save_data()
@@ -43,8 +46,7 @@ func _ready():
 func _process(delta):
 	fix_camera_smoothing()
 	if (Input.is_action_pressed("reset_level") and Input.is_action_pressed("reset_control")) || Input.is_action_pressed("controller_reset_level"):
-		if stats["save_data"]["challenge_data"]["challenge_1"]["_normal_reunions"] > 0:
-			change_scene()
+		change_scene()
 
 func set_up_mode():
 	level_id_board = level_id
@@ -67,6 +69,13 @@ func set_up_timer():
 func set_up_run():
 	camera_2d.position_smoothing_enabled = false
 	camera_2d.global_position = player.global_position
+
+func set_camera_limits():
+	camera_limits.hide()
+	camera_2d.limit_left = camera_limits.global_position.x
+	camera_2d.limit_right = camera_limits.global_position.x+camera_limits.size.x
+	camera_2d.limit_top = camera_limits.global_position.y
+	camera_2d.limit_bottom = camera_limits.global_position.y+camera_limits.size.y
 
 func _on_start_zone_start_timer():
 	run_start = true
@@ -144,3 +153,9 @@ func update_score():
 		Steam.uploadLeaderboardScore(modified_time)
 		SaveAndLoad.update_save_data()
 		return new_best
+
+func _on_toilet_unlock_toilet():
+	stats["save_data"]["items"]["toilet"] = true
+	sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
+	ui.pop_up("Toilet Unlocked")
+	SaveAndLoad.update_save_data()

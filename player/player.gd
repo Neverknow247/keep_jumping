@@ -396,8 +396,6 @@ func change_to_slope():
 		velocity = Vector2.ZERO
 		double_jump = false
 		stats["save_data"]["stats"]["Slope Slides"] += 1
-		if stats["save_data"]["stats"]["Slope Slides"] >= 50 and !stats["save_data"]["slopeless_unlocked"]:
-			unlock_campfire.emit()
 		if stats["save_data"]["stats"]["Slope Slides"] >= 100 and !stats["save_data"]["achievements"]["slope_1"]:
 			GlobalSteam.setAchievement("ACH_SLOPE")
 			stats["save_data"]["achievements"]["slope_1"] = true
@@ -559,6 +557,7 @@ func open_picnic():
 
 func open_teleporter():
 	sounds.play_sfx("tellyin")
+	stats.current_challenge_level = interactable.location
 	change_scene.emit(interactable.location)
 
 signal knights_monument

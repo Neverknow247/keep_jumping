@@ -32,7 +32,7 @@ func _on_hide_menu(scene):
 	transition.fade_in()
 
 func _on_restart_button_pressed():
-		get_tree().change_scene_to_file("res://levels/challenges/challenge_1.tscn")
+		get_tree().change_scene_to_file(stats.current_challenge_level)
 
 func _on_settings_button_pressed():
 	@warning_ignore("narrowing_conversion")
