@@ -51,6 +51,7 @@ var sfx = {
 	"intro_sound" : load(sfx_path+"intro_sound.wav"),
 	"tellyin" : load(sfx_path+"teleporterin.wav"),
 	"tellyout" : load(sfx_path+"teleporterout.wav"),
+	"glass" : load(sfx_path+"glass_1.wav"),
 #	"" : load(sfx_path+".wav"),
 	}
 

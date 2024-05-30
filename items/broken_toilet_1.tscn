@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://donni4dqssq2q"]
+
+[ext_resource type="Texture2D" uid="uid://bpgi0oyptt312" path="res://assets/art/items/broken_toilet_1.png" id="1_bhgt4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_euet8"]
+radius = 1.5
+height = 12.0
+
+[node name="broken_toilet_1" type="RigidBody2D"]
+rotation = -0.21293
+collision_layer = 0
+collision_mask = 67
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bhgt4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_euet8")

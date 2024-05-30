@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://kgdgs3ootcdq"]
+
+[ext_resource type="Texture2D" uid="uid://br4ulkhaxucdq" path="res://assets/art/items/broken_toilet_3.png" id="1_ktsp0"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_kjfhn"]
+points = PackedVector2Array(-4.5, -3.5, -4.5, -2.5, 0.5, 3.5, 1.5, 3.5, 4.5, -0.5, 4.5, -2.5, 2.5, -3.5)
+
+[node name="broken_toilet_3" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 67
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ktsp0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("ConvexPolygonShape2D_kjfhn")

@@ -468,7 +468,10 @@ func _on_hit_box_area_entered(area):
 		velocity = calculate_stomp_velocity(velocity, bounce)
 		max_velocity += stomp_bonus
 		@warning_ignore("narrowing_conversion")
-		sounds.play_sfx("player_jump",randf_range(0.8,1.4),-5)
+		if bounce < 200:
+			sounds.play_sfx("glass",randf_range(0.8,1.4),-5)
+		else:
+			sounds.play_sfx("player_jump",randf_range(0.8,1.4),-5)
 		area.hit(1)
 		stats["save_data"]["stats"]["Spring Bounced"] += 1
 

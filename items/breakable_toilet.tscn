@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://4w25n2hiqq06"]
+
+[ext_resource type="Script" path="res://items/breakable_toilet.gd" id="1_1iwxh"]
+[ext_resource type="Texture2D" uid="uid://bve8c700bttqo" path="res://assets/art/items/toilet.png" id="1_3442d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5hb7g"]
+size = Vector2(16, 2)
+
+[node name="breakable_toilet" type="Area2D"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_1iwxh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(6.82121e-13, -8)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_5hb7g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("1_3442d")

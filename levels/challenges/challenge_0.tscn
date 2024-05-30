@@ -84,6 +84,7 @@ position = Vector2(-176, 0)
 
 [node name="toilet_teleporter" parent="items" instance=ExtResource("7_81fuf")]
 position = Vector2(-320, -832)
+location = "res://levels/challenges/challenge_2.tscn"
 
 [node name="Sprite2D" type="Sprite2D" parent="items/toilet_teleporter"]
 position = Vector2(0, -8)
