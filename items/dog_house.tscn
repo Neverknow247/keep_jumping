@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://items/dog_house.gd" id="1_ylvn1"]
 [ext_resource type="Texture2D" uid="uid://mwya52hy8n85" path="res://assets/art/items/DogHouse.png" id="2_pdhai"]
-[ext_resource type="Texture2D" uid="uid://ctokoitcra44r" path="res://assets/art/characters/akamaru_gold.png" id="3_3be3p"]
+[ext_resource type="Texture2D" uid="uid://bgunnguwmph08" path="res://assets/art/characters/akamaru.png" id="3_x3xam"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t74hq"]
 radius = 4.0
@@ -108,7 +108,7 @@ visible = false
 z_index = 1
 position = Vector2(0, 8)
 scale = Vector2(-1, 1)
-texture = ExtResource("3_3be3p")
+texture = ExtResource("3_x3xam")
 hframes = 11
 vframes = 8
 

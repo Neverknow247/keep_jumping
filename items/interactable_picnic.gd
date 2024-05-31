@@ -9,6 +9,7 @@ func setup():
 	if unlocked:
 		$Sprite2D.show()
 		GlobalSteam.setAchievement("ACH_PICNIC_SETUP")
+		@warning_ignore("narrowing_conversion")
 		sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
 		stats["save_data"]["items"]["picnic"] = true
 		SaveAndLoad.update_save_data()

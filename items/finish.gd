@@ -2,6 +2,7 @@ extends Area2D
 
 var stats = Stats
 var sounds = Sounds
+var cosmetics = preload("res://cosmetic_resources/cosmetics.tres")
 
 @export var level_name:String = "level_1"
 
@@ -12,6 +13,7 @@ var mode_string = ""
 
 func _ready():
 	set_mode()
+	set_texture()
 	set_sprite()
 
 func set_mode():
@@ -23,6 +25,13 @@ func set_mode():
 	if stats["save_data"]["blind_mode"]:
 		mode_string+="_blind"
 	mode_string+="_reunions"
+
+func set_texture():
+	var armor_index
+	for i in cosmetics["armors"].size():
+		if stats["save_data"]["equiped_armor"] == cosmetics["armors"][i]["armor_id"]:
+			armor_index = i
+	akamaru_sprite.texture = cosmetics["armors"][armor_index]["dog_texture"]
 
 func set_sprite():
 	if stats["save_data"]["level_data"][level_name][mode_string] > 0:
@@ -40,6 +49,7 @@ func play_ending():
 	else:
 		$akamaru_sprite/AnimationPlayer.play("pet")
 
+@warning_ignore("unused_parameter")
 func _on_body_entered(body):
 	call_deferred("set_monitoring",false)
 	play_ending()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://n615rx02auyl"]
+[gd_scene load_steps=15 format=3 uid="uid://n615rx02auyl"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_2o8nt"]
 [ext_resource type="Texture2D" uid="uid://e88tapajqrdd" path="res://assets/art/ui/vignette.png" id="2_q64kn"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://7tequ6t37p3f" path="res://ui/monument.tscn" id="5_svs0o"]
 [ext_resource type="PackedScene" uid="uid://drx6mqaavj1g8" path="res://menus/stats_menu/stats.tscn" id="6_5uyu6"]
 [ext_resource type="PackedScene" uid="uid://dwrgxipppsvqh" path="res://menus/pause_menu.tscn" id="6_nmmub"]
+[ext_resource type="PackedScene" uid="uid://b4lm6wvgyymd7" path="res://ui/wardrobe.tscn" id="6_wrs4g"]
 [ext_resource type="PackedScene" uid="uid://budbi2xh55xtg" path="res://menus/level_finish_menu.tscn" id="7_af7if"]
 [ext_resource type="PackedScene" uid="uid://cpie7bd51ae28" path="res://menus/leaderboards/leaderboard.tscn" id="7_w8yc4"]
 [ext_resource type="Theme" uid="uid://bwnv8b362a2w7" path="res://menus/menu_theme.tres" id="11_qn1a0"]
@@ -158,6 +159,8 @@ offset_top = 80.0
 offset_right = -360.0
 offset_bottom = -173.0
 
+[node name="wardrobe" parent="." instance=ExtResource("6_wrs4g")]
+
 [node name="leaderboard" parent="." instance=ExtResource("7_w8yc4")]
 visible = false
 offset_left = 360.0
@@ -194,5 +197,6 @@ libraries = {
 }
 
 [connection signal="fade_out" from="pause_menu" to="." method="_on_pause_menu_fade_out"]
+[connection signal="un_pause" from="pause_menu" to="." method="_on_pause_menu_un_pause"]
 [connection signal="fade_out" from="level_finish_menu" to="." method="_on_level_finish_menu_fade_out"]
 [connection signal="next_level" from="level_finish_menu" to="." method="_on_level_finish_menu_next_level"]

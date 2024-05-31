@@ -215,6 +215,7 @@ offset_bottom = 396.0
 theme_override_constants/separation = 12
 
 [node name="resume_button" type="Button" parent="buttons"]
+visible = false
 custom_minimum_size = Vector2(288, 60)
 layout_mode = 2
 focus_neighbor_left = NodePath(".")

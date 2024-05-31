@@ -4,6 +4,7 @@ var sounds = Sounds
 var stats = Stats
 var global_timer = GlobalTimer
 var rng = RandomNumberGenerator.new()
+var cosmetics = preload("res://cosmetic_resources/cosmetics.tres")
 
 signal respawn
 signal change_scene(new_scene)
@@ -82,15 +83,25 @@ var invincible = false
 var tile_map = null
 
 func _ready():
+	set_texture()
 	Utils.change_color_blind_textures.connect(set_color_blind_colors)
 	set_color_blind_colors()
 	rng.randomize()
+
+func set_texture():
+	var armor_index
+	for i in cosmetics["armors"].size():
+		if stats["save_data"]["equiped_armor"] == cosmetics["armors"][i]["armor_id"]:
+			armor_index = i
+	sprite.texture = cosmetics["armors"][armor_index]["armor_texture"]
 
 func set_color_blind_colors():
 	if Utils.color_blind_mode:
 		double_jump_color = Color("#5aae00")
 	else:
-		double_jump_color = Color("#ff4568")
+		double_jump_color = Color("#3696ff")
+		#double_jump_color = Color("#d743ff")
+		#double_jump_color = Color("#ff4568")
 
 func _physics_process(delta):
 	current_velocity = abs(velocity.x)
@@ -134,22 +145,26 @@ func move_state(delta):
 		apply_acceleration(delta,input_axis)
 	else:
 		apply_friction(delta)
-	jump_check()
+	if !interacting:
+		jump_check()
 	var was_on_floor = is_on_floor()
 	var was_on_wall = is_on_wall()
 	fall_bonus_check()
-	update_animations(input_axis)
+	if !interacting:
+		update_animations(input_axis)
 	var wall
 	if Utils.wall_frame_buffer:
 		wall = false
 	else:
 		wall = wall_check()
 	var on_slope = slope_check()
-	move_and_slide()
+	if !interacting:
+		move_and_slide()
 	if Utils.wall_frame_buffer:
 		if was_on_wall and is_on_wall():
 			wall = wall_check()
 	if !was_on_floor and is_on_floor():
+		apply_squash()
 		@warning_ignore("narrowing_conversion")
 		sounds.play_sfx("step", randf_range(0.7,1), -23)
 		@warning_ignore("narrowing_conversion")
@@ -163,6 +178,7 @@ func move_state(delta):
 		coyote_wall_timer.start()
 	reset_velocity_check()
 
+@warning_ignore("unused_parameter")
 func sand_state_enter(delta):
 	if velocity.y <0:
 		velocity.y = max(velocity.y,sign(velocity.y)*10)
@@ -239,6 +255,7 @@ func jump_check():
 			double_jump = false
 
 func jump(force):
+	apply_stretch()
 	just_jumped = true
 	jump_timer.start()
 	velocity.y = -force
@@ -257,6 +274,18 @@ func jump(force):
 		GlobalSteam.setAchievement("ACH_JUMP_3")
 		stats["save_data"]["achievements"]["jump_3"] = true
 
+func apply_stretch():
+	if Utils.squash_and_stretch:
+		var tween = get_tree().create_tween()
+		tween.tween_property(sprite,"scale",Vector2(.75,1.5),.1)
+		tween.tween_property(sprite,"scale",Vector2(1,1),.15)
+
+func apply_squash():
+	if Utils.squash_and_stretch:
+		var tween = get_tree().create_tween()
+		tween.tween_property(sprite,"scale",Vector2(1.5,.5),.1)
+		tween.tween_property(sprite,"scale",Vector2(1,1),.1)
+
 func fall_bonus_check():
 	if is_on_floor():
 		max_fall_velocity = default_max_fall_velocity
@@ -267,7 +296,8 @@ func fall_bonus_check():
 func update_animations(input_vector):
 	var facing = input_vector
 	if facing !=0:
-		sprite.scale.x = facing
+		sprite.flip_h = facing != 1
+		#sprite.scale.x = facing
 		jump_collision.scale.x = facing
 		$hurt_box/collision2.scale.x = facing
 	if not is_on_floor():
@@ -333,7 +363,8 @@ func wall_slide_state(delta):
 	collision.disabled = false
 	var wall_normal = sign(get_wall_normal().x)
 	if wall_normal !=0:
-		sprite.scale.x = wall_normal
+		sprite.flip_h = wall_normal != 1
+		#sprite.scale.x = wall_normal
 	if velocity.y <= 0:
 		sprite.frame = 24
 	else:
@@ -432,6 +463,7 @@ func _on_hurt_box_hit(damage):
 		sounds.play_sfx("chain_damage_1",randf_range(0.8,1),0)
 		@warning_ignore("narrowing_conversion")
 		sounds.play_sfx("chain_damage_2",randf_range(0.9,1.1),0)
+		Events.add_screenshake.emit(2,0.25)
 		check_death()
 	else:
 		pass
@@ -454,6 +486,14 @@ func check_death():
 		GlobalSteam.setAchievement("ACH_SPIKE_3")
 		stats["save_data"]["achievements"]["spike_3"] = true
 	SaveAndLoad.update_save_data()
+	process_mode = Node.PROCESS_MODE_DISABLED
+	var death_timer = get_tree().create_timer(.3)
+	var fade_tween = get_tree().create_tween()
+	var size_tween = get_tree().create_tween()
+	fade_tween.tween_property(sprite,"modulate",Color.DARK_RED,.2)
+	size_tween.tween_property(sprite,"scale",Vector2(2,2),.2)
+	await death_timer.timeout
+	process_mode = Node.PROCESS_MODE_INHERIT
 	if stats["save_data"]["hard_mode"]:
 		stats.reset_run()
 		change_scene.emit()
@@ -471,11 +511,13 @@ func _on_hit_box_area_entered(area):
 		if bounce < 200:
 			sounds.play_sfx("glass",randf_range(0.8,1.4),-5)
 		else:
+			@warning_ignore("narrowing_conversion")
 			sounds.play_sfx("player_jump",randf_range(0.8,1.4),-5)
 		area.hit(1)
 		stats["save_data"]["stats"]["Spring Bounced"] += 1
 
 func calculate_stomp_velocity(linear_velocity: Vector2, impulse):
+	apply_stretch()
 	var out: = linear_velocity
 	out.y = -impulse
 	return out
@@ -502,6 +544,7 @@ func pause_state(delta):
 	pass
 
 var opening_state = false
+@warning_ignore("unused_parameter")
 func open_state(delta):
 	if opening_state:
 		opening_state = false
@@ -531,12 +574,14 @@ func _input(event):
 	if (event.is_action_pressed("action") or event.is_action_pressed("controller_action")) && interactable != null && interactable.type != "" && !interacting:
 		interacting = true
 		interacting_type = interactable.type
-		print(interactable.type)
+		#print(interactable.type)
 		self.call("open_"+interactable.type)
-	elif (event.is_action_pressed("action") or event.is_action_pressed("controller_action")) && interactable != null && interactable.type == interacting_type && interacting:
-		interacting = false
+	elif (event.is_action_pressed("action") or event.is_action_pressed("controller_action") or event.is_action_pressed("pause")) && interactable != null && interactable.type == interacting_type && interacting:
 		interacting_type = ""
 		close_interactable()
+		var timer = get_tree().create_timer(.1)
+		await timer.timeout
+		interacting = false
 
 signal close_interactables
 func close_interactable():
@@ -566,3 +611,7 @@ func open_teleporter():
 signal knights_monument
 func open_knights_monument():
 	knights_monument.emit()
+
+signal wardrobe
+func open_wardrobe():
+	wardrobe.emit()

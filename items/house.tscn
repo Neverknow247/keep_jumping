@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2lh5d7onpql4"]
+
+[ext_resource type="Script" path="res://items/house.gd" id="1_q4elr"]
+[ext_resource type="TileSet" uid="uid://dolar343jujfg" path="res://tilesets/tileset.tres" id="2_l85g0"]
+
+[node name="house" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_q4elr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("2_l85g0")
+format = 2
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

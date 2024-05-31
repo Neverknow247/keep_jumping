@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Sir Fallen"
-config/version="1.2.6"
+config/version="1.3.1"
 run/main_scene="res://menus/neverknow_splash.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="SirFallen"
@@ -21,6 +21,7 @@ config/icon="res://avatar.png"
 [autoload]
 
 Utils="*res://singletons/utils.gd"
+Events="*res://singletons/Events.gd"
 Sounds="*res://singletons/sounds.tscn"
 Stats="*res://singletons/stats.gd"
 GlobalSteam="*res://singletons/steam.tscn"

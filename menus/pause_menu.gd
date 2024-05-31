@@ -10,9 +10,8 @@ var list_index = 0
 
 @onready var level_name = $VBoxContainer/level_name
 
-@onready var resume_button = $buttons/resume_button
 @onready var restart_button = $buttons/restart_button
-
+@onready var settings_button = $buttons/settings_button
 
 @onready var main = $main
 @onready var settings_menu = $settings_menu
@@ -20,6 +19,7 @@ var list_index = 0
 
 signal fade_out
 signal resetting
+signal un_pause
 
 
 var pausable = true
@@ -42,7 +42,9 @@ func _ready():
 	visible = false
 
 func _input(event):
-	if event.is_action_pressed("pause") && paused and !settings_menu.visible:
+	if (event.is_action_pressed("pause") || (event is InputEventJoypadButton and event.button_index == 1)) and paused and !settings_menu.visible:
+		if (event is InputEventJoypadButton and event.button_index == 1):
+			un_pause.emit()
 		change_pause()
 	if event.is_action_pressed("reset_level") && reset_unlocked:
 		if paused and stats.calc_total_reunions() > 0:
@@ -53,7 +55,7 @@ func _input(event):
 func change_pause():
 	self.paused = !paused
 	if paused:
-		resume_button.grab_focus()
+		settings_button.grab_focus()
 	else:
 		release_focus()
 
@@ -101,7 +103,7 @@ func _on_hide_menu(scene):
 	transition.fade_out()
 	await get_tree().create_timer(stats.transition_time).timeout
 	scene.hide()
-	resume_button.grab_focus()
+	settings_button.grab_focus()
 	transition.fade_in()
 
 func _on_quit_button_pressed():

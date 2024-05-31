@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dywjm0qyjgaqh"]
+
+[ext_resource type="Script" path="res://cosmetic_resources/cosmetics.gd" id="1_7o043"]
+
+[resource]
+script = ExtResource("1_7o043")

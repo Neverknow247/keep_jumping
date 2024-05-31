@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c1mjorvyn1oil"]
+[gd_scene load_steps=12 format=3 uid="uid://c1mjorvyn1oil"]
 
 [ext_resource type="Script" path="res://levels/challenges/challenge.gd" id="1_5lwrm"]
 [ext_resource type="TileSet" uid="uid://dolar343jujfg" path="res://tilesets/tileset.tres" id="2_x6epi"]
@@ -7,12 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://bpl2vk3ncc0mb" path="res://items/start_zone.tscn" id="5_mia47"]
 [ext_resource type="PackedScene" uid="uid://nfjwcl3nv5kx" path="res://items/spikes.tscn" id="6_4qchb"]
 [ext_resource type="PackedScene" uid="uid://dlj3xtq0pl4l8" path="res://items/leaderboard.tscn" id="6_56riq"]
+[ext_resource type="PackedScene" uid="uid://bb8b5vo2me8pl" path="res://ui/camera_2d.tscn" id="6_adhhs"]
 [ext_resource type="PackedScene" uid="uid://btc0hm6mkex5a" path="res://items/checkpoint.tscn" id="7_b6kdn"]
 [ext_resource type="PackedScene" uid="uid://bcudup6bgixmc" path="res://items/teleporter.tscn" id="7_nvg3y"]
 [ext_resource type="PackedScene" uid="uid://n615rx02auyl" path="res://ui/ui.tscn" id="8_6m63o"]
 
 [node name="challenge_1" type="Node2D"]
 script = ExtResource("1_5lwrm")
+level_name = "C-1 : Creepy Cavern"
 player_blind = true
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -43,16 +45,8 @@ position = Vector2(464, -560)
 [node name="start_zone" parent="." instance=ExtResource("5_mia47")]
 position = Vector2(115, -16)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" parent="." instance=ExtResource("6_adhhs")]
 position = Vector2(-176, -15)
-zoom = Vector2(6, 6)
-limit_smoothed = true
-position_smoothing_enabled = true
-drag_horizontal_enabled = true
-drag_left_margin = 0.1
-drag_top_margin = 0.1
-drag_right_margin = 0.1
-drag_bottom_margin = 0.1
 
 [node name="camera_limits" type="Panel" parent="."]
 modulate = Color(1, 1, 1, 0)

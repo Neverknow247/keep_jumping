@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://kib21yto7yik"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_es81c"]
-[ext_resource type="Texture2D" uid="uid://bvai07xqc11w8" path="res://assets/art/characters/player_gold.png" id="2_i8jty"]
+[ext_resource type="Texture2D" uid="uid://r7wqniih52i7" path="res://assets/art/characters/player.png" id="2_t5lp7"]
 [ext_resource type="Texture2D" uid="uid://bvhspqwqd3egf" path="res://assets/art/hats/no_hat.png" id="3_32cti"]
 [ext_resource type="Script" path="res://characters/hit_box.gd" id="3_lkrl1"]
 [ext_resource type="Script" path="res://characters/hurt_box.gd" id="4_f2q0e"]
@@ -284,8 +284,8 @@ safe_margin = 0.2
 script = ExtResource("1_es81c")
 
 [node name="sprite" type="Sprite2D" parent="."]
-position = Vector2(0, -8)
-texture = ExtResource("2_i8jty")
+texture = ExtResource("2_t5lp7")
+offset = Vector2(0, -8)
 hframes = 6
 vframes = 8
 frame = 6

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://di4q3dm5gajl"]
+[gd_scene load_steps=16 format=3 uid="uid://di4q3dm5gajl"]
 
 [ext_resource type="Script" path="res://levels/challenges/challenge.gd" id="1_noxki"]
 [ext_resource type="Texture2D" uid="uid://r7nk4nvd874q" path="res://assets/art/backgrounds/castle_1_background.png" id="2_3qplo"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://br8ewlyx38alq" path="res://items/challenge_finish.tscn" id="4_whke7"]
 [ext_resource type="PackedScene" uid="uid://bpl2vk3ncc0mb" path="res://items/start_zone.tscn" id="5_mr8dm"]
 [ext_resource type="PackedScene" uid="uid://dlj3xtq0pl4l8" path="res://items/leaderboard.tscn" id="6_fwvou"]
+[ext_resource type="PackedScene" uid="uid://bb8b5vo2me8pl" path="res://ui/camera_2d.tscn" id="7_6ecv2"]
 [ext_resource type="PackedScene" uid="uid://bcudup6bgixmc" path="res://items/teleporter.tscn" id="7_81fuf"]
 [ext_resource type="PackedScene" uid="uid://nfjwcl3nv5kx" path="res://items/spikes.tscn" id="8_mvj74"]
 [ext_resource type="Texture2D" uid="uid://bve8c700bttqo" path="res://assets/art/items/toilet.png" id="9_r0y41"]
@@ -20,6 +21,7 @@ radius = 24.0
 [node name="challenge_0" type="Node2D"]
 script = ExtResource("1_noxki")
 level_id = "challenge_0"
+level_name = "T-2 Tiny Tower"
 
 [node name="background" type="TextureRect" parent="."]
 z_index = -100
@@ -64,15 +66,8 @@ position = Vector2(696, -1072)
 [node name="start_zone" parent="." instance=ExtResource("5_mr8dm")]
 position = Vector2(115, -16)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" parent="." instance=ExtResource("7_6ecv2")]
 position = Vector2(-176, -15)
-zoom = Vector2(6, 6)
-position_smoothing_enabled = true
-drag_horizontal_enabled = true
-drag_left_margin = 0.1
-drag_top_margin = 0.1
-drag_right_margin = 0.1
-drag_bottom_margin = 0.1
 
 [node name="items" type="Node2D" parent="."]
 

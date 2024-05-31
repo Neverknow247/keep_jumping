@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbh3pin5tqwt2"]
+
+[ext_resource type="Script" path="res://items/wood_door.gd" id="1_jhayy"]
+[ext_resource type="Texture2D" uid="uid://cdrrqu1dy2ro2" path="res://assets/art/items/wood_door.png" id="2_d2564"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_352gs"]
+size = Vector2(32, 32)
+
+[node name="wood_door" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_jhayy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-8, -16)
+shape = SubResource("RectangleShape2D_352gs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-4, -16)
+texture = ExtResource("2_d2564")
+hframes = 2
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

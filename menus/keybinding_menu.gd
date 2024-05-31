@@ -58,7 +58,7 @@ func _on_button_pressed(button:Button):
 	panel_container.show()
 
 func _unhandled_input(event):
-	if (event.is_action_pressed("ui_cancel")||event.is_action_pressed("controller_action")) and !current_button and active:
+	if (event.is_action_pressed("ui_cancel")||(event is InputEventJoypadButton and event.button_index == 1)) and active:
 		_on_back_button_pressed()
 
 func _input(event):

@@ -1,0 +1,2 @@
+extends Interactable_script
+

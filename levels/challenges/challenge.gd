@@ -6,6 +6,7 @@ var sounds = Sounds
 var global_timer = GlobalTimer
 
 @export var level_id = "challenge_1"
+@export var level_name = "Challenge Name"
 @export var spawn_point = Vector2(-176,0)
 @export var main_music = "challenge"
 @export var player_blind = false
@@ -110,6 +111,8 @@ func _on_player_respawn():
 	player.invincible = false
 	camera_2d.position_smoothing_enabled = false
 	camera_2d.position = spawn_point
+	player.sprite.modulate = Color.WHITE
+	player.sprite.scale = Vector2.ONE
 	get_tree().paused = false
 	await get_tree().create_timer(.1).timeout
 	ui.enter_transition()

@@ -11,6 +11,7 @@ var stats = Stats
 var next_level
 
 signal start_level
+signal un_pause
 
 func enter_transition():
 	animation_player.play("fade_in")
@@ -40,3 +41,6 @@ func _on_pause_menu_fade_out():
 
 func _on_level_finish_menu_fade_out():
 	exit_transition()
+
+func _on_pause_menu_un_pause():
+	un_pause.emit()
