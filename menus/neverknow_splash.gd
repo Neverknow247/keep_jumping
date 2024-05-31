@@ -26,6 +26,13 @@ func check_achievements():
 	await check_demo()
 	return true
 
+func check_dlc():
+	GlobalSteam.check_all_dlc_install()
+	var checked_dlc = await GlobalSteam.checked_dlc
+	print("in splash checked dlc")
+	print(checked_dlc)
+	return true
+
 func check_demo():
 	if !stats["save_data"]["demo_complete"]:
 		var demo_data = await load_data_from_file()
@@ -62,6 +69,7 @@ func start():
 		stats["save_data"]["stats"]["Power On Count"] += 1
 		await SaveAndLoad.save_all()
 		await check_achievements()
+		await check_dlc()
 		transition.fade_out()
 		await get_tree().create_timer(stats.transition_time).timeout
 		#get_tree().change_scene_to_file(game_board)
