@@ -104,7 +104,7 @@ func update_settings():
 	settings.set_value("window_mode","setting",utils.window_mode)
 	settings.set_value("wall_frame_buffer","setting",utils.wall_frame_buffer)
 	settings.save(SAVE_SETTINGS_PATH)
-	load_settings()
+	#load_settings()
 
 func load_settings():
 	var settings = ConfigFile.new()

@@ -45,9 +45,11 @@ func change_armor(num):
 			return
 
 func _on_left_button_pressed():
+	@warning_ignore("narrowing_conversion")
 	Sounds.play_sfx("click",randf_range(.8,1.2),-10)
 	change_armor(-1)
 
 func _on_right_button_pressed():
+	@warning_ignore("narrowing_conversion")
 	Sounds.play_sfx("click",randf_range(.8,1.2),-10)
 	change_armor(1)

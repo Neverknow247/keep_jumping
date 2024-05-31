@@ -63,6 +63,6 @@ func _on_voice_slider_value_changed(value):
 func _on_back_button_pressed():
 	@warning_ignore("narrowing_conversion")
 	Sounds.play_sfx("click",randf_range(.8,1.2),-10)
-	SaveAndLoad.update_settings()
+	#SaveAndLoad.update_settings()
 	active = false
 	hide_menu.emit(self)

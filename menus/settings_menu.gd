@@ -24,11 +24,13 @@ func _unhandled_input(event):
 		_on_back_button_pressed()
 
 func _on_hide_menu(scene):
+	SaveAndLoad.update_settings()
 	transition.fade_out()
 	await get_tree().create_timer(stats.transition_time).timeout
 	scene.hide()
 	general_button.grab_focus()
 	transition.fade_in()
+	#SaveAndLoad.update_settings()
 
 func _on_general_button_pressed():
 	@warning_ignore("narrowing_conversion")

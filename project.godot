@@ -197,6 +197,7 @@ controller_reset_level={
 2d_physics/layer_5="springs"
 2d_physics/layer_6="interactables"
 2d_physics/layer_7="broken_toilet_pieces"
+2d_physics/layer_8="drop_through_platforms"
 
 [rendering]
 

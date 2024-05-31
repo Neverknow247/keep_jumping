@@ -277,7 +277,7 @@ _data = {
 [node name="player" type="CharacterBody2D" groups=["player"]]
 z_index = 1
 collision_layer = 2
-collision_mask = 33
+collision_mask = 161
 floor_stop_on_slope = false
 floor_snap_length = 2.0
 safe_margin = 0.2
@@ -373,6 +373,9 @@ one_shot = true
 wait_time = 0.3
 one_shot = true
 
+[node name="drop_timer" type="Timer" parent="."]
+one_shot = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_uhsh5")
@@ -385,3 +388,4 @@ autoplay = "idle"
 [connection signal="area_entered" from="interaction_detection" to="." method="_on_interaction_detection_area_entered"]
 [connection signal="area_exited" from="interaction_detection" to="." method="_on_interaction_detection_area_exited"]
 [connection signal="timeout" from="jump_timer" to="." method="_on_jump_timer_timeout"]
+[connection signal="timeout" from="drop_timer" to="." method="_on_drop_timer_timeout"]

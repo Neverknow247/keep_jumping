@@ -27,7 +27,6 @@ func _ready():
 	transition.visible = true
 	pop_up_label.text = ""
 
-
 func _on_level_finish_menu_next_level():
 	get_tree().change_scene_to_file(next_level)
 

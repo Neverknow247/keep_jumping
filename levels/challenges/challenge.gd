@@ -15,6 +15,7 @@ var global_timer = GlobalTimer
 @onready var camera_2d = $Camera2D
 @onready var camera_limits = $camera_limits
 @onready var ui = $ui
+@onready var level_label = $ui/level_label
 @onready var pause_menu = $ui/pause_menu
 
 var end_scene = "res://menus/challenge_finish_menu.tscn"
@@ -24,7 +25,7 @@ var level_id_board
 var mode_string = ""
 
 func _input(event):
-	if event.is_action_pressed("pause"):
+	if event.is_action_pressed("pause") and !player.interacting:
 		if pausable:
 			pause_menu.pause()
 		pausable = !pausable
@@ -35,6 +36,7 @@ func _ready():
 	$player/blind_obscure.visible = player_blind
 	sounds.load_starting_music([main_music],1,-80)
 	sounds.fade_in_music(main_music,1,-10)
+	set_up_label()
 	set_up_mode()
 	set_up_steam()
 	set_up_timer()
@@ -44,10 +46,14 @@ func _ready():
 	ui.enter_transition()
 	SaveAndLoad.update_save_data()
 
+@warning_ignore("unused_parameter")
 func _process(delta):
 	fix_camera_smoothing()
 	if (Input.is_action_pressed("reset_level") and Input.is_action_pressed("reset_control")) || Input.is_action_pressed("controller_reset_level"):
 		change_scene()
+
+func set_up_label():
+	level_label.text = level_name
 
 func set_up_mode():
 	level_id_board = level_id
@@ -133,9 +139,11 @@ func _on_player_close_interactables():
 	$ui/leaderboard.hide()
 	$ui/stats.hide()
 
+@warning_ignore("unused_parameter")
 func _on_challenge_finish_body_entered(body):
 	global_timer.timer_on = false
 	update_stats()
+	@warning_ignore("unused_variable")
 	var new_best = await update_score()
 	player.paused()
 	player.hide()
@@ -159,6 +167,7 @@ func update_score():
 
 func _on_toilet_unlock_toilet():
 	stats["save_data"]["items"]["toilet"] = true
+	@warning_ignore("narrowing_conversion")
 	sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
 	ui.pop_up("Toilet Unlocked")
 	SaveAndLoad.update_save_data()

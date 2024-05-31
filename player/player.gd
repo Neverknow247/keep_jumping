@@ -54,6 +54,7 @@ var current_velocity = 0.0
 @onready var coyote_jump_timer = $coyote_jump_timer
 @onready var coyote_wall_timer = $coyote_wall_timer
 @onready var jump_timer = $jump_timer
+@onready var drop_timer = $drop_timer
 @onready var collision = $collision
 @onready var jump_collision = $jump_collision
 @onready var start_collision = $start_collision
@@ -147,6 +148,7 @@ func move_state(delta):
 		apply_friction(delta)
 	if !interacting:
 		jump_check()
+		drop_check()
 	var was_on_floor = is_on_floor()
 	var was_on_wall = is_on_wall()
 	fall_bonus_check()
@@ -273,6 +275,14 @@ func jump(force):
 	if stats["save_data"]["stats"]["Jumped"] >= 100000 and !stats["save_data"]["achievements"]["jump_3"]:
 		GlobalSteam.setAchievement("ACH_JUMP_3")
 		stats["save_data"]["achievements"]["jump_3"] = true
+
+func drop_check():
+	if Input.is_action_pressed("down") || Input.is_action_pressed("controller_down"):
+		set_collision_mask_value(8,false)
+		drop_timer.start()
+
+func _on_drop_timer_timeout():
+	set_collision_mask_value(8,true)
 
 func apply_stretch():
 	if Utils.squash_and_stretch:
@@ -615,3 +625,4 @@ func open_knights_monument():
 signal wardrobe
 func open_wardrobe():
 	wardrobe.emit()
+
