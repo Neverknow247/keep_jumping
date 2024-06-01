@@ -138,9 +138,9 @@ horizontal_alignment = 2
 layout_mode = 2
 focus_neighbor_left = NodePath("../../colorblind_mode/colorblind_mode_check")
 focus_neighbor_top = NodePath("../../colorblind_mode/colorblind_mode_check")
-focus_neighbor_right = NodePath("../../../../back_button")
-focus_neighbor_bottom = NodePath("../../../../back_button")
-focus_next = NodePath("../../../../back_button")
+focus_neighbor_right = NodePath("../../squash_and_stretch/squash_and_stretch_check")
+focus_neighbor_bottom = NodePath("../../squash_and_stretch/squash_and_stretch_check")
+focus_next = NodePath("../../squash_and_stretch/squash_and_stretch_check")
 focus_previous = NodePath("../../colorblind_mode/colorblind_mode_check")
 
 [node name="squash_and_stretch" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
@@ -154,12 +154,12 @@ horizontal_alignment = 2
 
 [node name="squash_and_stretch_check" type="CheckButton" parent="CenterContainer/VBoxContainer/squash_and_stretch"]
 layout_mode = 2
-focus_neighbor_left = NodePath("../../window_mode/window_option_button")
-focus_neighbor_top = NodePath("../../window_mode/window_option_button")
-focus_neighbor_right = NodePath("../../wall_frame_buffer/wall_frame_buffer_check")
-focus_neighbor_bottom = NodePath("../../wall_frame_buffer/wall_frame_buffer_check")
-focus_next = NodePath("../../wall_frame_buffer/wall_frame_buffer_check")
-focus_previous = NodePath("../../window_mode/window_option_button")
+focus_neighbor_left = NodePath("../../wall_frame_buffer/wall_frame_buffer_check")
+focus_neighbor_top = NodePath("../../wall_frame_buffer/wall_frame_buffer_check")
+focus_neighbor_right = NodePath("../../screen_shake/screen_shake_check")
+focus_neighbor_bottom = NodePath("../../screen_shake/screen_shake_check")
+focus_next = NodePath("../../screen_shake/screen_shake_check")
+focus_previous = NodePath("../../wall_frame_buffer/wall_frame_buffer_check")
 
 [node name="screen_shake" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -172,12 +172,12 @@ horizontal_alignment = 2
 
 [node name="screen_shake_check" type="CheckButton" parent="CenterContainer/VBoxContainer/screen_shake"]
 layout_mode = 2
-focus_neighbor_left = NodePath("../../window_mode/window_option_button")
-focus_neighbor_top = NodePath("../../window_mode/window_option_button")
-focus_neighbor_right = NodePath("../../wall_frame_buffer/wall_frame_buffer_check")
-focus_neighbor_bottom = NodePath("../../wall_frame_buffer/wall_frame_buffer_check")
-focus_next = NodePath("../../wall_frame_buffer/wall_frame_buffer_check")
-focus_previous = NodePath("../../window_mode/window_option_button")
+focus_neighbor_left = NodePath("../../squash_and_stretch/squash_and_stretch_check")
+focus_neighbor_top = NodePath("../../squash_and_stretch/squash_and_stretch_check")
+focus_neighbor_right = NodePath("../../../../back_button")
+focus_neighbor_bottom = NodePath("../../../../back_button")
+focus_next = NodePath("../../../../back_button")
+focus_previous = NodePath("../../squash_and_stretch/squash_and_stretch_check")
 
 [node name="back_button" type="Button" parent="."]
 custom_minimum_size = Vector2(100, 0)

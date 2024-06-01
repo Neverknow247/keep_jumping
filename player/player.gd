@@ -287,13 +287,13 @@ func _on_drop_timer_timeout():
 func apply_stretch():
 	if Utils.squash_and_stretch:
 		var tween = get_tree().create_tween()
-		tween.tween_property(sprite,"scale",Vector2(.75,1.5),.1)
+		tween.tween_property(sprite,"scale",Vector2(.8,1.2),.1)
 		tween.tween_property(sprite,"scale",Vector2(1,1),.15)
 
 func apply_squash():
 	if Utils.squash_and_stretch:
 		var tween = get_tree().create_tween()
-		tween.tween_property(sprite,"scale",Vector2(1.5,.5),.1)
+		tween.tween_property(sprite,"scale",Vector2(1.2,.8),.1)
 		tween.tween_property(sprite,"scale",Vector2(1,1),.1)
 
 func fall_bonus_check():

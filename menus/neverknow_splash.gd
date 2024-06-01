@@ -27,11 +27,11 @@ func check_achievements():
 	return true
 
 func check_dlc():
-	GlobalSteam.check_all_dlc_install()
-	var checked_dlc = await GlobalSteam.checked_dlc
-	print("in splash checked dlc")
-	print(checked_dlc)
-	return true
+	var checked_dlc = GlobalSteam.check_all_dlc_install()
+	stats["save_data"]["armors"]["gold"] = false
+	if checked_dlc==true:
+		stats["save_data"]["armors"]["gold"] = true
+	finish()
 
 func check_demo():
 	if !stats["save_data"]["demo_complete"]:
@@ -69,11 +69,13 @@ func start():
 		stats["save_data"]["stats"]["Power On Count"] += 1
 		await SaveAndLoad.save_all()
 		await check_achievements()
-		await check_dlc()
-		transition.fade_out()
-		await get_tree().create_timer(stats.transition_time).timeout
-		#get_tree().change_scene_to_file(game_board)
-		get_tree().change_scene_to_file(opening_board)
+		check_dlc()
+
+func finish():
+	transition.fade_out()
+	await get_tree().create_timer(stats.transition_time).timeout
+	#get_tree().change_scene_to_file(game_board)
+	get_tree().change_scene_to_file(opening_board)
 
 func _on_easter_egg_button_pressed():
 	easter_egg_button.disabled = true

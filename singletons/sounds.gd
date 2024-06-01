@@ -86,7 +86,7 @@ func play_sfx(sfx_string, pitch_scale = 1, volume_db = 0):
 			sfx_player.stream = sfx[sfx_string]
 			sfx_player.play()
 			return
-	print("Too many sounds playing")
+	#print("Too many sounds playing")
 
 #func play_music(music_string, pitch_scale = 1, volume_db = 0, player = "music_main"):
 	#if music_playing != music_string:
@@ -128,11 +128,13 @@ func fade_in_music(music_string, pitch_scale = 1, volume_db = 0,fade_time = 10):
 		if !available_player.volume_db == volume_db:
 			var tween = get_tree().create_tween()
 			tween.tween_property(available_player,"volume_db",volume_db,fade_time)
-			print("not loud enough yet")
+			#print("not loud enough yet")
 		else:
-			print("already loud enough")
+			pass
+			#print("already loud enough")
 	else:
-		print("Too many songs playing")
+		pass
+		#print("Too many songs playing")
 
 @warning_ignore("unused_parameter")
 func fade_out_music(music_string, pitch_scale = 1, volume_db = -80):
@@ -145,11 +147,13 @@ func fade_out_music(music_string, pitch_scale = 1, volume_db = -80):
 		if !available_player.volume_db == volume_db:
 			var tween = get_tree().create_tween()
 			tween.tween_property(available_player,"volume_db",volume_db,10)
-			print("not quiet enough yet")
+			#print("not quiet enough yet")
 		else:
-			print("already quiet enough")
+			pass
+			#print("already quiet enough")
 	else:
-		print("not playing")
+		pass
+		#print("not playing")
 
 func play_voice(voice_string, pitch_scale = 1, volume_db = 0):
 	if voice_player.playing:

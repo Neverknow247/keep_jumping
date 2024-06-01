@@ -8,6 +8,7 @@ signal popup(text)
 @onready var white_rose = $white_rose
 @onready var basket = $basket
 @onready var towel = $towel
+@onready var wes = $wes
 
 func _ready():
 	if stats["save_data"]["items"]["white_rose"]:
@@ -16,6 +17,8 @@ func _ready():
 		basket.queue_free()
 	if stats["save_data"]["items"]["towel"]:
 		towel.queue_free()
+	if stats["save_data"]["armors"]["wes"]:
+		wes.queue_free()
 
 signal check_picnic
 @warning_ignore("unused_parameter")
@@ -50,3 +53,12 @@ func _on_towel_body_entered(body):
 	SaveAndLoad.update_save_data()
 	popup.emit("Found your Towel")
 	check_picnic.emit()
+
+@warning_ignore("unused_parameter")
+func _on_wes_body_entered(body):
+	stats["save_data"]["armors"]["wes"] = true
+	@warning_ignore("narrowing_conversion")
+	sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
+	wes.queue_free()
+	SaveAndLoad.update_save_data()
+	popup.emit("You feel plus ultra...")

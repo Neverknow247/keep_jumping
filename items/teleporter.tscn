@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bbs8vhyo7h4tc" path="res://assets/art/items/teleport_2.png" id="3_kbu7y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_um8do"]
-radius = 16.0
+radius = 8.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t0bsi"]
 atlas = ExtResource("2_nrkxe")
