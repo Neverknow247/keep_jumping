@@ -1,0 +1,96 @@
+[gd_scene load_steps=13 format=3 uid="uid://bydwqawecbh4t"]
+
+[ext_resource type="Script" path="res://levels/challenges/challenge.gd" id="1_07nik"]
+[ext_resource type="Texture2D" uid="uid://r7nk4nvd874q" path="res://assets/art/backgrounds/castle_1_background.png" id="2_ej656"]
+[ext_resource type="TileSet" uid="uid://dolar343jujfg" path="res://tilesets/tileset.tres" id="3_5vefx"]
+[ext_resource type="PackedScene" uid="uid://kib21yto7yik" path="res://player/player.tscn" id="4_ofcdh"]
+[ext_resource type="PackedScene" uid="uid://br8ewlyx38alq" path="res://items/challenge_finish.tscn" id="5_mobx5"]
+[ext_resource type="PackedScene" uid="uid://bpl2vk3ncc0mb" path="res://items/start_zone.tscn" id="6_2sc8v"]
+[ext_resource type="PackedScene" uid="uid://bb8b5vo2me8pl" path="res://ui/camera_2d.tscn" id="7_yax12"]
+[ext_resource type="PackedScene" uid="uid://dlj3xtq0pl4l8" path="res://items/leaderboard.tscn" id="8_kfjny"]
+[ext_resource type="PackedScene" uid="uid://bcudup6bgixmc" path="res://items/teleporter.tscn" id="9_xe7ht"]
+[ext_resource type="PackedScene" uid="uid://nfjwcl3nv5kx" path="res://items/spikes.tscn" id="10_ipfvg"]
+[ext_resource type="PackedScene" uid="uid://btc0hm6mkex5a" path="res://items/checkpoint.tscn" id="11_3actq"]
+[ext_resource type="PackedScene" uid="uid://n615rx02auyl" path="res://ui/ui.tscn" id="12_uy28m"]
+
+[node name="challenge_4" type="Node2D"]
+script = ExtResource("1_07nik")
+level_id = "challenge_4"
+level_name = "T-3 : "
+
+[node name="background" type="TextureRect" parent="."]
+visible = false
+z_index = -100
+offset_left = -384.0
+offset_top = -9256.0
+offset_right = 1488.0
+offset_bottom = 520.0
+texture = ExtResource("2_ej656")
+
+[node name="camera_limits" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = -1136.0
+offset_top = -232.0
+offset_right = 712.0
+offset_bottom = 800.0
+
+[node name="TileMap" type="TileMap" parent="."]
+z_index = 2
+tile_set = ExtResource("3_5vefx")
+format = 2
+layer_0/name = "ground"
+layer_0/tile_data = PackedInt32Array(1, 65542, 8, 0, 65542, 9, 65535, 65542, 9, 65534, 65542, 8, 65533, 65542, 9, 65532, 65542, 8, 65531, 65542, 8, 65530, 65542, 9, 65529, 65542, 8, 65528, 65542, 9, 65527, 65542, 9, 65526, 65542, 8, 65525, 65542, 9, 65524, 65542, 8, 65523, 65542, 8, -65550, 262150, 6, -14, 262150, 6, 65522, 6, 7, -131086, 6, 5, 2, 65542, 8, 3, 65542, 8, 4, 65542, 9, 5, 131078, 7, -262139, 196614, 6, -393211, 196614, 6, -458747, 262150, 6, -524283, 196614, 6, -196603, 262150, 6, -131067, 262150, 6, -65531, 196614, 6, -327675, 262150, 6, -262142, 196614, 6, -327678, 262150, 6, -393214, 262150, 6, -458750, 262150, 6, -524286, 196614, 6, -131085, 65542, 9, -131084, 65542, 8, -131083, 65542, 8, -131082, 65542, 8, -131081, 65542, 8, -131080, 65542, 9, -131079, 65542, 9, -131078, 65542, 8, -131077, 65542, 9, -131076, 65542, 8, -131075, 65542, 9, -131074, 65542, 9, -131073, 65542, 8, -196608, 65542, 9, -196607, 65542, 8, -196606, 131078, 7, -589819, 196614, 6, -655355, 262150, 6, -720891, 196614, 6, -786427, 196614, 5, -589822, 262150, 6, -655358, 262150, 6, -720894, 262150, 6, -786430, 262150, 5)
+layer_1/name = "scatter"
+layer_1/z_index = -3
+layer_1/tile_data = PackedInt32Array()
+layer_2/name = "background"
+layer_2/z_index = -5
+layer_2/tile_data = PackedInt32Array()
+layer_3/name = "background_far"
+layer_3/z_index = -10
+layer_3/tile_data = PackedInt32Array()
+
+[node name="player" parent="." instance=ExtResource("4_ofcdh")]
+position = Vector2(-176, 0)
+
+[node name="camera_follow" parent="player" index="9"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="challenge_finish" parent="." instance=ExtResource("5_mobx5")]
+position = Vector2(-856, 80)
+
+[node name="start_zone" parent="." instance=ExtResource("6_2sc8v")]
+position = Vector2(115, -16)
+
+[node name="Camera2D" parent="." instance=ExtResource("7_yax12")]
+position = Vector2(-176, -15)
+
+[node name="items" type="Node2D" parent="."]
+
+[node name="leaderboard" parent="items" instance=ExtResource("8_kfjny")]
+position = Vector2(-120, 0)
+
+[node name="teleporter" parent="items" instance=ExtResource("9_xe7ht")]
+position = Vector2(-176, 0)
+
+[node name="spikes" type="Node2D" parent="."]
+
+[node name="spikes" parent="spikes" instance=ExtResource("10_ipfvg")]
+position = Vector2(24, 0)
+
+[node name="checkpoints" type="Node2D" parent="."]
+
+[node name="checkpoint" parent="checkpoints" instance=ExtResource("11_3actq")]
+position = Vector2(-16, 0)
+
+[node name="ui" parent="." instance=ExtResource("12_uy28m")]
+
+[connection signal="change_scene" from="player" to="." method="change_scene"]
+[connection signal="close_interactables" from="player" to="." method="_on_player_close_interactables"]
+[connection signal="leaderboard" from="player" to="." method="_on_player_leaderboard"]
+[connection signal="respawn" from="player" to="." method="_on_player_respawn"]
+[connection signal="body_entered" from="challenge_finish" to="." method="_on_challenge_finish_body_entered"]
+[connection signal="start_timer" from="start_zone" to="." method="_on_start_zone_start_timer"]
+[connection signal="activate_checkpoint" from="checkpoints/checkpoint" to="." method="_on_checkpoint_activate_checkpoint"]
+
+[editable path="player"]
