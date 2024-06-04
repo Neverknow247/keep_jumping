@@ -54,6 +54,7 @@ func _process(delta):
 
 func set_up_label():
 	level_label.text = level_name
+	stats.current_challenge_level_name = level_name
 
 func set_up_mode():
 	level_id_board = level_id
@@ -171,3 +172,6 @@ func _on_toilet_unlock_toilet():
 	sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
 	ui.pop_up("Toilet Unlocked")
 	SaveAndLoad.update_save_data()
+
+func _on_pickups_popup(text):
+	ui.pop_up(text)

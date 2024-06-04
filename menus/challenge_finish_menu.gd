@@ -7,6 +7,7 @@ const ScoreItem = preload("res://menus/scores/ScoreItem.tscn")
 
 @onready var level_name = $VBoxContainer/level_name
 @onready var new_time = $VBoxContainer/time_box/new_time
+@onready var leaderboard_label = $main/main_content/leaderboard/leaderboard_label
 @onready var score_container = $main/main_content/leaderboard/ScrollContainer/score_container
 @onready var restart_button = $buttons/restart_button
 @onready var settings_menu = $settings_menu
@@ -23,6 +24,7 @@ func _ready():
 	GlobalSteam.connect("received_results",_on_recieved_results)
 	GlobalSteam.download_leaderboard()
 	new_time.text = global_timer.time_passed
+	leaderboard_label.text = stats.current_challenge_level_name
 
 func _on_hide_menu(scene):
 	transition.fade_out()
