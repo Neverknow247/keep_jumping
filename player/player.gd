@@ -626,3 +626,7 @@ signal wardrobe
 func open_wardrobe():
 	wardrobe.emit()
 
+signal lecturn
+func open_lecturn():
+	lecturn.emit()
+

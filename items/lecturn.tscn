@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://7kvv6nr2x47g"]
+
+[ext_resource type="Script" path="res://items/lecturn.gd" id="1_g5oxx"]
+[ext_resource type="Texture2D" uid="uid://ec8r655xk72v" path="res://assets/art/items/lecturn.png" id="2_ipx84"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oic6t"]
+radius = 8.0
+
+[node name="lecturn" type="Area2D"]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("1_g5oxx")
+type = "lecturn"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("2_ipx84")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_oic6t")

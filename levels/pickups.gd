@@ -9,6 +9,7 @@ signal popup(text)
 @onready var basket = $basket
 @onready var towel = $towel
 @onready var wes = $wes
+@onready var purple_armor_unlock = $purple_armor_unlock
 
 func _ready():
 	if stats["save_data"]["items"]["white_rose"]:
@@ -19,6 +20,8 @@ func _ready():
 		towel.queue_free()
 	if stats["save_data"]["armors"]["wes"]:
 		wes.queue_free()
+	if stats["save_data"]["armors"]["purple"]:
+		purple_armor_unlock.queue_free()
 
 signal check_picnic
 @warning_ignore("unused_parameter")
@@ -61,4 +64,13 @@ func _on_wes_body_entered(body):
 	sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
 	wes.queue_free()
 	SaveAndLoad.update_save_data()
-	popup.emit("You feel plus ultra...")
+	popup.emit("You feel sus ultra...")
+
+@warning_ignore("unused_parameter")
+func _on_purple_armor_unlock_body_entered(body):
+	stats["save_data"]["armors"]["purple"] = true
+	@warning_ignore("narrowing_conversion")
+	sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
+	purple_armor_unlock.queue_free()
+	SaveAndLoad.update_save_data()
+	popup.emit("Mystic Armor Found!")

@@ -5,6 +5,7 @@ var armors = [
 	preload("res://cosmetic_resources/armor/default_armor.tres"),
 	preload("res://cosmetic_resources/armor/gold_armor.tres"),
 	preload("res://cosmetic_resources/armor/green_armor.tres"),
+	preload("res://cosmetic_resources/armor/purple_armor.tres"),
 	preload("res://cosmetic_resources/armor/wes_armor.tres"),
 ]
 
