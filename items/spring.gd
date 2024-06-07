@@ -9,6 +9,7 @@ const sprites = [
 @export var max_health = 1
 @onready var health = max_health
 @export var bounce = 200
+@export var infinite = false
 
 var timer_time = 3
 
@@ -20,6 +21,8 @@ func _ready():
 	sprite_2d.texture = sprites[max_health-1]
 
 func hit(damage):
+	if infinite:
+		return
 	health -= damage
 	if health <= 0:
 		call_deferred("set_monitorable",false)

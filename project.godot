@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Sir Fallen"
-config/version="1.3.9"
+config/version="1.4.2"
 run/main_scene="res://menus/neverknow_splash.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="SirFallen"
@@ -198,6 +198,7 @@ controller_reset_level={
 2d_physics/layer_6="interactables"
 2d_physics/layer_7="broken_toilet_pieces"
 2d_physics/layer_8="drop_through_platforms"
+2d_physics/layer_9="spike_tilemap"
 
 [rendering]
 

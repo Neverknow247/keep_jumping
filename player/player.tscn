@@ -342,7 +342,7 @@ shape = SubResource("RectangleShape2D_qmdhs")
 [node name="hurt_box" type="Area2D" parent="." groups=["player_hurt_box"]]
 visible = false
 collision_layer = 4
-collision_mask = 0
+collision_mask = 256
 script = ExtResource("4_f2q0e")
 
 [node name="collision2" type="CollisionPolygon2D" parent="hurt_box"]
@@ -374,6 +374,10 @@ one_shot = true
 wait_time = 0.3
 one_shot = true
 
+[node name="b_hop_timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [node name="drop_timer" type="Timer" parent="."]
 one_shot = true
 
@@ -385,6 +389,7 @@ autoplay = "idle"
 
 [connection signal="area_entered" from="hit_box" to="." method="_on_hit_box_area_entered"]
 [connection signal="area_entered" from="hit_box" to="hit_box" method="_on_area_entered"]
+[connection signal="body_entered" from="hurt_box" to="hurt_box" method="_on_body_entered"]
 [connection signal="hit" from="hurt_box" to="." method="_on_hurt_box_hit"]
 [connection signal="area_entered" from="interaction_detection" to="." method="_on_interaction_detection_area_entered"]
 [connection signal="area_exited" from="interaction_detection" to="." method="_on_interaction_detection_area_exited"]

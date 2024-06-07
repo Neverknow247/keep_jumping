@@ -54,6 +54,7 @@ var current_velocity = 0.0
 @onready var coyote_jump_timer = $coyote_jump_timer
 @onready var coyote_wall_timer = $coyote_wall_timer
 @onready var jump_timer = $jump_timer
+@onready var b_hop_timer = $b_hop_timer
 @onready var drop_timer = $drop_timer
 @onready var collision = $collision
 @onready var jump_collision = $jump_collision
@@ -166,6 +167,7 @@ func move_state(delta):
 		if was_on_wall and is_on_wall():
 			wall = wall_check()
 	if !was_on_floor and is_on_floor():
+		b_hop_timer.start()
 		apply_squash()
 		@warning_ignore("narrowing_conversion")
 		sounds.play_sfx("step", randf_range(0.7,1), -23)
@@ -248,6 +250,9 @@ func jump_check():
 				max_velocity += ledge_bonus-(coyote_jump_timer.time_left*2)
 			coyote_jump_timer.stop()
 			jump(jump_force)
+			if b_hop_timer.time_left > 0.0:
+				max_velocity+=(b_hop_timer.time_left*b_hop_bonus_multiplier)
+				b_hop_timer.stop()
 	elif not is_on_floor():
 		if just_jumped and (Input.is_action_just_released("jump")|| Input.is_action_just_released("controller_jump")) and velocity.y < -jump_force / 2:
 			velocity.y = -jump_force / 2
