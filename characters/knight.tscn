@@ -241,7 +241,6 @@ position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_fjpcf")
 animation = &"sleep"
 autoplay = "sleep"
-frame_progress = 0.80165
 
 [node name="chat_icon" type="AnimatedSprite2D" parent="."]
 visible = false

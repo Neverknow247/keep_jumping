@@ -1,6 +1,7 @@
 extends Area2D
 
 var sounds = Sounds
+var stats = Stats
 
 @export var max_health = 3
 @onready var health = max_health
@@ -28,6 +29,7 @@ func hit(damage):
 
 func _on_timer_timeout():
 	sounds.play_sfx("tellyin")
+	stats.current_challenge_level = bed_level
 	get_tree().call_deferred("change_scene_to_file",bed_level)
 
 func _on_reset_timer_timeout():

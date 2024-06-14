@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://n615rx02auyl"]
+[gd_scene load_steps=17 format=3 uid="uid://n615rx02auyl"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_2o8nt"]
 [ext_resource type="Texture2D" uid="uid://e88tapajqrdd" path="res://assets/art/ui/vignette.png" id="2_q64kn"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b4lm6wvgyymd7" path="res://ui/wardrobe.tscn" id="6_wrs4g"]
 [ext_resource type="PackedScene" uid="uid://budbi2xh55xtg" path="res://menus/level_finish_menu.tscn" id="7_af7if"]
 [ext_resource type="PackedScene" uid="uid://cpie7bd51ae28" path="res://menus/leaderboards/leaderboard.tscn" id="7_w8yc4"]
+[ext_resource type="Shader" path="res://ui/crt.gdshader" id="11_bnka6"]
 [ext_resource type="Theme" uid="uid://bwnv8b362a2w7" path="res://menus/menu_theme.tres" id="11_qn1a0"]
 
 [sub_resource type="Animation" id="Animation_eqahf"]
@@ -117,6 +118,30 @@ _data = {
 "fade_out": SubResource("Animation_vnv0l")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4f1mw"]
+shader = ExtResource("11_bnka6")
+shader_parameter/overlay = false
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.3
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 15.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.03
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 1.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
 [node name="ui" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_2o8nt")
@@ -209,6 +234,17 @@ color = Color(0, 0, 0, 1)
 libraries = {
 "": SubResource("AnimationLibrary_oe3lb")
 }
+
+[node name="crt_texture" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_4f1mw")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [connection signal="fade_out" from="pause_menu" to="." method="_on_pause_menu_fade_out"]
 [connection signal="un_pause" from="pause_menu" to="." method="_on_pause_menu_un_pause"]
