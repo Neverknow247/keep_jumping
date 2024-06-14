@@ -1,5 +1,7 @@
 extends AnimatableBody2D
 
+var stats = Stats
+
 @export var distance:Vector2
 @export var phase_time:float = 6.0
 @export_range(0.0, 1.0) var phase_offset:float
@@ -16,12 +18,16 @@ var textures = [
 var pivot:Vector2
 var time:float
 
+var movable = true
+var reset_unlocked = false
+
 func _ready():
 	pivot = global_position
 	set_texture()
+	reset_unlocked = stats.calc_total_reunions()>0
 
 func _input(event):
-	if event.is_action("ui_up"):
+	if (event.is_action("reset_platforms") || event.is_action("controller_reset_platforms")) and movable and reset_unlocked:
 		time = 0.0
 
 func set_texture():

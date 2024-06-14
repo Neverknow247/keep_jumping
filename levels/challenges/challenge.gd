@@ -49,7 +49,7 @@ func _ready():
 @warning_ignore("unused_parameter")
 func _process(delta):
 	fix_camera_smoothing()
-	if (Input.is_action_pressed("reset_level") and Input.is_action_pressed("reset_control")) || Input.is_action_pressed("controller_reset_level"):
+	if (Input.is_action_pressed("reset_level") and Input.is_action_pressed("reset_control")) || (Input.is_action_pressed("controller_reset_level") and Input.is_action_pressed("controller_reset_control")):
 		change_scene()
 
 func set_up_label():
