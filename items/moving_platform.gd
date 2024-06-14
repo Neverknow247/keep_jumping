@@ -17,9 +17,15 @@ var textures = [
 var pivot:Vector2
 var time:float
 
+var movable = true
+
 func _ready():
 	pivot = global_position
 	set_texture()
+
+func _input(event):
+	if event.is_action("ui_up") and movable:
+		time = 0.0
 
 func set_texture():
 	sprite.texture = textures[texture_index]
@@ -46,3 +52,9 @@ func _draw():
 		var a: = get_pos(increments * i) - global_position
 		var b: = get_pos(increments * (i+1)) - global_position
 		draw_line(a, b, Color.WHITE, -1)
+
+func _on_player_sense_body_entered(body):
+	movable = false
+
+func _on_player_sense_body_exited(body):
+	movable = true

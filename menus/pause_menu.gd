@@ -107,4 +107,5 @@ func _on_hide_menu(scene):
 	transition.fade_in()
 
 func _on_quit_button_pressed():
-	get_tree().quit()
+	get_tree().call_deferred("quit")
+	#get_tree().quit()

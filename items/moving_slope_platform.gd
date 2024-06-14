@@ -20,6 +20,10 @@ func _ready():
 	pivot = global_position
 	set_texture()
 
+func _input(event):
+	if event.is_action("ui_up"):
+		time = 0.0
+
 func set_texture():
 	sprite.texture = textures[texture_index]
 

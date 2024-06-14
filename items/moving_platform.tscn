@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://clx2x57iquf2"]
+[gd_scene load_steps=5 format=3 uid="uid://clx2x57iquf2"]
 
 [ext_resource type="Script" path="res://items/moving_platform.gd" id="1_wybd8"]
 [ext_resource type="Texture2D" uid="uid://dr8sy1ngg0g6" path="res://assets/art/items/moving_platform.png" id="2_j6ykn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5g0h8"]
 size = Vector2(32, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_36qdx"]
+size = Vector2(40, 16)
 
 [node name="moving_platform" type="AnimatableBody2D"]
 collision_mask = 0
@@ -19,3 +22,14 @@ texture = ExtResource("2_j6ykn")
 position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_5g0h8")
 one_way_collision = true
+
+[node name="player_sense" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_sense"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_36qdx")
+
+[connection signal="body_entered" from="player_sense" to="." method="_on_player_sense_body_entered"]
+[connection signal="body_exited" from="player_sense" to="." method="_on_player_sense_body_exited"]
