@@ -55,3 +55,12 @@ func _draw():
 		var a: = get_pos(increments * i) - global_position
 		var b: = get_pos(increments * (i+1)) - global_position
 		draw_line(a, b, Color.WHITE, -1)
+
+
+@warning_ignore("unused_parameter")
+func _on_player_sense_body_entered(body):
+	movable = false
+
+@warning_ignore("unused_parameter")
+func _on_player_sense_body_exited(body):
+	movable = true
