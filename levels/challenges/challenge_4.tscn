@@ -81,17 +81,19 @@ position = Vector2(-176, 0)
 
 [node name="pickups" type="Node2D" parent="items"]
 script = ExtResource("10_ykhpm")
+cosmetic_name = "green"
+popup_text = "Found Green Training Armor"
 
-[node name="green" type="Area2D" parent="items/pickups"]
+[node name="cosmetic" type="Area2D" parent="items/pickups"]
 position = Vector2(56, -280)
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="items/pickups/green"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="items/pickups/cosmetic"]
 position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_gsisw")
 
-[node name="Sprite2D" type="Sprite2D" parent="items/pickups/green"]
+[node name="Sprite2D" type="Sprite2D" parent="items/pickups/cosmetic"]
 position = Vector2(0, 3)
 texture = ExtResource("11_mqv7p")
 
@@ -1551,7 +1553,7 @@ layer_0/tile_data = PackedInt32Array(-1507329, 524295, 7, -1572865, 327687, 5, -
 [connection signal="body_entered" from="challenge_finish" to="." method="_on_challenge_finish_body_entered"]
 [connection signal="start_timer" from="start_zone" to="." method="_on_start_zone_start_timer"]
 [connection signal="popup" from="items/pickups" to="." method="_on_pickups_popup"]
-[connection signal="body_entered" from="items/pickups/green" to="items/pickups" method="_on_green_body_entered"]
+[connection signal="body_entered" from="items/pickups/cosmetic" to="items/pickups" method="_on_cosmetic_body_entered"]
 [connection signal="activate_checkpoint" from="checkpoints/checkpoint" to="." method="_on_checkpoint_activate_checkpoint"]
 [connection signal="activate_checkpoint" from="checkpoints/checkpoint2" to="." method="_on_checkpoint_activate_checkpoint"]
 [connection signal="activate_checkpoint" from="checkpoints/checkpoint3" to="." method="_on_checkpoint_activate_checkpoint"]

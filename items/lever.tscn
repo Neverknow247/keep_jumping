@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5yugq4ijsa5c"]
+
+[ext_resource type="Texture2D" uid="uid://xhrnhvmpmiy1" path="res://assets/art/items/lever.png" id="1_6vpqx"]
+[ext_resource type="Script" path="res://items/lever.gd" id="1_76ojt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s7x0e"]
+radius = 8.0
+
+[node name="lever" type="Area2D"]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("1_76ojt")
+type = "lever"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_s7x0e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("1_6vpqx")
+hframes = 2

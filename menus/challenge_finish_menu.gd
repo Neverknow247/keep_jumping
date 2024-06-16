@@ -74,4 +74,5 @@ func add_score_item(player_name:String, score_value:String):
 		item.get_node("PlayerName").add_theme_color_override("font_color",Color("#66cdaa"))
 	score_container.add_child(item)
 
-
+func _on_return_button_pressed():
+	get_tree().change_scene_to_file("res://levels/level_1.tscn")

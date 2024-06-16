@@ -54,6 +54,7 @@ var sfx = {
 	"glass" : load(sfx_path+"glass_1.wav"),
 	"door_open" : load(sfx_path+"door_open.wav"),
 	"door_close" : load(sfx_path+"door_close.wav"),
+	"stone_door" : load(sfx_path+"stone_door.mp3"),
 #	"" : load(sfx_path+".wav"),
 	}
 

@@ -175,3 +175,25 @@ func _on_toilet_unlock_toilet():
 
 func _on_pickups_popup(text):
 	ui.pop_up(text)
+
+func _on_player_lever():
+	var tween = get_tree().create_tween()
+	tween.tween_property($items/door,"global_position",Vector2($items/door.global_position.x,$items/door.global_position.y+33),2)
+	$items/lever.unlocked = false
+	$items/lever/Sprite2D.frame = 1
+	player.interactable = null
+	player.interacting = false
+	player.interacting_type = ""
+	player.interact_icon.hide()
+	@warning_ignore("narrowing_conversion")
+	sounds.play_sfx("click", randf_range(0.6,1.4), -10)
+	sounds.play_sfx("stone_door", randf_range(0.9,1.0), 0)
+
+
+func _on_fireplace_unlock_body_entered(body):
+	if !stats["save_data"]["items"]["fireplace"]:
+		stats["save_data"]["items"]["fireplace"] = true
+		@warning_ignore("narrowing_conversion")
+		sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
+		ui.pop_up("Fireplace Unlocked")
+		SaveAndLoad.update_save_data()

@@ -3,19 +3,22 @@ extends Node2D
 var sounds = Sounds
 var stats = Stats
 
-@onready var green = $green
+@export var cosmetic_name: String
+@export var popup_text: String
+
+@onready var cosmetic = $cosmetic
 
 signal popup(text)
 
 func _ready():
-	if stats["save_data"]["armors"]["green"]:
-		green.queue_free()
+	if stats["save_data"]["armors"][cosmetic_name]:
+		cosmetic.queue_free()
 
 @warning_ignore("unused_parameter")
-func _on_green_body_entered(body):
-	stats["save_data"]["armors"]["green"] = true
+func _on_cosmetic_body_entered(body):
+	stats["save_data"]["armors"][cosmetic_name] = true
 	@warning_ignore("narrowing_conversion")
 	sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
-	green.queue_free()
+	cosmetic.queue_free()
 	SaveAndLoad.update_save_data()
-	popup.emit("Green Training Armor Found")
+	popup.emit(popup_text)

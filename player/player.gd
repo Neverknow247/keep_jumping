@@ -635,3 +635,9 @@ signal lecturn
 func open_lecturn():
 	lecturn.emit()
 
+signal lever
+func open_lever():
+	lever.emit()
+
+
+
