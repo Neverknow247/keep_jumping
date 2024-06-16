@@ -424,7 +424,7 @@ func slope_check():
 		return true
 
 func change_to_slope():
-	if stats["save_data"]["slopeless"]:
+	if stats["save_data"]["slopeless"] and stats["current_challenge_level_name"] == "":
 		var rand = rng.randi_range(1,18)
 		@warning_ignore("narrowing_conversion")
 		sounds.play_sfx("hurt_%s"%[str(rand)],randf_range(0.9,1),0)
