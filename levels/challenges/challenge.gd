@@ -4,12 +4,14 @@ var stats = Stats
 var steam = GlobalSteam
 var sounds = Sounds
 var global_timer = GlobalTimer
+var rng = RandomNumberGenerator.new()
 
 @export var level_id = "challenge_1"
 @export var level_name = "Challenge Name"
 @export var spawn_point = Vector2(-176,0)
 @export var main_music = "challenge"
 @export var player_blind = false
+@export var space_gravity = false
 
 @onready var player = $player
 @onready var camera_2d = $Camera2D
@@ -42,6 +44,7 @@ func _ready():
 	set_up_timer()
 	set_up_run()
 	set_camera_limits()
+	set_up_space()
 	get_tree().paused = false 
 	ui.enter_transition()
 	SaveAndLoad.update_save_data()
@@ -84,6 +87,10 @@ func set_camera_limits():
 	camera_2d.limit_right = camera_limits.global_position.x+camera_limits.size.x
 	camera_2d.limit_top = camera_limits.global_position.y
 	camera_2d.limit_bottom = camera_limits.global_position.y+camera_limits.size.y
+
+func set_up_space():
+	if space_gravity:
+		player.apply_space(true)
 
 func _on_start_zone_start_timer():
 	run_start = true
@@ -187,9 +194,10 @@ func _on_player_lever():
 	player.interact_icon.hide()
 	@warning_ignore("narrowing_conversion")
 	sounds.play_sfx("click", randf_range(0.6,1.4), -10)
+	@warning_ignore("narrowing_conversion")
 	sounds.play_sfx("stone_door", randf_range(0.9,1.0), 0)
 
-
+@warning_ignore("unused_parameter")
 func _on_fireplace_unlock_body_entered(body):
 	if !stats["save_data"]["items"]["fireplace"]:
 		stats["save_data"]["items"]["fireplace"] = true
@@ -197,3 +205,18 @@ func _on_fireplace_unlock_body_entered(body):
 		sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
 		ui.pop_up("Fireplace Unlocked")
 		SaveAndLoad.update_save_data()
+
+@warning_ignore("unused_parameter")
+func _on_teleport_to_secret_level_body_entered(body):
+	if !stats["save_data"]["items"]["spikes"]:
+		stats["save_data"]["items"]["spikes"] = true
+		SaveAndLoad.update_save_data()
+	var rand = rng.randi_range(1,18)
+	@warning_ignore("narrowing_conversion")
+	sounds.play_sfx("hurt_%s"%[str(rand)],randf_range(0.9,1),0)
+	@warning_ignore("narrowing_conversion")
+	sounds.play_sfx("chain_damage_1",randf_range(0.8,1),0)
+	@warning_ignore("narrowing_conversion")
+	sounds.play_sfx("chain_damage_2",randf_range(0.9,1.1),0)
+	sounds.play_sfx("tellyin")
+	change_scene("res://levels/challenges/challenge_12.tscn")

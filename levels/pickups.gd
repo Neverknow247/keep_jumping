@@ -10,6 +10,7 @@ signal popup(text)
 @onready var towel = $towel
 @onready var wes = $wes
 @onready var purple_armor_unlock = $purple_armor_unlock
+@onready var frog = $frog
 
 func _ready():
 	if stats["save_data"]["items"]["white_rose"]:
@@ -74,3 +75,12 @@ func _on_purple_armor_unlock_body_entered(body):
 	purple_armor_unlock.queue_free()
 	SaveAndLoad.update_save_data()
 	popup.emit("Mystic Armor Found!")
+
+@warning_ignore("unused_parameter")
+func _on_frog_body_entered(body):
+	stats["save_data"]["armors"]["frog_real"] = true
+	@warning_ignore("narrowing_conversion")
+	sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
+	frog.queue_free()
+	SaveAndLoad.update_save_data()
+	popup.emit("Frogorian Found!")

@@ -7,6 +7,7 @@ var stats = Stats
 @onready var pop_up_label = $pop_up_label
 @onready var transition = $transition
 @onready var animation_player = $AnimationPlayer
+@onready var crt_texture = $crt_texture
 
 var next_level
 
@@ -26,6 +27,13 @@ func _ready():
 	stats.pop_up.connect(pop_up)
 	transition.visible = true
 	pop_up_label.text = ""
+	check_crt_filter()
+
+func check_crt_filter():
+	if stats["save_data"]["equiped_armor"] == "sir_knight":
+		crt_texture.show()
+	else:
+		crt_texture.hide()
 
 func _on_level_finish_menu_next_level():
 	get_tree().change_scene_to_file(next_level)

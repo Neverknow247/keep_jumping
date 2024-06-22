@@ -487,7 +487,8 @@ func set_invincible(_bool):
 	invincible = _bool
 
 func check_death():
-	apply_space(false)
+	if stats.current_challenge_level_name == "":
+		apply_space(false)
 	spike_count += 1
 	stats["save_data"]["current_run_data"]["spike_count"] += 1
 	stats["save_data"]["stats"]["Spiked"] += 1
