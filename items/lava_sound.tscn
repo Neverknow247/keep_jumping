@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b637b1rbp06l4"]
+
+[ext_resource type="AudioStream" uid="uid://c3d8ndndpdrv" path="res://assets/sfx/lava_bubbling.mp3" id="1_afdnh"]
+
+[node name="lava_sound" type="Node2D"]
+
+[node name="lava_sound_player" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_afdnh")
+autoplay = true
+max_distance = 320.0
+bus = &"SFX"

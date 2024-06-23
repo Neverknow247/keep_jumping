@@ -1,0 +1,177 @@
+[gd_scene load_steps=30 format=3 uid="uid://bd1hpyqnnjbgc"]
+
+[ext_resource type="Texture2D" uid="uid://c2oji4x1owrni" path="res://assets/art/items/lava.png" id="1_ia542"]
+[ext_resource type="Texture2D" uid="uid://6272emffjchu" path="res://assets/art/particles/smoke_sprite_sheet.png" id="1_ieqb8"]
+[ext_resource type="Script" path="res://items/lava.gd" id="1_xtiug"]
+[ext_resource type="Script" path="res://characters/hit_box.gd" id="2_kyx2m"]
+[ext_resource type="Texture2D" uid="uid://dorxx4xqpejrf" path="res://assets/art/items/lava_0.png" id="3_hg01b"]
+[ext_resource type="Texture2D" uid="uid://ci1y40oqlh4oy" path="res://assets/art/items/lava_1.png" id="4_vpfcc"]
+[ext_resource type="Texture2D" uid="uid://coyopvdp1dfol" path="res://assets/art/items/lava_2.png" id="5_04cog"]
+[ext_resource type="Texture2D" uid="uid://c3vj8rg2ietdj" path="res://assets/art/items/lava_3.png" id="6_4kc0l"]
+[ext_resource type="Texture2D" uid="uid://dpnkxhe147r3o" path="res://assets/art/items/lava_4.png" id="7_k8dn3"]
+[ext_resource type="Texture2D" uid="uid://bypf7ec62daws" path="res://assets/art/items/lava_5.png" id="8_vahei"]
+[ext_resource type="Texture2D" uid="uid://c4p3dxllpsh7k" path="res://assets/art/items/lava_6.png" id="9_75jib"]
+[ext_resource type="Texture2D" uid="uid://bwalwx2jonahl" path="res://assets/art/items/lava_7.png" id="10_tbyme"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5jl7d"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_poeme"]
+offsets = PackedFloat32Array(0, 0.590551, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.12549)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_q8kid"]
+gradient = SubResource("Gradient_poeme")
+
+[sub_resource type="Curve" id="Curve_ybi8c"]
+max_value = 2.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 2), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_2ylfs"]
+curve = SubResource("Curve_ybi8c")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vjnuf"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(8, 1, 1)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, -5, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_2ylfs")
+color_ramp = SubResource("GradientTexture1D_q8kid")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbiit"]
+atlas = ExtResource("1_ia542")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjn01"]
+atlas = ExtResource("1_ia542")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54dq7"]
+atlas = ExtResource("1_ia542")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_syud8"]
+atlas = ExtResource("1_ia542")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvj8j"]
+atlas = ExtResource("1_ia542")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mo28a"]
+atlas = ExtResource("1_ia542")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1dlq"]
+atlas = ExtResource("1_ia542")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsjfg"]
+atlas = ExtResource("1_ia542")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f3q3t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbiit")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjn01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54dq7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_syud8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yvj8j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mo28a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1dlq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gsjfg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0gi0"]
+size = Vector2(16, 11)
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_y6jy3"]
+frames = 8
+frame_0/texture = ExtResource("3_hg01b")
+frame_0/duration = 0.25
+frame_1/texture = ExtResource("4_vpfcc")
+frame_1/duration = 0.25
+frame_2/texture = ExtResource("5_04cog")
+frame_2/duration = 0.25
+frame_3/texture = ExtResource("6_4kc0l")
+frame_3/duration = 0.25
+frame_4/texture = ExtResource("7_k8dn3")
+frame_4/duration = 0.25
+frame_5/texture = ExtResource("8_vahei")
+frame_5/duration = 0.25
+frame_6/texture = ExtResource("9_75jib")
+frame_6/duration = 0.25
+frame_7/texture = ExtResource("10_tbyme")
+frame_7/duration = 0.25
+
+[node name="lava" type="Node2D"]
+z_index = 1
+script = ExtResource("1_xtiug")
+
+[node name="particles" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_5jl7d")
+position = Vector2(0, -11)
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_vjnuf")
+texture = ExtResource("1_ieqb8")
+lifetime = 4.0
+preprocess = 4.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_f3q3t")
+autoplay = "default"
+frame_progress = 0.485826
+
+[node name="hit_box" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("2_kyx2m")
+damage = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hit_box"]
+position = Vector2(0, -5.5)
+shape = SubResource("RectangleShape2D_v0gi0")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -8)
+texture = SubResource("AnimatedTexture_y6jy3")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -8)
+scale = Vector2(5.6, 5.6)
+
+[connection signal="area_entered" from="hit_box" to="hit_box" method="_on_area_entered"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://nfjwcl3nv5kx"]
+[gd_scene load_steps=6 format=3 uid="uid://nfjwcl3nv5kx"]
 
 [ext_resource type="Script" path="res://items/spikes.gd" id="1_clueq"]
 [ext_resource type="Texture2D" uid="uid://eufam8nj0cw4" path="res://assets/art/items/forest_spikes.png" id="2_s43xj"]
 [ext_resource type="Script" path="res://characters/hit_box.gd" id="3_upxrc"]
+[ext_resource type="Texture2D" uid="uid://b2npbpwdu6tbc" path="res://assets/art/items/spike_light.png" id="4_c08c5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cqnif"]
 size = Vector2(14, 2)
@@ -28,5 +29,9 @@ shape = SubResource("RectangleShape2D_cqnif")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="hit_box"]
 polygon = PackedVector2Array(6, 0, -6, 0, -4, -2, 4, -2)
+
+[node name="spike_light" type="PointLight2D" parent="."]
+visible = false
+texture = ExtResource("4_c08c5")
 
 [connection signal="area_entered" from="hit_box" to="hit_box" method="_on_area_entered"]

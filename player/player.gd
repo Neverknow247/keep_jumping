@@ -469,26 +469,23 @@ func slope_exit():
 
 @warning_ignore("unused_parameter")
 func _on_hurt_box_hit(damage):
-	if not invincible:
-		invincible = true
-		var rand = rng.randi_range(1,18)
-		@warning_ignore("narrowing_conversion")
-		sounds.play_sfx("hurt_%s"%[str(rand)],randf_range(0.9,1),0)
+	var rand = rng.randi_range(1,18)
+	@warning_ignore("narrowing_conversion")
+	sounds.play_sfx("hurt_%s"%[str(rand)],randf_range(0.9,1),0)
+	if damage == 1:
 		@warning_ignore("narrowing_conversion")
 		sounds.play_sfx("chain_damage_1",randf_range(0.8,1),0)
 		@warning_ignore("narrowing_conversion")
 		sounds.play_sfx("chain_damage_2",randf_range(0.9,1.1),0)
-		Events.add_screenshake.emit(2,0.25)
+		add_spike()
+		check_death()
+	elif damage == 2:
+		add_lava()
 		check_death()
 	else:
 		pass
 
-func set_invincible(_bool):
-	invincible = _bool
-
-func check_death():
-	if stats.current_challenge_level_name == "":
-		apply_space(false)
+func add_spike():
 	spike_count += 1
 	stats["save_data"]["current_run_data"]["spike_count"] += 1
 	stats["save_data"]["stats"]["Spiked"] += 1
@@ -502,6 +499,16 @@ func check_death():
 		GlobalSteam.setAchievement("ACH_SPIKE_3")
 		stats["save_data"]["achievements"]["spike_3"] = true
 	SaveAndLoad.update_save_data()
+
+func add_lava():
+	pass
+
+func set_invincible(_bool):
+	invincible = _bool
+
+func check_death():
+	if stats.current_challenge_level_name == "":
+		apply_space(false)
 	process_mode = Node.PROCESS_MODE_DISABLED
 	var death_timer = get_tree().create_timer(.3)
 	var fade_tween = get_tree().create_tween()
