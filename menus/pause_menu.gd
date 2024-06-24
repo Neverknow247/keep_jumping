@@ -11,6 +11,7 @@ var list_index = 0
 @onready var level_name = $VBoxContainer/level_name
 
 @onready var restart_button = $buttons/restart_button
+@onready var return_button = $buttons/return_button
 @onready var settings_button = $buttons/settings_button
 
 @onready var main = $main
@@ -39,6 +40,8 @@ var reset_unlocked = true
 func _ready():
 	if stats.calc_total_reunions() > 0:
 		restart_button.show()
+	if stats.current_challenge_level != "res://levels/level_1.tscn":
+		return_button.show()
 	visible = false
 
 func _input(event):
@@ -109,3 +112,11 @@ func _on_hide_menu(scene):
 func _on_quit_button_pressed():
 	get_tree().call_deferred("quit")
 	#get_tree().quit()
+
+func _on_return_button_pressed():
+	stats.current_challenge_level = "res://levels/level_1.tscn"
+	@warning_ignore("narrowing_conversion")
+	Sounds.play_sfx("click",randf_range(.8,1.2),-10)
+	transition.fade_out()
+	await get_tree().create_timer(stats.transition_time).timeout
+	get_tree().change_scene_to_file("res://levels/level_1.tscn")

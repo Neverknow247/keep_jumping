@@ -28,8 +28,8 @@ func _ready():
 	sfx_slider.value = db_to_linear(AudioServer.get_bus_volume_db(sfx_bus))
 	voice_slider.value = db_to_linear(AudioServer.get_bus_volume_db(voice_bus))
 
-func _unhandled_input(event):
-	if (event.is_action_pressed("ui_cancel")||(event is InputEventJoypadButton and event.button_index == 1)) and active:
+func _input(event):
+	if (event.is_action_pressed("pause")||(event is InputEventJoypadButton and event.button_index == 1)) and active:
 		_on_back_button_pressed()
 
 func _on_master_slider_value_changed(value):

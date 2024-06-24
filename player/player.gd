@@ -509,14 +509,16 @@ func set_invincible(_bool):
 func check_death():
 	if stats.current_challenge_level_name == "":
 		apply_space(false)
-	process_mode = Node.PROCESS_MODE_DISABLED
+	#process_mode = Node.PROCESS_MODE_DISABLED
+	state = "pause_state"
 	var death_timer = get_tree().create_timer(.3)
 	var fade_tween = get_tree().create_tween()
 	var size_tween = get_tree().create_tween()
 	fade_tween.tween_property(sprite,"modulate",Color.DARK_RED,.2)
 	size_tween.tween_property(sprite,"scale",Vector2(2,2),.2)
 	await death_timer.timeout
-	process_mode = Node.PROCESS_MODE_INHERIT
+	#process_mode = Node.PROCESS_MODE_INHERIT
+	state = "move_state"
 	if stats["save_data"]["hard_mode"]:
 		stats.reset_run()
 		change_scene.emit()

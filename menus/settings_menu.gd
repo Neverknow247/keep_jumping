@@ -19,8 +19,8 @@ var active = false
 signal change_scene(new_scene)
 signal hide_menu(scene)
 
-func _unhandled_input(event):
-	if (event.is_action_pressed("ui_cancel")||(event is InputEventJoypadButton and event.button_index == 1)) and !volume_menu.visible and !keybinding_menu.visible and !general_menu.visible and active:
+func _input(event):
+	if (event.is_action_pressed("pause")||(event is InputEventJoypadButton and event.button_index == 1)) and !volume_menu.visible and !keybinding_menu.visible and !general_menu.visible and active:
 		_on_back_button_pressed()
 
 func _on_hide_menu(scene):

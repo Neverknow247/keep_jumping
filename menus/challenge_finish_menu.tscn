@@ -279,7 +279,7 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_wngb5")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ki7h5")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_ami28")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_lk4b2")
-text = "Back to Castle"
+text = "Return to Camp"
 
 [node name="settings_button" type="Button" parent="buttons"]
 custom_minimum_size = Vector2(288, 60)

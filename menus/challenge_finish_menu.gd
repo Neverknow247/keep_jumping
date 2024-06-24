@@ -34,7 +34,11 @@ func _on_hide_menu(scene):
 	transition.fade_in()
 
 func _on_restart_button_pressed():
-		get_tree().change_scene_to_file(stats.current_challenge_level)
+	@warning_ignore("narrowing_conversion")
+	Sounds.play_sfx("click",randf_range(.8,1.2),-10)
+	transition.fade_out()
+	await get_tree().create_timer(stats.transition_time).timeout
+	get_tree().change_scene_to_file(stats.current_challenge_level)
 
 func _on_settings_button_pressed():
 	@warning_ignore("narrowing_conversion")
@@ -75,4 +79,9 @@ func add_score_item(player_name:String, score_value:String):
 	score_container.add_child(item)
 
 func _on_return_button_pressed():
+	stats.current_challenge_level = "res://levels/level_1.tscn"
+	@warning_ignore("narrowing_conversion")
+	Sounds.play_sfx("click",randf_range(.8,1.2),-10)
+	transition.fade_out()
+	await get_tree().create_timer(stats.transition_time).timeout
 	get_tree().change_scene_to_file("res://levels/level_1.tscn")

@@ -21,8 +21,8 @@ func _ready():
 	squash_and_stretch_check.button_pressed = utils.squash_and_stretch
 	screen_shake_check.button_pressed = utils.screen_shake
 
-func _unhandled_input(event):
-	if (event.is_action_pressed("ui_cancel")||(event is InputEventJoypadButton and event.button_index == 1)) and active:
+func _input(event):
+	if (event.is_action_pressed("pause")||(event is InputEventJoypadButton and event.button_index == 1)) and active:
 		_on_back_button_pressed()
 
 func _on_window_option_button_item_selected(index):
