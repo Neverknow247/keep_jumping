@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://kib21yto7yik"]
+[gd_scene load_steps=21 format=3 uid="uid://kib21yto7yik"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_es81c"]
 [ext_resource type="Texture2D" uid="uid://r7wqniih52i7" path="res://assets/art/characters/player.png" id="2_t5lp7"]
@@ -53,6 +53,9 @@ size = Vector2(4, 1)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ssent"]
 radius = 8.0
 height = 16.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ykc2y"]
+size = Vector2(6, 12)
 
 [sub_resource type="Animation" id="Animation_wxi8o"]
 length = 0.001
@@ -359,6 +362,15 @@ collision_mask = 32
 position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_ssent")
 
+[node name="air_recovery_detection" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="air_recovery_detection"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_ykc2y")
+
 [node name="camera_follow" type="RemoteTransform2D" parent="."]
 position = Vector2(0, -15)
 
@@ -372,6 +384,10 @@ one_shot = true
 
 [node name="jump_timer" type="Timer" parent="."]
 wait_time = 0.3
+one_shot = true
+
+[node name="jump_buffer_timer" type="Timer" parent="."]
+wait_time = 0.025
 one_shot = true
 
 [node name="b_hop_timer" type="Timer" parent="."]
@@ -393,5 +409,7 @@ autoplay = "idle"
 [connection signal="hit" from="hurt_box" to="." method="_on_hurt_box_hit"]
 [connection signal="area_entered" from="interaction_detection" to="." method="_on_interaction_detection_area_entered"]
 [connection signal="area_exited" from="interaction_detection" to="." method="_on_interaction_detection_area_exited"]
+[connection signal="area_entered" from="air_recovery_detection" to="." method="_on_air_recovery_detection_area_entered"]
 [connection signal="timeout" from="jump_timer" to="." method="_on_jump_timer_timeout"]
+[connection signal="timeout" from="jump_buffer_timer" to="." method="_on_jump_buffer_timer_timeout"]
 [connection signal="timeout" from="drop_timer" to="." method="_on_drop_timer_timeout"]

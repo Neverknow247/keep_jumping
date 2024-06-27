@@ -15,6 +15,7 @@ const sprites = [
 	preload("res://assets/art/items/space_spikes.png"),
 	preload("res://assets/art/items/rust_spikes.png"),
 	preload("res://assets/art/items/lava_spikes.png"),
+	preload("res://assets/art/items/sand_spikes.png"),
 ]
 
 var damage = 1

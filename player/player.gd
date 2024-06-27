@@ -38,7 +38,8 @@ var current_velocity = 0.0
 @export var default_gravity = 300
 @export var space_gravity = 150
 @export var gravity = 300
-@export var sand_gravity = 75
+@export var sand_gravity = 150
+#@export var sand_gravity = 75
 @export var default_wall_slide_speed = 150
 @export var space_wall_slide_speed = 75
 @export var wall_slide_speed = 150
@@ -54,6 +55,7 @@ var current_velocity = 0.0
 @onready var coyote_jump_timer = $coyote_jump_timer
 @onready var coyote_wall_timer = $coyote_wall_timer
 @onready var jump_timer = $jump_timer
+@onready var jump_buffer_timer = $jump_buffer_timer
 @onready var b_hop_timer = $b_hop_timer
 @onready var drop_timer = $drop_timer
 @onready var collision = $collision
@@ -77,7 +79,7 @@ var double_jump = true:
 			sprite.modulate = Color.WHITE
 		else:
 			sprite.modulate = double_jump_color
-
+var jump_buffer = false
 var in_space = false
 var spike_count = 0
 var checkpoint = false
@@ -239,7 +241,15 @@ func apply_friction(delta):
 
 func jump_check():
 	if is_on_floor():
+		reset_air_recovery_orbs()
 		double_jump = true
+		if jump_buffer:
+			jump(jump_force)
+			if b_hop_timer.time_left > 0.0:
+				max_velocity+=(b_hop_timer.time_left*b_hop_bonus_multiplier)
+				b_hop_timer.stop()
+			jump_buffer = false
+			return
 	if coyote_wall_timer.time_left > 0.0:
 		if Input.is_action_just_pressed("jump") || Input.is_action_just_pressed("controller_jump"):
 			jump(jump_force)
@@ -260,6 +270,9 @@ func jump_check():
 			#print("jump air")
 			jump(jump_force * partial_jump_multiplier)
 			double_jump = false
+		elif (Input.is_action_just_pressed("jump")||Input.is_action_just_pressed("controller_jump")) and !double_jump:
+			jump_buffer_timer.start()
+			jump_buffer = true
 
 func jump(force):
 	apply_stretch()
@@ -391,6 +404,12 @@ func wall_slide_state(delta):
 	wall_detach(delta)
 
 func wall_jump_check(wall_axis):
+	if jump_buffer:
+		velocity.x = wall_axis*default_max_velocity
+		state = "move_state"
+		jump(jump_force*partial_jump_multiplier)
+		jump_buffer = false
+		return
 	if Input.is_action_just_pressed("jump")||Input.is_action_just_pressed("controller_jump"):
 		#print(wall_axis)
 		velocity.x = wall_axis*default_max_velocity
@@ -550,6 +569,9 @@ func calculate_stomp_velocity(linear_velocity: Vector2, impulse):
 func _on_jump_timer_timeout():
 	just_jumped = false
 
+func _on_jump_buffer_timer_timeout():
+	jump_buffer = false
+
 func paused():
 	state = "pause_state"
 
@@ -649,5 +671,13 @@ signal lever
 func open_lever():
 	lever.emit()
 
+var air_recovery_orbs = []
+func _on_air_recovery_detection_area_entered(area):
+	double_jump = true
+	air_recovery_orbs.append(area)
+	area.used()
 
-
+func reset_air_recovery_orbs():
+	for orb in air_recovery_orbs:
+		orb.refresh()
+	air_recovery_orbs = []

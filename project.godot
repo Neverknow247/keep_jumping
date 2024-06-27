@@ -16,6 +16,7 @@ run/main_scene="res://menus/neverknow_splash.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="SirFallen"
 config/features=PackedStringArray("4.2", "Forward Plus")
+run/max_fps=60
 config/icon="res://avatar.png"
 
 [autoload]
@@ -215,6 +216,7 @@ cheat_key_3={
 2d_physics/layer_7="broken_toilet_pieces"
 2d_physics/layer_8="drop_through_platforms"
 2d_physics/layer_9="spike_tilemap"
+2d_physics/layer_10="air_recovery"
 
 [rendering]
 

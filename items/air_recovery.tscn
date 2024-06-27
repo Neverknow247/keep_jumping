@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckg27i2a3a7gq"]
+
+[ext_resource type="Script" path="res://items/air_recovery.gd" id="1_p678w"]
+[ext_resource type="Texture2D" uid="uid://jchutw32pfqw" path="res://assets/art/items/air_recovery.png" id="2_6jaie"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j8b10"]
+radius = 5.0
+
+[node name="air_recovery" type="Area2D"]
+collision_layer = 512
+collision_mask = 0
+script = ExtResource("1_p678w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_6jaie")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_j8b10")
