@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpytpvwjhcftr"]
+
+[ext_resource type="Texture2D" uid="uid://btgghe3835ip3" path="res://assets/art/items/crypt_of_the_fallen_door.png" id="1_i5r3t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_04smq"]
+size = Vector2(16, 32)
+
+[node name="door" type="StaticBody2D"]
+position = Vector2(360, -304)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_04smq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_i5r3t")
+hframes = 2

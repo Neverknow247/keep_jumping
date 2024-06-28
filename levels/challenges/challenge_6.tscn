@@ -18,6 +18,7 @@
 script = ExtResource("1_hucwf")
 level_id = "challenge_6"
 level_name = "T-1 : Starter Sanctuary"
+spawn_point = Vector2(-176, 0)
 
 [node name="background" type="TextureRect" parent="."]
 z_index = -100
@@ -53,7 +54,7 @@ layer_3/tile_data = PackedInt32Array()
 [node name="player" parent="." instance=ExtResource("4_whvdk")]
 position = Vector2(-176, 0)
 
-[node name="camera_follow" parent="player" index="9"]
+[node name="camera_follow" parent="player" index="10"]
 remote_path = NodePath("../../Camera2D")
 
 [node name="challenge_finish" parent="." instance=ExtResource("5_8ey46")]

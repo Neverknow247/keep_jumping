@@ -15,6 +15,7 @@
 [node name="challenge_1" type="Node2D"]
 script = ExtResource("1_5lwrm")
 level_name = "C-1 : Creepy Cavern"
+spawn_point = Vector2(-176, 0)
 player_blind = true
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -36,7 +37,7 @@ layer_3/tile_data = PackedInt32Array(0, 65537, 2, -65536, 65537, 1, -131072, 655
 [node name="player" parent="." instance=ExtResource("3_3rn48")]
 position = Vector2(-176, 0)
 
-[node name="camera_follow" parent="player" index="9"]
+[node name="camera_follow" parent="player" index="10"]
 remote_path = NodePath("../../Camera2D")
 
 [node name="challenge_finish" parent="." instance=ExtResource("5_7rkyb")]

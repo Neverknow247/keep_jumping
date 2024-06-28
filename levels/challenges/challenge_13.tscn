@@ -24,6 +24,7 @@ size = Vector2(12, 2)
 script = ExtResource("1_dpb4t")
 level_id = "challenge_13"
 level_name = "C-4 : "
+spawn_point = Vector2(-176, 0)
 space_gravity = true
 
 [node name="background" type="TextureRect" parent="."]
@@ -60,7 +61,7 @@ layer_3/tile_data = PackedInt32Array()
 [node name="player" parent="." instance=ExtResource("4_hbx7x")]
 position = Vector2(-176, 0)
 
-[node name="camera_follow" parent="player" index="9"]
+[node name="camera_follow" parent="player" index="10"]
 remote_path = NodePath("../../Camera2D")
 
 [node name="challenge_finish" parent="." instance=ExtResource("5_r33no")]

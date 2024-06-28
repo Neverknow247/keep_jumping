@@ -8,7 +8,7 @@ var rng = RandomNumberGenerator.new()
 
 @export var level_id = "challenge_1"
 @export var level_name = "Challenge Name"
-@export var spawn_point = Vector2(-176,0)
+@export var spawn_point = Vector2(0,0)
 @export var main_music = "challenge"
 @export var player_blind = false
 @export var space_gravity = false

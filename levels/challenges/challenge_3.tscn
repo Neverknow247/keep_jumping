@@ -17,6 +17,7 @@
 script = ExtResource("1_b448i")
 level_id = "challenge_3"
 level_name = "T-4 : Peril Pathway"
+spawn_point = Vector2(-176, 0)
 
 [node name="background" type="TextureRect" parent="."]
 visible = false
@@ -53,7 +54,7 @@ layer_3/tile_data = PackedInt32Array(393170, 131073, 2, 327634, 131073, 1, 26209
 [node name="player" parent="." instance=ExtResource("4_wvlo8")]
 position = Vector2(-176, 0)
 
-[node name="camera_follow" parent="player" index="9"]
+[node name="camera_follow" parent="player" index="10"]
 remote_path = NodePath("../../Camera2D")
 
 [node name="challenge_finish" parent="." instance=ExtResource("5_dr7d7")]

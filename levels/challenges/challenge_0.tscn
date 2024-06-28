@@ -22,6 +22,7 @@ radius = 24.0
 script = ExtResource("1_noxki")
 level_id = "challenge_0"
 level_name = "T-3 : Tiny Tower"
+spawn_point = Vector2(-176, 0)
 
 [node name="background" type="TextureRect" parent="."]
 z_index = -100
@@ -57,7 +58,7 @@ layer_3/tile_data = PackedInt32Array(5, 65537, 2, -65531, 65537, 1, -131067, 655
 [node name="player" parent="." instance=ExtResource("3_63ib4")]
 position = Vector2(-176, 0)
 
-[node name="camera_follow" parent="player" index="9"]
+[node name="camera_follow" parent="player" index="10"]
 remote_path = NodePath("../../Camera2D")
 
 [node name="challenge_finish" parent="." instance=ExtResource("4_whke7")]

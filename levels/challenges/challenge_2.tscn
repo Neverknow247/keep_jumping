@@ -19,6 +19,7 @@
 script = ExtResource("1_pkxem")
 level_id = "challenge_2"
 level_name = "S-1 : Toilet Takedown"
+spawn_point = Vector2(-176, 0)
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = 2
@@ -39,7 +40,7 @@ layer_3/tile_data = PackedInt32Array(3014702, 131073, 2, 2949166, 131073, 1, 288
 [node name="player" parent="." instance=ExtResource("3_y2k2q")]
 position = Vector2(-176, 0)
 
-[node name="camera_follow" parent="player" index="9"]
+[node name="camera_follow" parent="player" index="10"]
 remote_path = NodePath("../../Camera2D")
 
 [node name="challenge_finish" parent="." instance=ExtResource("4_o1lnw")]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://byqimk7vvlw0b"]
+[gd_scene load_steps=20 format=3 uid="uid://byqimk7vvlw0b"]
 
 [ext_resource type="Script" path="res://levels/challenges/challenge.gd" id="1_r2hqv"]
 [ext_resource type="Texture2D" uid="uid://r7nk4nvd874q" path="res://assets/art/backgrounds/castle_1_background.png" id="2_rn0tg"]
@@ -12,15 +12,12 @@
 [ext_resource type="TileSet" uid="uid://xe0wnormtqpf" path="res://tilesets/spike_tileset.tres" id="10_63wxh"]
 [ext_resource type="PackedScene" uid="uid://c5yugq4ijsa5c" path="res://items/lever.tscn" id="10_sjsbx"]
 [ext_resource type="PackedScene" uid="uid://nfjwcl3nv5kx" path="res://items/spikes.tscn" id="11_cifia"]
-[ext_resource type="Texture2D" uid="uid://btgghe3835ip3" path="res://assets/art/items/crypt_of_the_fallen_door.png" id="11_n2cyv"]
+[ext_resource type="PackedScene" uid="uid://bpytpvwjhcftr" path="res://items/challenge_door.tscn" id="11_ypik1"]
 [ext_resource type="Script" path="res://levels/challenges/pickups.gd" id="12_goy3w"]
 [ext_resource type="PackedScene" uid="uid://duyvxrlf4ht5f" path="res://items/spring.tscn" id="12_rpx2w"]
 [ext_resource type="PackedScene" uid="uid://btc0hm6mkex5a" path="res://items/checkpoint.tscn" id="13_0dpov"]
 [ext_resource type="Texture2D" uid="uid://br1q5qge3foly" path="res://assets/art/items/yellow_unlock.png" id="13_cxr4r"]
 [ext_resource type="PackedScene" uid="uid://n615rx02auyl" path="res://ui/ui.tscn" id="14_wm376"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_04smq"]
-size = Vector2(16, 32)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a8jah"]
 
@@ -28,7 +25,7 @@ size = Vector2(16, 32)
 script = ExtResource("1_r2hqv")
 level_id = "challenge_10"
 level_name = "S-3 : "
-spawn_point = Vector2(-192, 0)
+spawn_point = Vector2(-184, 0)
 
 [node name="background" type="TextureRect" parent="."]
 z_index = -100
@@ -64,7 +61,7 @@ layer_3/tile_data = PackedInt32Array(2, 131073, 2, -65534, 131073, 1, -131070, 1
 [node name="player" parent="." instance=ExtResource("4_1a1u8")]
 position = Vector2(-184, 0)
 
-[node name="camera_follow" parent="player" index="9"]
+[node name="camera_follow" parent="player" index="10"]
 remote_path = NodePath("../../Camera2D")
 
 [node name="challenge_finish" parent="." instance=ExtResource("5_1yslh")]
@@ -87,16 +84,7 @@ position = Vector2(-184, 0)
 [node name="lever" parent="items" instance=ExtResource("10_sjsbx")]
 position = Vector2(376, -240)
 
-[node name="door" type="StaticBody2D" parent="items"]
-position = Vector2(360, -304)
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="items/door"]
-shape = SubResource("RectangleShape2D_04smq")
-
-[node name="Sprite2D" type="Sprite2D" parent="items/door"]
-texture = ExtResource("11_n2cyv")
-hframes = 2
+[node name="door" parent="items" instance=ExtResource("11_ypik1")]
 
 [node name="pickups" type="Node2D" parent="items"]
 script = ExtResource("12_goy3w")
