@@ -671,6 +671,18 @@ signal lever
 func open_lever():
 	lever.emit()
 
+signal upper_lever
+func open_upper_lever():
+	upper_lever.emit()
+
+signal lower_lever
+func open_lower_lever():
+	lower_lever.emit()
+
+signal hidden_lever
+func open_hidden_lever():
+	hidden_lever.emit()
+
 var air_recovery_orbs = []
 func _on_air_recovery_detection_area_entered(area):
 	double_jump = true
