@@ -10,6 +10,9 @@ signal popup(text)
 @onready var towel = $towel
 @onready var wes = $wes
 @onready var purple_armor_unlock = $purple_armor_unlock
+@onready var brown_armor_unlock = $brown_armor_unlock
+@onready var red_armor_unlock = $red_armor_unlock
+@onready var yellow_armor_unlock = $yellow_armor_unlock
 @onready var frog = $frog
 
 func _ready():
@@ -23,6 +26,12 @@ func _ready():
 		wes.queue_free()
 	if stats["save_data"]["armors"]["purple"]:
 		purple_armor_unlock.queue_free()
+	if stats["save_data"]["armors"]["brown"]:
+		brown_armor_unlock.queue_free()
+	if stats["save_data"]["armors"]["red"]:
+		red_armor_unlock.queue_free()
+	if stats["save_data"]["armors"]["yellow_2"]:
+		yellow_armor_unlock.queue_free()
 
 signal check_picnic
 @warning_ignore("unused_parameter")
@@ -84,3 +93,30 @@ func _on_frog_body_entered(body):
 	frog.queue_free()
 	SaveAndLoad.update_save_data()
 	popup.emit("Frogorian Found!")
+
+@warning_ignore("unused_parameter")
+func _on_brown_armor_unlock_body_entered(body):
+	stats["save_data"]["armors"]["brown"] = true
+	@warning_ignore("narrowing_conversion")
+	sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
+	brown_armor_unlock.queue_free()
+	SaveAndLoad.update_save_data()
+	popup.emit("Armor found in the dirt!")
+
+@warning_ignore("unused_parameter")
+func _on_red_armor_unlock_body_entered(body):
+	stats["save_data"]["armors"]["red"] = true
+	@warning_ignore("narrowing_conversion")
+	sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
+	red_armor_unlock.queue_free()
+	SaveAndLoad.update_save_data()
+	popup.emit("Is this blood on the armor?!")
+
+@warning_ignore("unused_parameter")
+func _on_yellow_armor_unlock_body_entered(body):
+	stats["save_data"]["armors"]["yellow_2"] = true
+	@warning_ignore("narrowing_conversion")
+	sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
+	yellow_armor_unlock.queue_free()
+	SaveAndLoad.update_save_data()
+	popup.emit("Thats no sunflower!")
