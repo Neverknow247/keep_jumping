@@ -5,6 +5,7 @@ extends StaticBody2D
 var textures = [
 	preload("res://assets/art/items/breakable_block.png"),
 	preload("res://assets/art/items/breakable_sand_block.png"),
+	preload("res://assets/art/items/breakable_lava_block.png"),
 ]
 
 @onready var sprite_2d = $Sprite2D
