@@ -7,6 +7,8 @@ var stats = Stats
 @onready var peril_pathway = $peril_pathway
 @onready var enigma_escape = $enigma_escape
 @onready var s_3 = $"S-3"
+@onready var library_teleporter = $library_teleporter
+
 
 func _ready():
 	unlock_training_teleporters()
@@ -30,3 +32,6 @@ func unlock_other_teleporters():
 	if !stats["save_data"]["items"]["spikes"]:
 		s_3.unlocked = false
 		s_3.visible = false
+	if !stats["save_data"]["items"]["library"]:
+		library_teleporter.unlocked = false
+		library_teleporter.visible = false

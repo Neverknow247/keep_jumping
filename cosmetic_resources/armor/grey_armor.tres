@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ArmorData" load_steps=4 format=3 uid="uid://curisnkouiglc"]
+
+[ext_resource type="Texture2D" uid="uid://ddyhgfxs0vdrm" path="res://assets/art/characters/player_grey.png" id="1_wl1ki"]
+[ext_resource type="Texture2D" uid="uid://cyrhak5xolwc6" path="res://assets/art/characters/akamaru_grey.png" id="2_bjj8t"]
+[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="3_e185d"]
+
+[resource]
+script = ExtResource("3_e185d")
+armor_id = "grey"
+armor_name = "Paper Grey"
+armor_texture = ExtResource("1_wl1ki")
+dog_texture = ExtResource("2_bjj8t")

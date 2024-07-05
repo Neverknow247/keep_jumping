@@ -5,7 +5,7 @@ extends Area2D
 func _ready():
 	var rand = randi_range(0,5)
 	sprite.frame = rand
-	sprite.frame = rand
+	#sprite.frame = rand
 
 func used():
 	self.call_deferred("set_monitorable",false)

@@ -220,3 +220,12 @@ func _on_teleport_to_secret_level_body_entered(body):
 	sounds.play_sfx("chain_damage_2",randf_range(0.9,1.1),0)
 	sounds.play_sfx("tellyin")
 	change_scene("res://levels/challenges/challenge_12.tscn")
+
+@warning_ignore("unused_parameter")
+func _on_library_unlock_body_entered(body):
+	if !stats["save_data"]["items"]["library"]:
+		stats["save_data"]["items"]["library"] = true
+		@warning_ignore("narrowing_conversion")
+		sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
+		ui.pop_up("Library Unlocked")
+		SaveAndLoad.update_save_data()

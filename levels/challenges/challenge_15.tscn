@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://df0n31jvu55wh" path="res://items/oneway_platform.tscn" id="15_d0hft"]
 [ext_resource type="PackedScene" uid="uid://n615rx02auyl" path="res://ui/ui.tscn" id="16_bixk1"]
 
-[node name="challenge_template" type="Node2D"]
+[node name="challenge_15" type="Node2D"]
 script = ExtResource("1_mt3bh")
 level_id = "challenge_15"
 level_name = "C-0 : "

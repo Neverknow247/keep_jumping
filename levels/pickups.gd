@@ -101,7 +101,7 @@ func _on_brown_armor_unlock_body_entered(body):
 	sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
 	brown_armor_unlock.queue_free()
 	SaveAndLoad.update_save_data()
-	popup.emit("Armor found in the dirt!")
+	popup.emit("Armor was buried in the dirt!")
 
 @warning_ignore("unused_parameter")
 func _on_red_armor_unlock_body_entered(body):
@@ -119,4 +119,4 @@ func _on_yellow_armor_unlock_body_entered(body):
 	sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
 	yellow_armor_unlock.queue_free()
 	SaveAndLoad.update_save_data()
-	popup.emit("Thats no sunflower!")
+	popup.emit("That's no sunflower!")
