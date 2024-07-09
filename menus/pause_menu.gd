@@ -111,7 +111,6 @@ func _on_hide_menu(scene):
 
 func _on_quit_button_pressed():
 	get_tree().call_deferred("quit")
-	#get_tree().quit()
 
 func _on_return_button_pressed():
 	stats.current_challenge_level = "res://levels/level_1.tscn"
