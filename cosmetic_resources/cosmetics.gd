@@ -12,6 +12,7 @@ var armors = [
 	preload("res://cosmetic_resources/armor/brown_armor.tres"),
 	preload("res://cosmetic_resources/armor/white_armor.tres"),
 	preload("res://cosmetic_resources/armor/grey_armor.tres"),
+	preload("res://cosmetic_resources/armor/space_armor.tres"),
 	preload("res://cosmetic_resources/armor/poke_armor.tres"),
 	preload("res://cosmetic_resources/armor/undies_armor.tres"),
 	preload("res://cosmetic_resources/armor/wes_armor.tres"),

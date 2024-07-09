@@ -14,6 +14,8 @@ signal popup(text)
 @onready var red_armor_unlock = $red_armor_unlock
 @onready var yellow_armor_unlock = $yellow_armor_unlock
 @onready var frog = $frog
+@onready var space_skin = $space_skin
+
 
 func _ready():
 	if stats["save_data"]["items"]["white_rose"]:
@@ -32,6 +34,8 @@ func _ready():
 		red_armor_unlock.queue_free()
 	if stats["save_data"]["armors"]["yellow_2"]:
 		yellow_armor_unlock.queue_free()
+	if stats["save_data"]["armors"]["space"]:
+		space_skin.queue_free()
 
 signal check_picnic
 @warning_ignore("unused_parameter")
@@ -120,3 +124,12 @@ func _on_yellow_armor_unlock_body_entered(body):
 	yellow_armor_unlock.queue_free()
 	SaveAndLoad.update_save_data()
 	popup.emit("That's no sunflower!")
+
+@warning_ignore("unused_parameter")
+func _on_space_skin_body_entered(body):
+	stats["save_data"]["armors"]["space"] = true
+	@warning_ignore("narrowing_conversion")
+	sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
+	space_skin.queue_free()
+	SaveAndLoad.update_save_data()
+	popup.emit("One giant leap for knightkind")

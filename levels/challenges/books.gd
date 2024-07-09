@@ -18,7 +18,7 @@ func _on_timer_timeout():
 	timer_diff += 1
 	var rand_y = rng.randi_range(top.global_position.y,bottom.global_position.y)
 	var new_book = Book.instantiate()
-	new_book.seed = timer_diff+direction
+	new_book._seed = timer_diff+direction
 	new_book.direction = direction
 	new_book.global_position = Vector2(top.global_position.x,rand_y)
 	book_list.add_child(new_book)
