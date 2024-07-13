@@ -150,6 +150,7 @@ func _on_player_close_interactables():
 @warning_ignore("unused_parameter")
 func _on_challenge_finish_body_entered(body):
 	global_timer.timer_on = false
+	check_demo()
 	update_stats()
 	@warning_ignore("unused_variable")
 	var new_best = await update_score()
@@ -172,6 +173,11 @@ func update_score():
 		Steam.uploadLeaderboardScore(modified_time)
 		SaveAndLoad.update_save_data()
 		return new_best
+
+func check_demo():
+	if !stats["save_data"]["demo_complete"] and stats["current_challenge_level"] == "res://levels/challenges/challenge_19.tscn":
+		stats["save_data"]["demo_complete"] = true
+		GlobalSteam.setAchievement("ACH_DEMO")
 
 func _on_toilet_unlock_toilet():
 	stats["save_data"]["items"]["toilet"] = true

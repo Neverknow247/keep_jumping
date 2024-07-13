@@ -11,8 +11,9 @@ var stats = Stats
 signal popup(text)
 
 func _ready():
-	if stats["save_data"]["armors"][cosmetic_name]:
-		cosmetic.queue_free()
+	if cosmetic_name != "":
+		if stats["save_data"]["armors"][cosmetic_name]:
+			cosmetic.queue_free()
 
 @warning_ignore("unused_parameter")
 func _on_cosmetic_body_entered(body):

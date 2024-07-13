@@ -152,8 +152,8 @@ preprocess = 4.0
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_f3q3t")
 autoplay = "default"
-frame = 1
-frame_progress = 0.850118
+frame = 7
+frame_progress = 0.80959
 
 [node name="hit_box" type="Area2D" parent="."]
 collision_layer = 0

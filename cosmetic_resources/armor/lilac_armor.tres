@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ArmorData" load_steps=4 format=3 uid="uid://d0mmbtl4i2crg"]
+
+[ext_resource type="Texture2D" uid="uid://bin3kkuu28wc8" path="res://assets/art/characters/player_lilac.png" id="1_tx54p"]
+[ext_resource type="Texture2D" uid="uid://daascnpns2drx" path="res://assets/art/characters/akamaru_lilac.png" id="2_dhfuo"]
+[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="3_1hfmo"]
+
+[resource]
+script = ExtResource("3_1hfmo")
+armor_id = "lilac"
+armor_name = "Lilac Purple"
+armor_texture = ExtResource("1_tx54p")
+dog_texture = ExtResource("2_dhfuo")
