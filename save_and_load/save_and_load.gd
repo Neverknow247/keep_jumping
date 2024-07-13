@@ -20,6 +20,8 @@ func _ready():
 		var dir = DirAccess.open("user://")
 		if !dir.dir_exists("%s"%[str(GlobalSteam.logged_in_id)]):
 			dir.make_dir("%s"%[str(GlobalSteam.logged_in_id)])
+		if !dir.dir_exists("%s/additional_resources"%[str(GlobalSteam.logged_in_id)]):
+			dir.make_dir("%s/additional_resources"%[str(GlobalSteam.logged_in_id)])
 	if dev_mode == true:
 		#logged_settings_path = "res://save_data/settings.cfg"
 		#default_save_path = "res://save_data/game_save_data.dat"

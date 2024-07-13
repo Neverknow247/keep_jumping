@@ -18,7 +18,7 @@ var timer_time = 3
 @onready var timer = $Timer
 
 func _ready():
-	sprite_2d.texture = sprites[max_health-1]
+	sprite_2d.texture = sprites[health-1]
 
 func hit(damage):
 	if infinite:
@@ -29,8 +29,11 @@ func hit(damage):
 		hide()
 		timer.start(timer_time*max_health)
 		print("spawn spring")
+	else:
+		sprite_2d.texture = sprites[health-1]
 
 func _on_timer_timeout():
 	health = max_health
+	sprite_2d.texture = sprites[health-1]
 	call_deferred("set_monitorable",true)
 	show()
