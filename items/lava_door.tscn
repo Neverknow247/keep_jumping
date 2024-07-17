@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://3jdrocrfxxk3"]
+
+[ext_resource type="Script" path="res://items/lava_door.gd" id="1_5rqdq"]
+[ext_resource type="Texture2D" uid="uid://fmm1dnw66w5c" path="res://assets/art/items/lava_castle_door.png" id="2_16y3c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j1n8u"]
+size = Vector2(16, 80)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_vrene"]
+points = PackedVector2Array(-8, 0, 8, 0, 1, -4, -1, -4)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_xucgw"]
+points = PackedVector2Array(-8, -32, 8, -32, 8, -27, 4, -24, 0, -23, -4, -23, -8, -24)
+
+[node name="lava_door" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_5rqdq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -40)
+texture = ExtResource("2_16y3c")
+hframes = 2
+frame = 1
+
+[node name="closed_collision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -40)
+shape = SubResource("RectangleShape2D_j1n8u")
+
+[node name="open_collision_1" type="CollisionShape2D" parent="."]
+shape = SubResource("ConvexPolygonShape2D_vrene")
+
+[node name="open_collision_2" type="CollisionShape2D" parent="."]
+position = Vector2(0, -48)
+shape = SubResource("ConvexPolygonShape2D_xucgw")

@@ -2,6 +2,8 @@ extends CanvasLayer
 
 var stats = Stats
 
+@onready var textbox = $textbox
+@onready var rich_text_label = $textbox/RichTextLabel
 @onready var level_finish_menu = $level_finish_menu
 @onready var pause_menu = $pause_menu
 @onready var pop_up_label = $pop_up_label
@@ -51,3 +53,11 @@ func _on_level_finish_menu_fade_out():
 
 func _on_pause_menu_un_pause():
 	un_pause.emit()
+
+func npc_speech(text):
+	rich_text_label.text = text
+	textbox.show()
+
+func end_speech():
+	textbox.hide()
+	rich_text_label.text = ""
