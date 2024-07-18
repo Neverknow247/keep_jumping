@@ -18,6 +18,7 @@ var armors = [
 	preload("res://cosmetic_resources/armor/undies_armor.tres"),
 	preload("res://cosmetic_resources/armor/wes_armor.tres"),
 	preload("res://cosmetic_resources/armor/frog_armor.tres"),
+	preload("res://cosmetic_resources/armor/bart_armor.tres"),
 	preload("res://cosmetic_resources/armor/pride_2_armor.tres"),
 	preload("res://cosmetic_resources/armor/pride_armor.tres"),
 	preload("res://cosmetic_resources/armor/monkey_armor.tres"),

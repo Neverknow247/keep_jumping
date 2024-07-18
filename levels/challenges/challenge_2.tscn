@@ -20,6 +20,7 @@ script = ExtResource("1_pkxem")
 level_id = "challenge_2"
 level_name = "S-1 : Toilet Takedown"
 spawn_point = Vector2(-176, 0)
+main_music = "secret_challenge"
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = 2

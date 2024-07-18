@@ -25,6 +25,7 @@ script = ExtResource("1_dpb4t")
 level_id = "challenge_13"
 level_name = "C-4 : "
 spawn_point = Vector2(-176, 0)
+main_music = "space_challenge"
 space_gravity = true
 
 [node name="background" type="TextureRect" parent="."]

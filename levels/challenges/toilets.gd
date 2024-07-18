@@ -10,6 +10,7 @@ var toilet_pieces = [
 	preload("res://items/broken_toilet_3.tscn"),
 	]
 
+@warning_ignore("unused_parameter")
 func _process(delta):
 	check_toilets()
 

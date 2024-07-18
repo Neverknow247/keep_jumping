@@ -79,6 +79,7 @@ animations = [{
 script = ExtResource("1_x6ilj")
 level_id = "challenge_14"
 level_name = "C-5 : "
+main_music = "space_challenge"
 space_gravity = true
 
 [node name="background" type="TextureRect" parent="."]

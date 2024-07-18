@@ -23,6 +23,7 @@ script = ExtResource("1_noxki")
 level_id = "challenge_0"
 level_name = "T-3 : Tiny Tower"
 spawn_point = Vector2(-176, 0)
+main_music = "training_challenge"
 
 [node name="background" type="TextureRect" parent="."]
 z_index = -100

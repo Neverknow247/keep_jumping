@@ -29,6 +29,7 @@ script = ExtResource("1_43kcb")
 level_id = "challenge_18"
 level_name = "S-5 : Shaded Shelves"
 spawn_point = Vector2(-8, 0)
+main_music = "secret_challenge"
 player_blind = true
 space_gravity = true
 

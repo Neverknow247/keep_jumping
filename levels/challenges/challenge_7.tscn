@@ -19,6 +19,7 @@ script = ExtResource("1_ayl5x")
 level_id = "challenge_7"
 level_name = "T-2 : Adept Ascent"
 spawn_point = Vector2(-176, 0)
+main_music = "training_challenge"
 
 [node name="background" type="TextureRect" parent="."]
 z_index = -100

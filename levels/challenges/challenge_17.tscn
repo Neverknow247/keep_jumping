@@ -29,6 +29,7 @@ radius = 8.0
 script = ExtResource("1_8c55a")
 level_id = "challenge_17"
 level_name = "C-6 : "
+main_music = "space_challenge"
 space_gravity = true
 
 [node name="background" type="TextureRect" parent="."]

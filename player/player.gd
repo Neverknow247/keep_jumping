@@ -650,6 +650,10 @@ signal picnic
 func open_picnic():
 	picnic.emit()
 
+signal bart_area
+func open_bart_area():
+	bart_area.emit()
+
 func open_teleporter():
 	sounds.play_sfx("tellyin")
 	stats.current_challenge_level = interactable.location

@@ -15,7 +15,9 @@ signal popup(text)
 @onready var yellow_armor_unlock = $yellow_armor_unlock
 @onready var frog = $frog
 @onready var space_skin = $space_skin
-
+@onready var flag = $flag
+@onready var belt = $belt
+@onready var sombrero = $sombrero
 
 func _ready():
 	if stats["save_data"]["items"]["white_rose"]:
@@ -36,6 +38,12 @@ func _ready():
 		yellow_armor_unlock.queue_free()
 	if stats["save_data"]["armors"]["space"]:
 		space_skin.queue_free()
+	if stats["save_data"]["items"]["cape"]:
+		flag.queue_free()
+	if stats["save_data"]["items"]["belt"]:
+		belt.queue_free()
+	if stats["save_data"]["items"]["sombrero"]:
+		sombrero.queue_free()
 
 signal check_picnic
 @warning_ignore("unused_parameter")
@@ -133,3 +141,31 @@ func _on_space_skin_body_entered(body):
 	space_skin.queue_free()
 	SaveAndLoad.update_save_data()
 	popup.emit("One giant leap for knightkind")
+
+signal check_bart
+func _on_flag_body_entered(body):
+	stats["save_data"]["items"]["cape"] = true
+	@warning_ignore("narrowing_conversion")
+	sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
+	flag.queue_free()
+	SaveAndLoad.update_save_data()
+	popup.emit("Cape of the Conqueror! You've donned the Mexican Flag Cape!")
+	check_bart.emit()
+
+func _on_belt_body_entered(body):
+	stats["save_data"]["items"]["belt"] = true
+	@warning_ignore("narrowing_conversion")
+	sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
+	belt.queue_free()
+	SaveAndLoad.update_save_data()
+	popup.emit("Feel the Rhythm of Victory! Champion Belt and Maracas acquired!")
+	check_bart.emit()
+
+func _on_sombrero_body_entered(body):
+	stats["save_data"]["items"]["sombrero"] = true
+	@warning_ignore("narrowing_conversion")
+	sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
+	sombrero.queue_free()
+	SaveAndLoad.update_save_data()
+	popup.emit("Mask of Legends: Become the hero of the ring!")
+	check_bart.emit()

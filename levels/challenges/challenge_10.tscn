@@ -26,6 +26,7 @@ script = ExtResource("1_r2hqv")
 level_id = "challenge_10"
 level_name = "S-3 : Sunflower Summer"
 spawn_point = Vector2(-184, 0)
+main_music = "secret_challenge"
 
 [node name="background" type="TextureRect" parent="."]
 z_index = -100

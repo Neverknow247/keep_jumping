@@ -55,6 +55,9 @@ var sfx = {
 	"door_open" : load(sfx_path+"door_open.wav"),
 	"door_close" : load(sfx_path+"door_close.wav"),
 	"stone_door" : load(sfx_path+"stone_door.mp3"),
+	"bell_bronze_ring" : load(sfx_path+"bell_bronze_ring.wav"),
+	"bell_silver_ring" : load(sfx_path+"bell_silver_ring.wav"),
+	"bell_gold_ring" : load(sfx_path+"bell_gold_ring.wav"),
 #	"" : load(sfx_path+".wav"),
 	}
 
@@ -68,7 +71,19 @@ var music = {
 	"fast_lead" : load(music_path+"fast_lead.wav"),
 	"space" : load(music_path+"fallenspace.wav"),
 	"credits" : load(music_path+"credits.wav"),
-	"challenge" : load(music_path+"sirtunnel.wav")
+	"challenge" : load(music_path+"sirtunnel.wav"),
+	"training_challenge" : load(music_path+"training_challenge.wav"),
+	"arcade_challenge" : load(music_path+"arcade_challenge.wav"),
+	"secret_challenge" : load(music_path+"secret_challenge.wav"),
+	"space_challenge" : load(music_path+"space_challenge.wav"),
+	"dlc_bell_bronze" : load(music_path+"dlc_bell_bronze.wav"),
+	"dlc_bell_silver" : load(music_path+"dlc_bell_silver.wav"),
+	"dlc_bell_gold" : load(music_path+"dlc_bell_gold.wav"),
+	"dlc_credits" : load(music_path+"dlc_credits.wav"),
+	"dlc_main_music" : load(music_path+"dlc_main_music.wav"),
+	"dlc_dark" : load(music_path+"dlc_dark.wav"),
+	"dlc_sand" : load(music_path+"dlc_sand.wav"),
+	"dlc_lava" : load(music_path+"dlc_lava.wav"),
 #	"" : load(music_path+".wav"),
 }
 

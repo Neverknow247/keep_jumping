@@ -334,6 +334,7 @@ script = ExtResource("1_7oyat")
 level_id = "challenge_8"
 level_name = "S-2 : Serpentine Spikes"
 spawn_point = Vector2(-176, 0)
+main_music = "secret_challenge"
 player_blind = true
 
 [node name="background" type="TextureRect" parent="."]
