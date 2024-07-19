@@ -27,10 +27,14 @@ func check_achievements():
 	return true
 
 func check_dlc():
-	var checked_dlc = GlobalSteam.check_all_dlc_install()
+	var checked_supporter_dlc = GlobalSteam.check_supporter_dlc_install()
+	var checked_phoenix_dlc = GlobalSteam.check_phoenix_dlc_install()
 	stats["save_data"]["armors"]["gold"] = false
-	if checked_dlc==true:
+	stats["save_data"]["phoenix_dlc"] = false
+	if checked_supporter_dlc==true:
 		stats["save_data"]["armors"]["gold"] = true
+	if checked_phoenix_dlc == true:
+		stats["save_data"]["phoenix_dlc"] = true
 	finish()
 
 func check_demo():

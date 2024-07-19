@@ -1,16 +1,23 @@
 extends ColorRect
 
 var stats = Stats
+var steam = GlobalSteam
 
 const ScoreItem = preload("res://menus/scores/ScoreItem.tscn")
 
+@onready var leaderboard_label = $CenterContainer/VBoxContainer/leaderboard_label
 @onready var scroll_container = $CenterContainer/VBoxContainer/ScrollContainer
 @onready var score_container = $CenterContainer/VBoxContainer/ScrollContainer/score_container
+@onready var change_leaderboard_button = $change_leaderboard_button
 
 var list_index = 0
 var max_scores = 10000
 
 func _ready():
+	if stats["current_challenge_level"] == "res://levels/level_1.tscn":
+		change_leaderboard_button.show()
+	else:
+		change_leaderboard_button.hide()
 	GlobalSteam.connect("leaderboard_found",set_up_leaderboard)
 	GlobalSteam.connect("received_results",_on_recieved_results)
 
@@ -39,8 +46,10 @@ func clear_leaderboard():
 		for c in children:
 			score_container.remove_child(c)
 			c.queue_free()
+		list_index = 0
 
 func _on_recieved_results(result):
+	change_labels()
 	for i in result:
 		if list_index >= max_scores:
 			return
@@ -58,3 +67,24 @@ func add_score_item(player_name:String, score_value:String):
 	if player_name == GlobalSteam.logged_in_user:
 		item.get_node("PlayerName").add_theme_color_override("font_color",Color("#66cdaa"))
 	score_container.add_child(item)
+
+func _on_change_leaderboard_button_pressed():
+	if steam["level_id_board"] == steam["main_level_id"]:
+		steam["level_id_board"] = steam["dlc_level_id"]
+		Steam.findLeaderboard(steam["level_id_board"])
+	elif steam["level_id_board"] == steam["dlc_level_id"]:
+		steam["level_id_board"] = steam["main_level_id"]
+		Steam.findLeaderboard(steam["level_id_board"])
+	else:
+		pass
+	change_labels()
+
+func change_labels():
+	if steam["level_id_board"] == steam["main_level_id"]:
+		change_leaderboard_button.text = "Phoenixheart\nLeaderboard"
+		leaderboard_label.text = "Titan Tower Leaderboard"
+	elif steam["level_id_board"] == steam["dlc_level_id"]:
+		change_leaderboard_button.text = "Titan Tower\nLeaderboard"
+		leaderboard_label.text = "Phoenixheart Leaderboard"
+	else:
+		pass

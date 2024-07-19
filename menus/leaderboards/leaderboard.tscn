@@ -30,11 +30,11 @@ layout_mode = 2
 
 [node name="leaderboard_label" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-text = "Leaderboard"
+text = "Titan Tower Leaderboard"
 horizontal_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(1170, 600)
+custom_minimum_size = Vector2(1170, 550)
 layout_mode = 2
 
 [node name="score_container" type="VBoxContainer" parent="CenterContainer/VBoxContainer/ScrollContainer"]
@@ -42,3 +42,16 @@ layout_mode = 2
 
 [node name="ScoreItem" parent="CenterContainer/VBoxContainer/ScrollContainer/score_container" instance=ExtResource("3_i43t5")]
 layout_mode = 2
+
+[node name="change_leaderboard_button" type="Button" parent="."]
+custom_minimum_size = Vector2(250, 60)
+layout_mode = 0
+offset_left = 934.0
+offset_top = 16.0
+offset_right = 1184.0
+offset_bottom = 76.0
+theme_override_font_sizes/font_size = 24
+text = "Phoenixheart
+Leaderboard"
+
+[connection signal="pressed" from="change_leaderboard_button" to="." method="_on_change_leaderboard_button_pressed"]

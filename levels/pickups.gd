@@ -143,6 +143,7 @@ func _on_space_skin_body_entered(body):
 	popup.emit("One giant leap for knightkind")
 
 signal check_bart
+@warning_ignore("unused_parameter")
 func _on_flag_body_entered(body):
 	stats["save_data"]["items"]["cape"] = true
 	@warning_ignore("narrowing_conversion")
@@ -152,6 +153,7 @@ func _on_flag_body_entered(body):
 	popup.emit("Cape of the Conqueror! You've donned the Mexican Flag Cape!")
 	check_bart.emit()
 
+@warning_ignore("unused_parameter")
 func _on_belt_body_entered(body):
 	stats["save_data"]["items"]["belt"] = true
 	@warning_ignore("narrowing_conversion")
@@ -161,6 +163,7 @@ func _on_belt_body_entered(body):
 	popup.emit("Feel the Rhythm of Victory! Champion Belt and Maracas acquired!")
 	check_bart.emit()
 
+@warning_ignore("unused_parameter")
 func _on_sombrero_body_entered(body):
 	stats["save_data"]["items"]["sombrero"] = true
 	@warning_ignore("narrowing_conversion")

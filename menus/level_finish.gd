@@ -28,6 +28,13 @@ func _ready():
 	if Stats["demo"]:
 		demo_text.show()
 		level_name.hide()
+	set_end_text()
+
+func set_end_text():
+	if stats["current_level_name"] == "level_1":
+		level_name.text = "You have reunited\nwith Akamaru!"
+	elif stats["current_level_name"] == "level_2":
+		level_name.text = "You have recovered\nthe Phoenixheart"
 
 func _on_hide_menu(scene):
 	transition.fade_out()
