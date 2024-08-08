@@ -120,10 +120,28 @@ horizontal_alignment = 2
 layout_mode = 2
 focus_neighbor_left = NodePath("../../window_mode/window_option_button")
 focus_neighbor_top = NodePath("../../window_mode/window_option_button")
+focus_neighbor_right = NodePath("../../speed_run_timer/speed_run_timer_check")
+focus_neighbor_bottom = NodePath("../../speed_run_timer/speed_run_timer_check")
+focus_next = NodePath("../../speed_run_timer/speed_run_timer_check")
+focus_previous = NodePath("../../window_mode/window_option_button")
+
+[node name="speed_run_timer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/speed_run_timer"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+text = "Speed Run Timer"
+horizontal_alignment = 2
+
+[node name="speed_run_timer_check" type="CheckButton" parent="CenterContainer/VBoxContainer/speed_run_timer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../colorblind_mode/colorblind_mode_check")
+focus_neighbor_top = NodePath("../../colorblind_mode/colorblind_mode_check")
 focus_neighbor_right = NodePath("../../wall_frame_buffer/wall_frame_buffer_check")
 focus_neighbor_bottom = NodePath("../../wall_frame_buffer/wall_frame_buffer_check")
 focus_next = NodePath("../../wall_frame_buffer/wall_frame_buffer_check")
-focus_previous = NodePath("../../window_mode/window_option_button")
+focus_previous = NodePath("../../colorblind_mode/colorblind_mode_check")
 
 [node name="wall_frame_buffer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -143,6 +161,24 @@ focus_neighbor_bottom = NodePath("../../squash_and_stretch/squash_and_stretch_ch
 focus_next = NodePath("../../squash_and_stretch/squash_and_stretch_check")
 focus_previous = NodePath("../../colorblind_mode/colorblind_mode_check")
 
+[node name="enable_quick_reset" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/enable_quick_reset"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+text = "Enable Quick Reset"
+horizontal_alignment = 2
+
+[node name="enable_quick_reset_check" type="CheckButton" parent="CenterContainer/VBoxContainer/enable_quick_reset"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../wall_frame_buffer/wall_frame_buffer_check")
+focus_neighbor_top = NodePath("../../wall_frame_buffer/wall_frame_buffer_check")
+focus_neighbor_right = NodePath("../../squash_and_stretch/squash_and_stretch_check")
+focus_neighbor_bottom = NodePath("../../squash_and_stretch/squash_and_stretch_check")
+focus_next = NodePath("../../squash_and_stretch/squash_and_stretch_check")
+focus_previous = NodePath("../../wall_frame_buffer/wall_frame_buffer_check")
+
 [node name="squash_and_stretch" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -154,12 +190,12 @@ horizontal_alignment = 2
 
 [node name="squash_and_stretch_check" type="CheckButton" parent="CenterContainer/VBoxContainer/squash_and_stretch"]
 layout_mode = 2
-focus_neighbor_left = NodePath("../../wall_frame_buffer/wall_frame_buffer_check")
-focus_neighbor_top = NodePath("../../wall_frame_buffer/wall_frame_buffer_check")
+focus_neighbor_left = NodePath("../../enable_quick_reset/enable_quick_reset_check")
+focus_neighbor_top = NodePath("../../enable_quick_reset/enable_quick_reset_check")
 focus_neighbor_right = NodePath("../../screen_shake/screen_shake_check")
 focus_neighbor_bottom = NodePath("../../screen_shake/screen_shake_check")
 focus_next = NodePath("../../screen_shake/screen_shake_check")
-focus_previous = NodePath("../../wall_frame_buffer/wall_frame_buffer_check")
+focus_previous = NodePath("../../enable_quick_reset/enable_quick_reset_check")
 
 [node name="screen_shake" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -208,7 +244,9 @@ text = "← Back"
 
 [connection signal="item_selected" from="CenterContainer/VBoxContainer/window_mode/window_option_button" to="." method="_on_window_option_button_item_selected"]
 [connection signal="toggled" from="CenterContainer/VBoxContainer/colorblind_mode/colorblind_mode_check" to="." method="_on_colorblind_mode_check_toggled"]
+[connection signal="toggled" from="CenterContainer/VBoxContainer/speed_run_timer/speed_run_timer_check" to="." method="_on_speed_run_timer_check_toggled"]
 [connection signal="toggled" from="CenterContainer/VBoxContainer/wall_frame_buffer/wall_frame_buffer_check" to="." method="_on_wall_frame_buffer_check_toggled"]
+[connection signal="toggled" from="CenterContainer/VBoxContainer/enable_quick_reset/enable_quick_reset_check" to="." method="_on_enable_quick_reset_check_toggled"]
 [connection signal="toggled" from="CenterContainer/VBoxContainer/squash_and_stretch/squash_and_stretch_check" to="." method="_on_squash_and_stretch_check_toggled"]
 [connection signal="toggled" from="CenterContainer/VBoxContainer/screen_shake/screen_shake_check" to="." method="_on_screen_shake_check_toggled"]
 [connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]

@@ -20,7 +20,7 @@ hframes = 4
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("2_6bkpg")
-damage = 2
+damage = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hit_box"]
 shape = SubResource("CircleShape2D_eqb6c")

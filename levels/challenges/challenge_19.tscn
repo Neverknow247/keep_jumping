@@ -1355,6 +1355,11 @@ position = Vector2(-576, -2088)
 rotation = 4.71239
 type = 1
 
+[node name="spikes642" parent="spikes" instance=ExtResource("14_2gclo")]
+position = Vector2(-560, -2104)
+rotation = 4.71239
+type = 1
+
 [node name="spikes387" parent="spikes" instance=ExtResource("14_2gclo")]
 position = Vector2(-592, -2040)
 rotation = 4.71239

@@ -30,6 +30,7 @@ func _ready():
 	progression = stats["save_data"]["mage_progression"]
 	#set_up_mage.emit()
 
+#check if need to advance
 func check_progression():
 	match stats["save_data"]["mage_progression_next"]:
 		0:
@@ -45,8 +46,15 @@ func check_progression():
 		4:
 			stats["save_data"]["mage_progression"] = 4
 		5:
+			if stats["save_data"]["phoenix_dlc"]:
+				stats["save_data"]["mage_progression"] = 5
+		6:
+			if stats.calc_total_dlc_reunions() > 0:
+				stats["save_data"]["mage_progression"] = 6
+		7:
 			pass
 
+#when you talk
 func state_progress():
 	match progression:
 		0:
@@ -64,6 +72,15 @@ func state_progress():
 			if stats["save_data"]["mage_progression_next"] == 3:
 				stats["save_data"]["mage_progression_next"] = 4
 		4:
+			if stats["save_data"]["mage_progression_next"] == 4:
+				stats["save_data"]["mage_progression_next"] = 5
+		5:
+			if stats["save_data"]["mage_progression_next"] == 5:
+				stats["save_data"]["mage_progression_next"] = 6
+		6:
+			if stats["save_data"]["mage_progression_next"] == 6:
+				stats["save_data"]["mage_progression_next"] = 7
+		7:
 			pass
 
 func wake_up():

@@ -30,7 +30,7 @@ layout_mode = 2
 
 [node name="leaderboard_label" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-text = "Titan Tower Leaderboard"
+text = "Leaderboard"
 horizontal_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/VBoxContainer"]

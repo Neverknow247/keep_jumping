@@ -386,7 +386,7 @@ wait_time = 0.3
 one_shot = true
 
 [node name="jump_buffer_timer" type="Timer" parent="."]
-wait_time = 0.025
+wait_time = 0.02
 one_shot = true
 
 [node name="b_hop_timer" type="Timer" parent="."]

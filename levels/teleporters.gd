@@ -8,11 +8,16 @@ var stats = Stats
 @onready var enigma_escape = $enigma_escape
 @onready var s_3 = $"S-3"
 @onready var library_teleporter = $library_teleporter
-
+@onready var arcade_teleport_1 = $arcade_teleport1
+@onready var arcade_teleport_2 = $arcade_teleport2
+@onready var arcade_teleport_3 = $arcade_teleport3
+@onready var arcade_teleport_4 = $arcade_teleport4
+@onready var arcade_teleport_5 = $arcade_teleport5
 
 func _ready():
 	unlock_training_teleporters()
 	unlock_other_teleporters()
+	unlock_arcades()
 
 func unlock_training_teleporters():
 	if !stats["save_data"]["challenge_data"]["challenge_6"]["_normal_reunions"] > 0:
@@ -35,3 +40,25 @@ func unlock_other_teleporters():
 	if !stats["save_data"]["items"]["library"]:
 		library_teleporter.unlocked = false
 		library_teleporter.visible = false
+
+func unlock_arcades():
+	$arcade_teleport1/AnimatedSprite2D.hide()
+	$arcade_teleport1/AnimatedSprite2D2.hide()
+	$arcade_teleport2/AnimatedSprite2D.hide()
+	$arcade_teleport2/AnimatedSprite2D2.hide()
+	$arcade_teleport3/AnimatedSprite2D.hide()
+	$arcade_teleport3/AnimatedSprite2D2.hide()
+	$arcade_teleport4/AnimatedSprite2D.hide()
+	$arcade_teleport4/AnimatedSprite2D2.hide()
+	$arcade_teleport5/AnimatedSprite2D.hide()
+	$arcade_teleport5/AnimatedSprite2D2.hide()
+	if !stats["save_data"]["items"]["arcade_1"]:
+		arcade_teleport_1.visible = false
+	if !stats["save_data"]["items"]["arcade_2"]:
+		arcade_teleport_2.visible = false
+	if !stats["save_data"]["items"]["arcade_3"]:
+		arcade_teleport_3.visible = false
+	if !stats["save_data"]["items"]["arcade_4"]:
+		arcade_teleport_4.visible = false
+	if !stats["save_data"]["items"]["arcade_5"]:
+		arcade_teleport_5.visible = false

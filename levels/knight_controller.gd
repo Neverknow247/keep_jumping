@@ -5,6 +5,9 @@ extends Npc_Controller
 @onready var position_2 = $position_2
 @onready var position_3 = $position_3
 @onready var position_4 = $position_4
+@onready var position_5 = $position_5
+@onready var position_6 = $position_6
+@onready var position_7 = $position_7
 
 func _ready():
 	super()
@@ -26,11 +29,14 @@ func _on_knight_set_up_mage():
 			knight.global_position = position_4.global_position
 			knight.animated_sprite_2d.play("idle_forward")
 		4:
-			knight.global_position = position_4.global_position
+			knight.global_position = position_5.global_position
 			knight.animated_sprite_2d.play("idle_forward")
 		5:
-			knight.global_position = position_4.global_position
+			knight.global_position = position_6.global_position
 			knight.animated_sprite_2d.play("idle_forward")
 		6:
-			knight.global_position = position_4.global_position
+			knight.global_position = position_7.global_position
+			knight.animated_sprite_2d.play("idle_forward")
+		7:
+			knight.global_position = position_7.global_position
 			knight.animated_sprite_2d.play("idle_forward")

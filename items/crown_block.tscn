@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://cgp3tunk3p87l"]
+
+[ext_resource type="Script" path="res://items/crown_block.gd" id="1_aqwcc"]
+[ext_resource type="Texture2D" uid="uid://bpeko4v1fcjed" path="res://assets/art/menus/crown_icon.png" id="1_ug768"]
+[ext_resource type="Texture2D" uid="uid://bgogt3u75a8yf" path="res://assets/art/items/crown_block.png" id="2_uv1hn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pnjiu"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l8sdj"]
+size = Vector2(14, 2)
+
+[sub_resource type="Animation" id="Animation_tc4v8"]
+resource_name = "animate"
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("crown:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -4), Vector2(0, -24), Vector2(0, -4)]
+}
+
+[sub_resource type="Animation" id="Animation_287vs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("crown:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dbrac"]
+_data = {
+"RESET": SubResource("Animation_287vs"),
+"animate": SubResource("Animation_tc4v8")
+}
+
+[node name="crown_block" type="StaticBody2D"]
+collision_mask = 0
+script = ExtResource("1_aqwcc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_pnjiu")
+
+[node name="crown" type="Sprite2D" parent="."]
+texture = ExtResource("1_ug768")
+
+[node name="block" type="Sprite2D" parent="."]
+texture = ExtResource("2_uv1hn")
+
+[node name="collect_coin_area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collect_coin_area"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_l8sdj")
+one_way_collision = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dbrac")
+}
+
+[connection signal="body_entered" from="collect_coin_area" to="." method="_on_collect_coin_area_body_entered"]

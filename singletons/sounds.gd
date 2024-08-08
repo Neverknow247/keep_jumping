@@ -58,6 +58,13 @@ var sfx = {
 	"bell_bronze_ring" : load(sfx_path+"bell_bronze_ring.wav"),
 	"bell_silver_ring" : load(sfx_path+"bell_silver_ring.wav"),
 	"bell_gold_ring" : load(sfx_path+"bell_gold_ring.wav"),
+	"air_recovery" : load(sfx_path+"air_recovery.wav"),
+	"coin_collect" : load(sfx_path+"coin_collect.mp3"),
+	"wilhelm_scream" : load(sfx_path+"wilhelm_scream.mp3"),
+	"explosion_sound" : load(sfx_path+"explosion_sound.mp3"),
+	"random_scream" : load(sfx_path+"random_scream.mp3"),
+	"liquid_death" : load(sfx_path+"liquid_death.mp3"),
+	"burn_death" : load(sfx_path+"burn_death.mp3"),
 #	"" : load(sfx_path+".wav"),
 	}
 

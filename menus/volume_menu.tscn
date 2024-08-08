@@ -187,4 +187,6 @@ text = "← Back"
 
 [connection signal="value_changed" from="CenterContainer/VBoxContainer/master/master_slider" to="." method="_on_master_slider_value_changed"]
 [connection signal="value_changed" from="CenterContainer/VBoxContainer/music/music_slider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/sfx/sfx_slider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/voice/voice_slider" to="." method="_on_voice_slider_value_changed"]
 [connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]

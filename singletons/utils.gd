@@ -39,6 +39,14 @@ var color_blind_mode = false:
 
 var squash_and_stretch = true
 var screen_shake = true
+var quick_reset = true
+signal change_speed_run_timer
+var speed_run_timer = false:
+	get:
+		return speed_run_timer
+	set(value):
+		speed_run_timer = value
+		change_speed_run_timer.emit()
 
 var window_mode = 4:
 	get:

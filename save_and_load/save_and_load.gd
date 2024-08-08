@@ -40,18 +40,12 @@ func save_all():
 	update_save_data()
 	update_settings()
 
-func save_data_to_file(save_data):
-	var file = FileAccess.open(SAVE_DATA_PATH, FileAccess.WRITE)
-	file.store_var(save_data)
-	file.close()
-
-func save_data_to_backup(save_data):
-	if backup_num >=4:
-		backup_num = 1
-	var file = FileAccess.open(BACKUP_SAVE_DATA_PATH+str(backup_num)+".dat", FileAccess.WRITE)
-	file.store_var(save_data)
-	file.close()
-	backup_num+=1
+func update_save_data():
+	var save_data = load_data_from_file()
+	for stat in stats.save_data:
+		save_data[stat] = stats.save_data[stat]
+	await SaveAndLoad.save_data_to_file(save_data)
+	await SaveAndLoad.save_data_to_backup(save_data)
 
 func load_data_from_file():
 	if not FileAccess.file_exists(SAVE_DATA_PATH):
@@ -94,12 +88,35 @@ func check_backups(save_data):
 		save_data = check_old_data(backup.get_var())
 		return save_data
 
-func update_save_data():
-	var save_data = load_data_from_file()
-	for stat in stats.save_data:
-		save_data[stat] = stats.save_data[stat]
-	await SaveAndLoad.save_data_to_file(save_data)
-	await SaveAndLoad.save_data_to_backup(save_data)
+func check_old_data(save_data):
+	var version = default_save_data.version
+	update_data(save_data,default_save_data)
+	save_data.version = version
+	return save_data
+
+func update_data(save_data,default_data):
+	for data in default_data:
+		if !data in save_data:
+				save_data[data] = default_data[data]
+		if typeof(save_data[data]) == 27:
+			update_data(save_data[data],default_data[data])
+	return save_data
+
+func save_data_to_file(save_data):
+	var file = FileAccess.open(SAVE_DATA_PATH, FileAccess.WRITE)
+	file.store_var(save_data)
+	file.close()
+
+func save_data_to_backup(save_data):
+	if backup_num >=4:
+		backup_num = 1
+	var file = FileAccess.open(BACKUP_SAVE_DATA_PATH+str(backup_num)+".dat", FileAccess.WRITE)
+	file.store_var(save_data)
+	file.close()
+	backup_num+=1
+
+
+
 
 func load_data():
 	var save_data = load_data_from_file()
@@ -122,19 +139,6 @@ func load_dictionary(save_data):
 			stats_save[sub_stat] = save_data[sub_stat]
 	return stats_save
 
-func check_old_data(save_data):
-	var version = default_save_data.version
-	update_data(save_data,default_save_data)
-	save_data.version = version
-	return save_data
-
-func update_data(save_data,default_data):
-	for data in default_data:
-		if !data in save_data:
-				save_data[data] = default_data[data]
-		if typeof(save_data[data]) == 27:
-			update_data(save_data[data],default_data[data])
-	return save_data
 
 func update_settings():
 	var settings = ConfigFile.new()
@@ -145,6 +149,8 @@ func update_settings():
 	settings.set_value("screen_shake","setting",utils.screen_shake)
 	settings.set_value("window_mode","setting",utils.window_mode)
 	settings.set_value("wall_frame_buffer","setting",utils.wall_frame_buffer)
+	settings.set_value("quick_reset","setting",utils.quick_reset)
+	settings.set_value("speed_run_timer","setting",utils.speed_run_timer)
 	settings.save(SAVE_SETTINGS_PATH)
 	#load_settings()
 

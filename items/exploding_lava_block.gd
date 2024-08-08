@@ -1,5 +1,7 @@
 extends StaticBody2D
 
+var sounds = Sounds
+
 @onready var light = $light
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var hit_box = $hit_box
@@ -21,6 +23,8 @@ func _on_player_sense_body_entered(body):
 		explode()
 
 func explode():
+	@warning_ignore("narrowing_conversion")
+	sounds.play_sfx("explosion_sound",randf_range(0.8,1),0)
 	var particle = explosion_particle.instantiate()
 	self.add_child(particle)
 	particle.global_position = global_position

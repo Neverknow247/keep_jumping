@@ -10,6 +10,8 @@ signal hide_menu(scene)
 @onready var wall_frame_buffer_check = $CenterContainer/VBoxContainer/wall_frame_buffer/wall_frame_buffer_check
 @onready var squash_and_stretch_check = $CenterContainer/VBoxContainer/squash_and_stretch/squash_and_stretch_check
 @onready var screen_shake_check = $CenterContainer/VBoxContainer/screen_shake/screen_shake_check
+@onready var speed_run_timer_check = $CenterContainer/VBoxContainer/speed_run_timer/speed_run_timer_check
+@onready var enable_quick_reset_check = $CenterContainer/VBoxContainer/enable_quick_reset/enable_quick_reset_check
 @onready var back_button = $back_button
 
 var active = false
@@ -20,6 +22,8 @@ func _ready():
 	wall_frame_buffer_check.button_pressed = utils.wall_frame_buffer
 	squash_and_stretch_check.button_pressed = utils.squash_and_stretch
 	screen_shake_check.button_pressed = utils.screen_shake
+	enable_quick_reset_check.button_pressed = utils.quick_reset
+	speed_run_timer_check.button_pressed = utils.speed_run_timer
 
 func _input(event):
 	if (event.is_action_pressed("pause")||(event is InputEventJoypadButton and event.button_index == 1)) and active:
@@ -47,5 +51,8 @@ func _on_back_button_pressed():
 	active = false
 	hide_menu.emit(self)
 
+func _on_speed_run_timer_check_toggled(toggled_on):
+	utils.speed_run_timer = toggled_on
 
-
+func _on_enable_quick_reset_check_toggled(toggled_on):
+	utils.quick_reset = toggled_on

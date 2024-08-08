@@ -1,12 +1,14 @@
-[gd_scene load_steps=18 format=3 uid="uid://n615rx02auyl"]
+[gd_scene load_steps=20 format=3 uid="uid://n615rx02auyl"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_2o8nt"]
 [ext_resource type="Texture2D" uid="uid://dw0g5jloppt7q" path="res://assets/art/ui/speech_box.png" id="2_pferc"]
 [ext_resource type="Texture2D" uid="uid://e88tapajqrdd" path="res://assets/art/ui/vignette.png" id="2_q64kn"]
 [ext_resource type="Texture2D" uid="uid://by13oq4td5ugv" path="res://assets/art/ui/blind_mode.png" id="3_1igpa"]
+[ext_resource type="Theme" uid="uid://bdauou0gynqyt" path="res://ui/small_text_theme.tres" id="5_i0ay8"]
 [ext_resource type="PackedScene" uid="uid://7tequ6t37p3f" path="res://ui/monument.tscn" id="5_svs0o"]
 [ext_resource type="PackedScene" uid="uid://drx6mqaavj1g8" path="res://menus/stats_menu/stats.tscn" id="6_5uyu6"]
 [ext_resource type="PackedScene" uid="uid://dwrgxipppsvqh" path="res://menus/pause_menu.tscn" id="6_nmmub"]
+[ext_resource type="Script" path="res://ui/global_timer.gd" id="6_q18hy"]
 [ext_resource type="PackedScene" uid="uid://b4lm6wvgyymd7" path="res://ui/wardrobe.tscn" id="6_wrs4g"]
 [ext_resource type="PackedScene" uid="uid://budbi2xh55xtg" path="res://menus/level_finish_menu.tscn" id="7_af7if"]
 [ext_resource type="PackedScene" uid="uid://cpie7bd51ae28" path="res://menus/leaderboards/leaderboard.tscn" id="7_w8yc4"]
@@ -159,19 +161,38 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("3_1igpa")
 
+[node name="global_timer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("5_i0ay8")
+script = ExtResource("6_q18hy")
+
+[node name="Label" type="Label" parent="global_timer"]
+layout_mode = 0
+offset_left = 1439.0
+offset_top = 16.0
+offset_right = 1904.0
+offset_bottom = 77.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 18
+theme_override_font_sizes/font_size = 60
+text = "00:00:00:00:000"
+horizontal_alignment = 2
+
 [node name="level_label" type="Label" parent="."]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -280.0
+offset_left = -1904.0
 offset_top = 16.0
-offset_right = -31.0
+offset_right = -1152.0
 offset_bottom = 66.0
 grow_horizontal = 0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 18
 theme_override_font_sizes/font_size = 36
-horizontal_alignment = 2
 
 [node name="pop_up_label" type="Label" parent="."]
 custom_minimum_size = Vector2(640, 0)

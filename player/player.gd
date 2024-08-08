@@ -85,6 +85,7 @@ var spike_count = 0
 var checkpoint = false
 var invincible = false
 var tile_map = null
+var damages = []
 
 func _ready():
 	set_texture()
@@ -488,9 +489,16 @@ func slope_exit():
 
 @warning_ignore("unused_parameter")
 func _on_hurt_box_hit(damage):
+	if damages.size() > 0:
+		return
+	damages.append(damage)
+	var rand_death_sound = rng.randi_range(1,10000)
 	var rand = rng.randi_range(1,18)
 	@warning_ignore("narrowing_conversion")
 	sounds.play_sfx("hurt_%s"%[str(rand)],randf_range(0.9,1),0)
+	if rand_death_sound == 42:
+		@warning_ignore("narrowing_conversion")
+		sounds.play_sfx("random_scream",randf_range(0.8,1),0)
 	if damage == 1:
 		@warning_ignore("narrowing_conversion")
 		sounds.play_sfx("chain_damage_1",randf_range(0.8,1),0)
@@ -499,7 +507,21 @@ func _on_hurt_box_hit(damage):
 		add_spike()
 		check_death()
 	elif damage == 2:
+		@warning_ignore("narrowing_conversion")
+		sounds.play_sfx("burn_death",randf_range(0.8,1),-10)
+		@warning_ignore("narrowing_conversion")
+		sounds.play_sfx("liquid_death",randf_range(0.8,1),0)
 		add_lava()
+		check_death()
+	elif damage == 3:
+		@warning_ignore("narrowing_conversion")
+		sounds.play_sfx("burn_death",randf_range(0.8,1),-5)
+		add_explosion()
+		check_death()
+	elif damage == 4:
+		@warning_ignore("narrowing_conversion")
+		sounds.play_sfx("chain_damage_1",randf_range(0.8,1),0)
+		add_book_death()
 		check_death()
 	else:
 		pass
@@ -520,7 +542,13 @@ func add_spike():
 	SaveAndLoad.update_save_data()
 
 func add_lava():
-	pass
+	stats["save_data"]["stats"]["Melted"] += 1
+
+func add_explosion():
+	stats["save_data"]["stats"]["Exploded"] += 1
+
+func add_book_death():
+	stats["save_data"]["stats"]["Booked"] += 1
 
 func set_invincible(_bool):
 	invincible = _bool
@@ -537,6 +565,7 @@ func check_death():
 	size_tween.tween_property(sprite,"scale",Vector2(2,2),.2)
 	await death_timer.timeout
 	#process_mode = Node.PROCESS_MODE_INHERIT
+	damages = []
 	state = "move_state"
 	if stats["save_data"]["hard_mode"]:
 		stats.reset_run()
