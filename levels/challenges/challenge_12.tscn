@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://btc0hm6mkex5a" path="res://items/checkpoint.tscn" id="13_jy1ag"]
 [ext_resource type="PackedScene" uid="uid://n615rx02auyl" path="res://ui/ui.tscn" id="14_5wxsl"]
 
-[node name="challenge_template" type="Node2D"]
+[node name="challenge_12" type="Node2D"]
 script = ExtResource("1_344bs")
 level_id = "challenge_12"
 level_name = "S-4 : Uppie Upperson"

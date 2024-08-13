@@ -23,7 +23,7 @@ size = Vector2(12, 2)
 [node name="challenge_13" type="Node2D"]
 script = ExtResource("1_dpb4t")
 level_id = "challenge_13"
-level_name = "C-4 : "
+level_name = "C-4 : Slippery Summit"
 spawn_point = Vector2(-176, 0)
 main_music = "space_challenge"
 space_gravity = true
@@ -69,7 +69,7 @@ remote_path = NodePath("../../Camera2D")
 position = Vector2(520, -304)
 
 [node name="start_zone" parent="." instance=ExtResource("6_ihd8b")]
-position = Vector2(48, -16)
+position = Vector2(66, -16)
 
 [node name="Camera2D" parent="." instance=ExtResource("7_fejpk")]
 position = Vector2(-176, -15)

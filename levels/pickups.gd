@@ -33,6 +33,7 @@ signal popup(text)
 @onready var arcade_unlock_5 = $arcade_unlock_5
 @onready var toilet_2_unlock = $toilet_2_unlock
 @onready var bish_armor = $bish_armor
+@onready var santa_1_armor = $santa_1_armor
 
 func _ready():
 	if stats["save_data"]["items"]["white_rose"]:
@@ -89,6 +90,8 @@ func _ready():
 		toilet_2_unlock.queue_free()
 	if stats["save_data"]["armors"]["bish"]:
 		bish_armor.queue_free()
+	if stats["save_data"]["armors"]["santa_1"]:
+		santa_1_armor.queue_free()
 
 signal check_picnic
 @warning_ignore("unused_parameter")
@@ -357,3 +360,12 @@ func _on_bish_armor_body_entered(body):
 	bish_armor.queue_free()
 	SaveAndLoad.update_save_data()
 	popup.emit("It's Slime to fall!")
+
+@warning_ignore("unused_parameter")
+func _on_santa_1_armor_body_entered(body):
+	stats["save_data"]["armors"]["santa_1"] = true
+	@warning_ignore("narrowing_conversion")
+	sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
+	santa_1_armor.queue_free()
+	SaveAndLoad.update_save_data()
+	popup.emit("In putting on this hat, the wearer enters into the Claus...")

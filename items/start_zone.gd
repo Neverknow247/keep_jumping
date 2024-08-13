@@ -16,5 +16,6 @@ func _on_body_entered(body):
 		#steam["level_id_board"] = steam["main_level_id"]
 		#Steam.findLeaderboard(steam["level_id_board"])
 	if body.is_in_group("player") and !started:
+		body.set_start_velocity()
 		started = true
 		start_timer.emit()

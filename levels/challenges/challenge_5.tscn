@@ -62,7 +62,7 @@ remote_path = NodePath("../../Camera2D")
 position = Vector2(0, -992)
 
 [node name="start_zone" parent="." instance=ExtResource("6_khl7t")]
-position = Vector2(115, -16)
+position = Vector2(130, -16)
 
 [node name="Camera2D" parent="." instance=ExtResource("7_aq5c6")]
 position = Vector2(-176, -15)
@@ -828,7 +828,6 @@ infinite = true
 [node name="checkpoints" type="Node2D" parent="."]
 
 [node name="checkpoint" parent="checkpoints" instance=ExtResource("12_s4hls")]
-position = Vector2(-16, 0)
 
 [node name="checkpoint2" parent="checkpoints" instance=ExtResource("12_s4hls")]
 position = Vector2(48, -208)

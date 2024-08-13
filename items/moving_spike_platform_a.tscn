@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://cp2eb1ygtgvcr"]
+
+[ext_resource type="Script" path="res://items/moving_platform.gd" id="1_1t6kj"]
+[ext_resource type="Texture2D" uid="uid://dr8sy1ngg0g6" path="res://assets/art/items/moving_platform.png" id="2_82e3a"]
+[ext_resource type="PackedScene" uid="uid://nfjwcl3nv5kx" path="res://items/spikes.tscn" id="3_ike64"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5g0h8"]
+size = Vector2(32, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_36qdx"]
+size = Vector2(40, 16)
+
+[node name="moving_spike_platform_a" type="AnimatableBody2D"]
+collision_mask = 0
+script = ExtResource("1_1t6kj")
+
+[node name="sprite" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(0, -4)
+texture = ExtResource("2_82e3a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_5g0h8")
+one_way_collision = true
+
+[node name="player_sense" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_sense"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_36qdx")
+
+[node name="spikes" parent="." instance=ExtResource("3_ike64")]
+position = Vector2(-8, -8)
+type = 1
+
+[node name="spikes2" parent="." instance=ExtResource("3_ike64")]
+position = Vector2(8, -8)
+type = 1
+
+[connection signal="body_entered" from="player_sense" to="." method="_on_player_sense_body_entered"]
+[connection signal="body_exited" from="player_sense" to="." method="_on_player_sense_body_exited"]

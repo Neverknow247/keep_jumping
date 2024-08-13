@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmbx30r1wyjja"]
+
+[ext_resource type="Script" path="res://levels/challenges/admin_teleport.gd" id="1_o61fa"]
+
+[node name="admin_teleport" type="Node2D"]
+script = ExtResource("1_o61fa")

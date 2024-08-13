@@ -69,7 +69,7 @@ remote_path = NodePath("../../Camera2D")
 position = Vector2(416, -768)
 
 [node name="start_zone" parent="." instance=ExtResource("6_shqas")]
-position = Vector2(48, -16)
+position = Vector2(98, -16)
 
 [node name="Camera2D" parent="." instance=ExtResource("7_qfjhb")]
 position = Vector2(-184, -15)

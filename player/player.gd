@@ -108,6 +108,14 @@ func set_color_blind_colors():
 		#double_jump_color = Color("#d743ff")
 		#double_jump_color = Color("#ff4568")
 
+func set_start_velocity():
+	max_velocity = default_max_velocity
+	if current_velocity > default_max_velocity:
+		if velocity.x > 0:
+			velocity.x = default_max_velocity
+		else:
+			velocity.x = -default_max_velocity
+
 func _physics_process(delta):
 	current_velocity = abs(velocity.x)
 	var callable = Callable(self,state)
