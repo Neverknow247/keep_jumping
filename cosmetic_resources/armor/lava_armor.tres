@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ArmorData" load_steps=4 format=3 uid="uid://hq86lexk70hd"]
 
-[ext_resource type="Texture2D" uid="uid://xljqewiew5hw" path="res://assets/art/characters/player_lava.png" id="1_fcimg"]
+[ext_resource type="Texture2D" uid="uid://rjxd8e0qfii7" path="res://assets/art/characters/player_lava-sheet.png" id="1_66xoy"]
 [ext_resource type="Texture2D" uid="uid://p46r10csw1w3" path="res://assets/art/characters/akamaru_lava.png" id="2_hdyfl"]
 [ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="3_dsfu7"]
 
@@ -8,5 +8,5 @@
 script = ExtResource("3_dsfu7")
 armor_id = "lava"
 armor_name = "Lava Armor"
-armor_texture = ExtResource("1_fcimg")
+armor_texture = ExtResource("1_66xoy")
 dog_texture = ExtResource("2_hdyfl")

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ArmorData" load_steps=4 format=3 uid="uid://dod4mtavijgv6"]
 
-[ext_resource type="Texture2D" uid="uid://cc4vchbi1puee" path="res://assets/art/characters/player_pride.png" id="1_t8quj"]
+[ext_resource type="Texture2D" uid="uid://d768rp82cswf" path="res://assets/art/characters/player_pride-sheet.png" id="1_b12r0"]
 [ext_resource type="Texture2D" uid="uid://b3764q3h4qvg6" path="res://assets/art/characters/akamaru_pride.png" id="2_deml3"]
 [ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="3_kkl7x"]
 
@@ -8,5 +8,5 @@
 script = ExtResource("3_kkl7x")
 armor_id = "pride"
 armor_name = "Powerful Pride"
-armor_texture = ExtResource("1_t8quj")
+armor_texture = ExtResource("1_b12r0")
 dog_texture = ExtResource("2_deml3")

@@ -158,13 +158,13 @@ func move_state(delta):
 		apply_acceleration(delta,input_axis)
 	else:
 		apply_friction(delta)
-	if !interacting:
+	if !interacting or (interacting and interacting_type == "leaderboard"):
 		jump_check()
 		drop_check()
 	var was_on_floor = is_on_floor()
 	var was_on_wall = is_on_wall()
 	fall_bonus_check()
-	if !interacting:
+	if !interacting or (interacting and interacting_type == "leaderboard"):
 		update_animations(input_axis)
 	var wall
 	if Utils.wall_frame_buffer:
@@ -172,7 +172,7 @@ func move_state(delta):
 	else:
 		wall = wall_check()
 	var on_slope = slope_check()
-	if !interacting:
+	if !interacting or (interacting and interacting_type == "leaderboard"):
 		move_and_slide()
 	if Utils.wall_frame_buffer:
 		if was_on_wall and is_on_wall():
@@ -343,9 +343,9 @@ func update_animations(input_vector):
 		collision.disabled = true
 		$sprite/hat.position = Vector2(0,0)
 		if velocity.y <= 0:
-			sprite.frame = 18
+			sprite.frame = 12
 		else:
-			sprite.frame = 19
+			sprite.frame = 13
 	elif input_vector != 0:
 		collision.disabled = false
 		jump_collision.disabled = true
@@ -403,9 +403,9 @@ func wall_slide_state(delta):
 		sprite.flip_h = wall_normal != 1
 		#sprite.scale.x = wall_normal
 	if velocity.y <= 0:
-		sprite.frame = 24
+		sprite.frame = 18
 	else:
-		sprite.frame = 25
+		sprite.frame = 19
 	velocity.y = clampf(velocity.y, -max_fall_velocity, max_fall_velocity)
 	wall_jump_check(wall_normal)
 	apply_wall_slide_gravity(delta)

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ArmorData" load_steps=4 format=3 uid="uid://vkgbyq2v2bjx"]
 
-[ext_resource type="Texture2D" uid="uid://dm3e1nlo2weu1" path="res://assets/art/characters/player_upper.png" id="1_1nwt0"]
+[ext_resource type="Texture2D" uid="uid://cy8rdwjhcg4aj" path="res://assets/art/characters/player_upper-sheet.png" id="1_23y72"]
 [ext_resource type="Texture2D" uid="uid://yf2olcyc0bfj" path="res://assets/art/characters/akamaru_upper.png" id="2_i11ag"]
 [ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="3_pq8y8"]
 
@@ -8,5 +8,5 @@
 script = ExtResource("3_pq8y8")
 armor_id = "upper"
 armor_name = "Gold Bell Armor"
-armor_texture = ExtResource("1_1nwt0")
+armor_texture = ExtResource("1_23y72")
 dog_texture = ExtResource("2_i11ag")

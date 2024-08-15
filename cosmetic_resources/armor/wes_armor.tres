@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ArmorData" load_steps=4 format=3 uid="uid://ckgyj7aluvfed"]
 
-[ext_resource type="Texture2D" uid="uid://cji41sfsrubyh" path="res://assets/art/characters/player_wes.png" id="1_nv1ji"]
+[ext_resource type="Texture2D" uid="uid://c4hxg1hxk4ak1" path="res://assets/art/characters/player_wes-sheet.png" id="1_pdxc3"]
 [ext_resource type="Texture2D" uid="uid://cudnw6o4e3xba" path="res://assets/art/characters/akamaru_wes.png" id="2_cc8b6"]
 [ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="3_1vil8"]
 
@@ -8,5 +8,5 @@
 script = ExtResource("3_1vil8")
 armor_id = "wes"
 armor_name = "Wes Armor"
-armor_texture = ExtResource("1_nv1ji")
+armor_texture = ExtResource("1_pdxc3")
 dog_texture = ExtResource("2_cc8b6")

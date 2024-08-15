@@ -169,3 +169,9 @@ func _on_back_button_pressed():
 func disable_buttons(disable):
 	for button in all_buttons:
 		button.disabled = disable
+
+func _on_reset_keybind_button_pressed():
+	Utils.bindings = Utils.default_bindings.duplicate(true)
+	Utils.set_keybindings()
+	_update_labels()
+	SaveAndLoad.update_settings()

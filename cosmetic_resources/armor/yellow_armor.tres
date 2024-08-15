@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ArmorData" load_steps=4 format=3 uid="uid://cxvae7ikklyo3"]
 
-[ext_resource type="Texture2D" uid="uid://cuww5or3ttgy6" path="res://assets/art/characters/player_sunflower.png" id="1_mtlsq"]
+[ext_resource type="Texture2D" uid="uid://bxyjf2bbwisoy" path="res://assets/art/characters/player_sunflower-sheet.png" id="1_vfvet"]
 [ext_resource type="Texture2D" uid="uid://bah1ca5g6roy2" path="res://assets/art/characters/akamaru_sunflower.png" id="2_1e7e5"]
 [ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="3_2sypw"]
 
@@ -8,5 +8,5 @@
 script = ExtResource("3_2sypw")
 armor_id = "yellow"
 armor_name = "Sunflower Yellow"
-armor_texture = ExtResource("1_mtlsq")
+armor_texture = ExtResource("1_vfvet")
 dog_texture = ExtResource("2_1e7e5")

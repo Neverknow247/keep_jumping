@@ -464,4 +464,13 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_wtmju")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_a3f3t")
 text = "← Back"
 
+[node name="reset_keybind_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1136.0
+offset_top = 944.0
+offset_right = 1662.0
+offset_bottom = 1025.0
+text = "Reset Keybinds"
+
 [connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="reset_keybind_button" to="." method="_on_reset_keybind_button_pressed"]

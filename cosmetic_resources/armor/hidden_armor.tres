@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ArmorData" load_steps=4 format=3 uid="uid://c7mg2nv11pthg"]
 
-[ext_resource type="Texture2D" uid="uid://d1dfkbtd30t7m" path="res://assets/art/characters/player_hidden.png" id="1_pa3sp"]
+[ext_resource type="Texture2D" uid="uid://c6b8ne7irs0af" path="res://assets/art/characters/player_hidden-sheet.png" id="1_137vs"]
 [ext_resource type="Texture2D" uid="uid://c4yd80ierg4uf" path="res://assets/art/characters/akamaru_hidden.png" id="2_66qi0"]
 [ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="3_wi6fl"]
 
@@ -8,5 +8,5 @@
 script = ExtResource("3_wi6fl")
 armor_id = "hidden"
 armor_name = "Bronze Bell Armor"
-armor_texture = ExtResource("1_pa3sp")
+armor_texture = ExtResource("1_137vs")
 dog_texture = ExtResource("2_66qi0")

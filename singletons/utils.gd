@@ -77,6 +77,64 @@ var keybindings = {
 	"controller_action":InputEventJoypadButton.new(),
 }
 
+var default_bindings = {
+	"left":{
+		"type":"key",
+		"keycode":65,
+		"button_index":1
+	},
+	"right":{
+		"type":"key",
+		"keycode":68,
+		"button_index":1
+	},
+	"down":{
+		"type":"key",
+		"keycode":83,
+		"button_index":1
+	},
+	"jump":{
+		"type":"key",
+		"keycode":32,
+		"button_index":1
+	},
+	"action":{
+		"type":"key",
+		"keycode":69,
+		"button_index":1
+	},
+	"controller_left":{
+		"type":"button",
+		"button_index":13,
+		"axis":0,
+		"axis_value":0.0
+	},
+	"controller_right":{
+		"type":"button",
+		"button_index":14,
+		"axis":0,
+		"axis_value":0.0
+	},
+	"controller_down":{
+		"type":"button",
+		"button_index":12,
+		"axis":0,
+		"axis_value":0.0
+	},
+	"controller_jump":{
+		"type":"button",
+		"button_index":0,
+		"axis":0,
+		"axis_value":0.0
+	},
+	"controller_action":{
+		"type":"button",
+		"button_index":1,
+		"axis":0,
+		"axis_value":0.0
+	},
+}
+
 var bindings = {
 	"left":{
 		"type":"key",

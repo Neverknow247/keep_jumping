@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://f5qmax4ieb7t"]
+[gd_scene load_steps=16 format=3 uid="uid://f5qmax4ieb7t"]
 
 [ext_resource type="Script" path="res://levels/challenges/challenge.gd" id="1_hucwf"]
 [ext_resource type="Texture2D" uid="uid://r7nk4nvd874q" path="res://assets/art/backgrounds/castle_1_background.png" id="2_hx5ml"]
@@ -10,7 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://dlj3xtq0pl4l8" path="res://items/leaderboard.tscn" id="8_iwoje"]
 [ext_resource type="PackedScene" uid="uid://bcudup6bgixmc" path="res://items/teleporter.tscn" id="9_pe2xe"]
 [ext_resource type="PackedScene" uid="uid://nfjwcl3nv5kx" path="res://items/spikes.tscn" id="10_1syh4"]
+[ext_resource type="Texture2D" uid="uid://bu5ab7aocny3r" path="res://assets/art/items/large_sign.png" id="10_w15dg"]
 [ext_resource type="PackedScene" uid="uid://duyvxrlf4ht5f" path="res://items/spring.tscn" id="11_2dqqu"]
+[ext_resource type="Theme" uid="uid://dovwfovrkt1ge" path="res://ui/very_small_text_theme.tres" id="11_ns5jy"]
 [ext_resource type="PackedScene" uid="uid://btc0hm6mkex5a" path="res://items/checkpoint.tscn" id="12_8cxve"]
 [ext_resource type="PackedScene" uid="uid://n615rx02auyl" path="res://ui/ui.tscn" id="13_hhrfd"]
 
@@ -74,6 +76,26 @@ position = Vector2(-120, 0)
 
 [node name="teleporter" parent="items" instance=ExtResource("9_pe2xe")]
 position = Vector2(-176, 0)
+
+[node name="sign" type="Sprite2D" parent="items"]
+position = Vector2(-48, -11)
+texture = ExtResource("10_w15dg")
+
+[node name="Label" type="Label" parent="items/sign"]
+offset_left = -11.0
+offset_top = -10.0
+offset_right = 303.0
+offset_bottom = 162.0
+scale = Vector2(0.07, 0.07)
+theme = ExtResource("11_ns5jy")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -12
+theme_override_font_sizes/font_size = 65
+text = "Shoutout
+Bandit
+XD"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="spikes" type="Node2D" parent="."]
 

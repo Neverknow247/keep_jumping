@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ArmorData" load_steps=4 format=3 uid="uid://c7mv73hic44s3"]
 
-[ext_resource type="Texture2D" uid="uid://bdahjtf7on2c1" path="res://assets/art/characters/player_test-sheet.png" id="1_7dlwg"]
+[ext_resource type="Texture2D" uid="uid://2uk358n6nvsp" path="res://assets/art/characters/player-sheet.png" id="1_0k8kw"]
 [ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="1_dn33a"]
 [ext_resource type="Texture2D" uid="uid://bgunnguwmph08" path="res://assets/art/characters/akamaru.png" id="2_s8r0q"]
 
@@ -8,5 +8,5 @@
 script = ExtResource("1_dn33a")
 armor_id = "default"
 armor_name = "Sir Fallen Blue"
-armor_texture = ExtResource("1_7dlwg")
+armor_texture = ExtResource("1_0k8kw")
 dog_texture = ExtResource("2_s8r0q")

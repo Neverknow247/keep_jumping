@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ArmorData" load_steps=4 format=3 uid="uid://h3g6a0mow3e2"]
 
-[ext_resource type="Texture2D" uid="uid://d4ngt3dxosd1u" path="res://assets/art/characters/player_brown.png" id="1_xixic"]
+[ext_resource type="Texture2D" uid="uid://c48p57j2eewy5" path="res://assets/art/characters/player_brown-sheet.png" id="1_oejk5"]
 [ext_resource type="Texture2D" uid="uid://cvnvnusrb8juo" path="res://assets/art/characters/akamaru_brown.png" id="2_wr1br"]
 [ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="3_xpqsa"]
 
@@ -8,5 +8,5 @@
 script = ExtResource("3_xpqsa")
 armor_id = "brown"
 armor_name = "Dirt Brown"
-armor_texture = ExtResource("1_xixic")
+armor_texture = ExtResource("1_oejk5")
 dog_texture = ExtResource("2_wr1br")

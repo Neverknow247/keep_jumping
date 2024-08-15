@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ArmorData" load_steps=4 format=3 uid="uid://cygt4qn7nruno"]
 
-[ext_resource type="Texture2D" uid="uid://schbilusnxee" path="res://assets/art/characters/player_green.png" id="1_mcl46"]
+[ext_resource type="Texture2D" uid="uid://bs07bpd64fp6a" path="res://assets/art/characters/player_green-sheet.png" id="1_orre0"]
 [ext_resource type="Texture2D" uid="uid://dl06b42ahy1n" path="res://assets/art/characters/akamaru_green.png" id="2_msqsc"]
 [ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="3_g0wa5"]
 
@@ -8,5 +8,5 @@
 script = ExtResource("3_g0wa5")
 armor_id = "green"
 armor_name = "Forest Green"
-armor_texture = ExtResource("1_mcl46")
+armor_texture = ExtResource("1_orre0")
 dog_texture = ExtResource("2_msqsc")

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ArmorData" load_steps=4 format=3 uid="uid://bm4fvqq553ore"]
 
-[ext_resource type="Texture2D" uid="uid://rwxgn5wliisr" path="res://assets/art/characters/player_white.png" id="1_tsxud"]
+[ext_resource type="Texture2D" uid="uid://dxwsn8138p3ne" path="res://assets/art/characters/player_white-sheet.png" id="1_4u5nw"]
 [ext_resource type="Texture2D" uid="uid://bq3akv1r31154" path="res://assets/art/characters/akamaru_white.png" id="2_6bje7"]
 [ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="3_oa561"]
 
@@ -8,5 +8,5 @@
 script = ExtResource("3_oa561")
 armor_id = "white"
 armor_name = "White Knight"
-armor_texture = ExtResource("1_tsxud")
+armor_texture = ExtResource("1_4u5nw")
 dog_texture = ExtResource("2_6bje7")
