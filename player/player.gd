@@ -12,6 +12,8 @@ signal unlock_campfire
 
 const step_particles = preload("res://particles/step_particles.tscn")
 
+var leader_board_string = "leaderboards"
+
 func add_particle():
 	var part = step_particles.instantiate()
 	get_parent().add_child(part)
@@ -158,13 +160,13 @@ func move_state(delta):
 		apply_acceleration(delta,input_axis)
 	else:
 		apply_friction(delta)
-	if !interacting or (interacting and interacting_type == "leaderboard"):
+	if !interacting or (interacting and interacting_type == leader_board_string):
 		jump_check()
 		drop_check()
 	var was_on_floor = is_on_floor()
 	var was_on_wall = is_on_wall()
 	fall_bonus_check()
-	if !interacting or (interacting and interacting_type == "leaderboard"):
+	if !interacting or (interacting and interacting_type == leader_board_string):
 		update_animations(input_axis)
 	var wall
 	if Utils.wall_frame_buffer:
@@ -172,7 +174,7 @@ func move_state(delta):
 	else:
 		wall = wall_check()
 	var on_slope = slope_check()
-	if !interacting or (interacting and interacting_type == "leaderboard"):
+	if !interacting or (interacting and interacting_type == leader_board_string):
 		move_and_slide()
 	if Utils.wall_frame_buffer:
 		if was_on_wall and is_on_wall():

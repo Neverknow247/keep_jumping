@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://btc0hm6mkex5a"]
+[gd_scene load_steps=15 format=3 uid="uid://btc0hm6mkex5a"]
 
 [ext_resource type="Script" path="res://items/checkpoint.gd" id="1_28ore"]
 [ext_resource type="Texture2D" uid="uid://b0w8m5baqsj6t" path="res://assets/art/items/checkpoint_flag.png" id="1_vbxwm"]
+[ext_resource type="Texture2D" uid="uid://qxs83g7hul6o" path="res://assets/art/items/checkpoint_sparkle.png" id="3_o67yc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uc4k4"]
 radius = 11.0
@@ -44,6 +45,56 @@ _data = {
 "animate": SubResource("Animation_itrra")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhvow"]
+atlas = ExtResource("3_o67yc")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r333a"]
+atlas = ExtResource("3_o67yc")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ds8t"]
+atlas = ExtResource("3_o67yc")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cg48w"]
+atlas = ExtResource("3_o67yc")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jofr5"]
+atlas = ExtResource("3_o67yc")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qqae"]
+atlas = ExtResource("3_o67yc")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sdl2n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhvow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r333a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ds8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cg48w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jofr5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qqae")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
 [node name="checkpoint" type="Area2D"]
 collision_layer = 0
 collision_mask = 2
@@ -63,5 +114,11 @@ libraries = {
 "": SubResource("AnimationLibrary_3y51g")
 }
 autoplay = "RESET"
+
+[node name="sparkle_animation" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_sdl2n")
+autoplay = "default"
+frame_progress = 0.393417
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
