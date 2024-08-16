@@ -4,7 +4,7 @@ var stats = Stats
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var chat_icon = $chat_icon
-
+@onready var sleep_zs = $sleep_zs
 
 var interactable = false
 var interacting = false
@@ -34,7 +34,7 @@ func _ready():
 func check_progression():
 	match stats["save_data"]["mage_progression_next"]:
 		0:
-			pass
+			sleep_zs.show()
 		1:
 			stats["save_data"]["mage_progression"] = 1
 		2:
@@ -61,6 +61,7 @@ func state_progress():
 			if state == "sleep":
 				state = "wake_up"
 				wake_up()
+				sleep_zs.hide()
 				stats["save_data"]["mage_progression_next"] = 1
 		1:
 			if stats["save_data"]["mage_progression_next"] == 1:

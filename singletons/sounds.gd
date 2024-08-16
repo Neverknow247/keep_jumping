@@ -44,6 +44,7 @@ var sfx = {
 	"hurt_16" : load(sfx_path+"hurt_16.wav"),
 	"hurt_17" : load(sfx_path+"hurt_17.wav"),
 	"hurt_18" : load(sfx_path+"hurt_18.wav"),
+	"hurt_19" : load(sfx_path+"ty_hurt.mp3"),
 	"chain_step_1" : load(sfx_path+"chain_step_1.wav"),
 	"chain_step_2" : load(sfx_path+"chain_step_2.wav"),
 	"chain_damage_1" : load(sfx_path+"chain_damage_1.wav"),

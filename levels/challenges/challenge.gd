@@ -137,8 +137,11 @@ func _on_checkpoint_activate_checkpoint(respawn_position,checkpoint):
 		for point in $checkpoints.get_children():
 			point.active = false
 			point.animation_player.play("RESET")
+			point.set_sparkle(true)
 		checkpoint.active = true
+		checkpoint.set_sparkle(false)
 		spawn_point = respawn_position
+
 
 func _on_player_leaderboard():
 	$ui/leaderboard.show()

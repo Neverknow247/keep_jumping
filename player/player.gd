@@ -12,7 +12,7 @@ signal unlock_campfire
 
 const step_particles = preload("res://particles/step_particles.tscn")
 
-var leader_board_string = "leaderboards"
+var leader_board_string = "leaderboard"
 
 func add_particle():
 	var part = step_particles.instantiate()
@@ -503,7 +503,7 @@ func _on_hurt_box_hit(damage):
 		return
 	damages.append(damage)
 	var rand_death_sound = rng.randi_range(1,10000)
-	var rand = rng.randi_range(1,18)
+	var rand = rng.randi_range(1,19)
 	@warning_ignore("narrowing_conversion")
 	sounds.play_sfx("hurt_%s"%[str(rand)],randf_range(0.9,1),0)
 	if rand_death_sound == 42:
