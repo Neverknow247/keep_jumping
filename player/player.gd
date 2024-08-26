@@ -503,9 +503,13 @@ func _on_hurt_box_hit(damage):
 		return
 	damages.append(damage)
 	var rand_death_sound = rng.randi_range(1,10000)
-	var rand = rng.randi_range(1,19)
+	var ty_death_sound = rng.randi_range(1,100)
+	var rand = rng.randi_range(1,18)
 	@warning_ignore("narrowing_conversion")
-	sounds.play_sfx("hurt_%s"%[str(rand)],randf_range(0.9,1),0)
+	if ty_death_sound == 42:
+		sounds.play_sfx("hurt_%s"%[str(19)],randf_range(0.9,1),0)
+	else:
+		sounds.play_sfx("hurt_%s"%[str(rand)],randf_range(0.9,1),0)
 	if rand_death_sound == 42:
 		@warning_ignore("narrowing_conversion")
 		sounds.play_sfx("random_scream",randf_range(0.8,1),0)
