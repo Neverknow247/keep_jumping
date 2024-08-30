@@ -1,11 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://b4uv2iuyt6bk4"]
+[gd_scene load_steps=21 format=3 uid="uid://b4uv2iuyt6bk4"]
 
 [ext_resource type="Script" path="res://levels/challenges/challenge.gd" id="1_37sph"]
 [ext_resource type="Texture2D" uid="uid://tomq6qwboh8i" path="res://assets/art/backgrounds/castle_2_background.png" id="2_oxx4i"]
 [ext_resource type="TileSet" uid="uid://dolar343jujfg" path="res://tilesets/tileset.tres" id="3_gfvk0"]
 [ext_resource type="PackedScene" uid="uid://kib21yto7yik" path="res://player/player.tscn" id="4_vhes8"]
 [ext_resource type="PackedScene" uid="uid://br8ewlyx38alq" path="res://items/challenge_finish.tscn" id="5_s2gw4"]
-[ext_resource type="PackedScene" uid="uid://bpl2vk3ncc0mb" path="res://items/start_zone.tscn" id="6_jbqtd"]
+[ext_resource type="Script" path="res://items/start_zone.gd" id="6_ybghu"]
 [ext_resource type="PackedScene" uid="uid://bb8b5vo2me8pl" path="res://ui/camera_2d.tscn" id="7_myaoq"]
 [ext_resource type="PackedScene" uid="uid://dlj3xtq0pl4l8" path="res://items/leaderboard.tscn" id="8_7at8u"]
 [ext_resource type="PackedScene" uid="uid://bcudup6bgixmc" path="res://items/teleporter.tscn" id="9_6d1ha"]
@@ -19,6 +19,9 @@
 [ext_resource type="PackedScene" uid="uid://dv8rus1vsthi2" path="res://items/breakable_block.tscn" id="17_botoo"]
 [ext_resource type="PackedScene" uid="uid://btc0hm6mkex5a" path="res://items/checkpoint.tscn" id="17_hssx2"]
 [ext_resource type="PackedScene" uid="uid://n615rx02auyl" path="res://ui/ui.tscn" id="18_4rnkh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pn0kn"]
+size = Vector2(400, 104)
 
 [node name="challenge_24" type="Node2D"]
 script = ExtResource("1_37sph")
@@ -66,8 +69,15 @@ remote_path = NodePath("../../Camera2D")
 [node name="challenge_finish" parent="." instance=ExtResource("5_s2gw4")]
 position = Vector2(16, -1280)
 
-[node name="start_zone" parent="." instance=ExtResource("6_jbqtd")]
-position = Vector2(0, 46)
+[node name="start_zone" type="Area2D" parent="."]
+position = Vector2(0, 48)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("6_ybghu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="start_zone"]
+position = Vector2(0, -132)
+shape = SubResource("RectangleShape2D_pn0kn")
 
 [node name="Camera2D" parent="." instance=ExtResource("7_myaoq")]
 position = Vector2(0, -15)
@@ -1536,6 +1546,7 @@ position = Vector2(-16, -384)
 [connection signal="leaderboard" from="player" to="." method="_on_player_leaderboard"]
 [connection signal="respawn" from="player" to="." method="_on_player_respawn"]
 [connection signal="body_entered" from="challenge_finish" to="." method="_on_challenge_finish_body_entered"]
+[connection signal="body_entered" from="start_zone" to="start_zone" method="_on_body_entered"]
 [connection signal="start_timer" from="start_zone" to="." method="_on_start_zone_start_timer"]
 [connection signal="body_entered" from="items/pickups/cosmetic" to="items/pickups" method="_on_cosmetic_body_entered"]
 [connection signal="activate_checkpoint" from="checkpoints/checkpoint" to="." method="_on_checkpoint_activate_checkpoint"]

@@ -34,6 +34,7 @@ var armors = [
 	preload("res://cosmetic_resources/armor/santa_1_armor.tres"),
 	preload("res://cosmetic_resources/armor/twilight_armor.tres"),
 	preload("res://cosmetic_resources/armor/sashimi_armor.tres"),
+	preload("res://cosmetic_resources/armor/arcane_armor.tres"),
 	preload("res://cosmetic_resources/armor/monkey_armor.tres"),
 	preload("res://cosmetic_resources/armor/ballen_armor.tres"),
 ]
