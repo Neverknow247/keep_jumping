@@ -238,3 +238,9 @@ func _on_library_unlock_body_entered(body):
 		sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
 		ui.pop_up("Library Unlocked")
 		SaveAndLoad.update_save_data()
+
+func _on_four_key_switch_door_open():
+	var tween = get_tree().create_tween()
+	tween.tween_property($items/door,"global_position",Vector2($items/door.global_position.x,$items/door.global_position.y+33),2)
+	@warning_ignore("narrowing_conversion")
+	sounds.play_sfx("stone_door", randf_range(0.9,1.0), 0)
