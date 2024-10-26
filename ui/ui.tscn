@@ -1,9 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://n615rx02auyl"]
+[gd_scene load_steps=22 format=3 uid="uid://n615rx02auyl"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_2o8nt"]
-[ext_resource type="Texture2D" uid="uid://dw0g5jloppt7q" path="res://assets/art/ui/speech_box.png" id="2_pferc"]
 [ext_resource type="Texture2D" uid="uid://e88tapajqrdd" path="res://assets/art/ui/vignette.png" id="2_q64kn"]
+[ext_resource type="Texture2D" uid="uid://dg6cb7vsauqg3" path="res://assets/art/ui/speech_box_halloween.png" id="2_vs3m8"]
+[ext_resource type="FontFile" uid="uid://dgbfa2hluymi8" path="res://assets/fonts/KnightsQuest.ttf" id="3_0srao"]
 [ext_resource type="Texture2D" uid="uid://by13oq4td5ugv" path="res://assets/art/ui/blind_mode.png" id="3_1igpa"]
+[ext_resource type="Texture2D" uid="uid://cxs1m35u0dt16" path="res://assets/art/ui/character_headshots/zombie/lost_eye.png" id="4_rdnds"]
 [ext_resource type="Theme" uid="uid://bdauou0gynqyt" path="res://ui/small_text_theme.tres" id="5_i0ay8"]
 [ext_resource type="PackedScene" uid="uid://7tequ6t37p3f" path="res://ui/monument.tscn" id="5_svs0o"]
 [ext_resource type="PackedScene" uid="uid://drx6mqaavj1g8" path="res://menus/stats_menu/stats.tscn" id="6_5uyu6"]
@@ -16,7 +18,7 @@
 [ext_resource type="Theme" uid="uid://bwnv8b362a2w7" path="res://menus/menu_theme.tres" id="11_qn1a0"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xmiy5"]
-texture = ExtResource("2_pferc")
+texture = ExtResource("2_vs3m8")
 
 [sub_resource type="Animation" id="Animation_eqahf"]
 length = 0.001
@@ -131,9 +133,9 @@ script = ExtResource("1_2o8nt")
 [node name="textbox" type="Panel" parent="."]
 visible = false
 offset_left = 64.0
-offset_top = 832.0
+offset_top = 704.0
 offset_right = 1856.0
-offset_bottom = 1024.0
+offset_bottom = 896.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_xmiy5")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="textbox"]
@@ -142,13 +144,21 @@ offset_left = 16.0
 offset_top = 16.0
 offset_right = 1776.0
 offset_bottom = 176.0
-theme_override_colors/default_color = Color(0.224006, 0.219128, 0.163825, 1)
+theme_override_colors/default_color = Color(1, 0.980392, 0.764706, 1)
 theme_override_colors/font_selected_color = Color(0.223529, 0.219608, 0.164706, 1)
-theme_override_font_sizes/normal_font_size = 54
+theme_override_fonts/normal_font = ExtResource("3_0srao")
+theme_override_font_sizes/normal_font_size = 72
 theme_override_font_sizes/bold_font_size = 54
 theme_override_font_sizes/italics_font_size = 54
 theme_override_font_sizes/bold_italics_font_size = 54
 theme_override_font_sizes/mono_font_size = 54
+
+[node name="character_art" type="TextureRect" parent="textbox"]
+z_index = -1
+layout_mode = 0
+offset_top = -500.0
+offset_right = 500.0
+texture = ExtResource("4_rdnds")
 
 [node name="vignette" type="TextureRect" parent="."]
 offset_right = 40.0

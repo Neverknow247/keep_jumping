@@ -1,12 +1,10 @@
-[gd_resource type="Resource" script_class="ArmorData" load_steps=4 format=3 uid="uid://doi6v7ow0ifws"]
+[gd_resource type="Resource" script_class="ArmorData" load_steps=3 format=3 uid="uid://bkm0h31ecuib7"]
 
-[ext_resource type="Texture2D" uid="uid://nk22cbev4iim" path="res://assets/art/characters/player_toilet-sheet.png" id="1_cgbaq"]
-[ext_resource type="Texture2D" uid="uid://drd1jjbvjyu3" path="res://assets/art/characters/akamaru_toilet.png" id="2_6e52k"]
-[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="3_m3n6p"]
+[ext_resource type="Texture2D" uid="uid://nk22cbev4iim" path="res://assets/art/characters/player/player_toilet-sheet.png" id="1_21khq"]
+[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="2_hvt7t"]
 
 [resource]
-script = ExtResource("3_m3n6p")
+script = ExtResource("2_hvt7t")
 armor_id = "toilet"
 armor_name = "Sir Fallen In"
-armor_texture = ExtResource("1_cgbaq")
-dog_texture = ExtResource("2_6e52k")
+armor_texture = ExtResource("1_21khq")

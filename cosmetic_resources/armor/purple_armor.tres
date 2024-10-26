@@ -1,12 +1,10 @@
-[gd_resource type="Resource" script_class="ArmorData" load_steps=4 format=3 uid="uid://curbfx1dr4hud"]
+[gd_resource type="Resource" script_class="ArmorData" load_steps=3 format=3 uid="uid://dl080sblrval3"]
 
-[ext_resource type="Texture2D" uid="uid://cxtog3v3ahtu5" path="res://assets/art/characters/player_purple-sheet.png" id="1_mjrdk"]
-[ext_resource type="Texture2D" uid="uid://b3adc6icof0wl" path="res://assets/art/characters/akamaru_purple.png" id="2_qd3wi"]
-[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="3_g6frv"]
+[ext_resource type="Texture2D" uid="uid://cxtog3v3ahtu5" path="res://assets/art/characters/player/player_purple-sheet.png" id="1_t5yrk"]
+[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="2_74vp8"]
 
 [resource]
-script = ExtResource("3_g6frv")
+script = ExtResource("2_74vp8")
 armor_id = "purple"
 armor_name = "Mystic Purple"
-armor_texture = ExtResource("1_mjrdk")
-dog_texture = ExtResource("2_qd3wi")
+armor_texture = ExtResource("1_t5yrk")

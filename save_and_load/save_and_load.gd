@@ -108,15 +108,12 @@ func save_data_to_file(save_data):
 	file.close()
 
 func save_data_to_backup(save_data):
-	if backup_num >=4:
+	if backup_num >=11:
 		backup_num = 1
 	var file = FileAccess.open(BACKUP_SAVE_DATA_PATH+str(backup_num)+".dat", FileAccess.WRITE)
 	file.store_var(save_data)
 	file.close()
 	backup_num+=1
-
-
-
 
 func load_data():
 	var save_data = load_data_from_file()
@@ -138,7 +135,6 @@ func load_dictionary(save_data):
 		else:
 			stats_save[sub_stat] = save_data[sub_stat]
 	return stats_save
-
 
 func update_settings():
 	var settings = ConfigFile.new()

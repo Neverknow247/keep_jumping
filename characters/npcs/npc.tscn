@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://k82rngjk28hm"]
+
+[ext_resource type="PackedScene" uid="uid://26pgbqlximxx" path="res://characters/chat_icon.tscn" id="1_ng6ve"]
+
+[node name="npc" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="chat_icon" parent="." instance=ExtResource("1_ng6ve")]

@@ -34,6 +34,7 @@ signal popup(text)
 @onready var toilet_2_unlock = $toilet_2_unlock
 @onready var bish_armor = $bish_armor
 @onready var santa_1_armor = $santa_1_armor
+@onready var purfallen_armor_unlock = $purfallen_armor_unlock
 
 func _ready():
 	if stats["save_data"]["items"]["white_rose"]:
@@ -92,6 +93,8 @@ func _ready():
 		bish_armor.queue_free()
 	if stats["save_data"]["armors"]["santa_1"]:
 		santa_1_armor.queue_free()
+	if stats["save_data"]["armors"]["purrfallen"]:
+		purfallen_armor_unlock.queue_free()
 
 signal check_picnic
 @warning_ignore("unused_parameter")
@@ -369,3 +372,12 @@ func _on_santa_1_armor_body_entered(body):
 	santa_1_armor.queue_free()
 	SaveAndLoad.update_save_data()
 	popup.emit("In putting on this hat, the wearer enters into the Claus...")
+
+@warning_ignore("unused_parameter")
+func _on_purfallen_armor_unlock_2_body_entered(body):
+	stats["save_data"]["armors"]["purrfallen"] = true
+	@warning_ignore("narrowing_conversion")
+	sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
+	purfallen_armor_unlock.queue_free()
+	SaveAndLoad.update_save_data()
+	popup.emit("Meow meow meow meow meow meow meow meow meow meow!")

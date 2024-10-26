@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://bcudup6bgixmc"]
+[gd_scene load_steps=31 format=3 uid="uid://bcudup6bgixmc"]
 
 [ext_resource type="Script" path="res://items/teleporter.gd" id="1_whoup"]
 [ext_resource type="Texture2D" uid="uid://8ki5wcq4i42r" path="res://assets/art/items/teleport.png" id="2_nrkxe"]
+[ext_resource type="Texture2D" uid="uid://bvjpjtv2ar60s" path="res://assets/art/items/teleport_ghosts.png" id="3_gelkl"]
 [ext_resource type="Texture2D" uid="uid://bbs8vhyo7h4tc" path="res://assets/art/items/teleport_2.png" id="3_kbu7y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_um8do"]
@@ -31,6 +32,50 @@ region = Rect2(128, 0, 32, 16)
 atlas = ExtResource("2_nrkxe")
 region = Rect2(160, 0, 32, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_si8yw"]
+atlas = ExtResource("3_gelkl")
+region = Rect2(320, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mha16"]
+atlas = ExtResource("3_gelkl")
+region = Rect2(288, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ea8s"]
+atlas = ExtResource("3_gelkl")
+region = Rect2(256, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vy7b4"]
+atlas = ExtResource("3_gelkl")
+region = Rect2(224, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_key84"]
+atlas = ExtResource("3_gelkl")
+region = Rect2(192, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkcvm"]
+atlas = ExtResource("3_gelkl")
+region = Rect2(160, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4748"]
+atlas = ExtResource("3_gelkl")
+region = Rect2(128, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmn5s"]
+atlas = ExtResource("3_gelkl")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mhhv"]
+atlas = ExtResource("3_gelkl")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5sb8"]
+atlas = ExtResource("3_gelkl")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_246jr"]
+atlas = ExtResource("3_gelkl")
+region = Rect2(0, 0, 32, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_r8hi8"]
 animations = [{
 "frames": [{
@@ -55,6 +100,44 @@ animations = [{
 "loop": true,
 "name": &"animate",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_si8yw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mha16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ea8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vy7b4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_key84")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkcvm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4748")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmn5s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mhhv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5sb8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_246jr")
+}],
+"loop": true,
+"name": &"halloween",
+"speed": 10.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o0nv7"]
@@ -121,9 +204,19 @@ shape = SubResource("CircleShape2D_um8do")
 z_index = 1
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_r8hi8")
-animation = &"animate"
-autoplay = "animate"
-frame_progress = 0.834862
+animation = &"halloween"
+autoplay = "halloween"
+frame_progress = 0.718866
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+visible = false
+z_index = 1
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_r8hi8")
+animation = &"halloween"
+autoplay = "halloween"
+frame = 4
+frame_progress = 0.00350459
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -8)

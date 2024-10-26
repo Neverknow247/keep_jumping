@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ArmorData" load_steps=3 format=3 uid="uid://b2yckcb0pvnxx"]
+
+[ext_resource type="Texture2D" uid="uid://tbee4ossqu37" path="res://assets/art/characters/player/player_deep_purple-sheet.png" id="1_rk0y8"]
+[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="2_rp61j"]
+
+[resource]
+script = ExtResource("2_rp61j")
+armor_id = "deep_purple"
+armor_name = "Deep Purple"
+armor_texture = ExtResource("1_rk0y8")

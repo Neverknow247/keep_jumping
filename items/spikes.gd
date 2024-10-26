@@ -10,14 +10,24 @@ var utils = Utils
 var color_blind_sprite = preload("res://assets/art/items/color_blind_spikes.png")
 
 const sprites = [
+	#0
 	preload("res://assets/art/items/forest_spikes.png"),
+	#1
 	preload("res://assets/art/items/Spikes.png"),
+	#2
 	preload("res://assets/art/items/space_spikes.png"),
+	#3
 	preload("res://assets/art/items/rust_spikes.png"),
+	#4
 	preload("res://assets/art/items/lava_spikes.png"),
+	#5
 	preload("res://assets/art/items/sand_spikes.png"),
+	#6
 	preload("res://assets/art/items/knight_forest_spikes.png"),
+	#7
 	preload("res://assets/art/items/knight_spikes.png"),
+	#8
+	preload("res://assets/art/items/candy_corn_spikes.png"),
 ]
 
 var damage = 1

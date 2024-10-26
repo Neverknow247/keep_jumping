@@ -1,12 +1,10 @@
-[gd_resource type="Resource" script_class="ArmorData" load_steps=4 format=3 uid="uid://dpcasql3yibv4"]
+[gd_resource type="Resource" script_class="ArmorData" load_steps=3 format=3 uid="uid://btplrcbud25ui"]
 
-[ext_resource type="Texture2D" uid="uid://c8fpdqnl45ult" path="res://assets/art/characters/player_pride_2-sheet.png" id="1_gi6v4"]
-[ext_resource type="Texture2D" uid="uid://cbcdh121200re" path="res://assets/art/characters/akamaru_pride_2.png" id="2_35u5q"]
-[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="3_fqagf"]
+[ext_resource type="Texture2D" uid="uid://c8fpdqnl45ult" path="res://assets/art/characters/player/player_pride_2-sheet.png" id="1_285x5"]
+[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="2_fcnwi"]
 
 [resource]
-script = ExtResource("3_fqagf")
+script = ExtResource("2_fcnwi")
 armor_id = "pride_2"
 armor_name = "Passionate Pride"
-armor_texture = ExtResource("1_gi6v4")
-dog_texture = ExtResource("2_35u5q")
+armor_texture = ExtResource("1_285x5")

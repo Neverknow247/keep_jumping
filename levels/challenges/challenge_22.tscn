@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bcudup6bgixmc" path="res://items/teleporter.tscn" id="9_m5ogs"]
 [ext_resource type="Script" path="res://levels/challenges/pickups.gd" id="10_i4unw"]
 [ext_resource type="Texture2D" uid="uid://bu5ab7aocny3r" path="res://assets/art/items/large_sign.png" id="11_e16r2"]
-[ext_resource type="Texture2D" uid="uid://c4bybu56cyuru" path="res://assets/art/characters/player_twilight-sheet.png" id="11_mwp4c"]
+[ext_resource type="Texture2D" uid="uid://c4bybu56cyuru" path="res://assets/art/characters/player/player_twilight-sheet.png" id="11_mwp4c"]
 [ext_resource type="Texture2D" uid="uid://dfmcb6w80xio2" path="res://assets/art/items/ant.png" id="12_r22fg"]
 [ext_resource type="Theme" uid="uid://dovwfovrkt1ge" path="res://ui/very_small_text_theme.tres" id="12_xdslc"]
 [ext_resource type="TileSet" uid="uid://xe0wnormtqpf" path="res://tilesets/spike_tileset.tres" id="13_n4tab"]

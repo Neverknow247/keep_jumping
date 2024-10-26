@@ -1,12 +1,10 @@
-[gd_resource type="Resource" script_class="ArmorData" load_steps=4 format=3 uid="uid://bojmwxia7ps4h"]
+[gd_resource type="Resource" script_class="ArmorData" load_steps=3 format=3 uid="uid://dgmdbcxnrordf"]
 
-[ext_resource type="Texture2D" uid="uid://cb40jkh45b8x0" path="res://assets/art/characters/player_inverted-sheet.png" id="1_ggd8g"]
-[ext_resource type="Texture2D" uid="uid://blk65gmlffliu" path="res://assets/art/characters/akamaru_inverted.png" id="2_gohgq"]
-[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="3_ev8pk"]
+[ext_resource type="Texture2D" uid="uid://cb40jkh45b8x0" path="res://assets/art/characters/player/player_inverted-sheet.png" id="1_x4fxf"]
+[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="2_grinu"]
 
 [resource]
-script = ExtResource("3_ev8pk")
+script = ExtResource("2_grinu")
 armor_id = "inverted"
 armor_name = "Inverted Armor"
-armor_texture = ExtResource("1_ggd8g")
-dog_texture = ExtResource("2_gohgq")
+armor_texture = ExtResource("1_x4fxf")

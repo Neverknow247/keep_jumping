@@ -1,0 +1,25 @@
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://c2ylx1gcp4c75"]
+
+[ext_resource type="Texture2D" uid="uid://b5o37scql51hn" path="res://assets/art/items/trees_1.png" id="1_kgw2w"]
+[ext_resource type="Texture2D" uid="uid://c281iqv1dod1n" path="res://assets/art/items/trees_2.png" id="2_pjbai"]
+[ext_resource type="Texture2D" uid="uid://6q6sln78ra2c" path="res://assets/art/Forest/s_3rd.png" id="3_agxa0"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oiuo3"]
+texture = ExtResource("1_kgw2w")
+0:0/size_in_atlas = Vector2i(11, 7)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_naaiv"]
+texture = ExtResource("2_pjbai")
+0:0/size_in_atlas = Vector2i(11, 7)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d0utm"]
+texture = ExtResource("3_agxa0")
+0:4/size_in_atlas = Vector2i(20, 18)
+0:4/0 = 0
+
+[resource]
+sources/4 = SubResource("TileSetAtlasSource_oiuo3")
+sources/5 = SubResource("TileSetAtlasSource_naaiv")
+sources/6 = SubResource("TileSetAtlasSource_d0utm")

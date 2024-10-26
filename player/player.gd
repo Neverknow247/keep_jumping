@@ -455,9 +455,27 @@ func slope_check():
 
 func change_to_slope():
 	if stats["save_data"]["slopeless"] and stats["current_challenge_level_name"] == "":
+		var rand_death_sound = rng.randi_range(1,10000)
+		var ty_death_sound = rng.randi_range(1,1000)
 		var rand = rng.randi_range(1,18)
-		@warning_ignore("narrowing_conversion")
-		sounds.play_sfx("hurt_%s"%[str(rand)],randf_range(0.9,1),0)
+		var cat_rand = rng.randi_range(1,20)
+		if stats["save_data"]["equiped_armor"] == "purrfallen":
+			if rand_death_sound == 42:
+				@warning_ignore("narrowing_conversion")
+				sounds.play_sfx("extended_meow",randf_range(1.1,1.3),0.3)
+			else:
+				@warning_ignore("narrowing_conversion")
+				sounds.play_sfx("meow_%s"%[str(cat_rand)],randf_range(0.9,1),0.2)
+		else:
+			if ty_death_sound == 42:
+				@warning_ignore("narrowing_conversion")
+				sounds.play_sfx("hurt_%s"%[str(19)],randf_range(0.9,1),0)
+			else:
+				@warning_ignore("narrowing_conversion")
+				sounds.play_sfx("hurt_%s"%[str(rand)],randf_range(0.9,1),0)
+			if rand_death_sound == 42:
+				@warning_ignore("narrowing_conversion")
+				sounds.play_sfx("random_scream",randf_range(0.8,1),0)
 		@warning_ignore("narrowing_conversion")
 		sounds.play_sfx("chain_damage_1",randf_range(0.8,1),0)
 		@warning_ignore("narrowing_conversion")
@@ -505,14 +523,23 @@ func _on_hurt_box_hit(damage):
 	var rand_death_sound = rng.randi_range(1,10000)
 	var ty_death_sound = rng.randi_range(1,100)
 	var rand = rng.randi_range(1,18)
-	@warning_ignore("narrowing_conversion")
-	if ty_death_sound == 42:
-		sounds.play_sfx("hurt_%s"%[str(19)],randf_range(0.9,1),0)
+	var cat_rand = rng.randi_range(1,20)
+	if stats["save_data"]["equiped_armor"] == "purrfallen":
+		if rand_death_sound == 42:
+			@warning_ignore("narrowing_conversion")
+			sounds.play_sfx("extended_meow",randf_range(1.1,1.3),0.3)
+		else:
+			@warning_ignore("narrowing_conversion")
+			sounds.play_sfx("meow_%s"%[str(cat_rand)],randf_range(0.9,1),0.2)
 	else:
-		sounds.play_sfx("hurt_%s"%[str(rand)],randf_range(0.9,1),0)
-	if rand_death_sound == 42:
 		@warning_ignore("narrowing_conversion")
-		sounds.play_sfx("random_scream",randf_range(0.8,1),0)
+		if ty_death_sound == 42:
+			sounds.play_sfx("hurt_%s"%[str(19)],randf_range(0.9,1),0)
+		else:
+			sounds.play_sfx("hurt_%s"%[str(rand)],randf_range(0.9,1),0)
+		if rand_death_sound == 42:
+			@warning_ignore("narrowing_conversion")
+			sounds.play_sfx("random_scream",randf_range(0.8,1),0)
 	if damage == 1:
 		@warning_ignore("narrowing_conversion")
 		sounds.play_sfx("chain_damage_1",randf_range(0.8,1),0)

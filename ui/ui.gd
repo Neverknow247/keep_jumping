@@ -4,12 +4,25 @@ var stats = Stats
 
 @onready var textbox = $textbox
 @onready var rich_text_label = $textbox/RichTextLabel
+@onready var character_art = $textbox/character_art
 @onready var level_finish_menu = $level_finish_menu
 @onready var pause_menu = $pause_menu
 @onready var pop_up_label = $pop_up_label
 @onready var transition = $transition
 @onready var animation_player = $AnimationPlayer
 @onready var crt_texture = $crt_texture
+
+const characters = {
+	"default":preload("res://assets/art/ui/character_headshots/default.png"),
+	"mage_waving":preload("res://assets/art/ui/character_headshots/mage/wave.png"),
+	"zombie_lost_eye":preload("res://assets/art/ui/character_headshots/zombie/lost_eye.png"),
+	"zombie_found_eye":preload("res://assets/art/ui/character_headshots/zombie/found_eye.png"),
+	"kid_zombie_with_eye":preload("res://assets/art/ui/character_headshots/child_zom/with_eye.png"),
+	"kid_zombie_costume":preload("res://assets/art/ui/character_headshots/child_zom/kid_zombie_costume.png"),
+	"granny_sitting":preload("res://assets/art/ui/character_headshots/granny_zom/sitting.png"),
+	"girl_zombie_crying":preload("res://assets/art/ui/character_headshots/girl_zom/crying.png"),
+	#"":preload(),
+}
 
 var next_level
 
@@ -54,7 +67,8 @@ func _on_level_finish_menu_fade_out():
 func _on_pause_menu_un_pause():
 	un_pause.emit()
 
-func npc_speech(text):
+func npc_speech(text,character="default"):
+	character_art.texture = characters[character]
 	rich_text_label.text = text
 	textbox.show()
 

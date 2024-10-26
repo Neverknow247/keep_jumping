@@ -8,7 +8,7 @@ signal finish_pet
 @onready var animation_player = $AnimationPlayer
 
 func _ready():
-	set_texture()
+	#set_texture()
 	if stats.calc_total_reunions() > 0:
 		unlocked = true
 		$Sprite2D/dog_sprite.show()

@@ -12,7 +12,7 @@
 [ext_resource type="Script" path="res://levels/challenges/pickups.gd" id="10_2tw8b"]
 [ext_resource type="Script" path="res://levels/challenges/four_key_switch.gd" id="11_7t4f7"]
 [ext_resource type="Texture2D" uid="uid://bu5ab7aocny3r" path="res://assets/art/items/large_sign.png" id="11_b48bi"]
-[ext_resource type="Texture2D" uid="uid://c60sufykbjjq1" path="res://assets/art/characters/player_rust-sheet.png" id="11_uiuir"]
+[ext_resource type="Texture2D" uid="uid://c60sufykbjjq1" path="res://assets/art/characters/player/player_rust-sheet.png" id="11_uiuir"]
 [ext_resource type="Script" path="res://levels/challenges/pickups2.gd" id="12_i1pbb"]
 [ext_resource type="PackedScene" uid="uid://bpytpvwjhcftr" path="res://items/challenge_door.tscn" id="12_o2drr"]
 [ext_resource type="Theme" uid="uid://dovwfovrkt1ge" path="res://ui/very_small_text_theme.tres" id="12_qpxai"]

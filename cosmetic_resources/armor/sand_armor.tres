@@ -1,12 +1,10 @@
-[gd_resource type="Resource" script_class="ArmorData" load_steps=4 format=3 uid="uid://c5ge874wac7h4"]
+[gd_resource type="Resource" script_class="ArmorData" load_steps=3 format=3 uid="uid://2ylf2bk4qvbp"]
 
-[ext_resource type="Texture2D" uid="uid://b0ho3cd5p1tq5" path="res://assets/art/characters/player_sand-sheet.png" id="1_8s0ic"]
-[ext_resource type="Texture2D" uid="uid://cfkomgy76om2i" path="res://assets/art/characters/akamaru_sand.png" id="2_x71e5"]
-[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="3_rxtor"]
+[ext_resource type="Texture2D" uid="uid://b0ho3cd5p1tq5" path="res://assets/art/characters/player/player_sand-sheet.png" id="1_dlybc"]
+[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="2_kdpk3"]
 
 [resource]
-script = ExtResource("3_rxtor")
+script = ExtResource("2_kdpk3")
 armor_id = "sand"
 armor_name = "Sand Armor"
-armor_texture = ExtResource("1_8s0ic")
-dog_texture = ExtResource("2_x71e5")
+armor_texture = ExtResource("1_dlybc")

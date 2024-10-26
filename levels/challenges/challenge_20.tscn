@@ -127,6 +127,7 @@ position = Vector2(264, 0)
 [node name="ui" parent="." instance=ExtResource("17_sqta2")]
 
 [node name="crt_texture2" parent="ui" instance=ExtResource("18_lseec")]
+visible = true
 
 [connection signal="change_scene" from="player" to="." method="change_scene"]
 [connection signal="close_interactables" from="player" to="." method="_on_player_close_interactables"]

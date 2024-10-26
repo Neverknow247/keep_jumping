@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b34lh6aoro33k"]
+[gd_scene load_steps=22 format=3 uid="uid://b34lh6aoro33k"]
 
 [ext_resource type="Script" path="res://levels/challenges/challenge.gd" id="1_ukh4u"]
 [ext_resource type="Texture2D" uid="uid://tomq6qwboh8i" path="res://assets/art/backgrounds/castle_2_background.png" id="2_p1d25"]
@@ -18,6 +18,9 @@
 [ext_resource type="PackedScene" uid="uid://btc0hm6mkex5a" path="res://items/checkpoint.tscn" id="13_jue82"]
 [ext_resource type="PackedScene" uid="uid://n615rx02auyl" path="res://ui/ui.tscn" id="14_nvi6x"]
 [ext_resource type="PackedScene" uid="uid://ckg27i2a3a7gq" path="res://items/air_recovery.tscn" id="16_7amyx"]
+[ext_resource type="PackedScene" uid="uid://dv8rus1vsthi2" path="res://items/breakable_block.tscn" id="18_x8xkp"]
+[ext_resource type="PackedScene" uid="uid://df0n31jvu55wh" path="res://items/oneway_platform.tscn" id="19_doqhi"]
+[ext_resource type="PackedScene" uid="uid://bx0fpxynmi668" path="res://items/sand_block.tscn" id="20_jc858"]
 
 [node name="challenge_template" type="Node2D"]
 script = ExtResource("1_ukh4u")
@@ -70,6 +73,11 @@ position = Vector2(0, -176)
 [node name="Camera2D" parent="." instance=ExtResource("7_4lwcf")]
 position = Vector2(0, -15)
 
+[node name="checkpoints" type="Node2D" parent="."]
+
+[node name="checkpoint" parent="checkpoints" instance=ExtResource("13_jue82")]
+position = Vector2(-104, 168)
+
 [node name="items" type="Node2D" parent="."]
 
 [node name="leaderboard" parent="items" instance=ExtResource("8_ki1wl")]
@@ -111,7 +119,6 @@ format = 2
 
 [node name="spikes" parent="spikes" instance=ExtResource("10_5qy15")]
 position = Vector2(48, 160)
-type = 3
 
 [node name="springs" type="Node2D" parent="."]
 
@@ -123,10 +130,20 @@ position = Vector2(-16, 160)
 [node name="air_recovery" parent="air_recovery" instance=ExtResource("16_7amyx")]
 position = Vector2(16, 160)
 
-[node name="checkpoints" type="Node2D" parent="."]
+[node name="breakable_block" type="Node2D" parent="."]
 
-[node name="checkpoint" parent="checkpoints" instance=ExtResource("13_jue82")]
-position = Vector2(-104, 168)
+[node name="breakable_block" parent="breakable_block" instance=ExtResource("18_x8xkp")]
+position = Vector2(112, 152)
+
+[node name="oneway_platforms" type="Node2D" parent="."]
+
+[node name="oneway_platform" parent="oneway_platforms" instance=ExtResource("19_doqhi")]
+position = Vector2(152, 152)
+
+[node name="sand_blocks" type="Node2D" parent="."]
+
+[node name="sand_block" parent="sand_blocks" instance=ExtResource("20_jc858")]
+position = Vector2(192, 152)
 
 [node name="ui" parent="." instance=ExtResource("14_nvi6x")]
 
@@ -136,7 +153,7 @@ position = Vector2(-104, 168)
 [connection signal="respawn" from="player" to="." method="_on_player_respawn"]
 [connection signal="body_entered" from="challenge_finish" to="." method="_on_challenge_finish_body_entered"]
 [connection signal="start_timer" from="start_zone" to="." method="_on_start_zone_start_timer"]
-[connection signal="body_entered" from="items/pickups/cosmetic" to="items/pickups" method="_on_cosmetic_body_entered"]
 [connection signal="activate_checkpoint" from="checkpoints/checkpoint" to="." method="_on_checkpoint_activate_checkpoint"]
+[connection signal="body_entered" from="items/pickups/cosmetic" to="items/pickups" method="_on_cosmetic_body_entered"]
 
 [editable path="player"]

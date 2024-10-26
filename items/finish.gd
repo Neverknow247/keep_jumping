@@ -13,7 +13,7 @@ var mode_string = ""
 
 func _ready():
 	set_mode()
-	set_texture()
+	#set_texture()
 	set_sprite()
 
 func set_mode():
@@ -31,7 +31,7 @@ func set_texture():
 	for i in cosmetics["armors"].size():
 		if stats["save_data"]["equiped_armor"] == cosmetics["armors"][i]["armor_id"]:
 			armor_index = i
-	akamaru_sprite.texture = cosmetics["armors"][armor_index]["dog_texture"]
+	#akamaru_sprite.texture = cosmetics["armors"][armor_index]["dog_texture"]
 
 func set_sprite():
 	if stats["save_data"]["level_data"][level_name][mode_string] > 0:

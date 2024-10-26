@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://7xho0142q4te"]
+
+[ext_resource type="Script" path="res://items/halloween_items/pumpkin_spring.gd" id="1_gtke7"]
+[ext_resource type="Texture2D" uid="uid://csrkvdfxhou" path="res://assets/art/items/spring_pumpkin.png" id="3_kot33"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5hb7g"]
+size = Vector2(18, 2)
+
+[node name="pumpkin_spring" type="Area2D"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_gtke7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.6226e-06, -10)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_5hb7g")
+
+[node name="halloween_sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("3_kot33")

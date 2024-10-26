@@ -1,12 +1,10 @@
-[gd_resource type="Resource" script_class="ArmorData" load_steps=4 format=3 uid="uid://bxdvma3cfsfxb"]
+[gd_resource type="Resource" script_class="ArmorData" load_steps=3 format=3 uid="uid://b6xs5jiyvlaal"]
 
-[ext_resource type="Texture2D" uid="uid://d16j23j02yx2l" path="res://assets/art/characters/player_slime-sheet.png" id="1_njj47"]
-[ext_resource type="Texture2D" uid="uid://dee04mprup3fj" path="res://assets/art/characters/akamaru_slime.png" id="2_3awsy"]
-[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="3_8nvmc"]
+[ext_resource type="Texture2D" uid="uid://d16j23j02yx2l" path="res://assets/art/characters/player/player_slime-sheet.png" id="1_od3ar"]
+[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="2_vfka3"]
 
 [resource]
-script = ExtResource("3_8nvmc")
+script = ExtResource("2_vfka3")
 armor_id = "slime"
 armor_name = "Sir Slime"
-armor_texture = ExtResource("1_njj47")
-dog_texture = ExtResource("2_3awsy")
+armor_texture = ExtResource("1_od3ar")

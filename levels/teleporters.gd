@@ -14,6 +14,7 @@ var stats = Stats
 @onready var arcade_teleport_4 = $arcade_teleport4
 @onready var arcade_teleport_5 = $arcade_teleport5
 @onready var crystal_ball_teleporter = $crystal_ball_teleporter
+@onready var clock_teleporter = $clock_teleporter
 
 func _ready():
 	unlock_training_teleporters()
@@ -44,6 +45,9 @@ func unlock_other_teleporters():
 	if !stats["save_data"]["items"]["crystal_ball"]:
 		crystal_ball_teleporter.unlocked = false
 		crystal_ball_teleporter.visible = false
+	if !stats["save_data"]["items"]["clock"]:
+		clock_teleporter.unlocked = false
+		clock_teleporter.visible = false
 
 func unlock_arcades():
 	$arcade_teleport1/AnimatedSprite2D.hide()

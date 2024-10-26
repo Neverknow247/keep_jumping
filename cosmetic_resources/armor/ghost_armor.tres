@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ArmorData" load_steps=3 format=3 uid="uid://1uoccvidv6g0"]
+
+[ext_resource type="Texture2D" uid="uid://d06ykwu5s3i87" path="res://assets/art/characters/player/player_ghost-sheet.png" id="1_lnpln"]
+[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="2_shs6m"]
+
+[resource]
+script = ExtResource("2_shs6m")
+armor_id = "ghost"
+armor_name = "Dead Fallen"
+armor_texture = ExtResource("1_lnpln")

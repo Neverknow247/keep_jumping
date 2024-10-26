@@ -1,12 +1,10 @@
-[gd_resource type="Resource" script_class="ArmorData" load_steps=4 format=3 uid="uid://dp8cskggsknpg"]
+[gd_resource type="Resource" script_class="ArmorData" load_steps=3 format=3 uid="uid://c2mc44vbbketk"]
 
-[ext_resource type="Texture2D" uid="uid://c1j08jmprbhb2" path="res://assets/art/characters/player_undies-sheet.png" id="1_o0y4m"]
-[ext_resource type="Texture2D" uid="uid://dcduwunna6klr" path="res://assets/art/characters/akamaru_underpants.png" id="2_utv4f"]
-[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="3_pa4wa"]
+[ext_resource type="Texture2D" uid="uid://c1j08jmprbhb2" path="res://assets/art/characters/player/player_undies-sheet.png" id="1_d0bdt"]
+[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="2_xfsje"]
 
 [resource]
-script = ExtResource("3_pa4wa")
+script = ExtResource("2_xfsje")
 armor_id = "undies"
 armor_name = "Sir Undies"
-armor_texture = ExtResource("1_o0y4m")
-dog_texture = ExtResource("2_utv4f")
+armor_texture = ExtResource("1_d0bdt")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://boxa5agjwf37c"]
 
-[ext_resource type="Texture2D" uid="uid://bgunnguwmph08" path="res://assets/art/characters/akamaru.png" id="1_4vldq"]
+[ext_resource type="Texture2D" uid="uid://bgunnguwmph08" path="res://assets/art/characters/akamaru/akamaru.png" id="1_4vldq"]
 [ext_resource type="Script" path="res://items/finish.gd" id="1_q470o"]
 [ext_resource type="Texture2D" uid="uid://dvl7mbq3mh5n0" path="res://assets/art/items/finish_flag.png" id="2_g6hg4"]
 

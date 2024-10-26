@@ -1,12 +1,10 @@
-[gd_resource type="Resource" script_class="ArmorData" load_steps=4 format=3 uid="uid://bfb1e40ss3qws"]
+[gd_resource type="Resource" script_class="ArmorData" load_steps=3 format=3 uid="uid://bhg1fstpc8jiw"]
 
-[ext_resource type="Texture2D" uid="uid://xljqewiew5hw" path="res://assets/art/characters/player_lava.png" id="1_f7h1c"]
-[ext_resource type="Texture2D" uid="uid://bgunnguwmph08" path="res://assets/art/characters/akamaru.png" id="2_yem6y"]
-[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="3_hku7a"]
+[ext_resource type="Texture2D" uid="uid://xljqewiew5hw" path="res://assets/art/characters/player/player_lava.png" id="1_uid7s"]
+[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="2_4th67"]
 
 [resource]
-script = ExtResource("3_hku7a")
+script = ExtResource("2_4th67")
 armor_id = "monkey"
 armor_name = "monkey"
-armor_texture = ExtResource("1_f7h1c")
-dog_texture = ExtResource("2_yem6y")
+armor_texture = ExtResource("1_uid7s")

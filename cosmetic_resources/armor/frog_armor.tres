@@ -1,12 +1,10 @@
-[gd_resource type="Resource" script_class="ArmorData" load_steps=4 format=3 uid="uid://bts7lan75tuq8"]
+[gd_resource type="Resource" script_class="ArmorData" load_steps=3 format=3 uid="uid://b2q6g2g1gmcpu"]
 
-[ext_resource type="Texture2D" uid="uid://7epdrl3lsjbv" path="res://assets/art/characters/player_frog-sheet.png" id="1_rok5d"]
-[ext_resource type="Texture2D" uid="uid://br8u77gqpm2mx" path="res://assets/art/characters/akamaru_frog.png" id="2_cjsr3"]
-[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="3_ute2u"]
+[ext_resource type="Texture2D" uid="uid://7epdrl3lsjbv" path="res://assets/art/characters/player/player_frog-sheet.png" id="1_4s37x"]
+[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="2_hv5sq"]
 
 [resource]
-script = ExtResource("3_ute2u")
+script = ExtResource("2_hv5sq")
 armor_id = "frog_real"
 armor_name = "Frog Armor"
-armor_texture = ExtResource("1_rok5d")
-dog_texture = ExtResource("2_cjsr3")
+armor_texture = ExtResource("1_4s37x")

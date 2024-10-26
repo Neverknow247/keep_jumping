@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://26pgbqlximxx"]
+
+[ext_resource type="Texture2D" uid="uid://cw75h1utb00n5" path="res://assets/art/characters/chat_icon.png" id="1_j4ps4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vn6kn"]
+atlas = ExtResource("1_j4ps4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knqib"]
+atlas = ExtResource("1_j4ps4")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2118"]
+atlas = ExtResource("1_j4ps4")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dbgo"]
+atlas = ExtResource("1_j4ps4")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_thg48"]
+atlas = ExtResource("1_j4ps4")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fb7sl"]
+atlas = ExtResource("1_j4ps4")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdc45"]
+atlas = ExtResource("1_j4ps4")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3d1nj"]
+atlas = ExtResource("1_j4ps4")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yvq8g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vn6kn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knqib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2118")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dbgo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_thg48")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fb7sl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdc45")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3d1nj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="chat_icon" type="AnimatedSprite2D"]
+visible = false
+position = Vector2(8, -24)
+sprite_frames = SubResource("SpriteFrames_yvq8g")
+autoplay = "default"

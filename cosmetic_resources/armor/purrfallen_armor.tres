@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ArmorData" load_steps=3 format=3 uid="uid://csbpgvxl3owdp"]
+
+[ext_resource type="Texture2D" uid="uid://d2thhbp5v2sgc" path="res://assets/art/characters/player/player_purfallen_scarf-sheet.png" id="1_e1gib"]
+[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="2_ea2hg"]
+
+[resource]
+script = ExtResource("2_ea2hg")
+armor_id = "purrfallen"
+armor_name = "Purr Fallen"
+armor_texture = ExtResource("1_e1gib")

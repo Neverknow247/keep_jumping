@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://dqaa7t43ap2fr"]
+
+[ext_resource type="Script" path="res://characters/npcs/grandma_zombie.gd" id="1_0jyti"]
+[ext_resource type="PackedScene" uid="uid://26pgbqlximxx" path="res://characters/chat_icon.tscn" id="1_dclsl"]
+[ext_resource type="Texture2D" uid="uid://c6u8mxbbf8k42" path="res://assets/art/characters/npcs/granny_zombie.png" id="1_ntx76"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_47gfc"]
+size = Vector2(32, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xc7j"]
+atlas = ExtResource("1_ntx76")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_auhws"]
+atlas = ExtResource("1_ntx76")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urpr6"]
+atlas = ExtResource("1_ntx76")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ry1lf"]
+atlas = ExtResource("1_ntx76")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qqcu3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xc7j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_auhws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urpr6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ry1lf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="grandma_zombie" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_0jyti")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, -4)
+shape = SubResource("RectangleShape2D_47gfc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_qqcu3")
+autoplay = "default"
+frame_progress = 0.374528
+flip_h = true
+
+[node name="chat_icon" parent="." instance=ExtResource("1_dclsl")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

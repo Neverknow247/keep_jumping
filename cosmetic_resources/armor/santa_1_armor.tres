@@ -1,12 +1,10 @@
-[gd_resource type="Resource" script_class="ArmorData" load_steps=4 format=3 uid="uid://c3vlttwwvcxf1"]
+[gd_resource type="Resource" script_class="ArmorData" load_steps=3 format=3 uid="uid://ditemnpmltwyx"]
 
-[ext_resource type="Texture2D" uid="uid://dwppoegxh62bx" path="res://assets/art/characters/player_santa_1-sheet.png" id="1_hwsy3"]
-[ext_resource type="Texture2D" uid="uid://rtu7kpo7dono" path="res://assets/art/characters/akamaru_santa_1.png" id="2_v1v8k"]
-[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="3_c6xtb"]
+[ext_resource type="Texture2D" uid="uid://dwppoegxh62bx" path="res://assets/art/characters/player/player_santa_1-sheet.png" id="1_hioa2"]
+[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="2_bp4a4"]
 
 [resource]
-script = ExtResource("3_c6xtb")
+script = ExtResource("2_bp4a4")
 armor_id = "santa_1"
 armor_name = "Santa Cosplay"
-armor_texture = ExtResource("1_hwsy3")
-dog_texture = ExtResource("2_v1v8k")
+armor_texture = ExtResource("1_hioa2")

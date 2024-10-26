@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ArmorData" load_steps=3 format=3 uid="uid://dr6livg84nkf7"]
+
+[ext_resource type="Texture2D" uid="uid://dv5ds0ipjtjig" path="res://assets/art/characters/player/player_pumpkin_ghost-sheet.png" id="1_q7g5h"]
+[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="2_j68lb"]
+
+[resource]
+script = ExtResource("2_j68lb")
+armor_id = "pumpkin_ghost"
+armor_name = "Pumpkin Ghost Knight"
+armor_texture = ExtResource("1_q7g5h")

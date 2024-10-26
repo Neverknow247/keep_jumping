@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dlj3xtq0pl4l8" path="res://items/leaderboard.tscn" id="8_h1mmm"]
 [ext_resource type="PackedScene" uid="uid://bcudup6bgixmc" path="res://items/teleporter.tscn" id="9_mlf7r"]
 [ext_resource type="Script" path="res://levels/challenges/pickups.gd" id="10_1hu0p"]
-[ext_resource type="Texture2D" uid="uid://dstr5nol7cuqy" path="res://assets/art/characters/player_arcane-sheet.png" id="11_oqcln"]
+[ext_resource type="Texture2D" uid="uid://dstr5nol7cuqy" path="res://assets/art/characters/player/player_arcane-sheet.png" id="11_oqcln"]
 [ext_resource type="Texture2D" uid="uid://bu5ab7aocny3r" path="res://assets/art/items/large_sign.png" id="11_snbyu"]
 [ext_resource type="Theme" uid="uid://dovwfovrkt1ge" path="res://ui/very_small_text_theme.tres" id="12_pfxu5"]
 [ext_resource type="TileSet" uid="uid://xe0wnormtqpf" path="res://tilesets/spike_tileset.tres" id="13_p3an6"]

@@ -1,12 +1,10 @@
-[gd_resource type="Resource" script_class="ArmorData" load_steps=4 format=3 uid="uid://cr36sx4o57p47"]
+[gd_resource type="Resource" script_class="ArmorData" load_steps=3 format=3 uid="uid://dicsp018geywf"]
 
-[ext_resource type="Texture2D" uid="uid://danoqn4yhocl" path="res://assets/art/characters/player_red-sheet.png" id="1_vfg67"]
-[ext_resource type="Texture2D" uid="uid://cbnl7nescxlg7" path="res://assets/art/characters/akamaru_red.png" id="2_n6oaw"]
-[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="3_118bm"]
+[ext_resource type="Texture2D" uid="uid://danoqn4yhocl" path="res://assets/art/characters/player/player_red-sheet.png" id="1_11jj1"]
+[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="2_e206t"]
 
 [resource]
-script = ExtResource("3_118bm")
+script = ExtResource("2_e206t")
 armor_id = "red"
 armor_name = "Blood Red"
-armor_texture = ExtResource("1_vfg67")
-dog_texture = ExtResource("2_n6oaw")
+armor_texture = ExtResource("1_11jj1")

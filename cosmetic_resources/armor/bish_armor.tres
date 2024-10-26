@@ -1,12 +1,10 @@
-[gd_resource type="Resource" script_class="ArmorData" load_steps=4 format=3 uid="uid://dkte2vrnaj4cp"]
+[gd_resource type="Resource" script_class="ArmorData" load_steps=3 format=3 uid="uid://dhova8om8bwq6"]
 
-[ext_resource type="Texture2D" uid="uid://rg0numsuwt2v" path="res://assets/art/characters/player_bish-sheet.png" id="1_0cd2t"]
-[ext_resource type="Texture2D" uid="uid://cuvg0q2br2bbe" path="res://assets/art/characters/akamaru_bish.png" id="2_2egkm"]
-[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="3_ys8e5"]
+[ext_resource type="Texture2D" uid="uid://rg0numsuwt2v" path="res://assets/art/characters/player/player_bish-sheet.png" id="1_ci4ge"]
+[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="2_5x3vq"]
 
 [resource]
-script = ExtResource("3_ys8e5")
+script = ExtResource("2_5x3vq")
 armor_id = "bish"
 armor_name = "Slime Fallen"
-armor_texture = ExtResource("1_0cd2t")
-dog_texture = ExtResource("2_2egkm")
+armor_texture = ExtResource("1_ci4ge")
