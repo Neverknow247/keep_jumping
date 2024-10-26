@@ -4,15 +4,15 @@
 [ext_resource type="Script" path="res://menus/neverknow_splash.gd" id="2_12677"]
 [ext_resource type="PackedScene" uid="uid://cgn5lp08830p8" path="res://ui/transition.tscn" id="3_g3g8u"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xpns3"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1xcua"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4xsst"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s827e"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pcbwd"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4xsst"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1xcua"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xpns3"]
 
 [node name="neverknow_splash" type="TextureRect"]
 anchors_preset = 15
@@ -42,11 +42,11 @@ offset_left = 736.0
 offset_top = 280.0
 offset_right = 1168.0
 offset_bottom = 664.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_xpns3")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1xcua")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4xsst")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_s827e")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_pcbwd")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_4xsst")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_1xcua")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xpns3")
 disabled = true
 
 [connection signal="pressed" from="easter_egg_button" to="." method="_on_easter_egg_button_pressed"]

@@ -17,4 +17,3 @@ func _on_talk(_progression):
 			sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
 			popup.emit("One step in the grave. Unlocked Ghost Armor")
 		SaveAndLoad.update_save_data()
-
