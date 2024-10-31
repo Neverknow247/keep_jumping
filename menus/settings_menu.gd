@@ -16,6 +16,7 @@ var credits_scene = "res://menus/credits.tscn"
 var tutorial_scene = "res://levels/tutorials/tutorial.tscn"
 var active = false
 
+@warning_ignore("unused_signal")
 signal change_scene(new_scene)
 signal hide_menu(scene)
 

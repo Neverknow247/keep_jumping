@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dfeuct7j471t7" path="res://assets/art/items/sleep_zs.png" id="4_fbkub"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eqiwm"]
-size = Vector2(32, 13)
+size = Vector2(32, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m2pys"]
 atlas = ExtResource("2_x2cy7")
@@ -284,7 +284,7 @@ collision_mask = 2
 script = ExtResource("1_je12v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -6.5)
+position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_eqiwm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

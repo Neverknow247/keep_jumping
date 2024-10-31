@@ -8,6 +8,7 @@ var rooms = [
 	preload("res://levels/other_levels/sir_downwell/rooms/floor_1/room_1_1.tscn"),
 	preload("res://levels/other_levels/sir_downwell/rooms/floor_1/room_1_2.tscn"),
 	preload("res://levels/other_levels/sir_downwell/rooms/floor_1/room_1_3.tscn"),
+	preload("res://levels/other_levels/sir_downwell/rooms/floor_1/room_1_4.tscn"),
 ]
 var starting_rooms = [
 	preload("res://levels/other_levels/sir_downwell/rooms/starting/room_s_1.tscn"),

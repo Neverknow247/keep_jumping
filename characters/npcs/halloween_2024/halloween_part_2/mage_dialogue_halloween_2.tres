@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bf0vh4bfj7e3q"]
+
+[ext_resource type="Script" path="res://characters/npcs/halloween_2024/halloween_part_2/mage_dialogue_halloween_2.gd" id="1_4q0lj"]
+
+[resource]
+script = ExtResource("1_4q0lj")

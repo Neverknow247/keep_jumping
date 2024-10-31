@@ -18,7 +18,9 @@ var list_index = 0
 @onready var settings_menu = $settings_menu
 @onready var transition = $transition
 
+@warning_ignore("unused_signal")
 signal fade_out
+@warning_ignore("unused_signal")
 signal resetting
 signal un_pause
 

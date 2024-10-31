@@ -26,6 +26,7 @@ const characters = {
 
 var next_level
 
+@warning_ignore("unused_signal")
 signal start_level
 signal un_pause
 

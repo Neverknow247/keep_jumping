@@ -8,6 +8,7 @@ var cosmetics = preload("res://cosmetic_resources/cosmetics.tres")
 
 signal respawn
 signal change_scene(new_scene)
+@warning_ignore("unused_signal")
 signal unlock_campfire
 
 const step_particles = preload("res://particles/step_particles.tscn")
@@ -341,20 +342,20 @@ func update_animations(input_vector):
 		$hurt_box/collision2.scale.x = facing
 	if not is_on_floor():
 		animation_player.stop()
-		jump_collision.disabled = false
-		collision.disabled = true
+		#collision.disabled = true
+		#jump_collision.disabled = false
 		$sprite/hat.position = Vector2(0,0)
 		if velocity.y <= 0:
 			sprite.frame = 12
 		else:
 			sprite.frame = 13
 	elif input_vector != 0:
-		collision.disabled = false
-		jump_collision.disabled = true
+		#jump_collision.disabled = true
+		#collision.disabled = false
 		animation_player.play("run")
 	else: 
-		collision.disabled = false
-		jump_collision.disabled = true
+		#jump_collision.disabled = true
+		#collision.disabled = false
 		animation_player.play("idle")
 
 func wall_check():
@@ -362,10 +363,10 @@ func wall_check():
 		var tile_id
 		for i in get_slide_collision_count():
 			@warning_ignore("shadowed_variable")
-			var collision = get_slide_collision(i)
-			if collision.get_collider() is TileMap:
-				var tilemap = collision.get_collider()
-				var contact_point = collision.get_position()
+			var _collision = get_slide_collision(i)
+			if _collision.get_collider() is TileMap:
+				var tilemap = _collision.get_collider()
+				var contact_point = _collision.get_position()
 				var cell_pos = tilemap.local_to_map(contact_point)
 				if sign(get_wall_normal().x) == 1:
 					cell_pos = Vector2i(int(cell_pos.x)-1,int(cell_pos.y))
@@ -399,7 +400,7 @@ func reset_velocity_check():
 
 func wall_slide_state(delta):
 	animation_player.stop()
-	collision.disabled = false
+	#collision.disabled = false
 	var wall_normal = sign(get_wall_normal().x)
 	if wall_normal !=0:
 		sprite.flip_h = wall_normal != 1
@@ -534,8 +535,10 @@ func _on_hurt_box_hit(damage):
 	else:
 		@warning_ignore("narrowing_conversion")
 		if ty_death_sound == 42:
+			@warning_ignore("narrowing_conversion")
 			sounds.play_sfx("hurt_%s"%[str(19)],randf_range(0.9,1),0)
 		else:
+			@warning_ignore("narrowing_conversion")
 			sounds.play_sfx("hurt_%s"%[str(rand)],randf_range(0.9,1),0)
 		if rand_death_sound == 42:
 			@warning_ignore("narrowing_conversion")
@@ -623,6 +626,7 @@ func _on_hit_box_area_entered(area):
 		max_velocity += stomp_bonus
 		@warning_ignore("narrowing_conversion")
 		if bounce < 200:
+			@warning_ignore("narrowing_conversion")
 			sounds.play_sfx("glass",randf_range(0.8,1.4),-5)
 		else:
 			@warning_ignore("narrowing_conversion")
@@ -646,7 +650,7 @@ func paused():
 	state = "pause_state"
 
 func credits_roll():
-	collision.call_deferred("set_disabled",true)
+	#collision.call_deferred("set_disabled",true)
 	jump_collision.call_deferred("set_disabled",true)
 	start_collision.call_deferred("set_disabled",true)
 	hit_box.call_deferred("set_monitorable",false)
@@ -669,6 +673,8 @@ func open_state(delta):
 
 func change_to_move_state():
 	state = "move_state"
+	return
+
 
 var interactable = null
 var interacting = false

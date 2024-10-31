@@ -43,9 +43,7 @@ func _draw():
 		var b: = get_pos(increments * (i+1)) - global_position
 		draw_line(a, b, Color.WHITE, -1)
 
+@warning_ignore("unused_parameter")
 func hit(damage):
 	if infinite:
 		return
-
-
-

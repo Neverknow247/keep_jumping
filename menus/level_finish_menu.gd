@@ -10,7 +10,9 @@ const ScoreItem = preload("res://menus/scores/ScoreItem.tscn")
 @onready var transition = $transition
 
 
+@warning_ignore("unused_signal")
 signal next_level
+@warning_ignore("unused_signal")
 signal fade_out
 
 var paused = false:

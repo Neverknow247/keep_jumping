@@ -27,6 +27,7 @@ func set_mode():
 	mode_string+="_reunions"
 
 func set_texture():
+	@warning_ignore("unused_variable")
 	var armor_index
 	for i in cosmetics["armors"].size():
 		if stats["save_data"]["equiped_armor"] == cosmetics["armors"][i]["armor_id"]:

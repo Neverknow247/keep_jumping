@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://dqaa7t43ap2fr"]
 
-[ext_resource type="Script" path="res://characters/npcs/grandma_zombie.gd" id="1_0jyti"]
+[ext_resource type="Script" path="res://characters/npcs/halloween_2024/grandma_zombie.gd" id="1_0jyti"]
 [ext_resource type="PackedScene" uid="uid://26pgbqlximxx" path="res://characters/chat_icon.tscn" id="1_dclsl"]
 [ext_resource type="Texture2D" uid="uid://c6u8mxbbf8k42" path="res://assets/art/characters/npcs/granny_zombie.png" id="1_ntx76"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_47gfc"]
-size = Vector2(32, 8)
+size = Vector2(32, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8xc7j"]
 atlas = ExtResource("1_ntx76")

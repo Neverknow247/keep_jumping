@@ -4,6 +4,7 @@ var time = 3599.9999
 #var time = 0
 var timer_on = false
 
+@warning_ignore("unused_signal")
 signal time_change(time)
 
 var time_passed:
@@ -29,4 +30,3 @@ func _physics_process(delta):
 	
 	time_passed = "%02d:%02d:%02d:%02d:%03d" % [days,hours,mins,secs,mils]
 #	label.text = time_passed
-

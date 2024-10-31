@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://bkswv581dss72"]
 
 [ext_resource type="PackedScene" uid="uid://26pgbqlximxx" path="res://characters/chat_icon.tscn" id="1_aq8xl"]
-[ext_resource type="Script" path="res://characters/npcs/girl_zombie.gd" id="1_fbjy6"]
+[ext_resource type="Script" path="res://characters/npcs/halloween_2024/girl_zombie.gd" id="1_fbjy6"]
 [ext_resource type="Texture2D" uid="uid://dhj8rknc53tu6" path="res://assets/art/characters/npcs/crying_witch_child.png" id="2_cdyoe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tsvm6"]
-size = Vector2(32, 8)
+size = Vector2(32, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tf4rx"]
 atlas = ExtResource("2_cdyoe")

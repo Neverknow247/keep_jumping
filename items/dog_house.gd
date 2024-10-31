@@ -2,6 +2,7 @@ extends Interactable_script
 
 var cosmetics = preload("res://cosmetic_resources/cosmetics.tres")
 
+@warning_ignore("unused_signal")
 signal finish_pet
 
 @onready var dog_sprite = $Sprite2D/dog_sprite

@@ -1,11 +1,11 @@
 [gd_scene load_steps=35 format=3 uid="uid://cdoobd01ht1qo"]
 
-[ext_resource type="Script" path="res://characters/npcs/kid_zombie.gd" id="1_wtcdx"]
+[ext_resource type="Script" path="res://characters/npcs/halloween_2024/kid_zombie.gd" id="1_wtcdx"]
 [ext_resource type="PackedScene" uid="uid://26pgbqlximxx" path="res://characters/chat_icon.tscn" id="2_5g3q4"]
 [ext_resource type="Texture2D" uid="uid://ch0uqncjddnqc" path="res://assets/art/characters/npcs/kid_zom.png" id="2_ipxlw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nk2xe"]
-size = Vector2(24, 8)
+size = Vector2(24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nsnon"]
 atlas = ExtResource("2_ipxlw")

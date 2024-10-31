@@ -18,6 +18,7 @@ var progression = 0
 
 signal talk(_progression)
 signal end_speech
+@warning_ignore("unused_signal")
 signal set_up_mage
 
 func _input(event):

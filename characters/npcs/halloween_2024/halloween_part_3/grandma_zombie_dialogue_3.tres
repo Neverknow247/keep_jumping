@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dtkn7mvp6ebc7"]
+
+[ext_resource type="Script" path="res://characters/npcs/halloween_2024/halloween_part_3/grandma_zombie_dialogue_3.gd" id="1_7vyer"]
+
+[resource]
+script = ExtResource("1_7vyer")

@@ -11,18 +11,18 @@
 [ext_resource type="PackedScene" uid="uid://bpytpvwjhcftr" path="res://items/challenge_door.tscn" id="7_crrr4"]
 [ext_resource type="PackedScene" uid="uid://bpl2vk3ncc0mb" path="res://items/start_zone.tscn" id="7_ge6ht"]
 [ext_resource type="PackedScene" uid="uid://bb8b5vo2me8pl" path="res://ui/camera_2d.tscn" id="8_x2dc1"]
-[ext_resource type="Script" path="res://characters/npcs/girl_zombie_controller.gd" id="11_wd5uf"]
-[ext_resource type="PackedScene" uid="uid://bkswv581dss72" path="res://characters/npcs/girl_zombie.tscn" id="11_yuenw"]
-[ext_resource type="Resource" uid="uid://cio6buh5bneg4" path="res://characters/npcs/girl_zombie_dialogue_2.tres" id="12_32eu5"]
-[ext_resource type="Script" path="res://characters/npcs/mage_halloween_controller.gd" id="14_pp617"]
+[ext_resource type="Script" path="res://characters/npcs/halloween_2024/halloween_part_1/girl_zombie_controller.gd" id="11_wd5uf"]
+[ext_resource type="PackedScene" uid="uid://bkswv581dss72" path="res://characters/npcs/halloween_2024/girl_zombie.tscn" id="11_yuenw"]
+[ext_resource type="Resource" uid="uid://cio6buh5bneg4" path="res://characters/npcs/halloween_2024/halloween_part_2/girl_zombie_dialogue_2.tres" id="12_32eu5"]
+[ext_resource type="Script" path="res://characters/npcs/halloween_2024/halloween_part_2/mage_halloween_controller.gd" id="14_pp617"]
 [ext_resource type="Script" path="res://levels/limited_time_levels/mage_halloween2.gd" id="15_d2w6k"]
-[ext_resource type="Resource" uid="uid://bf0vh4bfj7e3q" path="res://characters/npcs/mage_dialogue_halloween_2.tres" id="15_ux7ln"]
+[ext_resource type="Resource" uid="uid://bf0vh4bfj7e3q" path="res://characters/npcs/halloween_2024/halloween_part_2/mage_dialogue_halloween_2.tres" id="15_ux7ln"]
 [ext_resource type="Texture2D" uid="uid://3kebhdleoqej" path="res://assets/art/characters/npcs/mage.png" id="16_o88rg"]
 [ext_resource type="PackedScene" uid="uid://26pgbqlximxx" path="res://characters/chat_icon.tscn" id="17_tgv3j"]
 [ext_resource type="PackedScene" uid="uid://btc0hm6mkex5a" path="res://items/checkpoint.tscn" id="18_a84mv"]
-[ext_resource type="Script" path="res://characters/npcs/kid_zombie_halloween_2_controller.gd" id="20_7b54g"]
-[ext_resource type="Resource" uid="uid://2fxc0x4ho0oq" path="res://characters/npcs/kid_zombie_dialogue_halloween_2.tres" id="21_urfvh"]
-[ext_resource type="Script" path="res://characters/npcs/kid_zombie_halloween_2.gd" id="22_0elnc"]
+[ext_resource type="Script" path="res://characters/npcs/halloween_2024/halloween_part_2/kid_zombie_halloween_2_controller.gd" id="20_7b54g"]
+[ext_resource type="Resource" uid="uid://2fxc0x4ho0oq" path="res://characters/npcs/halloween_2024/halloween_part_2/kid_zombie_dialogue_halloween_2.tres" id="21_urfvh"]
+[ext_resource type="Script" path="res://characters/npcs/halloween_2024/halloween_part_2/kid_zombie_halloween_2.gd" id="22_0elnc"]
 [ext_resource type="Texture2D" uid="uid://ch0uqncjddnqc" path="res://assets/art/characters/npcs/kid_zom.png" id="23_fop7q"]
 [ext_resource type="PackedScene" uid="uid://dlj3xtq0pl4l8" path="res://items/leaderboard.tscn" id="25_d2ikx"]
 [ext_resource type="PackedScene" uid="uid://bcudup6bgixmc" path="res://items/teleporter.tscn" id="26_xy421"]
@@ -647,7 +647,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ldvuo"]
-size = Vector2(32, 8)
+size = Vector2(32, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ad682"]
 atlas = ExtResource("23_fop7q")
@@ -686,7 +686,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xhmwf"]
-size = Vector2(32, 8)
+size = Vector2(32, 24)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ic2tl"]
 
@@ -882,7 +882,7 @@ autoplay = "default"
 frame_progress = 0.312267
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="npcs/mage_controller/mage"]
-position = Vector2(0, -4)
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_ldvuo")
 
 [node name="chat_icon" parent="npcs/mage_controller/mage" instance=ExtResource("17_tgv3j")]
@@ -902,7 +902,7 @@ sprite_frames = SubResource("SpriteFrames_7tfrj")
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="npcs/kid_zombie_controller/kid_zombie"]
-position = Vector2(0, -4)
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_xhmwf")
 
 [node name="chat_icon" parent="npcs/kid_zombie_controller/kid_zombie" instance=ExtResource("17_tgv3j")]

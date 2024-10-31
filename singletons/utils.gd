@@ -212,4 +212,3 @@ func set_keybindings():
 			InputMap.action_erase_events(all_ies[keybindings[key].as_text()])
 		InputMap.action_erase_events(key)
 		InputMap.action_add_event(key,keybindings[key])
-

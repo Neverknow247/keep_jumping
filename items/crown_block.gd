@@ -8,6 +8,7 @@ var crown_rng_number = 42
 
 @onready var animation_player = $AnimationPlayer
 
+@warning_ignore("unused_signal")
 signal popup(text)
 
 @warning_ignore("unused_parameter")

@@ -28,6 +28,8 @@ const sprites = [
 	preload("res://assets/art/items/knight_spikes.png"),
 	#8
 	preload("res://assets/art/items/candy_corn_spikes.png"),
+	#9
+	preload("res://assets/art/items/candy_corn_spikes_small.png"),
 ]
 
 var damage = 1
