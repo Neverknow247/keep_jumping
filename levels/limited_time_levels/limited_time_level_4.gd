@@ -35,7 +35,6 @@ func _input(event):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _ready():
-	$player/sprite.texture = preload("res://assets/art/characters/player/player_ghost-sheet.png")
 	$player/blind_obscure.visible = player_blind
 	sounds.load_starting_music([main_music],1,-80)
 	sounds.fade_in_music(main_music,1,-10)
@@ -252,9 +251,9 @@ func _on_npc_speech(text,character="default"):
 func _on_end_speech():
 	ui.end_speech()
 
-func _on_open_door(door):
+func _on_open_door():
 	var tween = get_tree().create_tween()
-	tween.tween_property(door,"global_position",Vector2(door.global_position.x,door.global_position.y+33),2)
+	tween.tween_property($items/door,"global_position",Vector2($items/door.global_position.x,$items/door.global_position.y+33),2)
 	@warning_ignore("narrowing_conversion")
 	sounds.play_sfx("stone_door", randf_range(0.9,1.0), 0)
 
@@ -280,15 +279,4 @@ func _on_open_door(door):
 
 func _on_grandma_zombie_controller_legs_eaten():
 	player.jump_force = 100
-	_on_open_door($items/door)
-	sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
-	_on_pickups_popup("Lost leg power...")
-	$npcs/girl_zombie_controller/girl_zombie.progression = 1
-
-func _on_glasses_body_entered(body):
-	_on_open_door($items/door2)
-	sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
-	_on_pickups_popup("Glasses found!")
-	$npcs/grandma_zombie_controller/grandma_zombie.progression = 3
-	$npcs/girl_zombie_controller/girl_zombie.progression = 2
-	$items/glasses.queue_free()
+	_on_open_door()
