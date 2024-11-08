@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://b51ibh5twos3s"]
 
 [ext_resource type="Script" path="res://items/dog_house.gd" id="1_ylvn1"]
-[ext_resource type="Texture2D" uid="uid://dlix008hbgf54" path="res://assets/art/items/DogHouse_halloween.png" id="2_0owt7"]
+[ext_resource type="Texture2D" uid="uid://mwya52hy8n85" path="res://assets/art/items/DogHouse.png" id="2_3ibic"]
 [ext_resource type="Texture2D" uid="uid://sv21n2l8wijy" path="res://assets/art/characters/akamaru/akamaru_pumpkin.png" id="3_xud78"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t74hq"]
@@ -101,7 +101,7 @@ unlocked = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -16)
-texture = ExtResource("2_0owt7")
+texture = ExtResource("2_3ibic")
 
 [node name="dog_sprite" type="Sprite2D" parent="Sprite2D"]
 visible = false

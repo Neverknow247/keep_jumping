@@ -207,4 +207,3 @@ func play_voice(voice_string, pitch_scale = 1, volume_db = 0):
 	voice_player.volume_db = volume_db
 	voice_player.stream = voice[voice_string]
 	voice_player.play()
-

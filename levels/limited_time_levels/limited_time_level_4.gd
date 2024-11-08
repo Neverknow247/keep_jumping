@@ -35,6 +35,8 @@ func _input(event):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _ready():
+	$player/sprite.texture = preload("res://assets/art/characters/player/player_legless_ghost-sheet.png")
+	player.jump_force = 100
 	$player/blind_obscure.visible = player_blind
 	sounds.load_starting_music([main_music],1,-80)
 	sounds.fade_in_music(main_music,1,-10)
@@ -277,6 +279,29 @@ func _on_open_door():
 	#@warning_ignore("narrowing_conversion")
 	#sounds.play_sfx("stone_door", randf_range(0.9,1.0), 0)
 
-func _on_grandma_zombie_controller_legs_eaten():
-	player.jump_force = 100
-	_on_open_door()
+func _on_mage_controller_heal_player():
+	player.set_texture()
+	@warning_ignore("narrowing_conversion")
+	sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
+	ui.pop_up("Regained your body and strength!")
+	$npcs/grandma_zombie_controller/grandma_zombie.progression = 1
+	$npcs/zombie_controller/halloween_zombie.progression = 1
+	if stats["save_data"]["akamaru_skins"]["glasses"]:
+		$npcs/girl_zombie_controller/girl_zombie.progression = 2
+	else:
+		$npcs/girl_zombie_controller/girl_zombie.progression = 1
+		
+
+var happy_halloween_characters = []
+func happy_halloweens(character):
+	if character in happy_halloween_characters:
+		pass
+	else:
+		happy_halloween_characters.append(character)
+		if happy_halloween_characters.size() >= 5:
+			if !stats["save_data"]["eggs"]["halloween_town"]:
+				@warning_ignore("narrowing_conversion")
+				sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
+				ui.pop_up("Recieved all 5 Happy Halloweens! Halloween Town unlocked! Available Next update")
+				stats["save_data"]["eggs"]["halloween_town"] = true
+				SaveAndLoad.update_save_data()

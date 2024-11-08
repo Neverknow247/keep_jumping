@@ -43,6 +43,7 @@ var armors = [
 	preload("res://cosmetic_resources/armor/pumpkin_armor.tres"),
 	preload("res://cosmetic_resources/armor/ghost_armor.tres"),
 	preload("res://cosmetic_resources/armor/pumpkin_ghost_armor.tres"),
+	preload("res://cosmetic_resources/armor/legless_ghost_armor.tres"),
 	
 	
 	#preload("res://cosmetic_resources/armor/monkey_armor.tres"),

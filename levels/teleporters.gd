@@ -15,10 +15,6 @@ var stats = Stats
 @onready var arcade_teleport_5 = $arcade_teleport5
 @onready var crystal_ball_teleporter = $crystal_ball_teleporter
 @onready var clock_teleporter = $clock_teleporter
-@onready var halloween_p_1 = $halloween_p1
-@onready var halloween_p_2 = $halloween_p2
-@onready var halloween_p_3 = $halloween_p3
-@onready var halloween_p_4 = $halloween_p4
 
 
 
@@ -27,7 +23,6 @@ func _ready():
 	unlock_training_teleporters()
 	unlock_other_teleporters()
 	unlock_arcades()
-	unlock_halloween()
 
 func unlock_training_teleporters():
 	if !stats["save_data"]["challenge_data"]["challenge_6"]["_normal_reunions"] > 0:
@@ -78,14 +73,3 @@ func unlock_arcades():
 		arcade_teleport_4.visible = false
 	if !stats["save_data"]["items"]["arcade_5"]:
 		arcade_teleport_5.visible = false
-
-func unlock_halloween():
-	if !stats["save_data"]["challenge_data"]["challenge_35"]["_normal_reunions"] > 0:
-		halloween_p_2.unlocked = false
-		halloween_p_2.visible = false
-	if !stats["save_data"]["challenge_data"]["challenge_36"]["_normal_reunions"] > 0:
-		halloween_p_3.unlocked = false
-		halloween_p_3.visible = false
-	if !stats["save_data"]["challenge_data"]["challenge_37"]["_normal_reunions"] > 0:
-		halloween_p_4.unlocked = false
-		halloween_p_4.visible = false

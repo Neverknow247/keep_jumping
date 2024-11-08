@@ -6,4 +6,3 @@ void fragment() {
     float lum = (0.2126*COLOR.r + 0.7152*COLOR.g + 0.0722*COLOR.b);
     COLOR = vec4(lum, lum, lum, COLOR.a);
 }
-

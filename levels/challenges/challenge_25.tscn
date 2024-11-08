@@ -45,6 +45,7 @@ size = Vector2(8, 16)
 script = ExtResource("1_tsq55")
 level_id = "challenge_25"
 level_name = "T-7 : "
+main_music = "training_challenge"
 player_blind = true
 
 [node name="background" type="TextureRect" parent="."]

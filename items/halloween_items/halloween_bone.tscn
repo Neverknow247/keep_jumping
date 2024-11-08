@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dq0x8bn1xm8o0"]
+
+[ext_resource type="Script" path="res://items/halloween_items/halloween_bone.gd" id="1_lc665"]
+[ext_resource type="Texture2D" uid="uid://umm1vherkj7r" path="res://assets/art/items/bone.png" id="2_0nkpp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s1foc"]
+
+[node name="halloween_bone" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_lc665")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_s1foc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_0nkpp")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

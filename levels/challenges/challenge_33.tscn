@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://g6ybn3omdf5r"]
+[gd_scene load_steps=23 format=3 uid="uid://g6ybn3omdf5r"]
 
 [ext_resource type="Script" path="res://levels/challenges/challenge.gd" id="1_g72x1"]
 [ext_resource type="Texture2D" uid="uid://tomq6qwboh8i" path="res://assets/art/backgrounds/castle_2_background.png" id="2_wybul"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dlj3xtq0pl4l8" path="res://items/leaderboard.tscn" id="9_dbwto"]
 [ext_resource type="PackedScene" uid="uid://bcudup6bgixmc" path="res://items/teleporter.tscn" id="10_xuhbh"]
 [ext_resource type="Script" path="res://levels/challenges/pickups.gd" id="11_syjnj"]
+[ext_resource type="PackedScene" uid="uid://dq0x8bn1xm8o0" path="res://items/halloween_items/halloween_bone.tscn" id="12_ehwsy"]
 [ext_resource type="Texture2D" uid="uid://bu5ab7aocny3r" path="res://assets/art/items/large_sign.png" id="12_x6p1d"]
 [ext_resource type="Theme" uid="uid://dovwfovrkt1ge" path="res://ui/very_small_text_theme.tres" id="13_d3v40"]
 [ext_resource type="TileSet" uid="uid://xe0wnormtqpf" path="res://tilesets/spike_tileset.tres" id="14_xwcq1"]
@@ -55,10 +56,8 @@ layer_1/z_index = -3
 layer_1/tile_data = PackedInt32Array(-1179404, 196612, 20, -1179411, 131076, 20, -1179413, 983044, 9, -1179414, 393220, 9, -1179417, 983044, 8, -1179421, 851972, 9, -1179422, 851972, 8, -1179425, 720900, 8, -1048357, 4, 7, -917289, 917508, 9, -655168, 851972, 9, -655169, 196612, 9, -524153, 786436, 8, -524152, 65540, 7, -589684, 4, 7, -655218, 983044, 8, -655216, 131076, 7, -655215, 983044, 8, -720749, 917508, 8, -786281, 393220, 9, -786279, 458756, 13, -458620, 131076, 20, -458619, 720900, 8, -458625, 458756, 9, -458626, 196612, 20, -458629, 851972, 9, -720797, 65540, 20, -720796, 786436, 9, -720795, 131076, 7, -720789, 720900, 8, -720786, 262148, 9, -720784, 851972, 8, -196535, 458756, 9, -65475, 851972, 9, -65478, 851972, 8, -65479, 327684, 9, -65481, 327684, 9, -65483, 851972, 9, -65484, 851972, 8, -65488, 851972, 8, -65489, 196612, 9, -131026, 917508, 9, -65509, 196612, 9, -65505, 851972, 8, -65503, 131076, 20, -65501, 917508, 8, -65500, 983044, 8, -65518, 655364, 9, -65526, 983044, 8, -65527, 327684, 9, -65528, 65540, 7, -65531, 393220, 9, -65532, 393220, 9, -65533, 458756, 9, -65535, 655364, 8, -65536, 4, 7, -1, 786436, 9, -3538990, 786436, 8, -3538989, 851972, 8, -3538988, 655364, 8)
 layer_2/name = "background"
 layer_2/z_index = -5
-layer_2/tile_data = PackedInt32Array()
 layer_3/name = "background_far"
 layer_3/z_index = -10
-layer_3/tile_data = PackedInt32Array()
 
 [node name="player" parent="." instance=ExtResource("4_6ssk4")]
 
@@ -93,10 +92,14 @@ script = ExtResource("11_syjnj")
 collision_layer = 0
 collision_mask = 2
 
+[node name="halloween_bone" parent="items" instance=ExtResource("12_ehwsy")]
+position = Vector2(-720, -888)
+bone_number = "four"
+
 [node name="signs" type="Node2D" parent="."]
 
 [node name="sign" type="Sprite2D" parent="signs"]
-position = Vector2(-728, -875)
+position = Vector2(-808, -880)
 texture = ExtResource("12_x6p1d")
 
 [node name="Label" type="Label" parent="signs/sign"]
@@ -1644,5 +1647,6 @@ position = Vector2(192, 152)
 [connection signal="start_timer" from="start_zone" to="." method="_on_start_zone_start_timer"]
 [connection signal="activate_checkpoint" from="checkpoints/checkpoint" to="." method="_on_checkpoint_activate_checkpoint"]
 [connection signal="body_entered" from="items/pickups/cosmetic" to="items/pickups" method="_on_cosmetic_body_entered"]
+[connection signal="popup" from="items/halloween_bone" to="." method="_on_pickups_popup"]
 
 [editable path="player"]

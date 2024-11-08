@@ -13,7 +13,7 @@ signal popup(text)
 
 @warning_ignore("unused_parameter")
 func _on_collect_coin_area_body_entered(body):
-	var rand = rng.randi_range(1,1000)
+	var rand = rng.randi_range(1,100)
 	if rand == crown_rng_number:
 		animation_player.play("animate")
 		#popup.emit("Crown Collected")

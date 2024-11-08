@@ -8,4 +8,6 @@ func _ready():
 	#if stats.calc_total_reunions() > 0:
 		#unlocked = true
 		#board_label.text = "Leaderboards"
-
+		
+		
+#halloween font color = 39918d

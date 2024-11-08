@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dlj3xtq0pl4l8"]
 
 [ext_resource type="Script" path="res://items/interactable_leaderboard.gd" id="1_84qt4"]
-[ext_resource type="Texture2D" uid="uid://bs7tme71vhcuy" path="res://assets/art/items/leaderboard_halloween.png" id="2_ufqml"]
+[ext_resource type="Texture2D" uid="uid://cjqii0qiw7b61" path="res://assets/art/items/leaderboard.png" id="2_e6awj"]
 [ext_resource type="Theme" uid="uid://bdauou0gynqyt" path="res://ui/small_text_theme.tres" id="3_wgl04"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a57hv"]
@@ -16,7 +16,7 @@ unlocked = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -16)
-texture = ExtResource("2_ufqml")
+texture = ExtResource("2_e6awj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -12)
@@ -29,7 +29,7 @@ offset_right = 304.0
 offset_bottom = 128.0
 scale = Vector2(0.1, 0.1)
 theme = ExtResource("3_wgl04")
-theme_override_colors/font_color = Color(0.223529, 0.568627, 0.552941, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Coming
 Soon"
 horizontal_alignment = 1

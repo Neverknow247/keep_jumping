@@ -15,6 +15,7 @@ dest_files=["res://.godot/imported/GOODDP__.TTF-ab26819badba1d973af3ea58090bb91a
 Rendering=null
 antialiasing=1
 generate_mipmaps=false
+disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48

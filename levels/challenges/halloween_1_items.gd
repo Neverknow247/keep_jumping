@@ -14,6 +14,7 @@ var found_clothes = false
 signal popup(popup_text)
 signal finish_kid_zombie_quest
 
+@warning_ignore("unused_parameter")
 func _on_hat_body_entered(body):
 	@warning_ignore("narrowing_conversion")
 	sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
@@ -22,6 +23,7 @@ func _on_hat_body_entered(body):
 	hat.queue_free()
 	check_door()
 
+@warning_ignore("unused_parameter")
 func _on_mask_body_entered(body):
 	@warning_ignore("narrowing_conversion")
 	sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
@@ -30,6 +32,7 @@ func _on_mask_body_entered(body):
 	mask.queue_free()
 	check_door()
 
+@warning_ignore("unused_parameter")
 func _on_clothes_body_entered(body):
 	@warning_ignore("narrowing_conversion")
 	sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)

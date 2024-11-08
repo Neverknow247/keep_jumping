@@ -35,6 +35,7 @@ func _input(event):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _ready():
+	#print(stats.calc_total_halloween_bones())
 	$player/sprite.texture = preload("res://assets/art/characters/player/player_ghost-sheet.png")
 	$player/blind_obscure.visible = player_blind
 	sounds.load_starting_music([main_music],1,-80)
@@ -280,13 +281,17 @@ func _on_open_door(door):
 
 func _on_grandma_zombie_controller_legs_eaten():
 	player.jump_force = 100
+	$player/sprite.texture = preload("res://assets/art/characters/player/player_legless_ghost-sheet.png")
 	_on_open_door($items/door)
+	@warning_ignore("narrowing_conversion")
 	sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
 	_on_pickups_popup("Lost leg power...")
 	$npcs/girl_zombie_controller/girl_zombie.progression = 1
 
+@warning_ignore("unused_parameter")
 func _on_glasses_body_entered(body):
 	_on_open_door($items/door2)
+	@warning_ignore("narrowing_conversion")
 	sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
 	_on_pickups_popup("Glasses found!")
 	$npcs/grandma_zombie_controller/grandma_zombie.progression = 3

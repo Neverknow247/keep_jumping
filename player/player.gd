@@ -102,6 +102,11 @@ func set_texture():
 		if stats["save_data"]["equiped_armor"] == cosmetics["armors"][i]["armor_id"]:
 			armor_index = i
 	sprite.texture = cosmetics["armors"][armor_index]["armor_texture"]
+	#print(stats["save_data"]["equiped_armor"])
+	if stats["save_data"]["equiped_armor"] == "legless_ghost":
+		jump_force = 100
+	else:
+		jump_force = 150
 
 func set_color_blind_colors():
 	if Utils.color_blind_mode:
