@@ -113,6 +113,7 @@ var music = {
 	"dlc_dark" : load(music_path+"dlc_dark.wav"),
 	"dlc_sand" : load(music_path+"dlc_sand.wav"),
 	"dlc_lava" : load(music_path+"dlc_lava.wav"),
+	"sir_hallow" : load(music_path+"sir_hallow.wav"),
 #	"" : load(music_path+".wav"),
 }
 

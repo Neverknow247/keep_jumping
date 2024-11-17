@@ -5,15 +5,15 @@
 [ext_resource type="PackedScene" uid="uid://1bygd30c6mvr" path="res://menus/menu_background.tscn" id="3_8mef2"]
 [ext_resource type="Theme" uid="uid://bdauou0gynqyt" path="res://ui/small_text_theme.tres" id="4_01hkj"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ku4gj"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xty6l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ufqyw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wp181"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4gab5"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ufqyw"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xty6l"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ku4gj"]
 
 [node name="general_menu" type="Control"]
 process_mode = 3
@@ -87,17 +87,16 @@ horizontal_alignment = 2
 layout_mode = 2
 focus_neighbor_left = NodePath("../../../../back_button")
 focus_neighbor_top = NodePath("../../../../back_button")
-focus_neighbor_right = NodePath("../../colorblind_mode/colorblind_mode_check")
-focus_neighbor_bottom = NodePath("../../colorblind_mode/colorblind_mode_check")
-focus_next = NodePath("../../colorblind_mode/colorblind_mode_check")
+focus_neighbor_right = NodePath("../../seperate_core_mode/seperate_core_check")
+focus_neighbor_bottom = NodePath("../../seperate_core_mode/seperate_core_check")
+focus_next = NodePath("../../seperate_core_mode/seperate_core_check")
 focus_previous = NodePath("../../../../back_button")
 theme = ExtResource("4_01hkj")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 alignment = 1
-item_count = 5
 selected = 3
+item_count = 5
 popup/item_0/text = "Windowed"
-popup/item_0/id = 0
 popup/item_1/text = "Minimized"
 popup/item_1/id = 1
 popup/item_2/text = "Maximized"
@@ -106,6 +105,42 @@ popup/item_3/text = "Fullscreen"
 popup/item_3/id = 3
 popup/item_4/text = "Exclusive Fullscreen"
 popup/item_4/id = 4
+
+[node name="seperate_core_mode" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/seperate_core_mode"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+text = "Physics on 2 Cores"
+horizontal_alignment = 2
+
+[node name="seperate_core_check" type="CheckButton" parent="CenterContainer/VBoxContainer/seperate_core_mode"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../window_mode/window_option_button")
+focus_neighbor_top = NodePath("../../window_mode/window_option_button")
+focus_neighbor_right = NodePath("../../wall_frame_buffer/wall_frame_buffer_check")
+focus_neighbor_bottom = NodePath("../../wall_frame_buffer/wall_frame_buffer_check")
+focus_next = NodePath("../../wall_frame_buffer/wall_frame_buffer_check")
+focus_previous = NodePath("../../window_mode/window_option_button")
+
+[node name="wall_frame_buffer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/wall_frame_buffer"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+text = "Wall Frame Buffer"
+horizontal_alignment = 2
+
+[node name="wall_frame_buffer_check" type="CheckButton" parent="CenterContainer/VBoxContainer/wall_frame_buffer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../seperate_core_mode/seperate_core_check")
+focus_neighbor_top = NodePath("../../seperate_core_mode/seperate_core_check")
+focus_neighbor_right = NodePath("../../colorblind_mode/colorblind_mode_check")
+focus_neighbor_bottom = NodePath("../../colorblind_mode/colorblind_mode_check")
+focus_next = NodePath("../../colorblind_mode/colorblind_mode_check")
+focus_previous = NodePath("../../seperate_core_mode/seperate_core_check")
 
 [node name="colorblind_mode" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -118,12 +153,12 @@ horizontal_alignment = 2
 
 [node name="colorblind_mode_check" type="CheckButton" parent="CenterContainer/VBoxContainer/colorblind_mode"]
 layout_mode = 2
-focus_neighbor_left = NodePath("../../window_mode/window_option_button")
-focus_neighbor_top = NodePath("../../window_mode/window_option_button")
+focus_neighbor_left = NodePath("../../wall_frame_buffer/wall_frame_buffer_check")
+focus_neighbor_top = NodePath("../../wall_frame_buffer/wall_frame_buffer_check")
 focus_neighbor_right = NodePath("../../speed_run_timer/speed_run_timer_check")
 focus_neighbor_bottom = NodePath("../../speed_run_timer/speed_run_timer_check")
 focus_next = NodePath("../../speed_run_timer/speed_run_timer_check")
-focus_previous = NodePath("../../window_mode/window_option_button")
+focus_previous = NodePath("../../wall_frame_buffer/wall_frame_buffer_check")
 
 [node name="speed_run_timer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -138,27 +173,9 @@ horizontal_alignment = 2
 layout_mode = 2
 focus_neighbor_left = NodePath("../../colorblind_mode/colorblind_mode_check")
 focus_neighbor_top = NodePath("../../colorblind_mode/colorblind_mode_check")
-focus_neighbor_right = NodePath("../../wall_frame_buffer/wall_frame_buffer_check")
-focus_neighbor_bottom = NodePath("../../wall_frame_buffer/wall_frame_buffer_check")
-focus_next = NodePath("../../wall_frame_buffer/wall_frame_buffer_check")
-focus_previous = NodePath("../../colorblind_mode/colorblind_mode_check")
-
-[node name="wall_frame_buffer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/wall_frame_buffer"]
-custom_minimum_size = Vector2(700, 0)
-layout_mode = 2
-text = "Wall Frame Buffer"
-horizontal_alignment = 2
-
-[node name="wall_frame_buffer_check" type="CheckButton" parent="CenterContainer/VBoxContainer/wall_frame_buffer"]
-layout_mode = 2
-focus_neighbor_left = NodePath("../../colorblind_mode/colorblind_mode_check")
-focus_neighbor_top = NodePath("../../colorblind_mode/colorblind_mode_check")
-focus_neighbor_right = NodePath("../../squash_and_stretch/squash_and_stretch_check")
-focus_neighbor_bottom = NodePath("../../squash_and_stretch/squash_and_stretch_check")
-focus_next = NodePath("../../squash_and_stretch/squash_and_stretch_check")
+focus_neighbor_right = NodePath("../../enable_quick_reset/enable_quick_reset_check")
+focus_neighbor_bottom = NodePath("../../enable_quick_reset/enable_quick_reset_check")
+focus_next = NodePath("../../enable_quick_reset/enable_quick_reset_check")
 focus_previous = NodePath("../../colorblind_mode/colorblind_mode_check")
 
 [node name="enable_quick_reset" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
@@ -172,12 +189,12 @@ horizontal_alignment = 2
 
 [node name="enable_quick_reset_check" type="CheckButton" parent="CenterContainer/VBoxContainer/enable_quick_reset"]
 layout_mode = 2
-focus_neighbor_left = NodePath("../../wall_frame_buffer/wall_frame_buffer_check")
-focus_neighbor_top = NodePath("../../wall_frame_buffer/wall_frame_buffer_check")
+focus_neighbor_left = NodePath("../../speed_run_timer/speed_run_timer_check")
+focus_neighbor_top = NodePath("../../speed_run_timer/speed_run_timer_check")
 focus_neighbor_right = NodePath("../../squash_and_stretch/squash_and_stretch_check")
 focus_neighbor_bottom = NodePath("../../squash_and_stretch/squash_and_stretch_check")
 focus_next = NodePath("../../squash_and_stretch/squash_and_stretch_check")
-focus_previous = NodePath("../../wall_frame_buffer/wall_frame_buffer_check")
+focus_previous = NodePath("../../speed_run_timer/speed_run_timer_check")
 
 [node name="squash_and_stretch" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -222,30 +239,31 @@ offset_left = 224.0
 offset_top = 32.0
 offset_right = 454.0
 offset_bottom = 113.0
-focus_neighbor_left = NodePath("../CenterContainer/VBoxContainer/wall_frame_buffer/wall_frame_buffer_check")
-focus_neighbor_top = NodePath("../CenterContainer/VBoxContainer/wall_frame_buffer/wall_frame_buffer_check")
+focus_neighbor_left = NodePath("../CenterContainer/VBoxContainer/screen_shake/screen_shake_check")
+focus_neighbor_top = NodePath("../CenterContainer/VBoxContainer/screen_shake/screen_shake_check")
 focus_neighbor_right = NodePath("../CenterContainer/VBoxContainer/window_mode/window_option_button")
 focus_neighbor_bottom = NodePath("../CenterContainer/VBoxContainer/window_mode/window_option_button")
 focus_next = NodePath("../CenterContainer/VBoxContainer/window_mode/window_option_button")
-focus_previous = NodePath("../CenterContainer/VBoxContainer/wall_frame_buffer/wall_frame_buffer_check")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
-theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
-theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
+focus_previous = NodePath("../CenterContainer/VBoxContainer/screen_shake/screen_shake_check")
 theme_override_colors/font_hover_pressed_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
+theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
-theme_override_styles/normal = SubResource("StyleBoxEmpty_ku4gj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xty6l")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ufqyw")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_wp181")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_4gab5")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_ufqyw")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_xty6l")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ku4gj")
 text = "← Back"
 
 [connection signal="item_selected" from="CenterContainer/VBoxContainer/window_mode/window_option_button" to="." method="_on_window_option_button_item_selected"]
+[connection signal="toggled" from="CenterContainer/VBoxContainer/seperate_core_mode/seperate_core_check" to="." method="_on_seperate_core_check_toggled"]
+[connection signal="toggled" from="CenterContainer/VBoxContainer/wall_frame_buffer/wall_frame_buffer_check" to="." method="_on_wall_frame_buffer_check_toggled"]
 [connection signal="toggled" from="CenterContainer/VBoxContainer/colorblind_mode/colorblind_mode_check" to="." method="_on_colorblind_mode_check_toggled"]
 [connection signal="toggled" from="CenterContainer/VBoxContainer/speed_run_timer/speed_run_timer_check" to="." method="_on_speed_run_timer_check_toggled"]
-[connection signal="toggled" from="CenterContainer/VBoxContainer/wall_frame_buffer/wall_frame_buffer_check" to="." method="_on_wall_frame_buffer_check_toggled"]
 [connection signal="toggled" from="CenterContainer/VBoxContainer/enable_quick_reset/enable_quick_reset_check" to="." method="_on_enable_quick_reset_check_toggled"]
 [connection signal="toggled" from="CenterContainer/VBoxContainer/squash_and_stretch/squash_and_stretch_check" to="." method="_on_squash_and_stretch_check_toggled"]
 [connection signal="toggled" from="CenterContainer/VBoxContainer/screen_shake/screen_shake_check" to="." method="_on_screen_shake_check_toggled"]

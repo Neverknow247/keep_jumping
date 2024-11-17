@@ -13,6 +13,7 @@ signal hide_menu(scene)
 @onready var speed_run_timer_check = $CenterContainer/VBoxContainer/speed_run_timer/speed_run_timer_check
 @onready var enable_quick_reset_check = $CenterContainer/VBoxContainer/enable_quick_reset/enable_quick_reset_check
 @onready var back_button = $back_button
+@onready var seperate_core_check = $CenterContainer/VBoxContainer/seperate_core_mode/seperate_core_check
 
 var active = false
 
@@ -24,6 +25,7 @@ func _ready():
 	screen_shake_check.button_pressed = utils.screen_shake
 	enable_quick_reset_check.button_pressed = utils.quick_reset
 	speed_run_timer_check.button_pressed = utils.speed_run_timer
+	seperate_core_check.button_pressed = utils.seperate_core
 
 func _input(event):
 	if (event.is_action_pressed("pause")||(event is InputEventJoypadButton and event.button_index == 1)) and active:
@@ -56,3 +58,6 @@ func _on_speed_run_timer_check_toggled(toggled_on):
 
 func _on_enable_quick_reset_check_toggled(toggled_on):
 	utils.quick_reset = toggled_on
+
+func _on_seperate_core_check_toggled(toggled_on):
+	utils.seperate_core = toggled_on

@@ -8,6 +8,7 @@ var utils = Utils
 @onready var spike_light = $spike_light
 
 var color_blind_sprite = preload("res://assets/art/items/color_blind_spikes.png")
+var color_blind_tiny_sprite = preload("res://assets/art/items/spikes_small.png")
 
 const sprites = [
 	#0
@@ -41,7 +42,10 @@ func _ready():
 
 func change_sprite():
 	if Utils.color_blind_mode:
-		sprite_2d.texture = color_blind_sprite
+		if type == 9:
+			sprite_2d.texture = color_blind_tiny_sprite
+		else:
+			sprite_2d.texture = color_blind_sprite
 	else:
 		sprite_2d.texture = sprites[type]
 

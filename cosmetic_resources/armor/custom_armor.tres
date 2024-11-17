@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ArmorData" load_steps=3 format=3 uid="uid://makhmwe6fgg5"]
+
+[ext_resource type="Texture2D" uid="uid://2uk358n6nvsp" path="res://assets/art/characters/player/player-sheet.png" id="1_vfbv6"]
+[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="2_yluae"]
+
+[resource]
+script = ExtResource("2_yluae")
+armor_id = "custom"
+armor_name = "Custom Fallen"
+armor_texture = ExtResource("1_vfbv6")

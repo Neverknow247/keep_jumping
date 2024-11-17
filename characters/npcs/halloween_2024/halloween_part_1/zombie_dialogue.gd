@@ -6,7 +6,7 @@ var dialogue = [
 	[
 		["AHHHHHHHHHUEAHH!!! I…",states[1]],
 		["I… lost my eye!",states[1]],
-		["I was passing through when I lost my eye. Last place I remember having it was in the forest above",states[1]],
+		["I was passing through when I lost my eye. Last place I remember having it was in the forest behind me",states[1]],
 		["Please can you find my lost eye. I need it to see the 3rd dimension",states[1]],
 		["AAAAHUH!",states[1]],
 	],

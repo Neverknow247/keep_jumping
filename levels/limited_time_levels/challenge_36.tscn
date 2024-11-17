@@ -745,6 +745,7 @@ animations = [{
 script = ExtResource("1_wkild")
 level_id = "challenge_36"
 level_name = "Halloween Part 2"
+main_music = "sir_hallow"
 player_blind = true
 
 [node name="background" type="TextureRect" parent="."]
@@ -941,6 +942,7 @@ position = Vector2(-888, 928)
 position = Vector2(64, 0)
 
 [node name="teleporter" parent="items" instance=ExtResource("26_xy421")]
+location = "res://levels/limited_time_levels/halloween_town_level.tscn"
 
 [node name="pickups" type="Node2D" parent="items"]
 script = ExtResource("27_8xv7a")

@@ -8,15 +8,15 @@
 [ext_resource type="PackedScene" uid="uid://caauqm4nwd564" path="res://menus/keybinding_menu.tscn" id="4_18dik"]
 [ext_resource type="PackedScene" uid="uid://cgn5lp08830p8" path="res://ui/transition.tscn" id="4_x41oo"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pg6u1"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_448r3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h744q"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5k40a"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j7erv"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h744q"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_448r3"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pg6u1"]
 
 [node name="settings_menu" type="Control"]
 custom_minimum_size = Vector2(1920, 1080)
@@ -69,18 +69,18 @@ focus_neighbor_right = NodePath("../sounds_button")
 focus_neighbor_bottom = NodePath("../sounds_button")
 focus_next = NodePath("../sounds_button")
 focus_previous = NodePath("../../../back_button")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
-theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
-theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
+theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
-theme_override_styles/normal = SubResource("StyleBoxEmpty_pg6u1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_448r3")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_h744q")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_5k40a")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_j7erv")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_h744q")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_448r3")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pg6u1")
 text = "General
 "
 
@@ -93,18 +93,18 @@ focus_neighbor_right = NodePath("../keybindings_button")
 focus_neighbor_bottom = NodePath("../keybindings_button")
 focus_next = NodePath("../keybindings_button")
 focus_previous = NodePath("../general_button")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
-theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
-theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
+theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
-theme_override_styles/normal = SubResource("StyleBoxEmpty_pg6u1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_448r3")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_h744q")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_5k40a")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_j7erv")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_h744q")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_448r3")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pg6u1")
 text = "Sounds
 "
 
@@ -117,18 +117,18 @@ focus_neighbor_right = NodePath("../tutorial_button")
 focus_neighbor_bottom = NodePath("../tutorial_button")
 focus_next = NodePath("../tutorial_button")
 focus_previous = NodePath("../sounds_button")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
-theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
-theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
+theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
-theme_override_styles/normal = SubResource("StyleBoxEmpty_pg6u1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_448r3")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_h744q")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_5k40a")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_j7erv")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_h744q")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_448r3")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pg6u1")
 text = "Controls
 "
 
@@ -142,18 +142,18 @@ focus_neighbor_right = NodePath("../credits_button")
 focus_neighbor_bottom = NodePath("../credits_button")
 focus_next = NodePath("../credits_button")
 focus_previous = NodePath("../keybindings_button")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
-theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
-theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
+theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
-theme_override_styles/normal = SubResource("StyleBoxEmpty_pg6u1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_448r3")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_h744q")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_5k40a")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_j7erv")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_h744q")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_448r3")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pg6u1")
 text = "Tutorial"
 
 [node name="credits_button" type="Button" parent="CenterContainer/VBoxContainer"]
@@ -166,18 +166,18 @@ focus_neighbor_right = NodePath("../../../back_button")
 focus_neighbor_bottom = NodePath("../../../back_button")
 focus_next = NodePath("../../../back_button")
 focus_previous = NodePath("../tutorial_button")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
-theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
-theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
+theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
-theme_override_styles/normal = SubResource("StyleBoxEmpty_pg6u1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_448r3")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_h744q")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_5k40a")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_j7erv")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_h744q")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_448r3")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pg6u1")
 text = "Credits"
 
 [node name="back_button" type="Button" parent="."]
@@ -192,18 +192,18 @@ focus_neighbor_right = NodePath("../CenterContainer/VBoxContainer/general_button
 focus_neighbor_bottom = NodePath("../CenterContainer/VBoxContainer/general_button")
 focus_next = NodePath("../CenterContainer/VBoxContainer/general_button")
 focus_previous = NodePath("../CenterContainer/VBoxContainer/credits_button")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
-theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
-theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
+theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
-theme_override_styles/normal = SubResource("StyleBoxEmpty_pg6u1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_448r3")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_h744q")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_5k40a")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_j7erv")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_h744q")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_448r3")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pg6u1")
 text = "← Back
 "
 

@@ -9,7 +9,8 @@ var stats = Stats
 @export var infinite = false
 
 var timer_time = 3
-var bed_level = "res://levels/challenges/challenge_8.tscn"
+@export var bed_level = "res://levels/challenges/challenge_8.tscn"
+@export var bed_texture = preload("res://assets/art/items/bed.png")
 
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var sprite_2d = $Sprite2D
@@ -18,6 +19,7 @@ var bed_level = "res://levels/challenges/challenge_8.tscn"
 @onready var teleporter = $teleporter
 
 func _ready():
+	sprite_2d.texture = bed_texture
 	teleporter.hide()
 
 func hit(damage):

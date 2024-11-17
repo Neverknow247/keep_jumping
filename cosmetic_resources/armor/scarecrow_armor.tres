@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ArmorData" load_steps=3 format=3 uid="uid://ceburyd6mnxen"]
+
+[ext_resource type="Texture2D" uid="uid://bu645lvnrmyhp" path="res://assets/art/characters/player/player_scarecrow-sheet.png" id="1_tuiix"]
+[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="2_yuhx5"]
+
+[resource]
+script = ExtResource("2_yuhx5")
+armor_id = "scarecrow"
+armor_name = "Scarecrow Knight"
+armor_texture = ExtResource("1_tuiix")

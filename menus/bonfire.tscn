@@ -1,0 +1,121 @@
+[gd_scene load_steps=8 format=3 uid="uid://61xq47qlcai4"]
+
+[ext_resource type="Theme" uid="uid://bwnv8b362a2w7" path="res://menus/menu_theme.tres" id="1_80buq"]
+[ext_resource type="Script" path="res://menus/bonfire.gd" id="2_6mb24"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tdy81"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mbv66"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qf50l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yevkm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7laid"]
+
+[node name="bonfire" type="ColorRect"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 360.0
+offset_top = 80.0
+offset_right = -360.0
+offset_bottom = -173.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_80buq")
+color = Color(0, 0, 0, 0.847059)
+script = ExtResource("2_6mb24")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -167.5
+offset_top = 96.0
+offset_right = 167.5
+offset_bottom = 169.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 96
+text = "Mode Select"
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="slopeless_button" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../blind_button")
+focus_neighbor_top = NodePath("../blind_button")
+focus_neighbor_right = NodePath("../normal_button")
+focus_neighbor_bottom = NodePath("../normal_button")
+focus_next = NodePath("../normal_button")
+focus_previous = NodePath("../blind_button")
+theme_override_colors/font_hover_pressed_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
+theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 12
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tdy81")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mbv66")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_qf50l")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_yevkm")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7laid")
+text = "Slopeless"
+
+[node name="normal_button" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../slopeless_button")
+focus_neighbor_top = NodePath("../slopeless_button")
+focus_neighbor_right = NodePath("../blind_button")
+focus_neighbor_bottom = NodePath("../blind_button")
+focus_next = NodePath("../blind_button")
+focus_previous = NodePath("../slopeless_button")
+theme_override_colors/font_hover_pressed_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
+theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 12
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tdy81")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mbv66")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_qf50l")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_yevkm")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7laid")
+text = "Normal
+"
+
+[node name="blind_button" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../normal_button")
+focus_neighbor_top = NodePath("../normal_button")
+focus_neighbor_right = NodePath("../slopeless_button")
+focus_neighbor_bottom = NodePath("../slopeless_button")
+focus_next = NodePath("../slopeless_button")
+focus_previous = NodePath("../normal_button")
+theme_override_colors/font_hover_pressed_color = Color(0.698039, 0.698039, 0.698039, 1)
+theme_override_colors/font_hover_color = Color(0.52549, 0.52549, 0.52549, 1)
+theme_override_colors/font_pressed_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_colors/font_focus_color = Color(0.454902, 0.454902, 0.454902, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 12
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tdy81")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mbv66")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_qf50l")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_yevkm")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7laid")
+text = "Blind"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/slopeless_button" to="." method="_on_slopeless_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/normal_button" to="." method="_on_normal_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/blind_button" to="." method="_on_blind_button_pressed"]

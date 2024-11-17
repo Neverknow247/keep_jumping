@@ -58,7 +58,7 @@ func _on_button_pressed(button:Button):
 	panel_container.show()
 
 func _unhandled_input(event):
-	if (event.is_action_pressed("ui_cancel")||(event is InputEventJoypadButton and event.button_index == 1)) and active:
+	if (event.is_action_pressed("ui_cancel")||(event is InputEventJoypadButton and event.button_index == 1)) and active and !current_button:
 		_on_back_button_pressed()
 
 func _input(event):
@@ -66,6 +66,8 @@ func _input(event):
 		return
 	if current_button.is_in_group("keyboard"):
 		if event is InputEventKey || event is InputEventMouseButton:
+			if event is InputEventKey and event.keycode == 4194305:
+				return
 			var all_ies : Dictionary = {}
 			for ia in InputMap.get_actions():
 				for iae in InputMap.action_get_events(ia):
@@ -87,6 +89,8 @@ func _input(event):
 			disable_buttons(false)
 	elif current_button.is_in_group("controller"):
 		if event is InputEventJoypadButton || event is InputEventJoypadMotion:
+			if event is InputEventJoypadButton and event.button_index == 6:
+				return
 			var all_ies : Dictionary = {}
 			for ia in InputMap.get_actions():
 				for iae in InputMap.action_get_events(ia):
@@ -99,6 +103,8 @@ func _input(event):
 				Utils.bindings[current_button.name]["type"] = "button" 
 				Utils.bindings[current_button.name]["button_index"] = event.button_index
 			else:
+				if abs(event.axis_value) < .05:
+					return
 				Utils.bindings[current_button.name]["type"] = "motion" 
 				Utils.bindings[current_button.name]["axis"] = event.axis
 				Utils.bindings[current_button.name]["axis_value"] = event.axis_value

@@ -20,6 +20,15 @@ var rng = RandomNumberGenerator.new()
 @onready var level_label = $ui/level_label
 @onready var pause_menu = $ui/pause_menu
 
+@onready var part_2 = $items/part_2
+@onready var part_3 = $items/part_3
+@onready var part_4 = $items/part_4
+
+@onready var purfallen_armor_unlock = $items/purfallen_armor_unlock
+@onready var blue_powder = $items/blue_powder
+
+@onready var door = $items/door
+
 var end_scene = "res://menus/challenge_finish_menu.tscn"
 var pausable = true
 var run_start = false
@@ -36,8 +45,9 @@ func _input(event):
 
 func _ready():
 	$player/blind_obscure.visible = player_blind
+	check_bone_collector_door_and_sign()
 	sounds.load_starting_music([main_music],1,-80)
-	sounds.fade_in_music(main_music,1,-10)
+	sounds.fade_in_music(main_music,1,-5)
 	set_up_label()
 	set_up_mode()
 	set_up_steam()
@@ -45,9 +55,33 @@ func _ready():
 	set_up_run()
 	set_camera_limits()
 	set_up_space()
+	unlock_levels()
+	check_pickups()
 	get_tree().paused = false 
 	ui.enter_transition()
 	SaveAndLoad.update_save_data()
+
+func check_bone_collector_door_and_sign():
+	$signs/sign8/Label.text = "bones\n%s"%[str(stats.calc_total_halloween_bones())]
+	if stats.calc_total_halloween_bones()>=8:
+		_on_open_door()
+
+func unlock_levels():
+	if !stats["save_data"]["challenge_data"]["challenge_35"]["_normal_reunions"] > 0:
+		part_2.unlocked = false
+		part_2.visible = false
+	if !stats["save_data"]["challenge_data"]["challenge_36"]["_normal_reunions"] > 0:
+		part_3.unlocked = false
+		part_3.visible = false
+	if !stats["save_data"]["challenge_data"]["challenge_37"]["_normal_reunions"] > 0:
+		part_4.unlocked = false
+		part_4.visible = false
+
+func check_pickups():
+	if stats["save_data"]["armors"]["purrfallen"]:
+		purfallen_armor_unlock.queue_free()
+	if stats["save_data"]["blind_mode_unlocked"]:
+		blue_powder.queue_free()
 
 @warning_ignore("unused_parameter")
 func _process(delta):
@@ -303,3 +337,21 @@ func happy_halloweens(character):
 				ui.pop_up("Recieved all 5 Happy Halloweens! Halloween Town unlocked! Available Next update")
 				stats["save_data"]["eggs"]["halloween_town"] = true
 				SaveAndLoad.update_save_data()
+
+@warning_ignore("unused_parameter")
+func _on_purfallen_armor_unlock_body_entered(body):
+	stats["save_data"]["armors"]["purrfallen"] = true
+	@warning_ignore("narrowing_conversion")
+	sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
+	purfallen_armor_unlock.queue_free()
+	SaveAndLoad.update_save_data()
+	_on_pickups_popup("Meow meow meow meow meow meow meow meow meow meow!")
+
+@warning_ignore("unused_parameter")
+func _on_blue_powder_body_entered(body):
+	stats["save_data"]["blind_mode_unlocked"] = true
+	@warning_ignore("narrowing_conversion")
+	sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
+	blue_powder.queue_free()
+	SaveAndLoad.update_save_data()
+	_on_pickups_popup("Blue Powder Obtained!\nNew Bonfire Mode Unlocked")

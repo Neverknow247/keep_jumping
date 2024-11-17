@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ArmorData" load_steps=3 format=3 uid="uid://bbyv7mlljpnta"]
+
+[ext_resource type="Texture2D" uid="uid://dteodxgrrrsbg" path="res://assets/art/characters/player/player_weirdo.png" id="1_rhu8j"]
+[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="2_n7tlq"]
+
+[resource]
+script = ExtResource("2_n7tlq")
+armor_id = "weirdo"
+armor_name = "Sir Weirdo"
+armor_texture = ExtResource("1_rhu8j")

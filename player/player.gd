@@ -107,6 +107,9 @@ func set_texture():
 		jump_force = 100
 	else:
 		jump_force = 150
+	
+	
+	
 
 func set_color_blind_colors():
 	if Utils.color_blind_mode:

@@ -147,6 +147,7 @@ func update_settings():
 	settings.set_value("wall_frame_buffer","setting",utils.wall_frame_buffer)
 	settings.set_value("quick_reset","setting",utils.quick_reset)
 	settings.set_value("speed_run_timer","setting",utils.speed_run_timer)
+	settings.set_value("seperate_core","setting",utils.seperate_core)
 	settings.save(SAVE_SETTINGS_PATH)
 	#load_settings()
 

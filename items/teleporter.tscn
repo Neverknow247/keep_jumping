@@ -204,9 +204,8 @@ shape = SubResource("CircleShape2D_um8do")
 z_index = 1
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_r8hi8")
-animation = &"halloween"
-autoplay = "halloween"
-frame_progress = 0.718866
+animation = &"animate"
+autoplay = "animate"
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
 visible = false

@@ -29,6 +29,7 @@ var next_level
 @warning_ignore("unused_signal")
 signal start_level
 signal un_pause
+signal reset_run
 
 func enter_transition():
 	animation_player.play("fade_in")
@@ -76,3 +77,6 @@ func npc_speech(text,character="default"):
 func end_speech():
 	textbox.hide()
 	rich_text_label.text = ""
+
+func _on_bonfire_reset_run():
+	reset_run.emit()

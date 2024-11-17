@@ -195,6 +195,7 @@ size = Vector2(16, 40)
 script = ExtResource("1_golgc")
 level_id = "challenge_37"
 level_name = "Halloween Part 3"
+main_music = "sir_hallow"
 player_blind = true
 
 [node name="background" type="TextureRect" parent="."]
@@ -377,6 +378,7 @@ position = Vector2(1776, -848)
 position = Vector2(-56, 0)
 
 [node name="teleporter" parent="items" instance=ExtResource("26_he3sa")]
+location = "res://levels/limited_time_levels/halloween_town_level.tscn"
 
 [node name="pickups" type="Node2D" parent="items"]
 script = ExtResource("27_u60yr")

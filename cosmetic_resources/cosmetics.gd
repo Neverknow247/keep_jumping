@@ -44,8 +44,15 @@ var armors = [
 	preload("res://cosmetic_resources/armor/ghost_armor.tres"),
 	preload("res://cosmetic_resources/armor/pumpkin_ghost_armor.tres"),
 	preload("res://cosmetic_resources/armor/legless_ghost_armor.tres"),
+	preload("res://cosmetic_resources/armor/scarecrow_armor.tres"),
+	preload("res://cosmetic_resources/armor/blind_armor.tres"),
+	preload("res://cosmetic_resources/armor/blind_2_armor.tres"),
 	
 	
+	
+	
+	preload("res://cosmetic_resources/armor/custom_armor.tres"),
+	#preload("res://cosmetic_resources/armor/weirdo_armor.tres"),
 	#preload("res://cosmetic_resources/armor/monkey_armor.tres"),
 	#preload("res://cosmetic_resources/armor/ballen_armor.tres"),
 ]

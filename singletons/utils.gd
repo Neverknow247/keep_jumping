@@ -55,6 +55,13 @@ var window_mode = 4:
 		window_mode = value
 		DisplayServer.window_set_mode(value)
 
+var seperate_core = false:
+	get:
+		return seperate_core
+	set(value):
+		seperate_core = value
+		ProjectSettings.set_setting("physics/2d/run_on_separate_thread",value)
+
 var wall_frame_buffer = true
 
 var input_types = {

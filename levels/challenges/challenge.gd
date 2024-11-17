@@ -244,3 +244,11 @@ func _on_four_key_switch_door_open():
 	tween.tween_property($items/door,"global_position",Vector2($items/door.global_position.x,$items/door.global_position.y+33),2)
 	@warning_ignore("narrowing_conversion")
 	sounds.play_sfx("stone_door", randf_range(0.9,1.0), 0)
+
+
+func _on_key_body_entered(body):
+	var tween = get_tree().create_tween()
+	tween.tween_property($items/door,"global_position",Vector2($items/door.global_position.x,$items/door.global_position.y+33),2)
+	@warning_ignore("narrowing_conversion")
+	sounds.play_sfx("stone_door", randf_range(0.9,1.0), 0)
+	$items/key.queue_free()

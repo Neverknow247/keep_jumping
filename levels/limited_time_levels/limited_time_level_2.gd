@@ -37,7 +37,7 @@ func _input(event):
 func _ready():
 	$player/blind_obscure.visible = player_blind
 	sounds.load_starting_music([main_music],1,-80)
-	sounds.fade_in_music(main_music,1,-10)
+	sounds.fade_in_music(main_music,1,-5)
 	set_up_label()
 	set_up_mode()
 	set_up_steam()

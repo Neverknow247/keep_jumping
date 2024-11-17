@@ -7,5 +7,7 @@ var stats = Stats
 func _ready():
 	if stats["save_data"]["slopeless"]:
 		label.text = "Slopes\n=\nDeath"
+	elif stats["save_data"]["blind_mode"]:
+		label.text = "Slopes\n=\nInvisible"
 	else:
 		label.text = "Slopes\n=\nSlide"
