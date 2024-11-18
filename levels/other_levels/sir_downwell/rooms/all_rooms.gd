@@ -6,17 +6,17 @@ var rng = stats.rng
 
 var rooms = [
 	preload("res://levels/other_levels/sir_downwell/rooms/floor_1/room_1_1.tscn"),
-	preload("res://levels/other_levels/sir_downwell/rooms/floor_1/room_1_2.tscn"),
-	preload("res://levels/other_levels/sir_downwell/rooms/floor_1/room_1_3.tscn"),
-	preload("res://levels/other_levels/sir_downwell/rooms/floor_1/room_1_4.tscn"),
+	#preload("res://levels/other_levels/sir_downwell/rooms/floor_1/room_1_2.tscn"),
+	#preload("res://levels/other_levels/sir_downwell/rooms/floor_1/room_1_3.tscn"),
+	#preload("res://levels/other_levels/sir_downwell/rooms/floor_1/room_1_4.tscn"),
 ]
 var starting_rooms = [
 	preload("res://levels/other_levels/sir_downwell/rooms/starting/room_s_1.tscn"),
-	preload("res://levels/other_levels/sir_downwell/rooms/starting/room_s_2.tscn"),
+	#preload("res://levels/other_levels/sir_downwell/rooms/starting/room_s_2.tscn"),
 ]
 var exit_rooms = [
 	preload("res://levels/other_levels/sir_downwell/rooms/exit/room_e_1.tscn"),
-	preload("res://levels/other_levels/sir_downwell/rooms/exit/room_e_2.tscn"),
+	#preload("res://levels/other_levels/sir_downwell/rooms/exit/room_e_2.tscn"),
 ]
 #var merchant_rooms = [
 	#preload("res://levels/rooms/merchant/room_m_1.tscn"),

@@ -1,0 +1,129 @@
+[gd_scene load_steps=10 format=3 uid="uid://da2knj6jbppl4"]
+
+[ext_resource type="Script" path="res://levels/other_levels/sir_downwell/downwell_breakable_block.gd" id="1_tf801"]
+[ext_resource type="Texture2D" uid="uid://b7no6kj6w8u3c" path="res://assets/art/sir_downwell/breakable_block.png" id="2_75jwv"]
+[ext_resource type="PackedScene" uid="uid://dqdn0w2jjoy0x" path="res://levels/other_levels/sir_downwell/hurtbox.tscn" id="3_qlwd7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kmfxs"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ihgnp"]
+size = Vector2(18, 18)
+
+[sub_resource type="Animation" id="Animation_l3p6h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_o4fpk"]
+resource_name = "break"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Timer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [-1],
+"method": &"start"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ak50n"]
+_data = {
+"RESET": SubResource("Animation_l3p6h"),
+"break": SubResource("Animation_o4fpk")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n5ai6"]
+size = Vector2(17, 17)
+
+[node name="downwell_breakable_block" type="StaticBody2D"]
+collision_layer = 1025
+collision_mask = 0
+script = ExtResource("1_tf801")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_75jwv")
+hframes = 2
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kmfxs")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ihgnp")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ak50n")
+}
+
+[node name="hurtbox" parent="." instance=ExtResource("3_qlwd7")]
+collision_layer = 1024
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+shape = SubResource("RectangleShape2D_n5ai6")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="hurt" from="hurtbox" to="." method="_on_hurtbox_hurt"]

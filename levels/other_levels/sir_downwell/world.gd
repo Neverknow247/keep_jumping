@@ -9,7 +9,7 @@ var all_rooms = All_Rooms.new()
 @export var level_id = "challenge_1"
 @export var level_name = "Challenge Name"
 
-@onready var player = $player
+@onready var player = $player_downwell
 @onready var rooms = $rooms
 @onready var main_cam = $Camera2D
 @onready var ui = $ui

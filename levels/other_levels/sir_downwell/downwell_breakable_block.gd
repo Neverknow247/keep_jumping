@@ -16,7 +16,7 @@ var monitor = true
 var respawn = true
 
 func _ready():
-	sprite_2d.texture = textures[type]
+	#sprite_2d.texture = textures[type]
 	var rand = randi_range(0,3)
 	sprite_2d.frame = rand
 
@@ -37,3 +37,6 @@ func _on_timer_timeout():
 		monitor = true
 	else:
 		timer.start()
+
+func _on_hurtbox_hurt(hitbox, damage):
+	queue_free()

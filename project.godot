@@ -25,6 +25,7 @@ Utils="*res://singletons/utils.gd"
 Events="*res://singletons/Events.gd"
 Sounds="*res://singletons/sounds.tscn"
 Stats="*res://singletons/stats.gd"
+SirDownwellStats="*res://levels/other_levels/sir_downwell/sir_downwell_stats.gd"
 GlobalSteam="*res://singletons/steam.tscn"
 SaveAndLoad="*res://save_and_load/save_and_load.gd"
 GlobalTimer="*res://singletons/global_timer.tscn"
@@ -227,6 +228,7 @@ admin_tele_forward={
 2d_physics/layer_8="drop_through_platforms"
 2d_physics/layer_9="spike_tilemap"
 2d_physics/layer_10="air_recovery"
+2d_physics/layer_11="downwell_hurt_box"
 
 [rendering]
 

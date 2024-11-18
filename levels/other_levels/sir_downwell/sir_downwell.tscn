@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ce3w6phiwinab"]
 
 [ext_resource type="Script" path="res://levels/other_levels/sir_downwell/world.gd" id="1_m8fih"]
-[ext_resource type="PackedScene" uid="uid://kib21yto7yik" path="res://player/player.tscn" id="4_o2el1"]
+[ext_resource type="PackedScene" uid="uid://c5mnr0uscf36f" path="res://levels/other_levels/sir_downwell/player_downwell.tscn" id="2_s7mff"]
 [ext_resource type="PackedScene" uid="uid://bb8b5vo2me8pl" path="res://ui/camera_2d.tscn" id="7_jyx6k"]
 [ext_resource type="PackedScene" uid="uid://n615rx02auyl" path="res://ui/ui.tscn" id="21_ecbjd"]
 
@@ -10,18 +10,16 @@ script = ExtResource("1_m8fih")
 level_id = "challenge_42"
 level_name = "Sir Downwell"
 
-[node name="player" parent="." instance=ExtResource("4_o2el1")]
-
-[node name="camera_follow" parent="player" index="10"]
-position = Vector2(0, 40)
-remote_path = NodePath("../../Camera2D")
+[node name="player_downwell" parent="." instance=ExtResource("2_s7mff")]
+partial_jump_multiplier = 0.5
+default_max_fall_velocity = 200.0
+max_fall_velocity = 200
+default_gravity = 350
+gravity = 350
 
 [node name="rooms" type="Node2D" parent="."]
 
 [node name="Camera2D" parent="." instance=ExtResource("7_jyx6k")]
-position = Vector2(0, 40)
-zoom = Vector2(1, 1)
+position = Vector2(0, 32)
 
 [node name="ui" parent="." instance=ExtResource("21_ecbjd")]
-
-[editable path="player"]
