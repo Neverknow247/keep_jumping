@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://c147bkgbjdm6r"]
+
+[ext_resource type="Script" path="res://levels/other_levels/sir_downwell/gem_fragments.gd" id="1_b83ju"]
+[ext_resource type="Texture2D" uid="uid://ltw8tdtsfcg2" path="res://assets/art/sir_downwell/gem_fragment.png" id="1_qt81r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_esgy3"]
+radius = 3.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fl15m"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fonun"]
+radius = 16.0
+
+[node name="gem_fragments" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_b83ju")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qt81r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_esgy3")
+
+[node name="pickup_detection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pickup_detection"]
+shape = SubResource("CircleShape2D_fl15m")
+
+[node name="player_detection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_detection"]
+shape = SubResource("CircleShape2D_fonun")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[node name="lifetime" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="body_entered" from="pickup_detection" to="." method="_on_pickup_detection_body_entered"]
+[connection signal="body_entered" from="player_detection" to="." method="_on_player_detection_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="lifetime" to="." method="_on_lifetime_timeout"]

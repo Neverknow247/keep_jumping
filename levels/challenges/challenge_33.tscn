@@ -26,7 +26,7 @@
 [node name="challenge_33" type="Node2D"]
 script = ExtResource("1_g72x1")
 level_id = "challenge_33"
-level_name = "E-4 : "
+level_name = "E-4 : Clever Coyote"
 player_blind = true
 
 [node name="background" type="TextureRect" parent="."]

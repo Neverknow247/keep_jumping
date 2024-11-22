@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ArmorData" load_steps=3 format=3 uid="uid://ctgu8llf44o81"]
+
+[ext_resource type="Texture2D" uid="uid://dmlqb3wame1hs" path="res://assets/art/characters/player/player_lava_block-sheet.png" id="1_xoc6n"]
+[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="2_gt1v3"]
+
+[resource]
+script = ExtResource("2_gt1v3")
+armor_id = "lava_block"
+armor_name = "Lava Block Armor"
+armor_texture = ExtResource("1_xoc6n")

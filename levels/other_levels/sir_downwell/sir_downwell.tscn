@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://levels/other_levels/sir_downwell/world.gd" id="1_m8fih"]
 [ext_resource type="PackedScene" uid="uid://c5mnr0uscf36f" path="res://levels/other_levels/sir_downwell/player_downwell.tscn" id="2_s7mff"]
+[ext_resource type="PackedScene" uid="uid://d34ki5k47y2k8" path="res://ui/ui_sir_downwell.tscn" id="4_8nrfv"]
 [ext_resource type="PackedScene" uid="uid://bb8b5vo2me8pl" path="res://ui/camera_2d.tscn" id="7_jyx6k"]
-[ext_resource type="PackedScene" uid="uid://n615rx02auyl" path="res://ui/ui.tscn" id="21_ecbjd"]
 
 [node name="sir_downwell" type="Node2D"]
 script = ExtResource("1_m8fih")
@@ -22,4 +22,4 @@ gravity = 350
 [node name="Camera2D" parent="." instance=ExtResource("7_jyx6k")]
 position = Vector2(0, 32)
 
-[node name="ui" parent="." instance=ExtResource("21_ecbjd")]
+[node name="ui_sir_downwell" parent="." instance=ExtResource("4_8nrfv")]

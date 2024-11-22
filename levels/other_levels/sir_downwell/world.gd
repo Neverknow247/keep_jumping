@@ -12,9 +12,9 @@ var all_rooms = All_Rooms.new()
 @onready var player = $player_downwell
 @onready var rooms = $rooms
 @onready var main_cam = $Camera2D
-@onready var ui = $ui
-@onready var pause_menu = $ui/pause_menu
-@onready var level_label = $ui/level_label
+@onready var ui = $ui_sir_downwell
+@onready var pause_menu = $ui_sir_downwell/pause_menu
+@onready var level_label = $ui_sir_downwell/level_label
 
 var offset = Vector2(28,16)
 var tile_set = 16
@@ -63,10 +63,11 @@ func _ready():
 @warning_ignore("unused_parameter")
 func _process(delta):
 	if (Input.is_action_pressed("reset_level") and Input.is_action_pressed("reset_control")) || (Input.is_action_pressed("controller_reset_level") and Input.is_action_pressed("controller_reset_control")):
+		SirDownwellStats.reset_sir_downwell()
 		change_scene()
 
 func set_up_label():
-	level_label.text = level_name
+	level_label.text = level_name+" | Level: "+var_to_str(SirDownwellStats["level"])
 	stats.current_challenge_level_name = level_name
 
 func set_up_mode():

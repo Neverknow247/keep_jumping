@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://fkdan8sovlsx"]
+[gd_scene load_steps=6 format=3 uid="uid://fkdan8sovlsx"]
 
 [ext_resource type="Texture2D" uid="uid://0c2sddg4x4fi" path="res://assets/art/sir_downwell/jump_attack.png" id="1_0orfj"]
 [ext_resource type="Script" path="res://levels/other_levels/sir_downwell/jump_attack.gd" id="1_6xrxs"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1k83k"]
 radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dl3gc"]
+radius = 2.0
 
 [node name="jump_attack" type="Node2D"]
 script = ExtResource("1_6xrxs")
@@ -20,10 +23,17 @@ collision_mask = 1024
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 shape = SubResource("CircleShape2D_1k83k")
 
+[node name="ground_collision" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground_collision"]
+shape = SubResource("CircleShape2D_dl3gc")
+
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-2.38419e-07, 0.5)
 scale = Vector2(0.4, 0.25)
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="ground_collision" to="." method="_on_ground_collision_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

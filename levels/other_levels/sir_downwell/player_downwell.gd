@@ -323,7 +323,7 @@ func jump(force):
 func jump_attack():
 	var _attack = jump_attack_scene.instantiate()
 	get_tree().current_scene.add_child(_attack)
-	_attack.global_position = position
+	_attack.global_position = global_position
 
 func drop_check():
 	if Input.is_action_pressed("down") || Input.is_action_pressed("controller_down"):

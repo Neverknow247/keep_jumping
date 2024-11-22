@@ -28,7 +28,7 @@
 [node name="challenge_28" type="Node2D"]
 script = ExtResource("1_c3ecq")
 level_id = "challenge_28"
-level_name = "C-9 : "
+level_name = "C-9 : Charmed Cipher"
 
 [node name="background" type="TextureRect" parent="."]
 z_index = -100

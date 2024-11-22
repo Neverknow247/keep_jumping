@@ -24,9 +24,23 @@ var health = 1:
 	set(value):
 		health = value
 
+var gem_fragments = 0:
+	get:
+		return gem_fragments
+	set(value):
+		gem_fragments = value
+
 func reset_sir_downwell():
 	level = 0
 	max_health = default_max_health
 	health = default_max_health
 	max_air_jumps = default_max_air_jumps
 	air_jumps = default_max_air_jumps
+	gem_fragments = 0
+
+func instantiate_scene_on_world(scene:PackedScene,position:Vector2):
+	var world = get_tree().current_scene
+	var instance = scene.instantiate()
+	world.call_deferred("add_child",instance)
+	instance.global_position = position
+	return instance

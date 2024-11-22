@@ -26,7 +26,7 @@ size = Vector2(400, 104)
 [node name="challenge_24" type="Node2D"]
 script = ExtResource("1_37sph")
 level_id = "challenge_24"
-level_name = "T-6 : "
+level_name = "T-6 : Blackened Bastion"
 main_music = "training_challenge"
 player_blind = true
 
