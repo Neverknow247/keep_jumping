@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://drlgg0briewyp"]
+
+[ext_resource type="Script" path="res://levels/other_levels/sir_downwell/enemies/enemy.gd" id="1_nh6x1"]
+[ext_resource type="PackedScene" uid="uid://ch77uxmjhuxkk" path="res://levels/other_levels/sir_downwell/enemies/character_stats.tscn" id="2_jetbm"]
+[ext_resource type="PackedScene" uid="uid://dqdn0w2jjoy0x" path="res://levels/other_levels/sir_downwell/hurtbox.tscn" id="3_xdws3"]
+[ext_resource type="PackedScene" uid="uid://c2ahpbxy6k3b6" path="res://levels/other_levels/sir_downwell/hitbox.tscn" id="4_1vy4s"]
+
+[node name="enemy" type="CharacterBody2D"]
+collision_layer = 8192
+collision_mask = 8193
+wall_min_slide_angle = 0.0
+script = ExtResource("1_nh6x1")
+
+[node name="character_stats" parent="." instance=ExtResource("2_jetbm")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="hurtbox" parent="." instance=ExtResource("3_xdws3")]
+collision_layer = 2048
+
+[node name="stomp_box" parent="." instance=ExtResource("3_xdws3")]
+collision_layer = 4096
+
+[node name="hitbox" parent="." instance=ExtResource("4_1vy4s")]
+collision_mask = 4
+damage = 0
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(0.4, 0.4)
+
+[node name="nav_agent" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
+avoidance_enabled = true
+radius = 16.0
+
+[node name="nav_check_timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="floor_cast" type="RayCast2D" parent="."]
+position = Vector2(0, -4)
+target_position = Vector2(0, 12)
+
+[connection signal="died" from="character_stats" to="." method="_on_character_stats_died"]
+[connection signal="hurt" from="hurtbox" to="." method="_on_hurtbox_hurt"]
+[connection signal="hurt" from="stomp_box" to="." method="_on_stomp_box_hurt"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="timeout" from="nav_check_timer" to="." method="_on_nav_check_timer_timeout"]

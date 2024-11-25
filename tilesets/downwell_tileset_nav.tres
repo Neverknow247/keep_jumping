@@ -1,0 +1,18 @@
+[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://bx08jgmm223qb"]
+
+[ext_resource type="Texture2D" uid="uid://dvw8hu0he8ky4" path="res://assets/art/sir_downwell/enemy_nav_tilemap_square.png" id="1_j8nmw"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_waatv"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+agent_radius = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_keb3h"]
+texture = ExtResource("1_j8nmw")
+0:0/0 = 0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_waatv")
+
+[resource]
+navigation_layer_0/layers = 1
+sources/0 = SubResource("TileSetAtlasSource_keb3h")

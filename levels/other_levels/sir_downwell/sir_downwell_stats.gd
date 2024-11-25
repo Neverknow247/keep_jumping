@@ -2,7 +2,8 @@ extends Node
 
 var rng = RandomNumberGenerator.new()
 
-var default_max_air_jumps = 10
+var default_max_air_jumps = 6
+
 var max_air_jumps = 1
 var air_jumps = 1
 
@@ -44,3 +45,6 @@ func instantiate_scene_on_world(scene:PackedScene,position:Vector2):
 	world.call_deferred("add_child",instance)
 	instance.global_position = position
 	return instance
+
+func _ready():
+	rng.randomize()

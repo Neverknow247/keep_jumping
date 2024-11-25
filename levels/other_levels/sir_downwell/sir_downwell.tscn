@@ -5,13 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://d34ki5k47y2k8" path="res://ui/ui_sir_downwell.tscn" id="4_8nrfv"]
 [ext_resource type="PackedScene" uid="uid://bb8b5vo2me8pl" path="res://ui/camera_2d.tscn" id="7_jyx6k"]
 
-[node name="sir_downwell" type="Node2D"]
+[node name="sir_downwell_world" type="Node2D"]
 script = ExtResource("1_m8fih")
 level_id = "challenge_42"
 level_name = "Sir Downwell"
 
 [node name="player_downwell" parent="." instance=ExtResource("2_s7mff")]
-partial_jump_multiplier = 0.5
 default_max_fall_velocity = 200.0
 max_fall_velocity = 200
 default_gravity = 350

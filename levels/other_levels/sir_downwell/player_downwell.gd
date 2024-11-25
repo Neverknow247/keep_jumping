@@ -11,7 +11,6 @@ var jump_attack_scene = preload("res://levels/other_levels/sir_downwell/jump_att
 signal respawn
 signal change_scene(new_scene)
 @warning_ignore("unused_signal")
-signal unlock_campfire
 
 const step_particles = preload("res://particles/step_particles.tscn")
 
@@ -34,7 +33,7 @@ var current_velocity = 0.0
 @export var wall_friction = .02
 @export var ground_friction = .2
 @export var jump_force = 150
-@export var partial_jump_multiplier = .9
+@export var partial_jump_multiplier = .3
 @export var air_friction = 90
 @export var fall_bonus = .05
 @export var default_max_fall_velocity:float = 128.0
@@ -53,7 +52,8 @@ var current_velocity = 0.0
 @export var slope_speed = 150
 @export var slope_gravity = 300
 @export var stomp_impulse = 75.0
-@export var stomp_bonus = .1
+@export var stomp_bonus = 1
+#@export var stomp_bonus = .1
 
 @onready var sprite = $sprite
 @onready var interact_icon = $interact_icon
@@ -61,6 +61,7 @@ var current_velocity = 0.0
 @onready var coyote_wall_timer = $coyote_wall_timer
 @onready var jump_timer = $jump_timer
 @onready var jump_buffer_timer = $jump_buffer_timer
+@onready var air_jump_timer = $air_jump_timer
 @onready var b_hop_timer = $b_hop_timer
 @onready var drop_timer = $drop_timer
 @onready var collision = $collision
@@ -70,6 +71,7 @@ var current_velocity = 0.0
 @onready var hurt_box = $hurt_box
 @onready var interaction_detection = $interaction_detection
 @onready var animation_player = $AnimationPlayer
+@onready var blinking_animator = $blinking_animator
 
 var state = "move_state"
 var in_sand = false
@@ -85,6 +87,7 @@ var double_jump = true:
 		else:
 			sprite.modulate = double_jump_color
 var jump_buffer = false
+var air_jump_attack = false
 var in_space = false
 var spike_count = 0
 var checkpoint = false
@@ -264,6 +267,7 @@ func apply_friction(delta):
 func jump_check():
 	if is_on_floor():
 		reset_air_recovery_orbs()
+		air_jump_attack = false
 		downwell_stats.air_jumps = downwell_stats.max_air_jumps
 		double_jump = true
 		if jump_buffer:
@@ -289,8 +293,9 @@ func jump_check():
 	elif not is_on_floor():
 		if just_jumped and (Input.is_action_just_released("jump")|| Input.is_action_just_released("controller_jump")) and velocity.y < -jump_force / 2:
 			velocity.y = -jump_force / 2
-		if (Input.is_action_just_pressed("jump")||Input.is_action_just_pressed("controller_jump")) and double_jump:
-			#print("jump air")
+		if ((Input.is_action_just_pressed("jump")||Input.is_action_just_pressed("controller_jump")) and double_jump)or((Input.is_action_pressed("jump")||Input.is_action_pressed("controller_jump")) and double_jump and !air_jump_timer.time_left and air_jump_attack):
+			air_jump_attack = true
+			air_jump_timer.start()
 			jump(jump_force * partial_jump_multiplier)
 			jump_attack()
 			downwell_stats.air_jumps = max(downwell_stats.air_jumps-1,0)
@@ -537,11 +542,11 @@ func slope_exit():
 		if get_floor_angle() == 0:
 			state = "move_state"
 
-@warning_ignore("unused_parameter")
-func _on_hurt_box_hit(damage):
-	if damages.size() > 0:
-		return
-	damages.append(damage)
+
+func _on_hurt_box_hurt(hitbox, damage):
+	_on_hurt_box_hit(damage)
+
+func make_hurt_sound():
 	var rand_death_sound = rng.randi_range(1,10000)
 	var ty_death_sound = rng.randi_range(1,100)
 	var rand = rng.randi_range(1,18)
@@ -564,6 +569,22 @@ func _on_hurt_box_hit(damage):
 		if rand_death_sound == 42:
 			@warning_ignore("narrowing_conversion")
 			sounds.play_sfx("random_scream",randf_range(0.8,1),0)
+
+@warning_ignore("unused_parameter")
+func _on_hurt_box_hit(damage):
+	if damages.size() > 0:
+		return
+	damages.append(damage)
+	Events.add_screenshake.emit(3,.2)
+	SirDownwellStats["health"]-=damage
+	blinking_animator.play("blink")
+	make_hurt_sound()
+	if damage == 0:
+		@warning_ignore("narrowing_conversion")
+		sounds.play_sfx("chain_damage_1",randf_range(0.8,1),0)
+		@warning_ignore("narrowing_conversion")
+		sounds.play_sfx("chain_damage_2",randf_range(0.9,1.1),0)
+		check_death()
 	if damage == 1:
 		@warning_ignore("narrowing_conversion")
 		sounds.play_sfx("chain_damage_1",randf_range(0.8,1),0)
@@ -619,24 +640,28 @@ func set_invincible(_bool):
 	invincible = _bool
 
 func check_death():
-	if stats.current_challenge_level_name == "":
-		apply_space(false)
-	#process_mode = Node.PROCESS_MODE_DISABLED
-	state = "pause_state"
-	var death_timer = get_tree().create_timer(.3)
-	var fade_tween = get_tree().create_tween()
-	var size_tween = get_tree().create_tween()
-	fade_tween.tween_property(sprite,"modulate",Color.DARK_RED,.2)
-	size_tween.tween_property(sprite,"scale",Vector2(2,2),.2)
-	await death_timer.timeout
-	#process_mode = Node.PROCESS_MODE_INHERIT
+	
 	damages = []
-	state = "move_state"
-	if stats["save_data"]["hard_mode"]:
-		stats.reset_run()
-		change_scene.emit()
-	else:
-		respawn.emit()
+	velocity = calculate_stomp_velocity(velocity, stomp_impulse)
+	max_velocity += stomp_bonus
+	#if stats.current_challenge_level_name == "":
+		#apply_space(false)
+	##process_mode = Node.PROCESS_MODE_DISABLED
+	#state = "pause_state"
+	#var death_timer = get_tree().create_timer(.3)
+	#var fade_tween = get_tree().create_tween()
+	#var size_tween = get_tree().create_tween()
+	#fade_tween.tween_property(sprite,"modulate",Color.DARK_RED,.2)
+	#size_tween.tween_property(sprite,"scale",Vector2(2,2),.2)
+	#await death_timer.timeout
+	##process_mode = Node.PROCESS_MODE_INHERIT
+	#damages = []
+	#state = "move_state"
+	#if stats["save_data"]["hard_mode"]:
+		#stats.reset_run()
+		#change_scene.emit()
+	#else:
+		#respawn.emit()
 
 @warning_ignore("unused_parameter")
 func _on_hit_box_area_entered(area):
@@ -732,62 +757,22 @@ signal close_interactables
 func close_interactable():
 	close_interactables.emit()
 
-signal campfire
-func open_campfire():
-	campfire.emit()
-
-signal dog_house
-func open_dog_house():
-	dog_house.emit()
-
 signal leaderboard
 func open_leaderboard():
 	leaderboard.emit()
-
-signal picnic
-func open_picnic():
-	picnic.emit()
-
-signal bart_area
-func open_bart_area():
-	bart_area.emit()
 
 func open_teleporter():
 	sounds.play_sfx("tellyin")
 	stats.current_challenge_level = interactable.location
 	change_scene.emit(interactable.location)
 
-signal knights_monument
-func open_knights_monument():
-	knights_monument.emit()
-
 signal wardrobe
 func open_wardrobe():
 	wardrobe.emit()
 
-signal lecturn
-func open_lecturn():
-	lecturn.emit()
-
 signal lever
 func open_lever():
 	lever.emit()
-
-signal upper_lever
-func open_upper_lever():
-	upper_lever.emit()
-
-signal lower_lever
-func open_lower_lever():
-	lower_lever.emit()
-
-signal hidden_lever
-func open_hidden_lever():
-	hidden_lever.emit()
-
-signal dlc_lever
-func open_dlc_lever():
-	dlc_lever.emit()
 
 var air_recovery_orbs = []
 func _on_air_recovery_detection_area_entered(area):
@@ -800,3 +785,15 @@ func reset_air_recovery_orbs():
 	for orb in air_recovery_orbs:
 		orb.refresh()
 	air_recovery_orbs = []
+
+
+func _on_stomp_box_area_entered(hurtbox):
+	if velocity.y>=0 or velocity.y<0:
+		#downwell_stats.air_jumps = min(downwell_stats.air_jumps+1,downwell_stats.max_air_jumps)
+		downwell_stats.air_jumps = downwell_stats.max_air_jumps
+		double_jump = true
+		velocity = calculate_stomp_velocity(velocity, stomp_impulse)
+		max_velocity += stomp_bonus
+		if not hurtbox is Hurtbox:
+			pass
+		hurtbox.take_hit(self, 100)

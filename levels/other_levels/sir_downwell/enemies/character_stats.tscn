@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ch77uxmjhuxkk"]
+
+[ext_resource type="Script" path="res://levels/other_levels/sir_downwell/enemies/character_stats.gd" id="1_hlhwi"]
+
+[node name="character_stats" type="Node"]
+script = ExtResource("1_hlhwi")

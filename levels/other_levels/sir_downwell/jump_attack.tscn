@@ -17,14 +17,14 @@ script = ExtResource("1_6xrxs")
 texture = ExtResource("1_0orfj")
 
 [node name="hitbox" parent="." instance=ExtResource("3_aduw4")]
-collision_layer = 0
-collision_mask = 1024
+collision_mask = 3072
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 shape = SubResource("CircleShape2D_1k83k")
 
 [node name="ground_collision" type="Area2D" parent="."]
 collision_layer = 0
+collision_mask = 129
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ground_collision"]
 shape = SubResource("CircleShape2D_dl3gc")

@@ -6,6 +6,13 @@ var steam = GlobalSteam
 var all_rooms = All_Rooms.new()
 #var all_enemies = All_Enemies.new()
 
+const bat_enemy = preload("res://levels/other_levels/sir_downwell/enemies/bat.tscn")
+const slime_enemy = preload("res://levels/other_levels/sir_downwell/enemies/slime.tscn")
+
+@onready var air_enemies = [bat_enemy]
+@onready var ground_enemies = [slime_enemy]
+@onready var wall_enemies = []
+
 @export var level_id = "challenge_1"
 @export var level_name = "Challenge Name"
 
@@ -53,7 +60,7 @@ func _ready():
 	set_up_label()
 	set_up_mode()
 	set_up_steam()
-	rooms_number = 7
+	rooms_number = 10
 	generator.generate(rooms_number)
 	dungeon = generator.dungeon_detailed
 	generate_dungeon()
@@ -110,6 +117,7 @@ func generate_dungeon():
 				room = all_rooms.choose_room().instantiate()
 		rooms.add_child(room)
 		room.position = dungeon_room["location"]*(offset*tile_set)
+		summon_enemies(dungeon_room,room)
 		#var enemy_types = summon_enemies(dungeon_room,room)
 		#summon_gems(room, enemy_types)
 		#room.get_node("player_sensor").connect("body_entered",_on_change_room.bind(room,dungeon_room))
@@ -129,6 +137,20 @@ func generate_dungeon():
 				#game_ui.get_node("boss_health_meter").set_up_bar(boss.character_stats.max_health)
 				#boss.character_stats.health_changed.connect(game_ui.get_node("boss_health_meter")._on_change_health)
 				#room.get_node("player_sensor").connect("body_entered",game_ui.get_node("boss_health_meter").reveal_bar.bind(room,dungeon_room))
+
+func summon_enemies(dungeon_room,room):
+	for air_enemy_position in room.get_node("air_enemy_positions").get_children():
+		if SirDownwellStats["rng"].randi_range(1,4)<=2:
+			var chosen_enemy = air_enemies[0]
+			var new_enemy = SirDownwellStats.instantiate_scene_on_world(chosen_enemy,air_enemy_position.global_position)
+	for ground_enemy_position in room.get_node("ground_enemy_positions").get_children():
+		if SirDownwellStats["rng"].randi_range(1,4)<=2:
+			var chosen_enemy = ground_enemies[0]
+			var new_enemy = SirDownwellStats.instantiate_scene_on_world(chosen_enemy,ground_enemy_position.global_position)
+	#for wall_enemy_position in room.get_node("wall_enemy_positions").get_children():
+		#if SirDownwellStats["rng"].randi_range(1,3)<=2:
+			#var chosen_enemy = air_enemies[0]
+			#var new_enemy = SirDownwellStats.instantiate_scene_on_world(chosen_enemy,wall_enemy_position.global_position)
 
 #func summon_enemies(dungeon_room,room):
 	#var enemy_types = []

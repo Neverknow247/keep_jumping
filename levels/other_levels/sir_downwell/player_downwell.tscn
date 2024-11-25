@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c5mnr0uscf36f"]
+[gd_scene load_steps=27 format=3 uid="uid://c5mnr0uscf36f"]
 
 [ext_resource type="Script" path="res://levels/other_levels/sir_downwell/player_downwell.gd" id="1_bfemu"]
 [ext_resource type="Texture2D" uid="uid://r7wqniih52i7" path="res://assets/art/characters/player/player.png" id="2_ckwws"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://fru5a7c7rjed" path="res://assets/art/characters/blind_mode.png" id="5_eh2rn"]
 [ext_resource type="Script" path="res://characters/hit_box.gd" id="6_d4fdx"]
 [ext_resource type="Script" path="res://characters/hurt_box.gd" id="7_mpdv2"]
+[ext_resource type="Script" path="res://levels/other_levels/sir_downwell/hitbox.gd" id="7_pg0p6"]
 
 [sub_resource type="Animation" id="Animation_sud7h"]
 length = 0.001
@@ -49,6 +50,9 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qmdhs"]
 size = Vector2(4, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7wl67"]
+size = Vector2(8, 4)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ssent"]
 radius = 8.0
@@ -295,6 +299,60 @@ _data = {
 "wall_slide": SubResource("Animation_vnt8b")
 }
 
+[sub_resource type="Animation" id="Animation_tet4b"]
+resource_name = "blink"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false, true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hurt_box")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"@is_invincible_setter"
+}, {
+"args": [false],
+"method": &"@is_invincible_setter"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_n40hg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xsyri"]
+_data = {
+"RESET": SubResource("Animation_n40hg"),
+"blink": SubResource("Animation_tet4b")
+}
+
 [node name="player_downwell" type="CharacterBody2D" groups=["player"]]
 z_index = 1
 collision_layer = 2
@@ -350,7 +408,6 @@ position = Vector2(0, -6)
 polygon = PackedVector2Array(1, 6, 1, 5, -1, 5, -1, 6)
 
 [node name="hit_box" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("6_d4fdx")
@@ -360,6 +417,17 @@ modulate = Color(0.980392, 0, 0.27451, 1)
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_qmdhs")
 
+[node name="stomp_box" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4096
+script = ExtResource("7_pg0p6")
+damage = 100
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stomp_box"]
+modulate = Color(0.980392, 0, 0.27451, 1)
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_7wl67")
+
 [node name="hurt_box" type="Area2D" parent="." groups=["player_hurt_box"]]
 collision_layer = 4
 collision_mask = 256
@@ -368,7 +436,7 @@ script = ExtResource("7_mpdv2")
 [node name="collision2" type="CollisionPolygon2D" parent="hurt_box"]
 modulate = Color(0.898039, 0.847059, 0, 1)
 position = Vector2(0, -6)
-polygon = PackedVector2Array(1, 5, 2, 3, 2, -4, -2, -3, -2, 3, -1, 5)
+polygon = PackedVector2Array(1, 5, 3, 3, 3, -4, -3, -4, -3, 3, -1, 5)
 
 [node name="interaction_detection" type="Area2D" parent="."]
 visible = false
@@ -408,6 +476,10 @@ one_shot = true
 wait_time = 0.02
 one_shot = true
 
+[node name="air_jump_timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [node name="b_hop_timer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
@@ -421,10 +493,16 @@ libraries = {
 }
 autoplay = "idle"
 
+[node name="blinking_animator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xsyri")
+}
+
 [connection signal="area_entered" from="hit_box" to="." method="_on_hit_box_area_entered"]
 [connection signal="area_entered" from="hit_box" to="hit_box" method="_on_area_entered"]
-[connection signal="body_entered" from="hurt_box" to="hurt_box" method="_on_body_entered"]
+[connection signal="area_entered" from="stomp_box" to="." method="_on_stomp_box_area_entered"]
 [connection signal="hit" from="hurt_box" to="." method="_on_hurt_box_hit"]
+[connection signal="hurt" from="hurt_box" to="." method="_on_hurt_box_hurt"]
 [connection signal="area_entered" from="interaction_detection" to="." method="_on_interaction_detection_area_entered"]
 [connection signal="area_exited" from="interaction_detection" to="." method="_on_interaction_detection_area_exited"]
 [connection signal="area_entered" from="air_recovery_detection" to="." method="_on_air_recovery_detection_area_entered"]

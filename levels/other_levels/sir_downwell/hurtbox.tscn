@@ -3,4 +3,6 @@
 [ext_resource type="Script" path="res://levels/other_levels/sir_downwell/hurtbox.gd" id="1_tikgb"]
 
 [node name="hurtbox" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_tikgb")

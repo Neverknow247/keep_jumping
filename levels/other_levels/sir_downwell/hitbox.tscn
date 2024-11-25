@@ -3,6 +3,8 @@
 [ext_resource type="Script" path="res://levels/other_levels/sir_downwell/hitbox.gd" id="1_yrkcb"]
 
 [node name="hitbox" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_yrkcb")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

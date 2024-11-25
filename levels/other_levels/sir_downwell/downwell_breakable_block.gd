@@ -47,7 +47,7 @@ func _on_timer_timeout():
 		#timer.start()
 
 func _on_hurtbox_hurt(hitbox, damage):
-	if monitor == true and random_gem_chance == 9:
+	if monitor == true and random_gem_chance == 9 and damage != 0:
 		sir_downwell_stats.instantiate_scene_on_world(gem_fragment,global_position)
 	queue_free()
 
