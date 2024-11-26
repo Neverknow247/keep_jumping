@@ -533,7 +533,7 @@ func _on_hurt_box_hit(damage):
 	var ty_death_sound = rng.randi_range(1,100)
 	var rand = rng.randi_range(1,18)
 	var cat_rand = rng.randi_range(1,20)
-	if stats["save_data"]["equiped_armor"] == "purrfallen":
+	if stats["save_data"]["equiped_armor"] == "purrfallen" or stats["save_data"]["equiped_armor"] == "purrfallen_ty":
 		if rand_death_sound == 42:
 			@warning_ignore("narrowing_conversion")
 			sounds.play_sfx("extended_meow",randf_range(1.1,1.3),0.3)

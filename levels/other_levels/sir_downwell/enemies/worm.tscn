@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://c0e6emh4pxg6l"]
+
+[ext_resource type="PackedScene" uid="uid://drlgg0briewyp" path="res://levels/other_levels/sir_downwell/enemies/enemy.tscn" id="1_78d0j"]
+[ext_resource type="Texture2D" uid="uid://gni6ts5sop44" path="res://assets/art/sir_downwell/characters/crawler.png" id="2_5gekf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0a8a"]
+atlas = ExtResource("2_5gekf")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xe2gy"]
+atlas = ExtResource("2_5gekf")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_upqfe"]
+atlas = ExtResource("2_5gekf")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxnd0"]
+atlas = ExtResource("2_5gekf")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ufbhw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0a8a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xe2gy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_upqfe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxnd0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[node name="worm" instance=ExtResource("1_78d0j")]
+enemy_type = 3
+
+[node name="AnimatedSprite2D" parent="." index="3"]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_ufbhw")
+autoplay = "default"
+frame_progress = 0.427171
+
+[node name="floor_cast" parent="." index="10"]
+collision_mask = 129
+
+[node name="wall_cast" parent="." index="11"]
+collision_mask = 129

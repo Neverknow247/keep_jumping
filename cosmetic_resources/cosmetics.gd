@@ -48,6 +48,7 @@ var armors = [
 	preload("res://cosmetic_resources/armor/blind_armor.tres"),
 	preload("res://cosmetic_resources/armor/blind_2_armor.tres"),
 	preload("res://cosmetic_resources/armor/lava_block_armor.tres"),
+	preload("res://cosmetic_resources/armor/purfallen_ty_armor.tres"),
 	
 	
 	

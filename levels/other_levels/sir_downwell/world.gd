@@ -8,10 +8,11 @@ var all_rooms = All_Rooms.new()
 
 const bat_enemy = preload("res://levels/other_levels/sir_downwell/enemies/bat.tscn")
 const slime_enemy = preload("res://levels/other_levels/sir_downwell/enemies/slime.tscn")
+const worm_enemy = preload("res://levels/other_levels/sir_downwell/enemies/worm.tscn")
 
 @onready var air_enemies = [bat_enemy]
 @onready var ground_enemies = [slime_enemy]
-@onready var wall_enemies = []
+@onready var wall_enemies = [worm_enemy]
 
 @export var level_id = "challenge_1"
 @export var level_name = "Challenge Name"
@@ -147,10 +148,16 @@ func summon_enemies(dungeon_room,room):
 		if SirDownwellStats["rng"].randi_range(1,4)<=2:
 			var chosen_enemy = ground_enemies[0]
 			var new_enemy = SirDownwellStats.instantiate_scene_on_world(chosen_enemy,ground_enemy_position.global_position)
-	#for wall_enemy_position in room.get_node("wall_enemy_positions").get_children():
-		#if SirDownwellStats["rng"].randi_range(1,3)<=2:
-			#var chosen_enemy = air_enemies[0]
-			#var new_enemy = SirDownwellStats.instantiate_scene_on_world(chosen_enemy,wall_enemy_position.global_position)
+	for wall_enemy_position in room.get_node("wall_enemy_positions").get_children():
+		if SirDownwellStats["rng"].randi_range(1,3)<=2:
+			var chosen_enemy = wall_enemies[0]
+			var new_enemy = SirDownwellStats.instantiate_scene_on_world(chosen_enemy,wall_enemy_position.global_position)
+			#print("enemy position: ",fmod(wall_enemy_position.global_position.y,16))
+			#print("abs enemy position: ",fmod(abs(wall_enemy_position.global_position.y),16))
+			if fmod(abs(wall_enemy_position.global_position.y), 16) == 0:
+				new_enemy.rotation_degrees = -90
+			else:
+				new_enemy.rotation_degrees = 90
 
 #func summon_enemies(dungeon_room,room):
 	#var enemy_types = []

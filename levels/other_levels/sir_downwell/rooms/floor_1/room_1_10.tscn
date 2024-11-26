@@ -140,4 +140,28 @@ position = Vector2(-24, 232)
 [node name="wall_enemy_positions" type="Node2D" parent="."]
 
 [node name="position_1" type="Marker2D" parent="wall_enemy_positions"]
-position = Vector2(-368, 88)
+position = Vector2(-80, 72)
+
+[node name="position_2" type="Marker2D" parent="wall_enemy_positions"]
+position = Vector2(-32, 48)
+
+[node name="position_3" type="Marker2D" parent="wall_enemy_positions"]
+position = Vector2(64, 96)
+
+[node name="position_4" type="Marker2D" parent="wall_enemy_positions"]
+position = Vector2(64, 16)
+
+[node name="position_5" type="Marker2D" parent="wall_enemy_positions"]
+position = Vector2(-80, 136)
+
+[node name="position_6" type="Marker2D" parent="wall_enemy_positions"]
+position = Vector2(32, 136)
+
+[node name="position_7" type="Marker2D" parent="wall_enemy_positions"]
+position = Vector2(-16, 200)
+
+[node name="position_8" type="Marker2D" parent="wall_enemy_positions"]
+position = Vector2(32, 176)
+
+[node name="position_9" type="Marker2D" parent="wall_enemy_positions"]
+position = Vector2(64, 224)

@@ -299,6 +299,21 @@ _data = {
 "wall_slide": SubResource("Animation_vnt8b")
 }
 
+[sub_resource type="Animation" id="Animation_n40hg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_tet4b"]
 resource_name = "blink"
 step = 0.1
@@ -330,21 +345,6 @@ tracks/1/keys = {
 "args": [false],
 "method": &"@is_invincible_setter"
 }]
-}
-
-[sub_resource type="Animation" id="Animation_n40hg"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xsyri"]

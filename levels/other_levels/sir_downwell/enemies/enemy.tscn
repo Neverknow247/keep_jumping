@@ -45,6 +45,10 @@ autostart = true
 position = Vector2(0, -4)
 target_position = Vector2(0, 12)
 
+[node name="wall_cast" type="RayCast2D" parent="."]
+position = Vector2(0, -4)
+target_position = Vector2(5, 0)
+
 [connection signal="died" from="character_stats" to="." method="_on_character_stats_died"]
 [connection signal="hurt" from="hurtbox" to="." method="_on_hurtbox_hurt"]
 [connection signal="hurt" from="stomp_box" to="." method="_on_stomp_box_hurt"]

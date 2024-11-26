@@ -9,6 +9,7 @@ var sir_downwell_stats = SirDownwellStats
 @onready var _hitbox = $hitbox
 @onready var nav_agent = $nav_agent
 @onready var floor_cast = $floor_cast
+@onready var wall_cast = $wall_cast
 
 @export var max_speed = 30.0
 @export var hurt_speed = 80.0
@@ -23,6 +24,10 @@ var sir_downwell_stats = SirDownwellStats
 @export var face_left = false
 @export var face_direction = 1.0
 @export var updated_direction = false
+
+#worm stats
+enum direction {LEFT = -1, RIGHT = 1}
+var crawling_direction = direction.RIGHT
 
 var target = null
 var state = 0
@@ -45,6 +50,8 @@ func state_machine(delta):
 			walk(delta)
 		2:
 			chase_target(delta)
+		3:
+			crawl(delta)
 
 func turn_around():
 	face_direction *= -1
@@ -88,6 +95,28 @@ func make_nav_path():
 
 func _on_nav_check_timer_timeout():
 	make_nav_path()
+
+#worm mechanics
+func crawl(delta):
+	if !updated_direction:
+		if sir_downwell_stats["rng"].randi_range(0,1) == 0:
+			crawling_direction = direction.LEFT
+		wall_cast.target_position.x *= crawling_direction
+		updated_direction = true
+	if wall_cast.is_colliding():
+		global_position = wall_cast.get_collision_point()
+		var wall_normal = wall_cast.get_collision_normal()
+		rotation = wall_normal.rotated(deg_to_rad(90)).angle()
+	else:
+		floor_cast.rotation_degrees = -max_speed * crawling_direction * delta
+		if floor_cast.is_colliding():
+			global_position = floor_cast.get_collision_point()
+			var floor_normal = floor_cast.get_collision_normal()
+			rotation = floor_normal.rotated(deg_to_rad(90)).angle()
+		else:
+			rotation_degrees += crawling_direction * 2
+	if !floor_cast.is_colliding():
+		pass
 
 func _on_character_stats_died():
 	Sounds.play_sfx("enemy_die", randf_range(1.0,1.5), -5)
