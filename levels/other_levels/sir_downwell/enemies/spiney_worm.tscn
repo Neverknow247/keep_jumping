@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://d4ehas041m1lw"]
+
+[ext_resource type="PackedScene" uid="uid://drlgg0briewyp" path="res://levels/other_levels/sir_downwell/enemies/enemy.tscn" id="1_ep10o"]
+[ext_resource type="Texture2D" uid="uid://dw1lbfk11tnvv" path="res://assets/art/sir_downwell/characters/spiney_crawler.png" id="2_xbyr1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rgggi"]
+size = Vector2(16, 5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kletb"]
+atlas = ExtResource("2_xbyr1")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1c1pw"]
+atlas = ExtResource("2_xbyr1")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmmac"]
+atlas = ExtResource("2_xbyr1")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttpyh"]
+atlas = ExtResource("2_xbyr1")
+region = Rect2(96, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_73px0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kletb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1c1pw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmmac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttpyh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aioya"]
+size = Vector2(16, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6iqq4"]
+size = Vector2(16, 5)
+
+[node name="worm" instance=ExtResource("1_ep10o")]
+enemy_type = 3
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_rgggi")
+
+[node name="AnimatedSprite2D" parent="." index="3"]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_73px0")
+autoplay = "default"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="hurtbox" index="0"]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_aioya")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="hitbox" index="0"]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_6iqq4")
+
+[node name="floor_cast" parent="." index="10"]
+collision_mask = 129
+
+[node name="wall_cast" parent="." index="11"]
+collision_mask = 129

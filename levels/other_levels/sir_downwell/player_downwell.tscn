@@ -52,7 +52,7 @@ _data = {
 size = Vector2(4, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7wl67"]
-size = Vector2(8, 4)
+size = Vector2(6, 2)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ssent"]
 radius = 8.0
@@ -425,7 +425,6 @@ damage = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="stomp_box"]
 modulate = Color(0.980392, 0, 0.27451, 1)
-position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_7wl67")
 
 [node name="hurt_box" type="Area2D" parent="." groups=["player_hurt_box"]]

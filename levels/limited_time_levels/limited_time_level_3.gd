@@ -36,6 +36,8 @@ func _input(event):
 
 func _ready():
 	#print(stats.calc_total_halloween_bones())
+	$Camera2D/snow_particles/GPUParticles2D.emitting = false
+	$Camera2D/wind_trails/GPUParticles2D.emitting = false
 	$player/sprite.texture = preload("res://assets/art/characters/player/player_ghost-sheet.png")
 	$player/blind_obscure.visible = player_blind
 	sounds.load_starting_music([main_music],1,-80)

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ArmorData" load_steps=3 format=3 uid="uid://bkx8npu0pbe88"]
+
+[ext_resource type="Texture2D" uid="uid://dkqio3ikjjnsa" path="res://assets/art/characters/player/player_turkey-sheet.png" id="1_bg2ik"]
+[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="2_yduxl"]
+
+[resource]
+script = ExtResource("2_yduxl")
+armor_id = "turkey"
+armor_name = "Sir Gobblin"
+armor_texture = ExtResource("1_bg2ik")

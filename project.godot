@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Sir Fallen"
-config/version="2.7.7"
+config/version="2.7.9"
 run/main_scene="res://menus/neverknow_splash.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="SirFallen"
@@ -233,6 +233,7 @@ admin_tele_forward={
 2d_physics/layer_12="enemy_hurt_box"
 2d_physics/layer_13="enemy_stomp_box"
 2d_physics/layer_14="enemy"
+2d_physics/layer_15="ice_block"
 avoidance/layer_1="downwell_avoid"
 
 [rendering]

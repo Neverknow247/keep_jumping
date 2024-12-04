@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bb8b5vo2me8pl"]
+[gd_scene load_steps=22 format=3 uid="uid://bb8b5vo2me8pl"]
 
 [ext_resource type="Script" path="res://ui/camera_2d.gd" id="1_v4so6"]
 
@@ -316,6 +316,79 @@ _data = {
 "particles_exit_space": SubResource("Animation_ontxs")
 }
 
+[sub_resource type="Curve" id="Curve_sirus"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.94505, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5hkx2"]
+curve = SubResource("Curve_sirus")
+
+[sub_resource type="Gradient" id="Gradient_fjd4g"]
+offsets = PackedFloat32Array(0.389262, 0.550336)
+colors = PackedColorArray(1, 1, 1, 0.215686, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1oj17"]
+gradient = SubResource("Gradient_fjd4g")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tt5sv"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(500, 1, 1)
+gravity = Vector3(45, 98, 0)
+scale_max = 3.0
+color_initial_ramp = SubResource("GradientTexture1D_1oj17")
+alpha_curve = SubResource("CurveTexture_5hkx2")
+turbulence_enabled = true
+turbulence_noise_speed_random = 0.0
+turbulence_influence_min = 0.02
+turbulence_influence_max = 0.08
+
+[sub_resource type="Gradient" id="Gradient_433qy"]
+colors = PackedColorArray(1, 1, 1, 0.0980392, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ya83x"]
+gradient = SubResource("Gradient_433qy")
+
+[sub_resource type="Gradient" id="Gradient_n8o08"]
+offsets = PackedFloat32Array(0, 0.530201, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_g3ckf"]
+gradient = SubResource("Gradient_n8o08")
+
+[sub_resource type="Curve" id="Curve_sa88k"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.107345, 59.3407), 0.0, 0.0, 0, 0, Vector2(0.248588, -41.7582), 0.0, 0.0, 0, 0, Vector2(0.367232, 46.1538), 0.0, 0.0, 0, 0, Vector2(0.491525, -19.7802), 0.0, 0.0, 0, 0, Vector2(0.621469, 37.3626), 0.0, 0.0, 0, 0, Vector2(0.745763, -37.3626), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 8
+
+[sub_resource type="CurveTexture" id="CurveTexture_cl01f"]
+curve = SubResource("Curve_sa88k")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qt338"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(200, 200, 1)
+gravity = Vector3(50, 25, 0)
+tangential_accel_min = -2.23517e-06
+tangential_accel_max = 3.0
+tangential_accel_curve = SubResource("CurveTexture_cl01f")
+damping_max = 100.0
+scale_min = 1.5
+scale_max = 1.8
+color_ramp = SubResource("GradientTexture1D_g3ckf")
+color_initial_ramp = SubResource("GradientTexture1D_ya83x")
+
+[sub_resource type="Gradient" id="Gradient_uj6cf"]
+offsets = PackedFloat32Array(0, 0.524862, 1)
+colors = PackedColorArray(1, 1, 1, 0, 0.789808, 0.857726, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7lonk"]
+gradient = SubResource("Gradient_uj6cf")
+width = 1
+height = 32
+fill_to = Vector2(0, 1)
+
 [node name="Camera2D" type="Camera2D"]
 position = Vector2(680, 1777)
 zoom = Vector2(6, 6)
@@ -444,5 +517,29 @@ color_ramp = SubResource("Gradient_amd22")
 libraries = {
 "": SubResource("AnimationLibrary_lotrf")
 }
+
+[node name="snow_particles" type="Node2D" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="snow_particles"]
+z_index = 5
+position = Vector2(0, -97)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_tt5sv")
+lifetime = 5.0
+preprocess = 30.0
+
+[node name="wind_trails" type="Node2D" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="wind_trails"]
+z_index = 5
+position = Vector2(-94, 0)
+amount = 15
+process_material = SubResource("ParticleProcessMaterial_qt338")
+texture = SubResource("GradientTexture2D_7lonk")
+lifetime = 5.0
+preprocess = 2.0
+randomness = 1.0
+trail_enabled = true
+trail_lifetime = 0.6
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

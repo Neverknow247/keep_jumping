@@ -35,6 +35,8 @@ func _input(event):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _ready():
+	$Camera2D/snow_particles/GPUParticles2D.emitting = false
+	$Camera2D/wind_trails/GPUParticles2D.emitting = false
 	$player/sprite.texture = preload("res://assets/art/characters/player/player_legless_ghost-sheet.png")
 	player.jump_force = 100
 	$player/blind_obscure.visible = player_blind

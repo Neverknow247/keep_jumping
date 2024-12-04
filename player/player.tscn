@@ -298,7 +298,7 @@ _data = {
 [node name="player" type="CharacterBody2D" groups=["player"]]
 z_index = 1
 collision_layer = 2
-collision_mask = 161
+collision_mask = 16545
 floor_stop_on_slope = false
 floor_snap_length = 2.0
 safe_margin = 0.2
@@ -392,26 +392,32 @@ shape = SubResource("RectangleShape2D_ykc2y")
 position = Vector2(0, -15)
 
 [node name="coyote_jump_timer" type="Timer" parent="."]
+process_callback = 0
 wait_time = 0.2
 one_shot = true
 
 [node name="coyote_wall_timer" type="Timer" parent="."]
+process_callback = 0
 wait_time = 0.2
 one_shot = true
 
 [node name="jump_timer" type="Timer" parent="."]
+process_callback = 0
 wait_time = 0.3
 one_shot = true
 
 [node name="jump_buffer_timer" type="Timer" parent="."]
+process_callback = 0
 wait_time = 0.02
 one_shot = true
 
 [node name="b_hop_timer" type="Timer" parent="."]
+process_callback = 0
 wait_time = 0.1
 one_shot = true
 
 [node name="drop_timer" type="Timer" parent="."]
+process_callback = 0
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -37,6 +37,8 @@ func _input(event):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _ready():
+	$Camera2D/snow_particles/GPUParticles2D.emitting = false
+	$Camera2D/wind_trails/GPUParticles2D.emitting = false
 	$player/blind_obscure.visible = player_blind
 	sounds.load_starting_music([main_music],1,-80)
 	sounds.fade_in_music(main_music,1,-5)

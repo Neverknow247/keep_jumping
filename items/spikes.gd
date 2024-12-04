@@ -12,7 +12,8 @@ var color_blind_tiny_sprite = preload("res://assets/art/items/spikes_small.png")
 
 const sprites = [
 	#0
-	preload("res://assets/art/items/forest_spikes.png"),
+	preload("res://assets/art/items/frost_spikes.png"),
+	#preload("res://assets/art/items/forest_spikes.png"),
 	#1
 	preload("res://assets/art/items/Spikes.png"),
 	#2
@@ -31,6 +32,8 @@ const sprites = [
 	preload("res://assets/art/items/candy_corn_spikes.png"),
 	#9
 	preload("res://assets/art/items/candy_corn_spikes_small.png"),
+	#10
+	preload("res://assets/art/items/frost_spikes.png"),
 ]
 
 var damage = 1

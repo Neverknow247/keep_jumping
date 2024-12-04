@@ -23,12 +23,17 @@ func add_particle():
 
 var current_velocity = 0.0
 @export var acceleration = 512
+@export var ice_acceleration = 102
+#@export var ice_acceleration = 51
+#@export var ice_acceleration = 25
 @export var default_max_velocity = 65
 @export var sand_max_velocity = 30
 @export var max_velocity :float = 65.0
+@export var ice_max_velocity = 130
 @export var ledge_bonus = 3.5
 @export var b_hop_bonus_multiplier = 20
 @export var friction = 512
+@export var ice_friction = 1
 @export var wall_friction = .02
 @export var ground_friction = .2
 @export var jump_force = 150
@@ -89,6 +94,7 @@ var checkpoint = false
 var invincible = false
 var tile_map = null
 var damages = []
+var last_facing = 1
 
 func _ready():
 	set_texture()
@@ -251,11 +257,25 @@ func is_moving(input_axis):
 	return input_axis != 0
 
 func apply_acceleration(delta, input_axis):
+	if is_on_floor() and get_slide_collision_count()>0:
+		var check_collision = get_slide_collision(0)
+		if check_collision != null and check_collision.get_collider().is_in_group("ice"):
+			velocity.x = move_toward(velocity.x, input_axis * max(ice_max_velocity,max_velocity), ice_acceleration * delta)
+			return
+	#else:
 	velocity.x = move_toward(velocity.x, input_axis * max_velocity, acceleration * delta)
 
 func apply_friction(delta):
 	if is_on_floor() || state == "sand_state":
-		velocity.x = move_toward(velocity.x, 0, friction * delta)
+		if get_slide_collision_count()>0:
+			var check_collision = get_slide_collision(0)
+			if check_collision.get_collider().is_in_group("ice"):
+			#velocity.x = move_toward(velocity.x, 0, ice_friction * delta)
+				velocity.x = move_toward(velocity.x,max(ice_max_velocity,max_velocity)*sign(velocity.x+last_facing),ice_acceleration*delta)
+			else:
+				velocity.x = move_toward(velocity.x, 0, friction * delta)
+		else:
+			velocity.x = move_toward(velocity.x, 0, friction * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0, air_friction * delta)
 
@@ -344,6 +364,7 @@ func fall_bonus_check():
 func update_animations(input_vector):
 	var facing = input_vector
 	if facing !=0:
+		last_facing = facing
 		sprite.flip_h = facing != 1
 		#sprite.scale.x = facing
 		jump_collision.scale.x = facing
@@ -533,7 +554,7 @@ func _on_hurt_box_hit(damage):
 	var ty_death_sound = rng.randi_range(1,100)
 	var rand = rng.randi_range(1,18)
 	var cat_rand = rng.randi_range(1,20)
-	if stats["save_data"]["equiped_armor"] == "purrfallen" or stats["save_data"]["equiped_armor"] == "purrfallen_ty":
+	if stats["save_data"]["equiped_armor"] == "purrfallen" or stats["save_data"]["equiped_armor"] == "purrfallen_ty" or stats["save_data"]["equiped_armor"] == "burr_fallen":
 		if rand_death_sound == 42:
 			@warning_ignore("narrowing_conversion")
 			sounds.play_sfx("extended_meow",randf_range(1.1,1.3),0.3)

@@ -62,12 +62,12 @@ position = Vector2(-368, 32)
 [node name="ground_enemy_positions" type="Node2D" parent="."]
 
 [node name="position_1" type="Marker2D" parent="ground_enemy_positions"]
-position = Vector2(-344, 152)
+position = Vector2(-408, 96)
 
 [node name="air_enemy_positions" type="Node2D" parent="."]
 
 [node name="position_1" type="Marker2D" parent="air_enemy_positions"]
-position = Vector2(-368, 128)
+position = Vector2(-408, 144)
 
 [node name="wall_enemy_positions" type="Node2D" parent="."]
 
