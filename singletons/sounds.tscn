@@ -9,33 +9,43 @@ script = ExtResource("1_h2c52")
 [node name="music" type="Node" parent="."]
 
 [node name="music1" type="AudioStreamPlayer" parent="music"]
+volume_db = -80.0
 bus = &"Music"
 
 [node name="music2" type="AudioStreamPlayer" parent="music"]
+volume_db = -80.0
 bus = &"Music"
 
 [node name="music3" type="AudioStreamPlayer" parent="music"]
+volume_db = -80.0
 bus = &"Music"
 
 [node name="music4" type="AudioStreamPlayer" parent="music"]
+volume_db = -80.0
 bus = &"Music"
 
 [node name="music5" type="AudioStreamPlayer" parent="music"]
+volume_db = -80.0
 bus = &"Music"
 
 [node name="music6" type="AudioStreamPlayer" parent="music"]
+volume_db = -80.0
 bus = &"Music"
 
 [node name="music7" type="AudioStreamPlayer" parent="music"]
+volume_db = -80.0
 bus = &"Music"
 
 [node name="music8" type="AudioStreamPlayer" parent="music"]
+volume_db = -80.0
 bus = &"Music"
 
 [node name="music9" type="AudioStreamPlayer" parent="music"]
+volume_db = -80.0
 bus = &"Music"
 
 [node name="music10" type="AudioStreamPlayer" parent="music"]
+volume_db = -80.0
 bus = &"Music"
 
 [node name="music_main" type="AudioStreamPlayer" parent="."]

@@ -264,18 +264,25 @@ func apply_acceleration(delta, input_axis):
 			return
 	#else:
 	velocity.x = move_toward(velocity.x, input_axis * max_velocity, acceleration * delta)
+	#if is_on_floor():
+		#velocity.x = move_toward(velocity.x, input_axis * max(ice_max_velocity,max_velocity), ice_acceleration * delta)
+	#else:
+		#velocity.x = move_toward(velocity.x, input_axis * max_velocity, acceleration * delta)
+	
 
 func apply_friction(delta):
 	if is_on_floor() || state == "sand_state":
 		if get_slide_collision_count()>0:
 			var check_collision = get_slide_collision(0)
 			if check_collision.get_collider().is_in_group("ice"):
-			#velocity.x = move_toward(velocity.x, 0, ice_friction * delta)
 				velocity.x = move_toward(velocity.x,max(ice_max_velocity,max_velocity)*sign(velocity.x+last_facing),ice_acceleration*delta)
 			else:
 				velocity.x = move_toward(velocity.x, 0, friction * delta)
+				#velocity.x = move_toward(velocity.x,max(ice_max_velocity,max_velocity)*sign(velocity.x+last_facing),ice_acceleration*delta)
 		else:
 			velocity.x = move_toward(velocity.x, 0, friction * delta)
+			#velocity.x = move_toward(velocity.x,max(ice_max_velocity,max_velocity)*sign(velocity.x+last_facing),ice_acceleration*delta)
+			
 	else:
 		velocity.x = move_toward(velocity.x, 0, air_friction * delta)
 

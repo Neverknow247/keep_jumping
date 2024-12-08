@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_2o8nt"]
 [ext_resource type="Texture2D" uid="uid://e88tapajqrdd" path="res://assets/art/ui/vignette.png" id="2_q64kn"]
-[ext_resource type="Texture2D" uid="uid://dg6cb7vsauqg3" path="res://assets/art/ui/speech_box_halloween.png" id="2_vs3m8"]
+[ext_resource type="Texture2D" uid="uid://b8trjn16rloiv" path="res://assets/art/ui/speech_box_christmas.png" id="2_vhean"]
 [ext_resource type="FontFile" uid="uid://dgbfa2hluymi8" path="res://assets/fonts/KnightsQuest.ttf" id="3_0srao"]
 [ext_resource type="Texture2D" uid="uid://by13oq4td5ugv" path="res://assets/art/ui/blind_mode.png" id="3_1igpa"]
 [ext_resource type="Texture2D" uid="uid://cxs1m35u0dt16" path="res://assets/art/ui/character_headshots/zombie/lost_eye.png" id="4_rdnds"]
@@ -19,7 +19,7 @@
 [ext_resource type="Theme" uid="uid://bwnv8b362a2w7" path="res://menus/menu_theme.tres" id="11_qn1a0"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xmiy5"]
-texture = ExtResource("2_vs3m8")
+texture = ExtResource("2_vhean")
 
 [sub_resource type="Animation" id="Animation_eqahf"]
 length = 0.001
@@ -145,8 +145,8 @@ offset_left = 16.0
 offset_top = 16.0
 offset_right = 1776.0
 offset_bottom = 176.0
-theme_override_colors/default_color = Color(1, 0.980392, 0.764706, 1)
-theme_override_colors/font_selected_color = Color(0.223529, 0.219608, 0.164706, 1)
+theme_override_colors/default_color = Color(0.258349, 0.0621259, 0.0722579, 1)
+theme_override_colors/font_selected_color = Color(0.101713, 0, 0.00956745, 1)
 theme_override_fonts/normal_font = ExtResource("3_0srao")
 theme_override_font_sizes/bold_italics_font_size = 54
 theme_override_font_sizes/italics_font_size = 54

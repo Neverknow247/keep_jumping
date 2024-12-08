@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://gse4sq6r5cdr"]
+
+[ext_resource type="Script" path="res://characters/npcs/christmas_2024/christmas_city_part_1/santa_dialogue_1.gd" id="1_kf7i8"]
+
+[resource]
+script = ExtResource("1_kf7i8")

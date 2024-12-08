@@ -10,6 +10,7 @@ var rng = RandomNumberGenerator.new()
 @export var level_name = "Challenge Name"
 @export var spawn_point = Vector2(0,0)
 @export var main_music = "challenge"
+@export var level_music = "challenge"
 @export var player_blind = false
 @export var space_gravity = false
 
@@ -42,8 +43,9 @@ func _ready():
 	$player/blind_obscure.visible = player_blind
 	#check_bone_collector_door_and_sign()
 	stats.changed_sprite.connect(_on_changed_sprites)
-	sounds.load_starting_music([main_music],1,-80)
+	sounds.load_starting_music([main_music,level_music],1,-80)
 	sounds.fade_in_music(main_music,1,-5)
+	sounds.fade_out_music(level_music)
 	set_up_label()
 	set_up_mode()
 	set_up_steam()
@@ -131,6 +133,9 @@ func _on_start_zone_start_timer():
 	@warning_ignore("narrowing_conversion")
 	sounds.play_sfx("bark_twice",randf_range(0.9,1.2), -25)
 	start_timer()
+	sounds.fade_in_music(level_music,1,-5)
+	sounds.fade_out_music(main_music)
+	
 
 func start_timer():
 	global_timer.timer_on = true
@@ -228,18 +233,22 @@ func _on_pickups_popup(text):
 	ui.pop_up(text)
 
 func _on_player_lever():
-	var tween = get_tree().create_tween()
-	tween.tween_property($items/door,"global_position",Vector2($items/door.global_position.x,$items/door.global_position.y+33),2)
-	$items/lever.unlocked = false
-	$items/lever/Sprite2D.frame = 1
+	$items/candy_cane_beacon/lever.unlocked = false
+	$items/candy_cane_beacon/lever/Sprite2D.frame = 1
+	$npcs/santa_controller/santa.progression = 4
+	$npcs/santa_controller.progression = 100
+	stats["save_data"]["santa_progression"] = 1
 	player.interactable = null
 	player.interacting = false
 	player.interacting_type = ""
 	player.interact_icon.hide()
 	@warning_ignore("narrowing_conversion")
 	sounds.play_sfx("click", randf_range(0.6,1.4), -10)
+	$items/candy_cane_beacon/AnimatedSprite2D.play("animate")
 	@warning_ignore("narrowing_conversion")
-	sounds.play_sfx("stone_door", randf_range(0.9,1.0), 0)
+	sounds.play_sfx("pickup", randf_range(0.6,1.4), -10)
+	ui.pop_up("Activated the Candy Cane Beacon!")
+	SaveAndLoad.update_save_data()
 
 @warning_ignore("unused_parameter")
 func _on_fireplace_unlock_body_entered(body):

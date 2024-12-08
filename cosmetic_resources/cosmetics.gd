@@ -51,6 +51,7 @@ var armors = [
 	preload("res://cosmetic_resources/armor/purfallen_ty_armor.tres"),
 	preload("res://cosmetic_resources/armor/turkey_armor.tres"),
 	preload("res://cosmetic_resources/armor/burr_fallen_armor.tres"),
+	preload("res://cosmetic_resources/armor/santa_2_armor.tres"),
 	
 	
 	

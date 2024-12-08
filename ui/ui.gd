@@ -14,6 +14,8 @@ var stats = Stats
 
 const characters = {
 	"default":preload("res://assets/art/ui/character_headshots/default.png"),
+	
+	#Halloween Art
 	"mage_waving":preload("res://assets/art/ui/character_headshots/mage/wave.png"),
 	"zombie_lost_eye":preload("res://assets/art/ui/character_headshots/zombie/lost_eye.png"),
 	"zombie_found_eye":preload("res://assets/art/ui/character_headshots/zombie/found_eye.png"),
@@ -21,8 +23,15 @@ const characters = {
 	"kid_zombie_costume":preload("res://assets/art/ui/character_headshots/child_zom/kid_zombie_costume.png"),
 	"granny_sitting":preload("res://assets/art/ui/character_headshots/granny_zom/sitting.png"),
 	"girl_zombie_crying":preload("res://assets/art/ui/character_headshots/girl_zom/crying.png"),
+	
+	#Christmas Art
+	"santa_defaut":preload("res://assets/art/ui/character_headshots/santa/santa_base.png"),
 	#"":preload(),
 }
+
+#textbox text default color fffac3
+#textbox text font selected color 39382a
+
 
 var next_level
 

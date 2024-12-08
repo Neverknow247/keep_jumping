@@ -114,6 +114,8 @@ var music = {
 	"dlc_sand" : load(music_path+"dlc_sand.wav"),
 	"dlc_lava" : load(music_path+"dlc_lava.wav"),
 	"sir_hallow" : load(music_path+"sir_hallow.wav"),
+	"sir_the_season_city" : load(music_path+"sir_the_season_city.wav"),
+	"sir_the_season_level" : load(music_path+"sir_the_season_level.wav"),
 #	"" : load(music_path+".wav"),
 }
 
@@ -161,7 +163,7 @@ func stop_music():
 	for music_player in music_players:
 		music_player.stop()
 
-func fade_in_music(music_string, pitch_scale = 1, volume_db = 0,fade_time = 10):
+func fade_in_music(music_string, pitch_scale = 1, volume_db = 0,fade_time = 5):
 	var available_player = null
 	for music_player in music_players:
 		if music_player.stream == music[music_string]:
@@ -192,7 +194,7 @@ func fade_out_music(music_string, pitch_scale = 1, volume_db = -80):
 	if available_player:
 		if !available_player.volume_db == volume_db:
 			var tween = get_tree().create_tween()
-			tween.tween_property(available_player,"volume_db",volume_db,10)
+			tween.tween_property(available_player,"volume_db",volume_db,5)
 			#print("not quiet enough yet")
 		else:
 			pass

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ArmorData" load_steps=3 format=3 uid="uid://c3mlsradcp5qf"]
+
+[ext_resource type="Texture2D" uid="uid://bn2xk6id737q5" path="res://assets/art/characters/player/player_santa_2-sheet.png" id="1_lfn3w"]
+[ext_resource type="Script" path="res://cosmetic_resources/armor/armor_data.gd" id="2_affml"]
+
+[resource]
+script = ExtResource("2_affml")
+armor_id = "santa_2"
+armor_name = "Santa Beard Cosplay"
+armor_texture = ExtResource("1_lfn3w")
